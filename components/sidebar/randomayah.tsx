@@ -10,7 +10,8 @@ const RandomAyah = (): JSX.Element => {
     id: "",
     soorah: 96,
     ayah: 1,
-    content: "Čitaj, u ime Gospodara tvoga, koji stvara,",
+    content: "Yaradan Rəbbinin adı ilə oxu!",
+    translator: Number(process.env.DEFAULT_TRANSLATOR),
   })
 
   useEffect(() => {
@@ -22,11 +23,8 @@ const RandomAyah = (): JSX.Element => {
   }, [])
 
   return (
-    <Card title="PROČITAJ JOŠ">
-      <h6 className="text-gray-500">
-        {`${SOORAH_LIST[out.soorah]}, ${out.ayah}`}
-      </h6>
-      <h6 className="text-gray-700 hover:underline">
+    <Card title={`${SOORAH_LIST[out.soorah]}, ${out.ayah}`}>
+      <h6 className="text-blue-400 hover:underline">
         <a href={`/${out.soorah}/${out.ayah}`}>{out.content}</a>
       </h6>
     </Card>

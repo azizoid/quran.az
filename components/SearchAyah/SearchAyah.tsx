@@ -4,25 +4,25 @@ import { FaExternalLinkAlt } from "react-icons/fa"
 import { DisplayData } from "../../lib/types"
 
 export type SearchAyahProps = {
-  ayah: DisplayData
+  data: DisplayData
   mark?: string
 }
 
-export const SearchAyah = ({ ayah, mark = "" }): JSX.Element => (
+export const SearchAyah = ({ data, mark = "" }): JSX.Element => (
   <li className="soorah-list-item">
     <div className="text-start mx-1">
       <span className="badge">
-        {ayah.soorah}:{ayah.ayah}
+        {data.soorah}:{data.ayah}
       </span>{" "}
-      {ayah.content}
+      {data.content}
       <Highlighter
         searchWords={[mark]}
-        textToHighlight={ayah.content}
+        textToHighlight={data.content}
         autoEscape={true}
         highlightClassName="bg-warning"
       />
     </div>
-    <Link href={`/${ayah.soorah}/${ayah.ayah}`}>
+    <Link href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}>
       <a className="ml-2 text-blue-500">
         <FaExternalLinkAlt />
       </a>

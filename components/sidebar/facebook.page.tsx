@@ -1,10 +1,10 @@
 import { Card } from "../../ui/Card/Card"
 
 export const FacebookPage = (): JSX.Element => (
-  <Card title="PRIDRUŹI NAM SE" className={"px-0 py-0"}>
+  <Card title="BİZİ BƏYƏN" className={"px-0 py-0"}>
     <div
       className="fb-page object-fill w-full"
-      data-href="https://www.facebook.com/mojkuran/"
+      data-href="https://www.facebook.com/quranaz/"
       data-width="500"
       data-small-header="false"
       data-adapt-container-width="true"
@@ -13,10 +13,10 @@ export const FacebookPage = (): JSX.Element => (
       data-lazy="true"
     >
       <blockquote
-        cite="https://www.facebook.com/mojkuran/"
+        cite="https://www.facebook.com/quranaz/"
         className="fb-xfbml-parse-ignore"
       >
-        <a href="https://www.facebook.com/mojkuran/">Moj Kur&#039;an</a>
+        <a href="https://www.facebook.com/quranaz/">Quran.az</a>
       </blockquote>
     </div>
   </Card>

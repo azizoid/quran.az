@@ -1,26 +1,39 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
 import { DisplayData } from '../../lib/types'
-import { DataProps, ResponseData } from '../../lib/db-types'
+import { DataProps, DataPropsLatinized, ResponseData } from '../../lib/db-types'
 import { withMongo } from '../../lib/mongodb'
 
 
 export type ReponseProps = {
   out?: DisplayData,
-} & ResponseData
+}
 
 const handler = async (
   req: NextApiRequest,
-  res: NextApiResponse<ReponseProps>
+  res: NextApiResponse<ReponseProps | ResponseData>
 ) => {
   const { method } = req
 
   switch (method) {
     case 'GET':
       try {
-        const random = await withMongo(async (db: Db) => db.collection<DataProps>('qurans').aggregate([{ $sample: { size: 1 } }]).toArray().then((data) =>
-          ({ id: data[0]["_id"], soorah: data[0]["soorah_id"], ayah: data[0]["aya_id"], content: data[0]["content"] }))
-        )
+        const random = await withMongo(async (db: Db) => {
+          const collection = db.collection<DataPropsLatinized>('quranaz')
+            .aggregate([{
+              $sample: { size: 1 },
+              // $match: { translator: Number(process.env.DEFAULT_TRANSLATOR) },
+            }]).toArray()
+          return collection.then(data => ({
+            id: data[0].id,
+            soorah: data[0].soorah,
+            ayah: data[0].ayah,
+            content: data[0].content,
+            content_latinized: data[0].content_latinized,
+            translator: data[0].translator
+          }))
+        })
+
         return res.json({ out: random, success: true })
       } catch (error) {
         res.status(400).json({ success: false })

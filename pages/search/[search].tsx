@@ -4,7 +4,6 @@ import { useRouter } from "next/router"
 import Pagination from "react-js-pagination"
 
 import { MainLayout } from "../../layouts/MainLayout"
-import { Empty } from "../../components/Empty/Empty"
 import Loader from "../../ui/Loader/Loader"
 import { SearchAyah } from "../../components/SearchAyah/SearchAyah"
 import { PaginationProps } from "../../utility/paginate/paginate"
@@ -19,11 +18,12 @@ export const Search = (): JSX.Element => {
 
   const router = useRouter()
   const query = router.query.search?.toString()
+  const translator = router.query.t?.toString() || 1
 
   const getData = useCallback(async () => {
     setPageState(PageStates.LOADING)
 
-    await getApiData(`/api/search/${query}?page=${page}`)
+    await getApiData(`/api/search/${query}?page=${page}&t=${translator}`)
       .then(({ out, paginate }) => {
         if (out?.length > 0) {
           setOut(out)
@@ -35,7 +35,7 @@ export const Search = (): JSX.Element => {
         } else throw new Error("not found")
       })
       .catch(() => setPageState(PageStates.NOT_FOUND))
-  }, [page, query])
+  }, [page, query, translator])
 
   useEffect(() => {
     setPage(1)
@@ -48,7 +48,7 @@ export const Search = (): JSX.Element => {
   if (pageState === PageStates.NOT_FOUND) {
     return (
       <MainLayout>
-        <div className="col-sm-12 alert alert-danger">Riječ nije pronađena</div>
+        <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
       </MainLayout>
     )
   }
@@ -83,7 +83,7 @@ export const Search = (): JSX.Element => {
         {paginateLinks}
 
         {out?.map((ayah) => (
-          <SearchAyah ayah={ayah} mark={query} key={ayah.id} />
+          <SearchAyah data={ayah} mark={query} key={ayah.id} />
         ))}
 
         {paginateLinks}

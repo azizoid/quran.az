@@ -19,7 +19,8 @@ const handler = async (
   const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
-  const data = getView({ s: soorah })
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR);
+  const data = getView({ s: soorah, t: translator })
 
   if (data.view === 'empty') {
     return res.status(400).json({ success: false })
@@ -29,8 +30,8 @@ const handler = async (
     case 'GET':
       try {
         const out = await withMongo(async (db: Db) => {
-          const collection = db.collection<DataPropsLatinized>('mojkuran')
-          return await collection.find({ soorah }).sort(['soorah', 'ayah']).toArray()
+          const collection = db.collection<DataPropsLatinized>('quranaz')
+          return await collection.find({ soorah, translator }).sort(['soorah', 'ayah']).toArray()
         })
         return res.json({ out, data, success: true })
       } catch (error) {

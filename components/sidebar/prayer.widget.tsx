@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
+import getDayOfYear from "date-fns/getDayOfYear"
 
 const prayersListEmpty = [
-  { id: 1, title: "Zora", time: "--:--" },
-  { id: 2, title: "Izlazak", time: "--:--" },
-  { id: 3, title: "Podne", time: "--:--" },
-  { id: 4, title: "Ikindija", time: "--:--" },
-  { id: 5, title: "Akšam", time: "--:--" },
-  { id: 6, title: "Jatsija", time: "--:--" },
+  { id: 1, title: "Fəcr", time: "--:--" },
+  { id: 2, title: "Günəş", time: "--:--" },
+  { id: 3, title: "Zöhr", time: "--:--" },
+  { id: 4, title: "Əsr", time: "--:--" },
+  { id: 5, title: "Məğrib", time: "--:--" },
+  { id: 6, title: "İşa", time: "--:--" },
 ]
 
 const PrayerWidget = (): JSX.Element => {
   const [prayers, setPrayers] = useState(prayersListEmpty)
   const [hijri, setHijri] = useState("")
+  const dd = useRef(getDayOfYear(new Date()))
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("https://api.vaktija.ba/vaktija/v1/77")
+      await fetch("https://nam.az/api/1/" + dd.current)
         .then((response) => response.json())
         .then((data) => {
-          const out = prayersListEmpty.map((prayer, i) => ({
-            ...prayer,
-            time: data["vakat"][i],
-          }))
-          setHijri(data.datum[1])
+          const out = prayersListEmpty.map((prayer, i) => {
+            prayer["time"] = data["prayers"][i]
+            return prayer
+          })
+          setHijri(data.hijri)
           setPrayers(out)
         })
     }
@@ -34,7 +36,7 @@ const PrayerWidget = (): JSX.Element => {
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={4}>
-            {hijri}, Sarajevo
+            {hijri}
           </td>
         </tr>
       </thead>

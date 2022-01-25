@@ -1,6 +1,6 @@
 import React from "react"
 import Head from "next/head"
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 
 import { MainLayout } from "../../layouts/MainLayout"
 import { SoorahAyah } from "../../components/SoorahAyah/SoorahAyah"
@@ -15,9 +15,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
     return (
       <MainLayout>
         <div className="text-center">
-          <div className="col-sm-12 alert alert-danger">
-            Sura nije pronađena
-          </div>
+          <div className="col-sm-12 alert alert-danger">Surə tapılmamışdır</div>
         </div>
       </MainLayout>
     )
@@ -26,9 +24,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
   return (
     <MainLayout>
       <Head>
-        <title>
-          Sura {SOORAH_LIST[data.s]} | Čitaj svoju knjigu | mojkuran.com
-        </title>
+        <title>{SOORAH_LIST[data.s]} surəsi | Öz Kitabını oxu | quran.az</title>
         <meta
           name="description"
           content={out
@@ -82,10 +78,11 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
 // }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context
+  const { params, query } = context
+  const translator = query.t || 1
 
   const res = await getApiData(
-    `${process.env.NEXTAUTH_URL}/api/${params.soorah}`
+    `${process.env.NEXTAUTH_URL}/api/${params.soorah}?t=${translator}`
   )
 
   if (!res?.out.length) {
@@ -93,7 +90,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         error: PageStates.NOT_FOUND,
         out: [],
-        data: { s: 0, a: "" },
+        data: { s: 0, a: "", translator },
       },
     }
   }

@@ -20,7 +20,7 @@ export type DataPropsLatinized = {
   ayah: number,
   content: string,
   content_latinized: string,
-  translator_id: number
+  translator: number
 }
 
 export type DetailsTypes = {

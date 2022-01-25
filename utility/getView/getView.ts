@@ -5,7 +5,7 @@ export const initialStateProps: FormProps = {
   a: "",
   q: "",
   view: "init",
-  t: 1,
+  t: Number(process.env.DEFAULT_TRANSLATOR),
 }
 
 export const getView = (form: Partial<FormProps>): FormProps => {

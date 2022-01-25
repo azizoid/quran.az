@@ -14,7 +14,7 @@ export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {
     return (
       <MainLayout>
-        <div className="col-sm-12 alert alert-danger">Ajet nije pronađen</div>
+        <div className="col-sm-12 alert alert-danger">Ayə tapılmamışdır</div>
       </MainLayout>
     )
   }
@@ -25,8 +25,8 @@ export const Ayah = ({ out, error }) => {
     <MainLayout>
       <Head>
         <title>
-          {`Ajet ${ayah}, Sura ${SOORAH_LIST[soorah]}
-           | Čitaj svoju knjigu | mojkuran.com`}
+          {`${SOORAH_LIST[soorah]} surəsi, Ayə ${ayah}, 
+           | Öz Kitabını oxu | quran.az`}
         </title>
         <meta name="description" content={content} />
       </Head>
@@ -60,9 +60,10 @@ export const Ayah = ({ out, error }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = query.soorah
   const ayah = query.ayah
+  const translator = query.t || process.env.DEFAULT_TRANSLATOR
 
   const res = await getApiData(
-    `${process.env.NEXTAUTH_URL}/api/${soorah}/${ayah}`
+    `${process.env.NEXTAUTH_URL}/api/${soorah}/${ayah}?t=${translator}`
   )
 
   if (res.success === false) {
@@ -70,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         error: PageStates.NOT_FOUND,
         out: {},
-        data: { s: 0, a: "" },
+        data: { s: 0, a: "", translator },
       },
     }
   }

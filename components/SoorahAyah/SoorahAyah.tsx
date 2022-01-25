@@ -11,7 +11,7 @@ export const SoorahAyah = ({ data }: SoorahAyahProps): JSX.Element => (
     <div>
       <span className="badge">{data.ayah}</span> {data.content}
     </div>
-    <Link href={`/${data.soorah}/${data.ayah}`}>
+    <Link href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}>
       <a className="ml-2 text-blue-500">
         <FaExternalLinkAlt />
       </a>

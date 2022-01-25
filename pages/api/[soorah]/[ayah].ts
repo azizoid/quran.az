@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
 import { withMongo } from '../../../lib/mongodb'
 import { DataPropsLatinized, DetailsTypes, ResponseData } from '../../../lib/db-types'
-import { DataProps } from '../../../lib/db-types'
 import { FormProps } from '../../../lib/types'
 import { getView } from '../../../utility/getView/getView'
 
@@ -32,7 +31,8 @@ const handler = async (
 
   const soorah = Number(query.soorah.toString())
   const ayah = Number(query.ayah.toString())
-  const data = getView({ s: soorah, a: ayah })
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
+  const data = getView({ s: soorah, a: ayah, t: translator })
 
   if (data.view === 'empty') {
     return res.status(400).json({ success: false })
@@ -41,17 +41,17 @@ const handler = async (
   switch (method) {
     case 'GET':
       try {
-        const ayahs = await withMongo(async (db: Db) => {
-          const contentCollection = db.collection<DataPropsLatinized>('mojkuran')
+        const out = await withMongo(async (db: Db) => {
+          const contentCollection = db.collection<DataPropsLatinized>('quranaz')
           const content = await contentCollection.findOne({
-            soorah, ayah
+            soorah, ayah, translator
           });
 
           const prev = await contentCollection.findOne({
-            soorah, ayah: ayah - 1
+            soorah, ayah: ayah - 1, translator
           }).then((data) => data?.ayah ? data.ayah : null)
           const next = await contentCollection.findOne({
-            soorah, ayah: ayah + 1
+            soorah, ayah: ayah + 1, translator
           }).then((data) => data?.ayah ? data.ayah : null)
 
           const detailsCollection = db.collection<DetailsTypes>('details')
@@ -61,7 +61,8 @@ const handler = async (
 
           return { ...content, ...details, prev, next }
         })
-        return res.json({ out: ayahs, data, success: true })
+
+        return res.json({ out, data, success: true })
       } catch (error) {
         res.status(400).json({ success: false })
       }

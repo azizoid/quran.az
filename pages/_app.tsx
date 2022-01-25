@@ -10,7 +10,7 @@ import "../styles/global.css"
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
-    TagManager.initialize({ gtmId: "GTM-NVN95DH" })
+    TagManager.initialize({ gtmId: "GTM-WZ9GX3M" })
   }, [])
   return (
     <FormContextProvider>

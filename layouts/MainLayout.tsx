@@ -40,7 +40,7 @@ export const MainLayout: FC = ({ children }) => (
         <Link href="/" passHref={true}>
           <a className="py-3 flex items-center content-start text-gray-500 hover:opacity-75">
             <Logo />
-            &nbsp; Mojkuran.com
+            &nbsp; Quran.az
           </a>
         </Link>
 
@@ -56,7 +56,7 @@ export const MainLayout: FC = ({ children }) => (
           </li>
           <li>
             <a
-              href="https://instagram.com/mojkuran"
+              href="https://instagram.com/quranaz"
               target="_blank"
               rel="noreferrer"
             >

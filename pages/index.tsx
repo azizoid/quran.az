@@ -5,7 +5,7 @@ import { Empty } from "../components/Empty/Empty"
 export const Home = (): JSX.Element => (
   <MainLayout>
     <Head>
-      <title>Čitaj svoju knjigu | Mojkuran.com </title>
+      <title>Öz Kitabını oxu | quran.az </title>
     </Head>
     <Empty />
   </MainLayout>

@@ -25,20 +25,21 @@ const handler = async (
     .replace(/[-/\^$*+?.()|[]{}]/g, '\$&')
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
   const currentPage = Number(query.page?.toString()) || 1
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
   switch (method) {
     case 'GET':
       try {
         const ayahs = await withMongo(async (db: Db) => {
-          const collection = db.collection<DataPropsLatinized>('mojkuran')
+          const collection = db.collection<DataPropsLatinized>('quranaz')
           return await collection.find({
-            // content: { $regex: new RegExp('/' + search_query + '/', 'i') }
-            content_latinized: new RegExp(search_query, 'i')
+            content_latinized: new RegExp(search_query, 'i'),
+            translator
           }, {}).sort(['soorah', 'aya']).toArray()
         })
         const out = paginate(ayahs, initialPaginate.perPage, currentPage)
-          .map(({ _id, soorah, ayah, content }) =>
-            ({ id: _id, soorah, ayah, content }))
+          .map(({ _id, soorah, ayah, content, translator }) =>
+            ({ id: _id, soorah, ayah, content, translator }))
 
         return res.json({
           out,

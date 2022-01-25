@@ -7,6 +7,7 @@ import React, {
 } from "react"
 import { FormContext } from "../../store/form-store"
 import soorahList from "../../assets/soorahList"
+import translatorList from "../../assets/translatorList"
 
 import { useRouter } from "next/router"
 import { FormProps } from "../../lib/types"
@@ -28,31 +29,34 @@ export const Form = (): JSX.Element => {
 
     switch (name) {
       case "soorah":
-        setState({
+        setState((prev) => ({
+          ...prev,
           s: Number(value),
           a: "",
           q: "",
-          t: 1,
           view: name,
-        })
+        }))
         break
       case "ayah":
         setState((prev) => ({
+          ...prev,
           s: prev.s,
           a: Number(value),
           q: "",
-          t: 1,
           view: name,
         }))
         break
       case "search":
-        setState({
+        setState((prev) => ({
+          ...prev,
           s: 0,
           a: "",
           q: value,
-          t: 1,
           view: name,
-        })
+        }))
+        break
+      case "translator":
+        setState((prev) => ({ ...prev, t: Number(value) }))
         break
       default:
         throw new Error("Invalid Form Element")
@@ -63,16 +67,16 @@ export const Form = (): JSX.Element => {
     event.preventDefault()
 
     const submitValue = getView(state)
-
+    console.log(submitValue)
     switch (submitValue.view) {
       case "search":
-        router.push(`/search/${state.q}`)
+        router.push(`/search/${state.q}?t=${state.t}`)
         break
       case "soorah":
-        router.push(`/${state.s}`)
+        router.push(`/${state.s}?t=${state.t}`)
         break
       case "ayah":
-        router.push(`/${state.s}/${state.a}`)
+        router.push(`/${state.s}/${state.a}?t=${state.t}`)
         break
       case "empty":
       default:
@@ -115,7 +119,7 @@ export const Form = (): JSX.Element => {
 
         <input
           type="number"
-          placeholder="Ajet"
+          placeholder="Ayə"
           className="form-control col-span-2"
           name="ayah"
           size={3}
@@ -126,15 +130,32 @@ export const Form = (): JSX.Element => {
           onChange={onHandleChange}
         />
 
-        <div className="col-span-3 text-center ">
-          <small>Besim&nbsp;Korkut</small>
-        </div>
+        <select
+          className="
+            form-control
+            col-span-3 text-center
+            focus:outline-none 
+            focus:bg-white 
+            focus:border-gray-500
+            active:outline-none 
+            active:border-gray-500
+          "
+          name="translator"
+          value={state?.t}
+          onChange={onHandleChange}
+        >
+          {translatorList.map((soorah, index) => (
+            <option value={index} key={index}>
+              {soorah}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="form-row">
         <input
           type="text"
-          placeholder="Pretraživač"
+          placeholder="Kəlmə"
           className="form-control col-span-7"
           name="search"
           value={state?.q || ""}
@@ -142,7 +163,7 @@ export const Form = (): JSX.Element => {
         />
 
         <button className="btn btn-success col-span-5" type="submit">
-          Pretraži
+          Axtar
         </button>
       </div>
     </form>
