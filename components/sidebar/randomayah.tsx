@@ -15,7 +15,7 @@ const RandomAyah = (): JSX.Element => {
   })
 
   useEffect(() => {
-    getApiData("/api/random").then((data) => {
+    getApiData(`${process.env.NEXTAUTH_URL}/api/random`).then((data) => {
       if (data.success) {
         setOut(data.out)
       }
