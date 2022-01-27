@@ -3,10 +3,12 @@ import { Db } from 'mongodb'
 import { withMongo } from '../../../lib/mongodb'
 import { DataPropsLatinized, ResponseData } from '../../../lib/db-types'
 import { initialPaginate, paginate } from '../../../utility/paginate/paginate'
-import { DisplayData } from '../../../lib/types'
+import { DisplayData, FormProps } from '../../../lib/types'
+import { getView } from '../../../utility/getView/getView'
 
 export type ReponseProps = {
   out: DisplayData[],
+  data?: FormProps,
   paginate: {
     total: number;
     perPage: number;
@@ -27,14 +29,16 @@ const handler = async (
   const currentPage = Number(query.page?.toString()) || 1
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
+  const data = getView({ q: search_query, t: translator })
+
   switch (method) {
     case 'GET':
       try {
         const ayahs = await withMongo(async (db: Db) => {
           const collection = db.collection<DataPropsLatinized>('quranaz')
           return await collection.find({
-            content_latinized: new RegExp(search_query, 'i'),
-            translator
+            content_latinized: new RegExp(data.q, 'i'),
+            translator: data.t
           }, {}).sort(['soorah', 'aya']).toArray()
         })
         const out = paginate(ayahs, initialPaginate.perPage, currentPage)
@@ -43,11 +47,12 @@ const handler = async (
 
         return res.json({
           out,
+          data,
           paginate: {
             ...initialPaginate,
             total: ayahs.length,
             currentPage
-          }
+          },
         })
       } catch (error) {
         res.status(400).json({ success: false })

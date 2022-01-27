@@ -1,5 +1,7 @@
-export const getApiData = async (url: string) =>
-  await fetch(`${process.env.NEXT_PUBLIC_URL}${url}`)
+export const getApiData = async (url: string) => {
+  const fullUrl = `${process.env.NEXT_PUBLIC_URL}${url}`
+
+  return await fetch(fullUrl)
     .then(response => {
       if (!response.ok) {
         // throw Error(response.statusText);
@@ -8,3 +10,4 @@ export const getApiData = async (url: string) =>
       return response.json()
     }) //  workaround the catch 
 
+}
