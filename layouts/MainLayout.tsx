@@ -47,7 +47,7 @@ export const MainLayout: FC = ({ children }) => (
         <ul className="flex items-center space-x-2">
           <li>
             <a
-              href="https://facebook.com/mojkuran"
+              href="https://facebook.com/quranaz"
               target="_blank"
               rel="noreferrer"
             >
@@ -61,15 +61,6 @@ export const MainLayout: FC = ({ children }) => (
               rel="noreferrer"
             >
               <TiSocialInstagram color="#E1306C" size="24" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/azizoid/mojkuran.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <TiSocialGithub color="#333" size="32" />
             </a>
           </li>
         </ul>
