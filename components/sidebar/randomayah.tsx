@@ -11,11 +11,11 @@ const RandomAyah = (): JSX.Element => {
     soorah: 96,
     ayah: 1,
     content: "Yaradan Rəbbinin adı ilə oxu!",
-    translator: Number(process.env.DEFAULT_TRANSLATOR),
+    translator: Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR),
   })
 
   useEffect(() => {
-    getApiData(`${process.env.NEXTAUTH_URL}/api/random`).then((data) => {
+    getApiData(`/api/random`).then((data) => {
       if (data.success) {
         setOut(data.out)
       }
@@ -25,7 +25,9 @@ const RandomAyah = (): JSX.Element => {
   return (
     <Card title={`${SOORAH_LIST[out.soorah]}, ${out.ayah}`}>
       <h6 className="text-blue-400 hover:underline">
-        <a href={`/${out.soorah}/${out.ayah}`}>{out.content}</a>
+        <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>
+          {out.content}
+        </a>
       </h6>
     </Card>
   )

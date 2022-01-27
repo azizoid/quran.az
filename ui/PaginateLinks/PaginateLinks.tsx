@@ -6,6 +6,7 @@ export type PaginateLinksProps = {
   ayah: number
   prev?: number
   next?: number
+  translator?: number
 }
 
 export const PaginateLinks = ({
@@ -13,19 +14,20 @@ export const PaginateLinks = ({
   ayah,
   prev,
   next,
+  translator,
 }: PaginateLinksProps): JSX.Element => (
   <div className="pagination">
-    <Link href={`/${soorah}`}>
+    <Link href={`/${soorah}?t=${translator}`}>
       <a className="pagination-item">{`Sura ${SOORAH_LIST[soorah]}`}</a>
     </Link>
     {prev !== null && (
-      <Link href={`/${soorah}/${prev}`}>
+      <Link href={`/${soorah}/${prev}?t=${translator}`}>
         <a className="pagination-item">{prev}</a>
       </Link>
     )}
     <span className="pagination-disabled">{ayah}</span>
     {next !== null && (
-      <Link href={`/${soorah}/${next}`}>
+      <Link href={`/${soorah}/${next}?t=${translator}`}>
         <a className="pagination-item">{next}</a>
       </Link>
     )}

@@ -43,47 +43,12 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
   )
 }
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const paths = Array.from({ length: 114 }, (_, i) => i + 1).map((soorah) => ({
-//     params: { soorah: soorah.toString() },
-//   }))
-
-//   return { paths, fallback: false }
-// }
-
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const { params } = context
-
-//   const res = await getApiData(
-//     `${process.env.NEXTAUTH_URL}/api/${params.soorah}`
-//   )
-
-//   if (!res?.out.length) {
-//     return {
-//       props: {
-//         error: PageStates.NOT_FOUND,
-//         out: [],
-//         data: { s: 0, a: "" },
-//       },
-//     }
-//   }
-
-//   return {
-//     props: {
-//       error: "",
-//       out: res.out,
-//       data: res.data,
-//     },
-//   }
-// }
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params, query } = context
-  const translator = query.t || 1
+  const translator =
+    query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(
-    `${process.env.NEXTAUTH_URL}/api/${params.soorah}?t=${translator}`
-  )
+  const res = await getApiData(`/api/${params.soorah}?t=${translator}`)
 
   if (!res?.out.length) {
     return {

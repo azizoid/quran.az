@@ -19,13 +19,22 @@ export const Ayah = ({ out, error }) => {
     )
   }
 
-  const { soorah, ayah, content, arabic, transliteration, prev, next } = out
+  const {
+    soorah,
+    ayah,
+    content,
+    translator,
+    arabic,
+    transliteration,
+    prev,
+    next,
+  } = out
 
   return (
     <MainLayout>
       <Head>
         <title>
-          {`${SOORAH_LIST[soorah]} surəsi, Ayə ${ayah}, 
+          {`${SOORAH_LIST[soorah]} surəsi, ayə ${ayah}, 
            | Öz Kitabını oxu | quran.az`}
         </title>
         <meta name="description" content={content} />
@@ -34,7 +43,7 @@ export const Ayah = ({ out, error }) => {
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700 mb-4">
         {soorah !== 1 && ayah !== 1 && <Bismillah />}
         <li>
-          <PaginateLinks {...{ soorah, ayah, prev, next }} />
+          <PaginateLinks {...{ soorah, ayah, prev, next, translator }} />
         </li>
         <li className="ayah-list-item flex flex-col">
           <span className="text-gray-400">{`${soorah}:${ayah}`}</span>
@@ -50,7 +59,7 @@ export const Ayah = ({ out, error }) => {
           {arabic}
         </li>
         <li>
-          <PaginateLinks {...{ soorah, ayah, prev, next }} />
+          <PaginateLinks {...{ soorah, ayah, prev, next, translator }} />
         </li>
       </ul>
     </MainLayout>
@@ -60,11 +69,10 @@ export const Ayah = ({ out, error }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = query.soorah
   const ayah = query.ayah
-  const translator = query.t || process.env.DEFAULT_TRANSLATOR
+  const translator =
+    query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(
-    `${process.env.NEXTAUTH_URL}/api/${soorah}/${ayah}?t=${translator}`
-  )
+  const res = await getApiData(`/api/${soorah}/${ayah}?t=${translator}`)
 
   if (res.success === false) {
     return {
