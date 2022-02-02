@@ -6,14 +6,14 @@ import { initialPaginate, paginate } from '../../../utility/paginate/paginate'
 import { DisplayData, FormProps } from '../../../lib/types'
 import { getView } from '../../../utility/getView/getView'
 
-export type ReponseProps = {
+export type ReponseProps = ResponseData & {
   out: DisplayData[],
   data?: FormProps,
   paginate: {
     total: number;
     perPage: number;
     currentPage: number
-  }
+  },
 }
 
 const handler = async (
@@ -53,6 +53,7 @@ const handler = async (
             total: ayahs.length,
             currentPage
           },
+          success: out.length > 0
         })
       } catch (error) {
         res.status(400).json({ success: false })
