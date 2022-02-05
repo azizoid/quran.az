@@ -12,7 +12,7 @@ const prayersListEmpty = [
 
 const PrayerWidget = (): JSX.Element => {
   const [prayers, setPrayers] = useState(prayersListEmpty)
-  const [hijri, setHijri] = useState("")
+  const [tarix, setTarix] = useState("")
   const dd = useRef(getDayOfYear(new Date()))
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const PrayerWidget = (): JSX.Element => {
             prayer["time"] = data["prayers"][i]
             return prayer
           })
-          setHijri(data.hijri)
+          setTarix(data.tarix)
           setPrayers(out)
         })
     }
@@ -36,7 +36,7 @@ const PrayerWidget = (): JSX.Element => {
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={4}>
-            {hijri}
+            {tarix}
           </td>
         </tr>
       </thead>
