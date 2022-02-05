@@ -25,8 +25,8 @@ export const Search = (): JSX.Element => {
     setPageState(PageStates.LOADING)
 
     await getApiData(`/api/search/${query}?page=${page}&t=${translator}`)
-      .then(({ out, paginate }) => {
-        if (out?.length > 0) {
+      .then(({ out, paginate, success }) => {
+        if (success) {
           setOut(out)
           setPaginate({
             ...paginate,
