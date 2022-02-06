@@ -19,6 +19,7 @@ const handler = async (
     case 'GET':
       try {
         await runMiddleware(req, res)
+
         const random = await withMongo(async (db: Db) => {
           const collection = db.collection<DataPropsLatinized>('quranaz')
             .aggregate([{
