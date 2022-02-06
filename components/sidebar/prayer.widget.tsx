@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react"
-import getDayOfYear from "date-fns/getDayOfYear"
+import React, { useState, useEffect, useCallback } from "react"
+import moment from "moment-hijri"
+import { hijriMonthList } from "../../assets/hijriMonthList"
 
 const prayersListEmpty = [
   { id: 1, title: "Fəcr", time: "--:--" },
@@ -12,31 +13,37 @@ const prayersListEmpty = [
 
 const PrayerWidget = (): JSX.Element => {
   const [prayers, setPrayers] = useState(prayersListEmpty)
-  const [tarix, setTarix] = useState("")
-  const dd = useRef(getDayOfYear(new Date()))
+  const tarix = moment()
+  const dayOfYear = tarix.dayOfYear()
+
+  const fetchData = useCallback(async () => {
+    await fetch(`https://nam.az/api/1/${dayOfYear}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const out = prayersListEmpty.map((prayer, i) => {
+          prayer["time"] = data["prayers"][i]
+          return prayer
+        })
+        setPrayers(out)
+      })
+  }, [dayOfYear])
 
   useEffect(() => {
-    async function fetchData() {
-      await fetch("https://nam.az/api/1/" + dd.current)
-        .then((response) => response.json())
-        .then((data) => {
-          const out = prayersListEmpty.map((prayer, i) => {
-            prayer["time"] = data["prayers"][i]
-            return prayer
-          })
-          setTarix(data.tarix)
-          setPrayers(out)
-        })
-    }
     fetchData()
-  }, [])
+  }, [fetchData])
 
   return (
     <table className="w-full table-auto text-sm" cellPadding={7}>
       <thead className="bg-gray-700 text-white">
         <tr>
-          <td align="center" colSpan={4}>
-            {tarix}
+          <td align="center" colSpan={3}>
+            {hijriMonthList[Number(tarix.format("iD")) + 1]} ayı /{" "}
+            {tarix.format("iD / iYYYY")}
+          </td>
+          <td align="center">
+            <a href="https://nam.az" target="_blank" rel="noreferrer">
+              Bakı
+            </a>
           </td>
         </tr>
       </thead>
