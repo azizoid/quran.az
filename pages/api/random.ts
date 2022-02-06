@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
 import { DisplayData } from '../../lib/types'
-import { DataProps, DataPropsLatinized, ResponseData } from '../../lib/db-types'
+import { DataPropsLatinized, ResponseData } from '../../lib/db-types'
 import { withMongo } from '../../lib/mongodb'
-
+import { runMiddleware } from '../../utility/cors/cors'
 
 export type ReponseProps = {
   out?: DisplayData,
@@ -18,6 +18,7 @@ const handler = async (
   switch (method) {
     case 'GET':
       try {
+        await runMiddleware(req, res)
         const random = await withMongo(async (db: Db) => {
           const collection = db.collection<DataPropsLatinized>('quranaz')
             .aggregate([{
