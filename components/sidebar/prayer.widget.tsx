@@ -37,8 +37,8 @@ const PrayerWidget = (): JSX.Element => {
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={3}>
-            {hijriMonthList[Number(tarix.format("iD")) + 1]} ayı{" "}
-            {tarix.format("iD iYYYY")}, Bakı
+            {hijriMonthList[Number(tarix.format("iM")) - 1]} ayı{", "}
+            {tarix.format("iD, iYYYY")}, Bakı
           </td>
           <td align="center">
             <a
