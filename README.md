@@ -1,4 +1,4 @@
-# Quran.az is an educational project.
+# # Quran.az is an educational project.
 
 The project is oriented to Bosnia and Herzegovina, Serbia, Montenegro with the most popular translation in those countries.
 
@@ -14,4 +14,4 @@ Frontend is built on Next.js + Tailwind
 
 Future plan is to move it completely to Typescript
 
-# Backend is made on Nextjs Server + Mongodb.
+# # Backend is made on Nextjs Server + Mongodb.
