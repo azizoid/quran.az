@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export type PaginateLinksProps = {
+export type PaginateAyahProps = {
   soorah: number
   ayah: number
   prev?: number
@@ -8,13 +8,13 @@ export type PaginateLinksProps = {
   translator?: number
 }
 
-export const PaginateLinks = ({
+export const PaginateAyah = ({
   soorah,
   ayah,
   prev,
   next,
   translator,
-}: PaginateLinksProps): JSX.Element => (
+}: PaginateAyahProps): JSX.Element => (
   <div className="pagination">
     {prev !== null && (
       <Link href={`/${soorah}/${prev}?t=${translator}`}>

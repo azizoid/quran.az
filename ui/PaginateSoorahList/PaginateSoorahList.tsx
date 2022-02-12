@@ -28,7 +28,7 @@ export const PaginateSoorahList = ({
       {next !== null && (
         <Link href={`/${next}?t=${translator}`}>
           <a className="pagination-item">
-            {next} {soorah_list_object[next]["fullTitle"]}
+            {next}. {soorah_list_object[next]["fullTitle"]}
           </a>
         </Link>
       )}

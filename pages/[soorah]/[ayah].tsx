@@ -8,7 +8,7 @@ import soorah_list_object from "../../assets/soorah-list-object"
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { PageStates } from "../../lib/types"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
-import { PaginateLinks } from "../../ui/PaginateLinks/PaginateLinks"
+import { PaginateAyah } from "../../ui/PaginateAyah/PaginateAyah"
 import { SoorahCaption } from "../../components/SoorahCaption/SoorahCaption"
 
 export const Ayah = ({ out, error }) => {
@@ -60,7 +60,7 @@ export const Ayah = ({ out, error }) => {
           {arabic}
         </li>
         <li>
-          <PaginateLinks {...{ soorah, ayah, prev, next, translator }} />
+          <PaginateAyah {...{ soorah, ayah, prev, next, translator }} />
         </li>
       </ul>
     </MainLayout>
