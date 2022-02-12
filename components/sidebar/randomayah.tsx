@@ -23,7 +23,7 @@ const RandomAyah = (): JSX.Element => {
   }, [])
 
   return (
-    <Card title={`${soorah_list_object[out.soorah]["title"]}, ${out.ayah}`}>
+    <Card title={`${soorah_list_object[out.soorah]["fullTitle"]}, ${out.ayah}`}>
       <h6 className="text-blue-400 hover:underline">
         <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>
           {out.content}
