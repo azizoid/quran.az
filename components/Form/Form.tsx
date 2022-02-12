@@ -6,7 +6,8 @@ import React, {
   useState,
 } from "react"
 import { FormContext } from "../../store/form-store"
-import soorahList from "../../assets/soorahList"
+// import soorahList from "../../assets/soorah-list-array"
+import soorah_list_object from "../../assets/soorah-list-object"
 import translatorList from "../../assets/translatorList"
 
 import { useRouter } from "next/router"
@@ -110,9 +111,10 @@ export const Form = (): JSX.Element => {
           value={state?.s}
           onChange={onHandleChange}
         >
-          {soorahList.map((soorah, index) => (
-            <option value={index} key={index}>
-              {soorah}
+          <option value="0">Surələr:</option>
+          {soorah_list_object.map(({ id, title }) => (
+            <option value={id} key={id}>
+              {title} .{id}
             </option>
           ))}
         </select>
