@@ -25,7 +25,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
     <MainLayout>
       <Head>
         <title>
-          {soorah_list_object[data.s]["title"]} surəsi | Öz Kitabını oxu |
+          {soorah_list_object[data.s]["fullTitle"]} surəsi | Öz Kitabını oxu |
           quran.az
         </title>
         <meta

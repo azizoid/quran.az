@@ -34,7 +34,7 @@ export const Ayah = ({ out, error }) => {
     <MainLayout>
       <Head>
         <title>
-          {`${soorah_list_object[soorah]["title"]} surəsi, ayə ${ayah}, 
+          {`${soorah_list_object[soorah]["fullTitle"]} surəsi, ayə ${ayah}, 
            | Öz Kitabını oxu | quran.az`}
         </title>
         <meta name="description" content={content} />
