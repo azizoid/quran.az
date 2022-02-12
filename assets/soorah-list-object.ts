@@ -36,7 +36,7 @@ export const SOORAH_LIST: { id: number, title: string, fullTitle: string }[] = [
   { id: 34, title: 'Səba', fullTitle: 'Səba' },
   { id: 35, title: 'Fatir', fullTitle: 'Fatir' },
   { id: 36, title: 'Ya sin', fullTitle: 'Ya sin' },
-  { id: 37, title: 'Saffat', fullTitle: 'əl-Saffat' },
+  { id: 37, title: 'Saffat', fullTitle: 'əs-Saffat' },
   { id: 38, title: 'Sad', fullTitle: 'Sad' },
   { id: 39, title: 'Zumər', fullTitle: 'əz-Zumər' },
   { id: 40, title: 'Ğafir', fullTitle: 'Ğafir' },
