@@ -9,6 +9,7 @@ import soorah_list_object from "../../assets/soorah-list-object"
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { DisplayData, PageStates } from "../../lib/types"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
+import { SoorahCaption } from "../../components/SoorahCaption/SoorahCaption"
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {
@@ -37,6 +38,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
         />
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+        <SoorahCaption soorah={data.s} />
         {data.s !== 9 && <Bismillah />}
         {out.map((data: DisplayData) => (
           <SoorahAyah data={data} key={data.id} />
