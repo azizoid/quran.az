@@ -10,8 +10,8 @@ import { getApiData } from "../../utility/getApiData/getApiData"
 import { DisplayData, PageStates } from "../../lib/types"
 
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
-import { SoorahCaption } from "../../components/SoorahCaption/SoorahCaption"
-import { PaginateSoorahList } from "../../ui/PaginateSoorahList/PaginateSoorahList"
+import { SoorahCaption } from "../../ui/SoorahCaption/SoorahCaption"
+import { PaginateSoorahList } from "../../components/PaginateSoorahList/PaginateSoorahList"
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {

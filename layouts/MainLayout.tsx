@@ -27,11 +27,11 @@ const FacebookPage = dynamic(
   }
 )
 
-import { Footer } from "../components/Footer/Footer"
+import { Footer } from "../ui/Footer/Footer"
 import { Form } from "../components/Form/Form"
 import { LoadingBoxes } from "../ui/LoadingBoxes/LoadingBoxes"
 
-import { Logo } from "../components/Logo/Logo"
+import { Logo } from "../ui/Logo/Logo"
 
 export const MainLayout: FC = ({ children }) => (
   <div className="flex flex-col h-screen justify-between">

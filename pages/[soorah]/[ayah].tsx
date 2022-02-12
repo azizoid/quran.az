@@ -8,8 +8,8 @@ import soorah_list_object from "../../assets/soorah-list-object"
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { PageStates } from "../../lib/types"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
-import { PaginateAyah } from "../../ui/PaginateAyah/PaginateAyah"
-import { SoorahCaption } from "../../components/SoorahCaption/SoorahCaption"
+import { PaginateAyah } from "../../components/PaginateAyah/PaginateAyah"
+import { SoorahCaption } from "../../ui/SoorahCaption/SoorahCaption"
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {
