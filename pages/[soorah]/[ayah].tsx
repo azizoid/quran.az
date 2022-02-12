@@ -45,7 +45,9 @@ export const Ayah = ({ out, error }) => {
         <SoorahCaption soorah={soorah} />
         {soorah !== 1 && ayah !== 1 && <Bismillah />}
         <li className="ayah-list-item flex flex-col">
-          <span className="text-gray-400">{`${soorah}:${ayah}`}</span>
+          <span className="text-gray-400">
+            {soorah}:{ayah}
+          </span>
           {content}
         </li>
         <li className="ayah-list-item ">
