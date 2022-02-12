@@ -1,5 +1,5 @@
 import Link from "next/link"
-import SOORAH_LIST from "../../assets/soorahList"
+import soorah_list_object from "../../assets/soorah-list-object"
 
 export type PaginateLinksProps = {
   soorah: number
@@ -18,7 +18,7 @@ export const PaginateLinks = ({
 }: PaginateLinksProps): JSX.Element => (
   <div className="pagination">
     <Link href={`/${soorah}?t=${translator}`}>
-      <a className="pagination-item">{`Sura ${SOORAH_LIST[soorah]}`}</a>
+      <a className="pagination-item">{`Sura ${soorah_list_object[soorah]["title"]}`}</a>
     </Link>
     {prev !== null && (
       <Link href={`/${soorah}/${prev}?t=${translator}`}>

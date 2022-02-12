@@ -5,7 +5,7 @@ import { GetServerSideProps } from "next"
 import { MainLayout } from "../../layouts/MainLayout"
 import { SoorahAyah } from "../../components/SoorahAyah/SoorahAyah"
 
-import SOORAH_LIST from "../../assets/soorahList"
+import soorah_list_object from "../../assets/soorah-list-object"
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { DisplayData, PageStates } from "../../lib/types"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
@@ -24,7 +24,10 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
   return (
     <MainLayout>
       <Head>
-        <title>{SOORAH_LIST[data.s]} surəsi | Öz Kitabını oxu | quran.az</title>
+        <title>
+          {soorah_list_object[data.s]["title"]} surəsi | Öz Kitabını oxu |
+          quran.az
+        </title>
         <meta
           name="description"
           content={out

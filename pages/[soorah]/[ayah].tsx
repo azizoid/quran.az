@@ -3,7 +3,7 @@ import Head from "next/head"
 import { MainLayout } from "../../layouts/MainLayout"
 import { ColoredText } from "../../ui/ColoredText/ColoredText"
 
-import SOORAH_LIST from "../../assets/soorahList"
+import soorah_list_object from "../../assets/soorah-list-object"
 
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { PageStates } from "../../lib/types"
@@ -34,7 +34,7 @@ export const Ayah = ({ out, error }) => {
     <MainLayout>
       <Head>
         <title>
-          {`${SOORAH_LIST[soorah]} surəsi, ayə ${ayah}, 
+          {`${soorah_list_object[soorah]["title"]} surəsi, ayə ${ayah}, 
            | Öz Kitabını oxu | quran.az`}
         </title>
         <meta name="description" content={content} />
