@@ -8,7 +8,7 @@ export type SoorahCaptionProps = {
 
 export const SoorahCaption = ({ soorah }: SoorahCaptionProps): JSX.Element => (
   <li
-    className={`ayah-list-item text-center text-3xl font-thin ${styles.header}`}
+    className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center`}
   >
     {soorahListObject[soorah]["fullTitle"]} surəsi
   </li>
