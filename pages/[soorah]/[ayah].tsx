@@ -44,9 +44,6 @@ export const Ayah = ({ out, error }) => {
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700 mb-4">
         <SoorahCaption soorah={soorah} />
         {soorah !== 1 && ayah !== 1 && <Bismillah />}
-        <li>
-          <PaginateLinks {...{ soorah, ayah, prev, next, translator }} />
-        </li>
         <li className="ayah-list-item flex flex-col">
           <span className="text-gray-400">{`${soorah}:${ayah}`}</span>
           {content}
