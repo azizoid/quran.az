@@ -9,9 +9,9 @@ import soorah_list_object from "../../assets/soorah-list-object"
 import { getApiData } from "../../utility/getApiData/getApiData"
 import { DisplayData, PageStates } from "../../lib/types"
 
-import Pagination from "react-js-pagination"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
 import { SoorahCaption } from "../../components/SoorahCaption/SoorahCaption"
+import { PaginateSoorahList } from "../../ui/PaginateSoorahList/PaginateSoorahList"
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {
@@ -45,6 +45,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
         {out.map((data: DisplayData) => (
           <SoorahAyah data={data} key={data.id} />
         ))}
+        <PaginateSoorahList soorah={data.s} translator={data.t} />
       </ul>
     </MainLayout>
   )
