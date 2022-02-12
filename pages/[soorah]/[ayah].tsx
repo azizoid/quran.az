@@ -74,21 +74,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const res = await getApiData(`/api/${soorah}/${ayah}?t=${translator}`)
 
-  if (res.success === false) {
+  if (res?.success) {
     return {
       props: {
-        error: PageStates.NOT_FOUND,
-        out: {},
-        data: { s: 0, a: "", translator },
+        error: "",
+        out: res.out,
+        data: res.data,
       },
     }
   }
 
   return {
     props: {
-      error: "",
-      out: res.out,
-      data: res.data,
+      error: PageStates.NOT_FOUND,
+      out: {},
+      data: { s: 0, a: "", translator },
     },
   }
 }
