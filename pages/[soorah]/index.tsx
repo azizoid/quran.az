@@ -28,8 +28,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
     <MainLayout>
       <Head>
         <title>
-          {soorah_list_object[data.s]["fullTitle"]} surəsi | Öz Kitabını oxu |
-          quran.az
+          {soorah_list_object[data.s]["fullTitle"]} | Öz Kitabını oxu | quran.az
         </title>
         <meta
           name="description"
