@@ -17,7 +17,7 @@ export const SoorahCaption = ({
   >
     <Link href={`/${soorah}?t=${translator}`}>
       <a className="transform hover:-translate-y-1">
-        {soorahListObject[soorah]["fullTitle"]}
+        {soorah}. {soorahListObject[soorah]["fullTitle"]}
       </a>
     </Link>
   </li>
