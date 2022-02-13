@@ -10,6 +10,8 @@ import { PageStates } from "../../lib/types"
 import { Bismillah } from "../../ui/Bismillah/Bismillah"
 import { PaginateAyah } from "../../components/PaginateAyah/PaginateAyah"
 import { SoorahCaption } from "../../ui/SoorahCaption/SoorahCaption"
+import { numberSuffixAz } from "../../utility/numberSuffixAz/numberSuffixAz"
+import { soorahAyahTitle } from "../../utility/soorahAyahTitle/soorahAyahTitle"
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {
@@ -35,8 +37,7 @@ export const Ayah = ({ out, error }) => {
     <MainLayout>
       <Head>
         <title>
-          {`${soorah_list_object[soorah]["fullTitle"]}, ayə ${ayah}, 
-           | Öz Kitabını oxu | quran.az`}
+          {soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az
         </title>
         <meta name="description" content={content} />
       </Head>
@@ -45,9 +46,7 @@ export const Ayah = ({ out, error }) => {
         <SoorahCaption soorah={soorah} translator={translator} />
         {soorah !== 1 && ayah !== 1 && <Bismillah />}
         <li className="ayah-list-item flex flex-col">
-          <span className="text-gray-400">
-            {soorah}:{ayah}
-          </span>
+          <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
           {content}
         </li>
         <li className="ayah-list-item ">
