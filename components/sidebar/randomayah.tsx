@@ -4,6 +4,7 @@ import soorah_list_object from "../../assets/soorah-list-object"
 import { DisplayData } from "../../lib/types"
 import { Card } from "../../ui/Card/Card"
 import { getApiData } from "../../utility/getApiData/getApiData"
+import { numberSuffixAz } from "../../utility/numberSuffixAz/numberSuffixAz"
 
 const RandomAyah = (): JSX.Element => {
   const [out, setOut] = useState<DisplayData>({
@@ -23,7 +24,11 @@ const RandomAyah = (): JSX.Element => {
   }, [])
 
   return (
-    <Card title={`${soorah_list_object[out.soorah]["fullTitle"]}, ${out.ayah}`}>
+    <Card
+      title={`${out.soorah}. ${
+        soorah_list_object[out.soorah]["fullTitle"]
+      }, ${numberSuffixAz(out.ayah)} ayə`}
+    >
       <h6 className="text-blue-400 hover:underline">
         <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>
           {out.content}
