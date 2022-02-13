@@ -114,7 +114,7 @@ export const Form = (): JSX.Element => {
           <option value="0">Surələr:</option>
           {soorah_list_object.map(({ id, title }) => (
             <option value={id} key={id}>
-              {title} .{id}
+              {title} surəsi. {id}
             </option>
           ))}
         </select>
