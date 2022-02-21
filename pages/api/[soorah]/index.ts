@@ -16,6 +16,11 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ReponseProps>
 ) => {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=86400, stale-while-revalidate=86400'
+  )
+
   const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
