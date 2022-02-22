@@ -68,7 +68,6 @@ export const Form = (): JSX.Element => {
     event.preventDefault()
 
     const submitValue = getView(state)
-    console.log(submitValue)
     switch (submitValue.view) {
       case "search":
         router.push(`/search/${state.q}?t=${state.t}`)

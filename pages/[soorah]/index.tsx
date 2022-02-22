@@ -54,7 +54,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params, query } = context
   const translator =
     query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
-  console.log(translator)
 
   const res = await getApiData(`/api/${params.soorah}?t=${translator}`)
 
