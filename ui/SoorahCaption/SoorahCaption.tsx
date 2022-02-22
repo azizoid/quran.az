@@ -13,10 +13,10 @@ export const SoorahCaption = ({
   translator,
 }: SoorahCaptionProps): JSX.Element => (
   <li
-    className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center`}
+    className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center `}
   >
     <Link href={`/${soorah}?t=${translator}`}>
-      <a className="transform hover:-translate-y-1">
+      <a className="text-gray-400 hover:text-black hover:underline decoration-1 underline-offset-4">
         {soorah}. {soorahListObject[soorah]["fullTitle"]}
       </a>
     </Link>
