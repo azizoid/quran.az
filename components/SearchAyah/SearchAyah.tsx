@@ -23,7 +23,7 @@ export const SearchAyah = ({ data, mark = "" }): JSX.Element => (
       />
     </div>
     <Link href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}>
-      <a className="ml-2 text-blue-500">
+      <a className="read-ayah">
         <FaExternalLinkAlt />
       </a>
     </Link>

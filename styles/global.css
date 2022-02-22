@@ -30,11 +30,23 @@
   }
 
   .badge {
-    @apply mr-1 px-2 py-1 text-sm text-white bg-blue-400 rounded-full;
+    @apply mr-1 px-2 py-1 text-sm text-black bg-gray-200 rounded-full;
   }
 
   .soorah-list-item {
     @apply flex justify-between px-4 py-2 hover:bg-gray-100 hover:cursor-pointer;
+  }
+
+  .soorah-list-item:hover .badge {
+    @apply text-white bg-blue-400;
+  }
+
+  .soorah-list-item .read-ayah {
+    @apply text-gray-500 ml-2;
+  }
+
+  .soorah-list-item:hover .read-ayah {
+    @apply text-blue-500;
   }
 
   .pagination {
