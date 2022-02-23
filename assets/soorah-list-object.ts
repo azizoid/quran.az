@@ -1,4 +1,4 @@
-export const SOORAH_LIST: { id: number, title: string, fullTitle: string }[] = [
+export const SOORAH_LIST: { id: number; title: string; fullTitle: string }[] = [
   ,
   { id: 1, title: 'Fatihə', fullTitle: 'əl-Fatihə surəsi' },
   { id: 2, title: 'Bəqərə', fullTitle: 'əl-Bəqərə surəsi' },

@@ -1,17 +1,17 @@
-import React from "react"
-import Head from "next/head"
-import { GetServerSideProps } from "next"
+import React from 'react'
+import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 
-import { MainLayout } from "../../layouts/MainLayout"
-import { SoorahAyah } from "../../components/SoorahAyah/SoorahAyah"
+import { MainLayout } from '../../layouts/MainLayout'
+import { SoorahAyah } from '../../components/SoorahAyah/SoorahAyah'
 
-import soorah_list_object from "../../assets/soorah-list-object"
-import { getApiData } from "../../utility/getApiData/getApiData"
-import { DisplayData, PageStates } from "../../lib/types"
+import soorah_list_object from '../../assets/soorah-list-object'
+import { getApiData } from '../../utility/getApiData/getApiData'
+import { DisplayData, PageStates } from '../../lib/types'
 
-import { Bismillah } from "../../ui/Bismillah/Bismillah"
-import { SoorahCaption } from "../../ui/SoorahCaption/SoorahCaption"
-import { PaginateSoorahList } from "../../components/PaginateSoorahList/PaginateSoorahList"
+import { Bismillah } from '../../ui/Bismillah/Bismillah'
+import { SoorahCaption } from '../../ui/SoorahCaption/SoorahCaption'
+import { PaginateSoorahList } from '../../components/PaginateSoorahList/PaginateSoorahList'
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {
@@ -28,14 +28,14 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
     <MainLayout>
       <Head>
         <title>
-          {soorah_list_object[data.s]["fullTitle"]} | Öz Kitabını oxu | quran.az
+          {soorah_list_object[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az
         </title>
         <meta
           name="description"
           content={out
             .slice(0, 15)
             .map(({ content }) => content)
-            .join(" ")}
+            .join(' ')}
         />
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (res?.success) {
     return {
       props: {
-        error: "",
+        error: '',
         out: res.out,
         data: res.data,
       },
@@ -71,7 +71,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       error: PageStates.NOT_FOUND,
       out: [],
-      data: { s: 0, a: "", translator },
+      data: { s: 0, a: '', translator },
     },
   }
 }

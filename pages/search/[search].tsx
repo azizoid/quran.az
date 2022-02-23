@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useCallback } from "react"
-import { useRouter } from "next/router"
+import React, { useEffect, useState, useCallback } from 'react'
+import { useRouter } from 'next/router'
 
-import Pagination from "react-js-pagination"
+import Pagination from 'react-js-pagination'
 
-import { MainLayout } from "../../layouts/MainLayout"
-import Loader from "../../ui/Loader/Loader"
-import { SearchAyah } from "../../components/SearchAyah/SearchAyah"
-import { PaginationProps } from "../../utility/paginate/paginate"
-import { DisplayData, PageStates } from "../../lib/types"
-import { getApiData } from "../../utility/getApiData/getApiData"
+import { MainLayout } from '../../layouts/MainLayout'
+import Loader from '../../ui/Loader/Loader'
+import { SearchAyah } from '../../components/SearchAyah/SearchAyah'
+import { PaginationProps } from '../../utility/paginate/paginate'
+import { DisplayData, PageStates } from '../../lib/types'
+import { getApiData } from '../../utility/getApiData/getApiData'
 
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
@@ -33,7 +33,7 @@ export const Search = (): JSX.Element => {
             currentPage: Number(paginate.currentPage),
           })
           setPageState(PageStates.SEARCH)
-        } else throw new Error("not found")
+        } else throw new Error('not found')
       })
       .catch(() => setPageState(PageStates.NOT_FOUND))
   }, [page, query, translator])

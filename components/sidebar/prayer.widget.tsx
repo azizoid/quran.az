@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react"
-import moment from "moment-hijri"
-import { hijriMonthList } from "../../assets/hijriMonthList"
+import React, { useState, useEffect, useCallback } from 'react'
+import moment from 'moment-hijri'
+import { hijriMonthList } from '../../assets/hijriMonthList'
 
 const prayersListEmpty = [
-  { id: 1, title: "Fəcr", time: "--:--" },
-  { id: 2, title: "Günəş", time: "--:--" },
-  { id: 3, title: "Zöhr", time: "--:--" },
-  { id: 4, title: "Əsr", time: "--:--" },
-  { id: 5, title: "Məğrib", time: "--:--" },
-  { id: 6, title: "İşa", time: "--:--" },
+  { id: 1, title: 'Fəcr', time: '--:--' },
+  { id: 2, title: 'Günəş', time: '--:--' },
+  { id: 3, title: 'Zöhr', time: '--:--' },
+  { id: 4, title: 'Əsr', time: '--:--' },
+  { id: 5, title: 'Məğrib', time: '--:--' },
+  { id: 6, title: 'İşa', time: '--:--' },
 ]
 
 const PrayerWidget = (): JSX.Element => {
@@ -21,7 +21,7 @@ const PrayerWidget = (): JSX.Element => {
       .then((response) => response.json())
       .then((data) => {
         const out = prayersListEmpty.map((prayer, i) => {
-          prayer["time"] = data["prayers"][i]
+          prayer['time'] = data['prayers'][i]
           return prayer
         })
         setPrayers(out)
@@ -37,8 +37,8 @@ const PrayerWidget = (): JSX.Element => {
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={3}>
-            {hijriMonthList[Number(tarix.format("iM")) - 1]} ayı{", "}
-            {tarix.format("iD, iYYYY")}, Bakı
+            {hijriMonthList[Number(tarix.format('iM')) - 1]} ayı{', '}
+            {tarix.format('iD, iYYYY')}, Bakı
           </td>
           <td align="center">
             <a
@@ -54,22 +54,22 @@ const PrayerWidget = (): JSX.Element => {
       </thead>
       <tbody>
         <tr>
-          <td align="right">{prayers[0]["title"]}</td>
-          <td>{prayers[0]["time"]}</td>
-          <td align="right">{prayers[1]["title"]}</td>
-          <td>{prayers[1]["time"]}</td>
+          <td align="right">{prayers[0]['title']}</td>
+          <td>{prayers[0]['time']}</td>
+          <td align="right">{prayers[1]['title']}</td>
+          <td>{prayers[1]['time']}</td>
         </tr>
         <tr>
-          <td align="right">{prayers[2]["title"]}</td>
-          <td>{prayers[2]["time"]}</td>
-          <td align="right">{prayers[3]["title"]}</td>
-          <td>{prayers[3]["time"]}</td>
+          <td align="right">{prayers[2]['title']}</td>
+          <td>{prayers[2]['time']}</td>
+          <td align="right">{prayers[3]['title']}</td>
+          <td>{prayers[3]['time']}</td>
         </tr>
         <tr>
-          <td align="right">{prayers[4]["title"]}</td>
-          <td>{prayers[4]["time"]}</td>
-          <td align="right">{prayers[5]["title"]}</td>
-          <td>{prayers[5]["time"]}</td>
+          <td align="right">{prayers[4]['title']}</td>
+          <td>{prayers[4]['time']}</td>
+          <td align="right">{prayers[5]['title']}</td>
+          <td>{prayers[5]['time']}</td>
         </tr>
       </tbody>
     </table>

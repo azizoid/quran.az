@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 export type ColoredTextProps = {
   content: string
@@ -6,17 +6,17 @@ export type ColoredTextProps = {
 
 export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
   const colors = [
-    "#3490dc",
-    "#6574cd",
-    "#9561e2",
-    "#f66d9b",
-    "#f6993f",
-    "#38c172",
-    "#4dc0b5",
-    "#6cb2eb",
+    '#3490dc',
+    '#6574cd',
+    '#9561e2',
+    '#f66d9b',
+    '#f6993f',
+    '#38c172',
+    '#4dc0b5',
+    '#6cb2eb',
   ]
 
-  const text = content.split(" ")
+  const text = content.split(' ')
   let randomColor = 0
 
   return (
@@ -32,7 +32,7 @@ export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
             className="px-1 py-0.5 hover:bg-gray-100 hover:cursor-pointer"
             key={index}
           >
-            {word + " "}
+            {word + ' '}
           </span>
         )
       })}

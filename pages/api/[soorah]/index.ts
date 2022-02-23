@@ -3,12 +3,12 @@ import { Db } from 'mongodb'
 import { withMongo } from '../../../lib/mongodb'
 import { FormProps } from '../../../lib/types'
 
-import { getView } from '../../../utility/getView/getView';
-import { DisplayData } from '../../../lib/types';
-import { DataPropsLatinized, ResponseData } from '../../../lib/db-types';
+import { getView } from '../../../utility/getView/getView'
+import { DisplayData } from '../../../lib/types'
+import { DataPropsLatinized, ResponseData } from '../../../lib/db-types'
 
 export type ReponseProps = {
-  out?: DisplayData[],
+  out?: DisplayData[]
   data?: FormProps
 } & ResponseData
 
@@ -24,7 +24,9 @@ const handler = async (
   const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
-  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR);
+  const translator = Number(
+    query.t?.toString() || process.env.DEFAULT_TRANSLATOR
+  )
   const data = getView({ s: soorah, t: translator })
 
   if (data.view === 'empty') {
@@ -36,7 +38,10 @@ const handler = async (
       try {
         const out = await withMongo(async (db: Db) => {
           const collection = db.collection<DataPropsLatinized>('quranaz')
-          return await collection.find({ soorah: data.s, translator: data.t }).sort(['soorah', 'ayah']).toArray()
+          return await collection
+            .find({ soorah: data.s, translator: data.t })
+            .sort(['soorah', 'ayah'])
+            .toArray()
         })
         return res.json({ out, data, success: true })
       } catch (error) {

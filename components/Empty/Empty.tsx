@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Card } from "../../ui/Card/Card"
+import Link from 'next/link'
+import { Card } from '../../ui/Card/Card'
 
 export const Empty = (): JSX.Element => (
   <div className="space-y-4">
@@ -33,7 +33,7 @@ export const Empty = (): JSX.Element => (
 
     <div className="col">
       <h6 className="alert alert-success">
-        Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı{" "}
+        Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı{' '}
         <strong>qaydalara</strong> riayət edin:
       </h6>
     </div>

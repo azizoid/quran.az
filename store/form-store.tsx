@@ -1,8 +1,8 @@
-import { useRouter } from "next/router"
-import React, { createContext, FC, useEffect, useMemo, useState } from "react"
-import { FormProps } from "../lib/types"
+import { useRouter } from 'next/router'
+import React, { createContext, FC, useEffect, useMemo, useState } from 'react'
+import { FormProps } from '../lib/types'
 
-import { getView } from "../utility/getView/getView"
+import { getView } from '../utility/getView/getView'
 
 export const FormContext = createContext({} as FormProps)
 
@@ -14,8 +14,8 @@ export const FormContextProvider: FC = ({ children }) => {
     () =>
       getView({
         s: Number(query?.soorah?.toString()) || 0,
-        a: Number(query?.ayah?.toString()) || "",
-        q: query?.search?.toString() || "",
+        a: Number(query?.ayah?.toString()) || '',
+        q: query?.search?.toString() || '',
         t: Number(query?.t?.toString()),
       }),
     [query?.ayah, query?.search, query?.soorah, query?.t]

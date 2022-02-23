@@ -4,14 +4,14 @@
 
 .header:before {
   padding-right: 0.5em;
-  content: url("../../assets/img/caption-left.png");
+  content: url('../../assets/img/caption-left.png');
   zoom: 0.85;
   display: flex;
   align-items: center;
 }
 .header:after {
   padding-left: 0.5em;
-  content: url("../../assets/img/caption-right.png");
+  content: url('../../assets/img/caption-right.png');
   zoom: 0.85;
   display: flex;
   align-items: center;

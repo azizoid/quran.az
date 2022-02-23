@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 
-import soorah_list_object from "../../assets/soorah-list-object"
-import { DisplayData } from "../../lib/types"
-import { Card } from "../../ui/Card/Card"
-import { getApiData } from "../../utility/getApiData/getApiData"
-import { numberSuffixAz } from "../../utility/numberSuffixAz/numberSuffixAz"
-import { soorahAyahTitle } from "../../utility/soorahAyahTitle/soorahAyahTitle"
+import soorah_list_object from '../../assets/soorah-list-object'
+import { DisplayData } from '../../lib/types'
+import { Card } from '../../ui/Card/Card'
+import { getApiData } from '../../utility/getApiData/getApiData'
+import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
+import { soorahAyahTitle } from '../../utility/soorahAyahTitle/soorahAyahTitle'
 
 const RandomAyah = (): JSX.Element => {
   const [out, setOut] = useState<DisplayData>({
-    id: "",
+    id: '',
     soorah: 96,
     ayah: 1,
-    content: "Yaradan Rəbbinin adı ilə oxu!",
+    content: 'Yaradan Rəbbinin adı ilə oxu!',
     translator: Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR),
   })
 

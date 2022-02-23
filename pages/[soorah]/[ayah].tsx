@@ -1,17 +1,17 @@
-import { GetServerSideProps } from "next"
-import Head from "next/head"
-import { MainLayout } from "../../layouts/MainLayout"
-import { ColoredText } from "../../ui/ColoredText/ColoredText"
+import { GetServerSideProps } from 'next'
+import Head from 'next/head'
+import { MainLayout } from '../../layouts/MainLayout'
+import { ColoredText } from '../../ui/ColoredText/ColoredText'
 
-import soorah_list_object from "../../assets/soorah-list-object"
+import soorah_list_object from '../../assets/soorah-list-object'
 
-import { getApiData } from "../../utility/getApiData/getApiData"
-import { PageStates } from "../../lib/types"
-import { Bismillah } from "../../ui/Bismillah/Bismillah"
-import { PaginateAyah } from "../../components/PaginateAyah/PaginateAyah"
-import { SoorahCaption } from "../../ui/SoorahCaption/SoorahCaption"
-import { numberSuffixAz } from "../../utility/numberSuffixAz/numberSuffixAz"
-import { soorahAyahTitle } from "../../utility/soorahAyahTitle/soorahAyahTitle"
+import { getApiData } from '../../utility/getApiData/getApiData'
+import { PageStates } from '../../lib/types'
+import { Bismillah } from '../../ui/Bismillah/Bismillah'
+import { PaginateAyah } from '../../components/PaginateAyah/PaginateAyah'
+import { SoorahCaption } from '../../ui/SoorahCaption/SoorahCaption'
+import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
+import { soorahAyahTitle } from '../../utility/soorahAyahTitle/soorahAyahTitle'
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   if (res?.success) {
     return {
       props: {
-        error: "",
+        error: '',
         out: res.out,
         data: res.data,
       },
@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     props: {
       error: PageStates.NOT_FOUND,
       out: {},
-      data: { s: 0, a: "", translator },
+      data: { s: 0, a: '', translator },
     },
   }
 }

@@ -1,23 +1,23 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode } from 'react'
 
 export type CardProps = {
   title: string | ReactNode
   titleClassName?: string | null
   contentClass?: string | null
   className?: string
-  size?: "small" | "medium"
+  size?: 'small' | 'medium'
 }
 
 enum cardSize {
-  small = "px-4",
-  medium = "px-7",
+  small = 'px-4',
+  medium = 'px-7',
 }
 
 export const Card: FC<CardProps> = ({
   title,
   titleClassName,
   className,
-  size = "medium",
+  size = 'medium',
   children,
 }) => (
   <div className="card">

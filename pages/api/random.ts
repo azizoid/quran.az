@@ -6,7 +6,7 @@ import { withMongo } from '../../lib/mongodb'
 import { runMiddleware } from '../../utility/cors/cors'
 
 export type ReponseProps = {
-  out?: DisplayData,
+  out?: DisplayData
 }
 
 const handler = async (
@@ -21,18 +21,22 @@ const handler = async (
         await runMiddleware(req, res)
 
         const random = await withMongo(async (db: Db) => {
-          const collection = db.collection<DataPropsLatinized>('quranaz')
-            .aggregate([{
-              $sample: { size: 1 },
-              // $match: { translator: Number(process.env.DEFAULT_TRANSLATOR) },
-            }]).toArray()
-          return collection.then(data => ({
+          const collection = db
+            .collection<DataPropsLatinized>('quranaz')
+            .aggregate([
+              {
+                $sample: { size: 1 },
+                // $match: { translator: Number(process.env.DEFAULT_TRANSLATOR) },
+              },
+            ])
+            .toArray()
+          return collection.then((data) => ({
             id: data[0].id,
             soorah: data[0].soorah,
             ayah: data[0].ayah,
             content: data[0].content,
             content_latinized: data[0].content_latinized,
-            translator: data[0].translator
+            translator: data[0].translator,
           }))
         })
 

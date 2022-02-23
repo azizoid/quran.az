@@ -7,13 +7,13 @@ import { DisplayData, FormProps } from '../../../lib/types'
 import { getView } from '../../../utility/getView/getView'
 
 export type ReponseProps = ResponseData & {
-  out: DisplayData[],
-  data?: FormProps,
+  out: DisplayData[]
+  data?: FormProps
   paginate: {
-    total: number;
-    perPage: number;
+    total: number
+    perPage: number
     currentPage: number
-  },
+  }
 }
 
 const handler = async (
@@ -24,10 +24,13 @@ const handler = async (
 
   const search_query = query.search
     .toString()
-    .replace(/[-/\^$*+?.()|[]{}]/g, '\$&')
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[-/\^$*+?.()|[]{}]/g, '$&')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
   const currentPage = Number(query.page?.toString()) || 1
-  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
+  const translator = Number(
+    query.t?.toString() || process.env.DEFAULT_TRANSLATOR
+  )
 
   const data = getView({ q: search_query, t: translator })
 
@@ -36,14 +39,26 @@ const handler = async (
       try {
         const ayahs = await withMongo(async (db: Db) => {
           const collection = db.collection<DataPropsLatinized>('quranaz')
-          return await collection.find({
-            content_latinized: new RegExp(data.q, 'i'),
-            translator: data.t
-          }, {}).sort(['soorah', 'aya']).toArray()
+          return await collection
+            .find(
+              {
+                content_latinized: new RegExp(data.q, 'i'),
+                translator: data.t,
+              },
+              {}
+            )
+            .sort(['soorah', 'aya'])
+            .toArray()
         })
-        const out = paginate(ayahs, initialPaginate.perPage, currentPage)
-          .map(({ _id, soorah, ayah, content, translator }) =>
-            ({ id: _id, soorah, ayah, content, translator }))
+        const out = paginate(ayahs, initialPaginate.perPage, currentPage).map(
+          ({ _id, soorah, ayah, content, translator }) => ({
+            id: _id,
+            soorah,
+            ayah,
+            content,
+            translator,
+          })
+        )
 
         return res.json({
           out,
@@ -51,9 +66,9 @@ const handler = async (
           paginate: {
             ...initialPaginate,
             total: ayahs.length,
-            currentPage
+            currentPage,
           },
-          success: out.length > 0
+          success: out.length > 0,
         })
       } catch (error) {
         res.status(400).json({ success: false })

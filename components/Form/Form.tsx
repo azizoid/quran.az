@@ -4,16 +4,16 @@ import React, {
   useContext,
   useEffect,
   useState,
-} from "react"
-import { FormContext } from "../../store/form-store"
+} from 'react'
+import { FormContext } from '../../store/form-store'
 // import soorahList from "../../assets/soorah-list-array"
-import soorah_list_object from "../../assets/soorah-list-object"
-import translatorList from "../../assets/translatorList"
+import soorah_list_object from '../../assets/soorah-list-object'
+import translatorList from '../../assets/translatorList'
 
-import { useRouter } from "next/router"
-import { FormProps } from "../../lib/types"
-import { LoadingBoxes } from "../../ui/LoadingBoxes/LoadingBoxes"
-import { getView } from "../../utility/getView/getView"
+import { useRouter } from 'next/router'
+import { FormProps } from '../../lib/types'
+import { LoadingBoxes } from '../../ui/LoadingBoxes/LoadingBoxes'
+import { getView } from '../../utility/getView/getView'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()
@@ -29,38 +29,38 @@ export const Form = (): JSX.Element => {
     const { name, value } = event.target
 
     switch (name) {
-      case "soorah":
+      case 'soorah':
         setState((prev) => ({
           ...prev,
           s: Number(value),
-          a: "",
-          q: "",
+          a: '',
+          q: '',
           view: name,
         }))
         break
-      case "ayah":
+      case 'ayah':
         setState((prev) => ({
           ...prev,
           s: prev.s,
           a: Number(value),
-          q: "",
+          q: '',
           view: name,
         }))
         break
-      case "search":
+      case 'search':
         setState((prev) => ({
           ...prev,
           s: 0,
-          a: "",
+          a: '',
           q: value,
           view: name,
         }))
         break
-      case "translator":
+      case 'translator':
         setState((prev) => ({ ...prev, t: Number(value) }))
         break
       default:
-        throw new Error("Invalid Form Element")
+        throw new Error('Invalid Form Element')
     }
   }
 
@@ -69,22 +69,22 @@ export const Form = (): JSX.Element => {
 
     const submitValue = getView(state)
     switch (submitValue.view) {
-      case "search":
+      case 'search':
         router.push(`/search/${state.q}?t=${state.t}`)
         break
-      case "soorah":
+      case 'soorah':
         router.push(`/${state.s}?t=${state.t}`)
         break
-      case "ayah":
+      case 'ayah':
         router.push(`/${state.s}/${state.a}?t=${state.t}`)
         break
-      case "empty":
+      case 'empty':
       default:
         router.push(`/`)
     }
   }
 
-  if (state?.view === "init") {
+  if (state?.view === 'init') {
     return <LoadingBoxes />
   }
 
@@ -127,7 +127,7 @@ export const Form = (): JSX.Element => {
           maxLength={3}
           min={0}
           max={286}
-          value={state?.a || ""}
+          value={state?.a || ''}
           onChange={onHandleChange}
         />
 
@@ -159,7 +159,7 @@ export const Form = (): JSX.Element => {
           placeholder="Kəlmə"
           className="form-control col-span-7"
           name="search"
-          value={state?.q || ""}
+          value={state?.q || ''}
           onChange={onHandleChange}
         />
 

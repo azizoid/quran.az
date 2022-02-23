@@ -1,37 +1,37 @@
-import React, { FC } from "react"
-import dynamic from "next/dynamic"
-import Link from "next/link"
+import React, { FC } from 'react'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 import {
   TiSocialFacebookCircular,
   TiSocialInstagram,
   TiSocialGithub,
-} from "react-icons/ti"
+} from 'react-icons/ti'
 
 const PrayerWidget = dynamic(
-  () => import("../components/sidebar/prayer.widget"),
+  () => import('../components/sidebar/prayer.widget'),
   {
     // loading: () => <Loader />,
     ssr: false,
   }
 )
-const RandomAyah = dynamic(() => import("../components/sidebar/randomayah"), {
+const RandomAyah = dynamic(() => import('../components/sidebar/randomayah'), {
   loading: () => <LoadingBoxes />,
   ssr: false,
 })
 const FacebookPage = dynamic(
-  () => import("../components/sidebar/facebook.page"),
+  () => import('../components/sidebar/facebook.page'),
   {
     // loading: () => <Loader />,
     ssr: false,
   }
 )
 
-import { Footer } from "../ui/Footer/Footer"
-import { Form } from "../components/Form/Form"
-import { LoadingBoxes } from "../ui/LoadingBoxes/LoadingBoxes"
+import { Footer } from '../ui/Footer/Footer'
+import { Form } from '../components/Form/Form'
+import { LoadingBoxes } from '../ui/LoadingBoxes/LoadingBoxes'
 
-import { Logo } from "../ui/Logo/Logo"
+import { Logo } from '../ui/Logo/Logo'
 
 export const MainLayout: FC = ({ children }) => (
   <div className="flex flex-col h-screen justify-between">

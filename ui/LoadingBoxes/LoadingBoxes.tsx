@@ -1,4 +1,4 @@
-import styles from "./LoadingBoxes.module.scss"
+import styles from './LoadingBoxes.module.scss'
 
 export const LoadingBoxes = (): JSX.Element => (
   <div className={styles.loadingBoxes}>

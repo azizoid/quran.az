@@ -7,13 +7,13 @@ import { DataProps, ResponseData } from '../../lib/db-types'
 import { initialPaginate, paginate } from '../../utility/paginate/paginate'
 import { DisplayData } from '../../lib/types'
 
-import { data } from "../../assets/data"
+import { data } from '../../assets/data'
 
 export type ReponseProps = {
-  out: DisplayData[],
+  out: DisplayData[]
   paginate: {
-    total: number;
-    perPage: number;
+    total: number
+    perPage: number
     currentPage: number
   }
 }
@@ -28,8 +28,12 @@ const handler = async (req, res) => {
         //   const collection = db.collection<DataProps>('qurans')
         //   return await collection.find().toArray()
         // })
-        const out = data.map((ayah) =>
-          ({ ...ayah, content_latinized: ayah.content.normalize("NFD").replace(/[\u0300-\u036f]/g, "") }))
+        const out = data.map((ayah) => ({
+          ...ayah,
+          content_latinized: ayah.content
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, ''),
+        }))
 
         // const insert = await withMongo(async (db: Db) => {
         //   const collection = db.collection<any>('quranaz')

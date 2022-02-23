@@ -1,28 +1,28 @@
-import { FormProps } from "../../lib/types"
-import TRANSLATOR_LIST from "../../assets/translatorList"
+import { FormProps } from '../../lib/types'
+import TRANSLATOR_LIST from '../../assets/translatorList'
 
 export const initialStateProps: FormProps = {
   s: 0,
-  a: "",
-  q: "",
-  view: "init",
+  a: '',
+  q: '',
+  view: 'init',
   t: Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR),
 }
 
 export const getView = (form: Partial<FormProps>): FormProps => {
-  const result = { view: "empty" } as FormProps
+  const result = { view: 'empty' } as FormProps
 
   if (form.s && form.s > 0 && form.s < 115) {
     result.s = form.s
-    result.view = "soorah"
+    result.view = 'soorah'
 
     if (form.a > 0 && form.a < 287) {
       result.a = form.a
-      result.view = "ayah"
+      result.view = 'ayah'
     }
   } else if (form?.q?.length > 2) {
     result.q = form.q
-    result.view = "search"
+    result.view = 'search'
   }
 
   if (form.t < TRANSLATOR_LIST.length) {

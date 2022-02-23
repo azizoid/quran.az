@@ -9,7 +9,10 @@ if (!cached) {
   cached = global.mongo = { conn: null, promise: null }
 }
 
-const connectToDatabase = async (): Promise<{ client: MongoClient; db: Db }> => {
+const connectToDatabase = async (): Promise<{
+  client: MongoClient
+  db: Db
+}> => {
   if (cached.conn) {
     return cached.conn
   }
@@ -17,10 +20,10 @@ const connectToDatabase = async (): Promise<{ client: MongoClient; db: Db }> => 
   if (!cached.promise) {
     const opts: MongoClientOptions = {}
 
-    cached.promise = MongoClient.connect(MONGODB_URI, opts).then(client => {
+    cached.promise = MongoClient.connect(MONGODB_URI, opts).then((client) => {
       return {
         client,
-        db: client.db(MONGODB_DB)
+        db: client.db(MONGODB_DB),
       }
     })
   }
