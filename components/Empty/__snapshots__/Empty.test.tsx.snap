@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty Snapshot 1`] = `
+<div>
+  <div
+    class="space-y-4"
+  >
+    <ol
+      class="py-2 w-full flex justify-center text-gray-500 space-x-5 text-sm md:text-base"
+    >
+      <li>
+        <a
+          href="/1"
+        >
+          Fatihə surəsi
+        </a>
+      </li>
+      <li>
+        <a
+          href="/36"
+        >
+          Ya-sin surəsi
+        </a>
+      </li>
+      <li>
+        <a
+          href="/55"
+        >
+          Ər-Rəhman surəsi
+        </a>
+      </li>
+      <li>
+        <a
+          href="/67"
+        >
+          Əl-Mülk surəsi
+        </a>
+      </li>
+      <li>
+        <a
+          href="/2/255"
+        >
+          Ayətul-Kürsi
+        </a>
+      </li>
+    </ol>
+    <div
+      class="col"
+    >
+      <h6
+        class="alert alert-success"
+      >
+        Axtarışınızın 
+        <strong>
+          uğurlu
+        </strong>
+         olması üçün aşağıdakı
+         
+        <strong>
+          qaydalara
+        </strong>
+         riayət edin:
+      </h6>
+    </div>
+    <div
+      class="grid grid-1 md:grid-cols-3 gap-2 py-4"
+    >
+      <div
+        class="card"
+      >
+        <div
+          class="card-title px-4 undefined"
+        >
+           İstifadə qaydaları
+        </div>
+        <div
+          class="card-content px-4 undefined"
+        >
+          quran.az/
+          <code>
+            [surə]
+          </code>
+          <br />
+          quran.az/
+          <code>
+            [surə]
+          </code>
+          /
+          <code>
+            [ayə]
+          </code>
+          <br />
+          quran.az/search/
+          <code>
+            [kəlmə]
+          </code>
+        </div>
+      </div>
+      <div
+        class="card"
+      >
+        <div
+          class="card-title px-4 undefined"
+        >
+          Hərf səhvləri
+        </div>
+        <div
+          class="card-content px-4 undefined"
+        >
+          Axtarış zamanı etdiyiniz qrammatik səhvlər sözlərin tapılmamasına səbəb ola bilər
+          <br />
+          Məsələn: 
+          <code>
+            mekke
+          </code>
+           əvəzinə 
+          <code>
+            Məkkə
+          </code>
+           sözünü axtarın
+        </div>
+      </div>
+      <div
+        class="card"
+      >
+        <div
+          class="card-title px-4 undefined"
+        >
+          Fərqli söz və tərcümə
+        </div>
+        <div
+          class="card-content px-4 undefined"
+        >
+          Axtardığınız fikir tərcümədə olmaya bilər; 
+          <br />
+          Müəlliflərdən qaynaqlanaraq tərcümələrdəki sözlər və fikirlər fərqli ola bilər
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
