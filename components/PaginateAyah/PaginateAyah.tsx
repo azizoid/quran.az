@@ -16,13 +16,13 @@ export const PaginateAyah = ({
   translator,
 }: PaginateAyahProps): JSX.Element => (
   <div className="pagination">
-    {prev && (
+    {prev !== null && (
       <Link href={`/${soorah}/${prev}?t=${translator}`}>
         <a className="pagination-item">{prev}</a>
       </Link>
     )}
     <span className="pagination-disabled">{ayah}</span>
-    {next && (
+    {next !== null && (
       <Link href={`/${soorah}/${next}?t=${translator}`}>
         <a className="pagination-item">{next}</a>
       </Link>
