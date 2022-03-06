@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchAyah Snapshot 1`] = `
+exports[`SearchAyah without mark word 1`] = `
 <div>
   <li
     class="soorah-list-item"
@@ -21,17 +21,7 @@ exports[`SearchAyah Snapshot 1`] = `
         <span
           class=""
         >
-          Alif 
-        </span>
-        <mark
-          class="bg-warning "
-        >
-          Lam
-        </mark>
-        <span
-          class=""
-        >
-           Mim
+          Alif Lam Mim
         </span>
       </span>
     </div>

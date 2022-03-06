@@ -23,3 +23,27 @@ exports[`PaginateSoorahList Snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`PaginateSoorahList Snapshot 2`] = `
+<div>
+  <div
+    class="pagination"
+  >
+    <a
+      class="pagination-item flex flex-col text-center"
+      href="/113?t=1"
+    >
+      113-cü
+       
+      əl-Fələq surəsi
+    </a>
+    <span
+      class="pagination-disabled flex flex-col text-center"
+    >
+      114-cü
+       
+      əl-Nas surəsi
+    </span>
+  </div>
+</div>
+`;

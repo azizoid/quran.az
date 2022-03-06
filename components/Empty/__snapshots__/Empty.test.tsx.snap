@@ -69,12 +69,12 @@ exports[`Empty Snapshot 1`] = `
         class="card"
       >
         <div
-          class="card-title px-4 undefined"
+          class="card-title px-4 "
         >
            İstifadə qaydaları
         </div>
         <div
-          class="card-content px-4 undefined"
+          class="card-content px-4 "
         >
           quran.az/
           <code>
@@ -100,12 +100,12 @@ exports[`Empty Snapshot 1`] = `
         class="card"
       >
         <div
-          class="card-title px-4 undefined"
+          class="card-title px-4 "
         >
           Hərf səhvləri
         </div>
         <div
-          class="card-content px-4 undefined"
+          class="card-content px-4 "
         >
           Axtarış zamanı etdiyiniz qrammatik səhvlər sözlərin tapılmamasına səbəb ola bilər
           <br />
@@ -124,12 +124,12 @@ exports[`Empty Snapshot 1`] = `
         class="card"
       >
         <div
-          class="card-title px-4 undefined"
+          class="card-title px-4 "
         >
           Fərqli söz və tərcümə
         </div>
         <div
-          class="card-content px-4 undefined"
+          class="card-content px-4 "
         >
           Axtardığınız fikir tərcümədə olmaya bilər; 
           <br />

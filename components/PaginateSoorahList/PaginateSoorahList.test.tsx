@@ -10,3 +10,12 @@ test("PaginateSoorahList Snapshot", () =>{
 
   expect(container).toMatchSnapshot()
 })
+
+test("PaginateSoorahList Snapshot", () =>{
+  const {container, getByText} = render(<PaginateSoorahList soorah={114} translator={1} />)
+
+  expect(getByText("113-cü əl-Fələq surəsi")).toBeInTheDocument()
+  expect(getByText("114-cü əl-Nas surəsi")).toBeInTheDocument()
+
+  expect(container).toMatchSnapshot()
+})
