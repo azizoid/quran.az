@@ -8,7 +8,7 @@ export type SearchAyahProps = {
   mark?: string
 }
 
-export const SearchAyah = ({ data, mark = '' }): JSX.Element => (
+export const SearchAyah = ({ data, mark = '' }: SearchAyahProps): JSX.Element => (
   <li className="soorah-list-item">
     <div className="text-start mx-1">
       <span className="badge">

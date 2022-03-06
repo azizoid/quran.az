@@ -15,8 +15,8 @@ enum cardSize {
 
 export const Card: FC<CardProps> = ({
   title,
-  titleClassName,
-  className,
+  titleClassName = '',
+  className = '',
   size = 'medium',
   children,
 }) => (

@@ -1,20 +1,21 @@
 import React from 'react'
 
+export const coloredTextcolors = [
+  '#3490dc',
+  '#6574cd',
+  '#9561e2',
+  '#f66d9b',
+  '#f6993f',
+  '#38c172',
+  '#4dc0b5',
+  '#6cb2eb',
+]
+
 export type ColoredTextProps = {
   content: string
 }
 
 export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
-  const colors = [
-    '#3490dc',
-    '#6574cd',
-    '#9561e2',
-    '#f66d9b',
-    '#f6993f',
-    '#38c172',
-    '#4dc0b5',
-    '#6cb2eb',
-  ]
 
   const text = content.split(' ')
   let randomColor = 0
@@ -22,13 +23,13 @@ export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
   return (
     <div className="flex flex-wrap">
       {text.map((word, index) => {
-        if (randomColor === colors.length) {
+        if (randomColor === coloredTextcolors.length) {
           randomColor = 0
         }
 
         return (
           <span
-            style={{ color: colors[randomColor++] }}
+            style={{ color: coloredTextcolors[randomColor++] }}
             className="px-1 py-0.5 hover:bg-gray-100 hover:cursor-pointer"
             key={index}
           >

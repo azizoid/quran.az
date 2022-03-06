@@ -12,7 +12,7 @@ export const FormContextProvider: FC = ({ children }) => {
 
   const getDataFromRouter = useMemo(
     () =>
-      getView({
+       getView({
         s: Number(query?.soorah?.toString()) || 0,
         a: Number(query?.ayah?.toString()) || '',
         q: query?.search?.toString() || '',

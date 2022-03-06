@@ -1,7 +1,7 @@
 export const numberSuffixAz = (value: number) => {
   const lastDigit = value % 10
 
-  if ([3, 4].includes(lastDigit) || [100, 200].includes(value)) {
+  if ([3, 4].includes(lastDigit) || (value % 1000).toString().includes('00')) {
     return value + '-cü'
   }
 
