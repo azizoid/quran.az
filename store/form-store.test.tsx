@@ -2,15 +2,19 @@ import React from 'react'
 import { render } from '@testing-library/react'
 
 import { FormContextProvider } from './form-store'
+import { useRouter } from 'next/router';
 
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    query: { soorah: 96, ayah: 1 },
-  }),
+const push = jest.fn()
+jest.mock("next/router", () => ({
+  useRouter: jest.fn(),
 }));
 
 test("FormContextProvider snapshot", ()=>{
-  const { container } = render(<FormContextProvider  />)
+  (useRouter as jest.Mock).mockImplementation(() => ({
+    push,
+  }));
+
+  const { container } = render(<FormContextProvider/>)
 
   expect(container).toMatchSnapshot()
 })
