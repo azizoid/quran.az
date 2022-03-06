@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SooranCaption snapshot 1`] = `
+<div>
+  <li
+    class="ayah-list-item text-center text-lg md:text-2xl font-thin header flex align-middle justify-center "
+  >
+    <a
+      class="text-gray-400 hover:text-black hover:underline decoration-1 underline-offset-4"
+      href="/112?t=2"
+    >
+      112. əl-İxlas surəsi
+    </a>
+  </li>
+</div>
+`;
