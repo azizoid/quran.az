@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import { FormContext } from '../../store/form-store'
-// import soorahList from "../../assets/soorah-list-array"
 import soorah_list_object from '../../assets/soorah-list-object'
 import translatorList from '../../assets/translatorList'
 
@@ -59,8 +58,6 @@ export const Form = (): JSX.Element => {
       case 'translator':
         setState((prev) => ({ ...prev, t: Number(value) }))
         break
-      default:
-        throw new Error('Invalid Form Element')
     }
   }
 
