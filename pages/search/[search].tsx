@@ -13,7 +13,7 @@ import { getApiData } from '../../utility/getApiData/getApiData'
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
   const [out, setOut] = useState<DisplayData[]>()
-  const [pageState, setPageState] = useState(PageStates.INIT)
+  const [pageState, setPageState] = useState(PageStates.EMPTY)
   const [page, setPage] = useState(1)
 
   const router = useRouter()
