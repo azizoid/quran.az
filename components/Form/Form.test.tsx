@@ -6,16 +6,6 @@ import { useRouter } from 'next/router';
 
 const defaultTranslator = process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-// const push = jest.fn()
-// jest.mock("next/router", () => ({
-//   useRouter() {
-//       return {
-//           push,
-//           query: {view:'init'},
-//       };
-//   },
-// }));
-
 const push = jest.fn()
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
@@ -113,16 +103,4 @@ test("Reset Soorah and Ayah on Query enter", () => {
   expect(ayah).toHaveValue(null)
   expect(translatorSelectBox).toHaveValue("1")
   expect(query).toHaveValue("Musa")
-})
-
-test.skip("renders Loader component", () => {
-  (useRouter as jest.Mock).mockImplementation(() => ({
-    push,
-    query:{}
-  }));
-  const { getByText } = render(<FormContextProvider><Form /></FormContextProvider>)
-
-  const Loader = getByText('Loader')
-  
-  expect(Loader).toBeInTheDocument()
 })

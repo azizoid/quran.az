@@ -5,12 +5,12 @@ export const initialStateProps: FormProps = {
   s: 0,
   a: '',
   q: '',
-  view: 'init',
+  view: 'empty',
   t: Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR),
 }
 
 export const getView = (form: Partial<FormProps>): FormProps => {
-  const result = { view: 'empty' } as FormProps
+  const result = {} as FormProps
 
   if (form.s && form.s > 0 && form.s < 115) {
     result.s = form.s

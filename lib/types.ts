@@ -1,7 +1,7 @@
 export type FormSoorahProp = number
 export type FormAyahProp = number | ''
 export type FormQueryProp = string | undefined
-export type FormViewProp = 'init' | 'empty' | 'soorah' | 'ayah' | 'search'
+export type FormViewProp = 'empty' | 'soorah' | 'ayah' | 'search'
 export type FormTranslatorProp = number
 
 export type FormProps = {
@@ -22,7 +22,6 @@ export type DisplayData = {
 }
 
 export enum PageStates {
-  INIT = 'Initialization',
   EMPTY = 'Page is empty',
   LOADING = 'Loading...',
 

@@ -11,7 +11,6 @@ import translatorList from '../../assets/translatorList'
 
 import { useRouter } from 'next/router'
 import { FormProps } from '../../lib/types'
-import { LoadingBoxes } from '../../ui/LoadingBoxes/LoadingBoxes'
 import { getView } from '../../utility/getView/getView'
 
 export const Form = (): JSX.Element => {
@@ -79,10 +78,6 @@ export const Form = (): JSX.Element => {
       default:
         router.push(`/`)
     }
-  }
-
-  if (state?.view === 'init') {
-    return <LoadingBoxes />
   }
 
   return (
