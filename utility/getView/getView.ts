@@ -20,7 +20,7 @@ export const getView = (form: Partial<FormProps>): FormProps => {
       result.a = form.a
       result.view = 'ayah'
     }
-  } else if (form?.q && form.q.length > 2) {
+  } else if (form.q && form.q.length > 2) {
     result.q = form.q
     result.view = 'search'
   }
