@@ -16,7 +16,7 @@ export const SoorahCaption = ({
     className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center `}
   >
     <Link href={`/${soorah}?t=${translator}`}>
-      <a className="text-gray-400 hover:text-black hover:underline decoration-1">
+      <a className="text-gray-400 hover:text-black decoration-1">
         {`${soorah}. ${soorahListObject[soorah]['fullTitle']}`}
       </a>
     </Link>
