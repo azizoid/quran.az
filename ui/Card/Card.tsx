@@ -5,7 +5,8 @@ export type CardProps = {
   titleClassName?: string | null
   contentClass?: string | null
   className?: string
-  size?: 'small' | 'medium'
+  size?: 'small' | 'medium' | 'fit'
+  fit?:boolean
 }
 
 enum cardSize {
@@ -18,6 +19,7 @@ export const Card: FC<CardProps> = ({
   titleClassName = '',
   className = '',
   size = 'medium',
+  fit = false,
   children,
 }) => (
   <div className="card">
