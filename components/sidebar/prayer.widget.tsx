@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import moment from 'moment-hijri'
 import { hijriMonthList } from '../../assets/hijriMonthList'
+import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
 
 const prayersListEmpty = [
   { id: 1, title: 'Fəcr', time: '--:--' },
@@ -38,7 +39,8 @@ const PrayerWidget = (): JSX.Element => {
         <tr>
           <td align="center" colSpan={3}>
             {hijriMonthList[Number(tarix.format('iM')) - 1]} ayı{', '}
-            {tarix.format('iD, iYYYY')}, Bakı
+            {numberSuffixAz(Number(tarix.format('iD')))} gün{', '}
+            {tarix.format('iYYYY')}, Bakı
           </td>
           <td align="center">
             <a
