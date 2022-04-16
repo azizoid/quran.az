@@ -1,14 +1,14 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import { MainLayout } from '../../layouts/MainLayout'
+import { MainLayout } from '@/layouts/MainLayout'
 
-import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '../../ui'
+import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
 
-import { getApiData } from '../../utility'
+import { getApiData } from '@/utility'
 
-import { PageStates } from '../../lib/types'
+import { PageStates } from '@/lib/types'
 
-import { PaginateAyah } from '../../components'
+import { PaginateAyah } from '@/components'
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {

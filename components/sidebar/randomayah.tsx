@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import { DisplayData } from '../../lib/types'
-import { Card, soorahAyahTitle } from '../../ui'
-import { getApiData } from '../../utility'
+import { DisplayData } from '@/lib/types'
+import { Card, soorahAyahTitle } from '@/ui'
+import { getApiData } from '@/utility'
 
 export const RandomAyah = (): JSX.Element => {
   const [out, setOut] = useState<DisplayData>({

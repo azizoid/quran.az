@@ -4,28 +4,28 @@ import Link from 'next/link'
 
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
+import { Footer, LoadingBoxes, Logo } from '@/ui'
+import { Form } from '@/components'
+
 const PrayerWidget = dynamic(
-  () => import('../components/sidebar/prayer.widget').then(({ PrayerWidget }) => PrayerWidget),
+  () => import('@/components/sidebar/prayer.widget').then(({ PrayerWidget }) => PrayerWidget),
   {
     ssr: false,
   }
 )
 const RandomAyah = dynamic(
-  () => import('../components/sidebar/randomayah').then(({ RandomAyah }) => RandomAyah),
+  () => import('@/components/sidebar/randomayah').then(({ RandomAyah }) => RandomAyah),
   {
     loading: () => <LoadingBoxes />,
     ssr: false,
   }
 )
 const FacebookPage = dynamic(
-  () => import('../components/sidebar/facebook.page').then(({ FacebookPage }) => FacebookPage),
+  () => import('@/components/sidebar/facebook.page').then(({ FacebookPage }) => FacebookPage),
   {
     ssr: false,
   }
 )
-
-import { Footer, LoadingBoxes, Logo } from '../ui'
-import { Form } from '../components'
 
 export const MainLayout: FC = ({ children }) => (
   <div className="flex flex-col h-screen justify-between">

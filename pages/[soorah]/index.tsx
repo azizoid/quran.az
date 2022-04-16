@@ -2,12 +2,12 @@ import React from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
-import { MainLayout } from '../../layouts/MainLayout'
-import { SoorahAyah, PaginateSoorahList } from '../../components'
-import { SOORAH_LIST } from '../../assets/soorah-list-object'
-import { getApiData } from '../../utility'
-import { DisplayData, PageStates } from '../../lib/types'
-import { Bismillah, SoorahCaption } from '../../ui'
+import { MainLayout } from '@/layouts/MainLayout'
+import { SoorahAyah, PaginateSoorahList } from '@/components'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { getApiData } from '@/utility'
+import { DisplayData, PageStates } from '@/lib/types'
+import { Bismillah, SoorahCaption } from '@/ui'
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {

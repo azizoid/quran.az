@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { SOORAH_LIST } from '../../assets/soorah-list-object'
-import { numberSuffixAz } from '../../utility'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { numberSuffixAz } from '@/utility'
 
 export type PaginateSoorahListProps = {
   soorah: number

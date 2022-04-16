@@ -1,4 +1,4 @@
-import { DataPropsLatinized } from '../../lib/db-types'
+import { DataPropsLatinized } from '@/lib/db-types'
 
 export type PaginationProps = {
   currentPage: number
@@ -15,8 +15,5 @@ export const initialPaginate: PaginationProps = {
   currentPage: 1,
 }
 
-export const paginate = (
-  array: DataPropsLatinized[],
-  page_size: number,
-  page_number: number
-) => array.slice((page_number - 1) * page_size, page_number * page_size)
+export const paginate = (array: DataPropsLatinized[], page_size: number, page_number: number) =>
+  array.slice((page_number - 1) * page_size, page_number * page_size)

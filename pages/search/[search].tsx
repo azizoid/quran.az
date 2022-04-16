@@ -3,12 +3,14 @@ import { useRouter } from 'next/router'
 
 import Pagination from 'react-js-pagination'
 
-import { MainLayout } from '../../layouts/MainLayout'
+import { MainLayout } from '@/layouts/MainLayout'
 
-import { Loader } from '../../ui'
-import { SearchAyah } from '../../components'
-import { getApiData, PaginationProps } from '../../utility'
-import { DisplayData, PageStates } from '../../lib/types'
+import { Loader } from '@/ui'
+import { SearchAyah } from '@/components'
+import { getApiData, PaginationProps } from '@/utility'
+import { DisplayData, PageStates } from '@/lib/types'
+
+import Head from 'next/head'
 
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
@@ -79,6 +81,9 @@ export const Search = (): JSX.Element => {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Öz Kitabını oxu | quran.az</title>
+      </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         {paginateLinks}
 

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Highlighter from 'react-highlight-words'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { DisplayData } from '../../lib/types'
+import { DisplayData } from '@/lib/types'
 
 export type SearchAyahProps = {
   data: DisplayData

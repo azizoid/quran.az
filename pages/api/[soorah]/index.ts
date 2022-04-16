@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
-import { withMongo } from '../../../lib/mongodb'
-import { FormProps } from '../../../lib/types'
+import { withMongo } from '@/lib/mongodb'
+import { FormProps } from '@/lib/types'
 
-import { getView } from '../../../utility'
-import { DisplayData } from '../../../lib/types'
-import { DataPropsLatinized, ResponseData } from '../../../lib/db-types'
+import { getView } from '@/utility'
+import { DisplayData } from '@/lib/types'
+import { DataPropsLatinized, ResponseData } from '@/lib/db-types'
 
 export type ReponseProps = {
   out?: DisplayData[]

@@ -2,12 +2,12 @@
 
 // import { NextApiRequest, NextApiResponse } from 'next'
 // import { Db } from 'mongodb'
-// import { withMongo } from '../../lib/mongodb'
-// import { DataProps, ResponseData } from '../../lib/db-types'
-// import { initialPaginate, paginate } from '../../utility/paginate/paginate'
-// import { DisplayData } from '../../lib/types'
+// import { withMongo } from '@/lib/mongodb'
+// import { DataProps, ResponseData } from '@/lib/db-types'
+// import { initialPaginate, paginate } from '@/utility/paginate/paginate'
+// import { DisplayData } from '@/lib/types'
 
-// import { data } from '../../assets/data'
+// import { data } from '@/assets/data'
 
 // export type ReponseProps = {
 //   out: DisplayData[]

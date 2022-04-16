@@ -1,11 +1,11 @@
 import React, { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
 import { FormContext } from '../../store/form-store'
-import { SOORAH_LIST } from '../../assets/soorah-list-object'
-import { TRANSLATOR_LIST } from '../../assets/translatorList'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
 import { useRouter } from 'next/router'
-import { FormProps } from '../../lib/types'
-import { getView } from '../../utility'
+import { FormProps } from '@/lib/types'
+import { getView } from '@/utility'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()

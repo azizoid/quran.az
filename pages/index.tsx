@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { MainLayout } from '../layouts/MainLayout'
-import { Empty } from '../components'
+import { MainLayout } from '@/layouts/MainLayout'
+import { Empty } from '@/components'
 
 export const Home = (): JSX.Element => (
   <MainLayout>

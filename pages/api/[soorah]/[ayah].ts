@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
-import { withMongo } from '../../../lib/mongodb'
-import { DataPropsLatinized, DetailsTypes, ResponseData } from '../../../lib/db-types'
-import { FormProps } from '../../../lib/types'
-import { getView } from '../../../utility'
+import { withMongo } from '@/lib/mongodb'
+import { DataPropsLatinized, DetailsTypes, ResponseData } from '@/lib/db-types'
+import { FormProps } from '@/lib/types'
+import { getView } from '@/utility'
 
 export type AyahResponseType = {
   id: string
