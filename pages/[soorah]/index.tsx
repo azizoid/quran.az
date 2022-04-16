@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next'
 
 import { MainLayout } from '../../layouts/MainLayout'
 import { SoorahAyah, PaginateSoorahList } from '../../components'
-import soorah_list_object from '../../assets/soorah-list-object'
+import { SOORAH_LIST } from '../../assets/soorah-list-object'
 import { getApiData } from '../../utility'
 import { DisplayData, PageStates } from '../../lib/types'
 import { Bismillah, SoorahCaption } from '../../ui'
@@ -23,9 +23,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
   return (
     <MainLayout>
       <Head>
-        <title>
-          {soorah_list_object[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az
-        </title>
+        <title>{SOORAH_LIST[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az</title>
         <meta
           name="description"
           content={out
@@ -48,8 +46,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params, query } = context
-  const translator =
-    query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const res = await getApiData(`/api/${params.soorah}?t=${translator}`)
 
@@ -72,4 +69,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
+// eslint-disable-next-line import/no-default-export
 export default Soorah

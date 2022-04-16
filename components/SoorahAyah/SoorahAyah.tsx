@@ -18,5 +18,3 @@ export const SoorahAyah = ({ data }: SoorahAyahProps): JSX.Element => (
     </Link>
   </li>
 )
-
-export default SoorahAyah

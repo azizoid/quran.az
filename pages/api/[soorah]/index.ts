@@ -12,21 +12,13 @@ export type ReponseProps = {
   data?: FormProps
 } & ResponseData
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ReponseProps>
-) => {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=86400, stale-while-revalidate=86400'
-  )
+const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps>) => {
+  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
 
   const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
-  const translator = Number(
-    query.t?.toString() || process.env.DEFAULT_TRANSLATOR
-  )
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, t: translator })
 
   if (data.view === 'empty') {
@@ -53,4 +45,6 @@ const handler = async (
       break
   }
 }
+
+// eslint-disable-next-line import/no-default-export
 export default handler

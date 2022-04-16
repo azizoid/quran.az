@@ -16,5 +16,3 @@ export const FacebookPage = (): JSX.Element => (
     </div>
   </Card>
 )
-
-export default FacebookPage

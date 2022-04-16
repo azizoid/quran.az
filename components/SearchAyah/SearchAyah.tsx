@@ -29,5 +29,3 @@ export const SearchAyah = ({ data, mark = '' }: SearchAyahProps): JSX.Element =>
     </Link>
   </li>
 )
-
-export default SearchAyah

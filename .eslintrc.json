@@ -1,6 +1,7 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "no-console": 1
+    "no-console": 1,
+    "import/no-default-export": 2
   }
 }

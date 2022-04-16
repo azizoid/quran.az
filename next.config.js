@@ -1,6 +1,6 @@
 module.exports = {
   swcMinify: true,
-  compress: false,
+  compress: true,
   poweredByHeader: false,
   generateEtags: false,
   reactStrictMode: true,

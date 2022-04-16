@@ -18,8 +18,7 @@ export const Search = (): JSX.Element => {
 
   const router = useRouter()
   const query = router.query.search?.toString()
-  const translator =
-    router.query.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = router.query.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const getData = useCallback(async () => {
     setPageState(PageStates.LOADING)
@@ -93,4 +92,5 @@ export const Search = (): JSX.Element => {
   )
 }
 
+// eslint-disable-next-line import/no-default-export
 export default Search

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import styles from './LoadingBoxes.module.scss'
 
 export const LoadingBoxes = (): JSX.Element => (

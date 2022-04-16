@@ -11,5 +11,3 @@ export const Loader = (): JSX.Element => (
     </div>
   </div>
 )
-
-export default Loader

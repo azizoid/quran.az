@@ -16,7 +16,6 @@ export type ColoredTextProps = {
 }
 
 export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
-
   const text = content.split(' ')
   let randomColor = 0
 
@@ -40,5 +39,3 @@ export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
     </div>
   )
 }
-
-export default ColoredText

@@ -115,4 +115,3 @@ export const SOORAH_LIST: string[] = [
   '113. Fələq',
   '114. Nas',
 ]
-export default SOORAH_LIST

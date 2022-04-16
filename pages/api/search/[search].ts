@@ -15,10 +15,7 @@ export type ReponseProps = ResponseData & {
   }
 }
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ReponseProps | ResponseData>
-) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps | ResponseData>) => {
   const { query, method } = req
 
   const search_query = query.search
@@ -27,9 +24,7 @@ const handler = async (
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
   const currentPage = Number(query.page?.toString()) || 1
-  const translator = Number(
-    query.t?.toString() || process.env.DEFAULT_TRANSLATOR
-  )
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
   const data = getView({ q: search_query, t: translator })
 
@@ -78,4 +73,6 @@ const handler = async (
       break
   }
 }
+
+// eslint-disable-next-line import/no-default-export
 export default handler

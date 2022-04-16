@@ -2,12 +2,7 @@ import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { MainLayout } from '../../layouts/MainLayout'
 
-import {
-  ColoredText,
-  Bismillah,
-  SoorahCaption,
-  soorahAyahTitle,
-} from '../../ui'
+import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '../../ui'
 
 import { getApiData } from '../../utility'
 
@@ -24,23 +19,12 @@ export const Ayah = ({ out, error }) => {
     )
   }
 
-  const {
-    soorah,
-    ayah,
-    content,
-    translator,
-    arabic,
-    transliteration,
-    prev,
-    next,
-  } = out
+  const { soorah, ayah, content, translator, arabic, transliteration, prev, next } = out
 
   return (
     <MainLayout>
       <Head>
-        <title>
-          {soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az
-        </title>
+        <title>{soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az</title>
         <meta name="description" content={content} />
       </Head>
 
@@ -54,10 +38,7 @@ export const Ayah = ({ out, error }) => {
         <li className="ayah-list-item ">
           <ColoredText key="transliteration" content={transliteration} />
         </li>
-        <li
-          className="ayah-list-item text-3xl font-Nunito text-right"
-          dir="rtl"
-        >
+        <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
           {arabic}
         </li>
         <li>
@@ -71,8 +52,7 @@ export const Ayah = ({ out, error }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = query.soorah
   const ayah = query.ayah
-  const translator =
-    query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const res = await getApiData(`/api/${soorah}/${ayah}?t=${translator}`)
 
@@ -95,4 +75,5 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   }
 }
 
+// eslint-disable-next-line import/no-default-export
 export default Ayah

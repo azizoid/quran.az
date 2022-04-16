@@ -1,5 +1,5 @@
 import { FormProps } from '../../lib/types'
-import TRANSLATOR_LIST from '../../assets/translatorList'
+import { TRANSLATOR_LIST } from '../../assets/translatorList'
 
 export const initialStateProps: FormProps = {
   s: 0,

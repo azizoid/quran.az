@@ -1,11 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
 import { withMongo } from '../../../lib/mongodb'
-import {
-  DataPropsLatinized,
-  DetailsTypes,
-  ResponseData,
-} from '../../../lib/db-types'
+import { DataPropsLatinized, DetailsTypes, ResponseData } from '../../../lib/db-types'
 import { FormProps } from '../../../lib/types'
 import { getView } from '../../../utility'
 
@@ -27,17 +23,12 @@ export type ReponseProps = {
   data?: FormProps
 } & ResponseData
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ReponseProps>
-) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps>) => {
   const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
   const ayah = Number(query.ayah.toString())
-  const translator = Number(
-    query.t?.toString() || process.env.DEFAULT_TRANSLATOR
-  )
+  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, a: ayah, t: translator })
 
   if (data.view === 'empty') {
@@ -95,4 +86,6 @@ const handler = async (
       break
   }
 }
+
+// eslint-disable-next-line import/no-default-export
 export default handler

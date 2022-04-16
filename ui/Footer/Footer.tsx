@@ -20,5 +20,3 @@ export const Footer = (): JSX.Element => (
     </ol>
   </nav>
 )
-
-export default Footer

@@ -33,8 +33,8 @@ export const Empty = (): JSX.Element => (
 
     <div className="col">
       <h6 className="alert alert-success">
-        Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı{' '}
-        <strong>qaydalara</strong> riayət edin:
+        Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong>{' '}
+        riayət edin:
       </h6>
     </div>
 
@@ -47,18 +47,14 @@ export const Empty = (): JSX.Element => (
         quran.az/search/<code>[kəlmə]</code>
       </Card>
       <Card title="Hərf səhvləri" size="small">
-        Axtarış zamanı etdiyiniz qrammatik səhvlər sözlərin tapılmamasına səbəb
-        ola bilər
+        Axtarış zamanı etdiyiniz qrammatik səhvlər sözlərin tapılmamasına səbəb ola bilər
         <br />
         Məsələn: <code>mekke</code> əvəzinə <code>Məkkə</code> sözünü axtarın
       </Card>
       <Card title="Fərqli söz və tərcümə" size="small">
         Axtardığınız fikir tərcümədə olmaya bilər; <br />
-        Müəlliflərdən qaynaqlanaraq tərcümələrdəki sözlər və fikirlər fərqli ola
-        bilər
+        Müəlliflərdən qaynaqlanaraq tərcümələrdəki sözlər və fikirlər fərqli ola bilər
       </Card>
     </div>
   </div>
 )
-
-export default Empty
