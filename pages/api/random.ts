@@ -3,7 +3,7 @@ import { Db } from 'mongodb'
 import { DisplayData } from '../../lib/types'
 import { DataPropsLatinized, ResponseData } from '../../lib/db-types'
 import { withMongo } from '../../lib/mongodb'
-import { runMiddleware } from '../../utility/cors/cors'
+import { runMiddleware } from '../../utility'
 
 export type ReponseProps = {
   out?: DisplayData

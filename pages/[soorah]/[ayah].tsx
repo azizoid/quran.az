@@ -1,17 +1,19 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { MainLayout } from '../../layouts/MainLayout'
-import { ColoredText } from '../../ui/ColoredText/ColoredText'
 
-import soorah_list_object from '../../assets/soorah-list-object'
+import {
+  ColoredText,
+  Bismillah,
+  SoorahCaption,
+  soorahAyahTitle,
+} from '../../ui'
 
-import { getApiData } from '../../utility/getApiData/getApiData'
+import { getApiData } from '../../utility'
+
 import { PageStates } from '../../lib/types'
-import { Bismillah } from '../../ui/Bismillah/Bismillah'
-import { PaginateAyah } from '../../components/PaginateAyah/PaginateAyah'
-import { SoorahCaption } from '../../ui/SoorahCaption/SoorahCaption'
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
-import { soorahAyahTitle } from '../../utility/soorahAyahTitle/soorahAyahTitle'
+
+import { PaginateAyah } from '../../components'
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {

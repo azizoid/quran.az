@@ -11,7 +11,7 @@ import translatorList from '../../assets/translatorList'
 
 import { useRouter } from 'next/router'
 import { FormProps } from '../../lib/types'
-import { getView } from '../../utility/getView/getView'
+import { getView } from '../../utility'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()
@@ -105,7 +105,7 @@ export const Form = (): JSX.Element => {
           <option value="0">Surələr:</option>
           {soorah_list_object.map(({ id, title }) => (
             <option value={id} key={id}>
-              {title} surəsi. {id}
+              {`${title} surəsi. ${id}`}
             </option>
           ))}
         </select>

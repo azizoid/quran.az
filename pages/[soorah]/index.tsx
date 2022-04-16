@@ -3,15 +3,11 @@ import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
 import { MainLayout } from '../../layouts/MainLayout'
-import { SoorahAyah } from '../../components/SoorahAyah/SoorahAyah'
-
+import { SoorahAyah, PaginateSoorahList } from '../../components'
 import soorah_list_object from '../../assets/soorah-list-object'
-import { getApiData } from '../../utility/getApiData/getApiData'
+import { getApiData } from '../../utility'
 import { DisplayData, PageStates } from '../../lib/types'
-
-import { Bismillah } from '../../ui/Bismillah/Bismillah'
-import { SoorahCaption } from '../../ui/SoorahCaption/SoorahCaption'
-import { PaginateSoorahList } from '../../components/PaginateSoorahList/PaginateSoorahList'
+import { Bismillah, SoorahCaption } from '../../ui'
 
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {

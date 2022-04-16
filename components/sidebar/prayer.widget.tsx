@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import moment from 'moment-hijri'
 import { hijriMonthList } from '../../assets/hijriMonthList'
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
+import { numberSuffixAz } from '../../utility'
 
 const prayersListEmpty = [
   { id: 1, title: 'Fəcr', time: '--:--' },

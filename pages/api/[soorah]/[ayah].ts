@@ -7,7 +7,7 @@ import {
   ResponseData,
 } from '../../../lib/db-types'
 import { FormProps } from '../../../lib/types'
-import { getView } from '../../../utility/getView/getView'
+import { getView } from '../../../utility'
 
 export type AyahResponseType = {
   id: string
