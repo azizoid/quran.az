@@ -89,7 +89,7 @@ export const SOORAH_LIST: { id: number; title: string; fullTitle: string }[] = [
   { id: 87, title: 'Əla', fullTitle: 'əl-Əla surəsi' },
   { id: 88, title: 'Ğaşiyə', fullTitle: 'əl-Ğaşiyə surəsi' },
   { id: 89, title: 'Fəcr', fullTitle: 'əl-Fəcr surəsi' },
-  { id: 90, title: 'Bələd', fullTitle: 'əl-Fəcr surəsi' },
+  { id: 90, title: 'Bələd', fullTitle: 'əl-Bələd surəsi' },
   { id: 91, title: 'Şəms', fullTitle: 'əş-Şəms surəsi' },
   { id: 92, title: 'Leyl', fullTitle: 'əl-Leyl surəsi' },
   { id: 93, title: 'Duha', fullTitle: 'əd-Duha surəsi' },
