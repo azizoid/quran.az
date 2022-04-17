@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { DisplayData } from '@/lib/types'
 import { Card, soorahAyahTitle } from '@/ui'

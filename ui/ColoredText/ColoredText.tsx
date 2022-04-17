@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const coloredTextcolors = [
   '#3490dc',
   '#6574cd',

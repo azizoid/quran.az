@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import moment from 'moment-hijri'
 import { hijriMonthList } from '@/assets/hijriMonthList'
 import { numberSuffixAz } from '@/utility'

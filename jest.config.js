@@ -21,6 +21,15 @@ const customJestConfig = {
     },
   },
   coveragePathIgnorePatterns: ['/node_modules/', '/utility/'],
+  moduleNameMapper: {
+    '^@/components(.*)$': '<rootDir>/components$1',
+    '^@/ui(.*)$': '<rootDir>/ui$1',
+
+    '^@/utility$': '<rootDir>/utility/index',
+    '^@/assets/(.*)$': '<rootDir>/assets/$1',
+    '^@/lib/(.*)$': '<rootDir>/lib/$1',
+    '^@/layouts/(.*)$': '<rootDir>/layouts/$1',
+  },
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

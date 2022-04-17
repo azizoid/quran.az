@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import TagManager from 'react-gtm-module'
 

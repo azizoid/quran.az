@@ -1,5 +1,4 @@
-import React from 'react'
-import { render, fireEvent, getByText } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { Form } from './Form'
 import { FormContextProvider } from '../../store/form-store'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
+import { createContext, FC, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import React, { createContext, FC, useEffect, useMemo, useState } from 'react'
 import { FormProps } from '@/lib/types'
 
 import { getView } from '../utility/getView/getView'

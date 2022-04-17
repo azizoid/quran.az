@@ -1,4 +1,4 @@
-import React, { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
 import { FormContext } from '../../store/form-store'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { TRANSLATOR_LIST } from '@/assets/translatorList'

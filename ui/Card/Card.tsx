@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 export type CardProps = {
   title: string | ReactNode
@@ -21,11 +21,7 @@ export const Card: FC<CardProps> = ({
   children,
 }) => (
   <div className="card">
-    <div className={`card-title ${cardSize[size]} ${titleClassName}`}>
-      {title}
-    </div>
-    <div className={`card-content ${cardSize[size]} ${className}`}>
-      {children}
-    </div>
+    <div className={`card-title ${cardSize[size]} ${titleClassName}`}>{title}</div>
+    <div className={`card-content ${cardSize[size]} ${className}`}>{children}</div>
   </div>
 )
