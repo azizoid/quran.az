@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Footer 1`] = `
+<div>
+  <nav
+    class="py-4 bg-gray-700 text-slate-300"
+  >
+    <ol
+      class="container mx-auto w-lg flex"
+    >
+      <li
+        aria-current="page"
+        class="active mr-6"
+      >
+        © 2003-
+        2022
+      </li>
+      <li
+        class="mr-6"
+      >
+        <a
+          href="/"
+        >
+          Quran.az
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://nam.az"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Nam.az
+        </a>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;

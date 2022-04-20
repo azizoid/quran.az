@@ -115,4 +115,3 @@ export const SOORAH_LIST: { id: number; title: string; fullTitle: string }[] = [
   { id: 113, title: 'Fələq', fullTitle: 'əl-Fələq surəsi' },
   { id: 114, title: 'Nas', fullTitle: 'əl-Nas surəsi' },
 ]
-export default SOORAH_LIST

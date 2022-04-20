@@ -1,37 +1,31 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-import {
-  TiSocialFacebookCircular,
-  TiSocialInstagram,
-  TiSocialGithub,
-} from 'react-icons/ti'
+import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
+
+import { Footer, LoadingBoxes, Logo } from '@/ui'
+import { Form } from '@/components'
 
 const PrayerWidget = dynamic(
-  () => import('../components/sidebar/prayer.widget'),
+  () => import('@/components/sidebar/prayer.widget').then(({ PrayerWidget }) => PrayerWidget),
   {
-    // loading: () => <Loader />,
     ssr: false,
   }
 )
-const RandomAyah = dynamic(() => import('../components/sidebar/randomayah'), {
-  loading: () => <LoadingBoxes />,
-  ssr: false,
-})
+const RandomAyah = dynamic(
+  () => import('@/components/sidebar/randomayah').then(({ RandomAyah }) => RandomAyah),
+  {
+    loading: () => <LoadingBoxes />,
+    ssr: false,
+  }
+)
 const FacebookPage = dynamic(
-  () => import('../components/sidebar/facebook.page'),
+  () => import('@/components/sidebar/facebook.page').then(({ FacebookPage }) => FacebookPage),
   {
-    // loading: () => <Loader />,
     ssr: false,
   }
 )
-
-import { Footer } from '../ui/Footer/Footer'
-import { Form } from '../components/Form/Form'
-import { LoadingBoxes } from '../ui/LoadingBoxes/LoadingBoxes'
-
-import { Logo } from '../ui/Logo/Logo'
 
 export const MainLayout: FC = ({ children }) => (
   <div className="flex flex-col h-screen justify-between">
@@ -46,20 +40,12 @@ export const MainLayout: FC = ({ children }) => (
 
         <ul className="flex items-center space-x-2">
           <li>
-            <a
-              href="https://facebook.com/quranaz"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://facebook.com/quranaz" target="_blank" rel="noreferrer">
               <TiSocialFacebookCircular color="#4267B2" size="24" />
             </a>
           </li>
           <li>
-            <a
-              href="https://instagram.com/quranaz"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://instagram.com/quranaz" target="_blank" rel="noreferrer">
               <TiSocialInstagram color="#E1306C" size="24" />
             </a>
           </li>
@@ -97,5 +83,3 @@ export const MainLayout: FC = ({ children }) => (
     <Footer />
   </div>
 )
-
-export default MainLayout

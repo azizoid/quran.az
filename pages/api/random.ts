@@ -1,18 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
-import { DisplayData } from '../../lib/types'
-import { DataPropsLatinized, ResponseData } from '../../lib/db-types'
-import { withMongo } from '../../lib/mongodb'
-import { runMiddleware } from '../../utility/cors/cors'
+import { DisplayData } from '@/lib/types'
+import { DataPropsLatinized, ResponseData } from '@/lib/db-types'
+import { withMongo } from '@/lib/mongodb'
+import { runMiddleware } from '@/utility'
 
 export type ReponseProps = {
   out?: DisplayData
 }
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ReponseProps | ResponseData>
-) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps | ResponseData>) => {
   const { method } = req
 
   switch (method) {
@@ -50,4 +47,5 @@ const handler = async (
       break
   }
 }
+// eslint-disable-next-line import/no-default-export
 export default handler

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import moment from 'moment-hijri'
-import { hijriMonthList } from '../../assets/hijriMonthList'
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
+import { hijriMonthList } from '@/assets/hijriMonthList'
+import { numberSuffixAz } from '@/utility'
 
 const prayersListEmpty = [
   { id: 1, title: 'Fəcr', time: '--:--' },
@@ -12,7 +12,7 @@ const prayersListEmpty = [
   { id: 6, title: 'İşa', time: '--:--' },
 ]
 
-const PrayerWidget = (): JSX.Element => {
+export const PrayerWidget = (): JSX.Element => {
   const [prayers, setPrayers] = useState(prayersListEmpty)
   const tarix = moment()
   const dayOfYear = tarix.dayOfYear()
@@ -43,12 +43,7 @@ const PrayerWidget = (): JSX.Element => {
             {tarix.format('iYYYY')}, Bakı
           </td>
           <td align="center">
-            <a
-              href="https://nam.az"
-              target="_blank"
-              rel="noreferrer"
-              className="text-green-300"
-            >
+            <a href="https://nam.az" target="_blank" rel="noreferrer" className="text-green-300">
               <u>Digər şəhərlər</u>
             </a>
           </td>
@@ -77,4 +72,3 @@ const PrayerWidget = (): JSX.Element => {
     </table>
   )
 }
-export default PrayerWidget

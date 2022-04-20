@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import TagManager from 'react-gtm-module'
 
@@ -21,4 +21,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   )
 }
 
+// eslint-disable-next-line import/no-default-export
 export default MyApp

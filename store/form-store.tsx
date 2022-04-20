@@ -1,6 +1,6 @@
+import { createContext, FC, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import React, { createContext, FC, useEffect, useMemo, useState } from 'react'
-import { FormProps } from '../lib/types'
+import { FormProps } from '@/lib/types'
 
 import { getView } from '../utility/getView/getView'
 
@@ -12,7 +12,7 @@ export const FormContextProvider: FC = ({ children }) => {
 
   const getDataFromRouter = useMemo(
     () =>
-       getView({
+      getView({
         s: Number(query?.soorah?.toString()) || 0,
         a: Number(query?.ayah?.toString()) || '',
         q: query?.search?.toString() || '',

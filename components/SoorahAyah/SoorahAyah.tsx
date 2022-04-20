@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-import { DisplayData } from '../../lib/types'
+import { DisplayData } from '@/lib/types'
 
 export type SoorahAyahProps = {
   data: DisplayData
@@ -18,5 +18,3 @@ export const SoorahAyah = ({ data }: SoorahAyahProps): JSX.Element => (
     </Link>
   </li>
 )
-
-export default SoorahAyah

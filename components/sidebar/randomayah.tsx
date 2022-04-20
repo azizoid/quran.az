@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import soorah_list_object from '../../assets/soorah-list-object'
-import { DisplayData } from '../../lib/types'
-import { Card } from '../../ui/Card/Card'
-import { getApiData } from '../../utility/getApiData/getApiData'
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
-import { soorahAyahTitle } from '../../utility/soorahAyahTitle/soorahAyahTitle'
+import { DisplayData } from '@/lib/types'
+import { Card, soorahAyahTitle } from '@/ui'
+import { getApiData } from '@/utility'
 
-const RandomAyah = (): JSX.Element => {
+export const RandomAyah = (): JSX.Element => {
   const [out, setOut] = useState<DisplayData>({
     id: '',
     soorah: 96,
@@ -27,11 +24,8 @@ const RandomAyah = (): JSX.Element => {
   return (
     <Card title={soorahAyahTitle(out.soorah, out.ayah)}>
       <h6 className="text-blue-400 hover:underline">
-        <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>
-          {out.content}
-        </a>
+        <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>{out.content}</a>
       </h6>
     </Card>
   )
 }
-export default RandomAyah

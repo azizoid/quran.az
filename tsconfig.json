@@ -13,14 +13,18 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/components": ["components/index"],
+      "@/components/*": ["components/*"],
+      "@/ui": ["ui/index"],
+      "@/utility": ["utility/index"],
+      "@/assets/*": ["assets/*"],
+      "@/lib/*": ["lib/*"],
+      "@/layouts/*": ["layouts/*"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "jest.config.js",
-    "jest-setup.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js", "jest-setup.ts"],
   "exclude": ["node_modules"]
 }

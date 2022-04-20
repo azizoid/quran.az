@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import soorah_list_object from '../../assets/soorah-list-object'
-import { numberSuffixAz } from '../../utility/numberSuffixAz/numberSuffixAz'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { numberSuffixAz } from '@/utility'
 
 export type PaginateSoorahListProps = {
   soorah: number
@@ -19,17 +19,17 @@ export const PaginateSoorahList = ({
       {prev !== null && (
         <Link href={`/${prev}?t=${translator}`}>
           <a className="pagination-item flex flex-col text-center">
-            {numberSuffixAz(prev)} {soorah_list_object[prev]['fullTitle']}
+            {numberSuffixAz(prev)} {SOORAH_LIST[prev]['fullTitle']}
           </a>
         </Link>
       )}
       <span className="pagination-disabled flex flex-col text-center">
-        {numberSuffixAz(soorah)} {soorah_list_object[soorah]['fullTitle']}
+        {numberSuffixAz(soorah)} {SOORAH_LIST[soorah]['fullTitle']}
       </span>
       {next !== null && (
         <Link href={`/${next}?t=${translator}`}>
           <a className="pagination-item flex flex-col text-center">
-            {numberSuffixAz(next)} {soorah_list_object[next]['fullTitle']}
+            {numberSuffixAz(next)} {SOORAH_LIST[next]['fullTitle']}
           </a>
         </Link>
       )}

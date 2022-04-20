@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 
 export const Footer = (): JSX.Element => (
@@ -20,5 +19,3 @@ export const Footer = (): JSX.Element => (
     </ol>
   </nav>
 )
-
-export default Footer

@@ -1,4 +1,4 @@
-import { Card } from '../../ui/Card/Card'
+import { Card } from '@/ui'
 
 export const FacebookPage = (): JSX.Element => (
   <Card title="BİZİ BƏYƏN" size="fit" titleClassName="px-7">
@@ -16,5 +16,3 @@ export const FacebookPage = (): JSX.Element => (
     </div>
   </Card>
 )
-
-export default FacebookPage

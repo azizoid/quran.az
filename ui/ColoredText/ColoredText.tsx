@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const coloredTextcolors = [
   '#3490dc',
   '#6574cd',
@@ -16,7 +14,6 @@ export type ColoredTextProps = {
 }
 
 export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
-
   const text = content.split(' ')
   let randomColor = 0
 
@@ -40,5 +37,3 @@ export const ColoredText = ({ content }: ColoredTextProps): JSX.Element => {
     </div>
   )
 }
-
-export default ColoredText

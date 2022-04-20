@@ -1,17 +1,11 @@
-import React, {
-  ChangeEvent,
-  SyntheticEvent,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
 import { FormContext } from '../../store/form-store'
-import soorah_list_object from '../../assets/soorah-list-object'
-import translatorList from '../../assets/translatorList'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
 import { useRouter } from 'next/router'
-import { FormProps } from '../../lib/types'
-import { getView } from '../../utility/getView/getView'
+import { FormProps } from '@/lib/types'
+import { getView } from '@/utility'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()
@@ -21,9 +15,7 @@ export const Form = (): JSX.Element => {
 
   useEffect(() => setState(formContext), [formContext])
 
-  const onHandleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
 
     switch (name) {
@@ -103,9 +95,9 @@ export const Form = (): JSX.Element => {
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>
-          {soorah_list_object.map(({ id, title }) => (
+          {SOORAH_LIST.map(({ id, title }) => (
             <option value={id} key={id}>
-              {title} surəsi. {id}
+              {`${title} surəsi. ${id}`}
             </option>
           ))}
         </select>
@@ -137,7 +129,7 @@ export const Form = (): JSX.Element => {
           value={state?.t}
           onChange={onHandleChange}
         >
-          {translatorList.map((soorah, index) => (
+          {TRANSLATOR_LIST.map((soorah, index) => (
             <option value={index} key={index}>
               {soorah}
             </option>
@@ -162,5 +154,3 @@ export const Form = (): JSX.Element => {
     </form>
   )
 }
-
-export default Form

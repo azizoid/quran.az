@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render LoadingBoxes 1`] = `
+<div>
+  <div
+    class="loadingBoxes"
+  >
+    <div
+      class="ldsFacebook"
+    >
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;

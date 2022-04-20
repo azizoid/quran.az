@@ -1,14 +1,16 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
 import Pagination from 'react-js-pagination'
 
-import { MainLayout } from '../../layouts/MainLayout'
-import Loader from '../../ui/Loader/Loader'
-import { SearchAyah } from '../../components/SearchAyah/SearchAyah'
-import { PaginationProps } from '../../utility/paginate/paginate'
-import { DisplayData, PageStates } from '../../lib/types'
-import { getApiData } from '../../utility/getApiData/getApiData'
+import { MainLayout } from '@/layouts/MainLayout'
+
+import { Loader } from '@/ui'
+import { SearchAyah } from '@/components'
+import { getApiData, PaginationProps } from '@/utility'
+import { DisplayData, PageStates } from '@/lib/types'
+
+import Head from 'next/head'
 
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
@@ -18,8 +20,7 @@ export const Search = (): JSX.Element => {
 
   const router = useRouter()
   const query = router.query.search?.toString()
-  const translator =
-    router.query.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = router.query.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const getData = useCallback(async () => {
     setPageState(PageStates.LOADING)
@@ -80,6 +81,9 @@ export const Search = (): JSX.Element => {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Öz Kitabını oxu | quran.az</title>
+      </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         {paginateLinks}
 
@@ -93,4 +97,5 @@ export const Search = (): JSX.Element => {
   )
 }
 
+// eslint-disable-next-line import/no-default-export
 export default Search
