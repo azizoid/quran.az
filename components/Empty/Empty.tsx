@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Card } from '@/ui'
+import { SoorahList } from '../SoorahLIst/SoorahList'
 
 export const Empty = (): JSX.Element => (
   <div className="space-y-4">
@@ -30,6 +31,8 @@ export const Empty = (): JSX.Element => (
         </Link>
       </li>
     </ol>
+
+    <SoorahList />
 
     <div className="col">
       <h6 className="alert alert-success">
