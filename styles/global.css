@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  
-
   .btn {
     @apply bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300 hover:transition-transform hover:-translate-y-0.5 active:-translate-y-0;
   }
@@ -30,7 +28,11 @@
   }
 
   .badge {
-    @apply mr-1 px-2 py-1 text-sm text-black bg-gray-200 rounded-full;
+    @apply mr-1 px-2 py-1 text-sm  rounded-full text-black bg-gray-200;
+  }
+
+  .badge-white {
+    @apply text-black bg-white;
   }
 
   .soorah-list-item {
@@ -89,6 +91,7 @@
   }
 }
 
-html,body {
+html,
+body {
   overflow-x: hidden;
 }
