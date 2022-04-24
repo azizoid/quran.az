@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -31,7 +30,7 @@ type MainLayoutProps = {
   children?: React.ReactNode
 }
 
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => (
+export const MainLayout = ({ children }: MainLayoutProps) => (
   <div className="flex flex-col h-screen justify-between">
     <div className="bg-[url('/img/ornament.gif')] bg-gray-50 bg-repeat-x bg-bottom pb-[33px] px-3">
       <nav className="h-12 container mx-auto flex justify-between">

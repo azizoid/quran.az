@@ -1,4 +1,4 @@
-import { createContext, FC, useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { FormProps } from '@/lib/types'
 
@@ -10,7 +10,7 @@ type FormContextProviderProps = {
   children?: React.ReactNode
 }
 
-export const FormContextProvider: FC<FormContextProviderProps> = ({ children }) => {
+export const FormContextProvider = ({ children }: FormContextProviderProps) => {
   const { query } = useRouter()
   const [state, setState] = useState<FormProps>()
 
