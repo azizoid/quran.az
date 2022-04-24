@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
@@ -11,16 +12,14 @@ import { Bismillah, SoorahCaption } from '@/ui'
 export const Soorah = ({ out, data, error }): JSX.Element => {
   if (error === PageStates.NOT_FOUND) {
     return (
-      <MainLayout>
-        <div className="text-center">
-          <div className="col-sm-12 alert alert-danger">Surə tapılmamışdır</div>
-        </div>
-      </MainLayout>
+      <div className="text-center">
+        <div className="col-sm-12 alert alert-danger">Surə tapılmamışdır</div>
+      </div>
     )
   }
 
   return (
-    <MainLayout>
+    <>
       <Head>
         <title>{SOORAH_LIST[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az</title>
         <meta
@@ -39,8 +38,12 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
         ))}
         <PaginateSoorahList soorah={data.s} translator={data.t} />
       </ul>
-    </MainLayout>
+    </>
   )
+}
+
+Soorah.getLayout = (page: ReactElement) => {
+  return <MainLayout>{page}</MainLayout>
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, ReactElement } from 'react'
 import { useRouter } from 'next/router'
 
 import Pagination from 'react-js-pagination'
@@ -49,19 +49,11 @@ export const Search = (): JSX.Element => {
   }, [getData])
 
   if (pageState === PageStates.NOT_FOUND) {
-    return (
-      <MainLayout>
-        <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
-      </MainLayout>
-    )
+    return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
   if (pageState === PageStates.LOADING) {
-    return (
-      <MainLayout>
-        <Loader />
-      </MainLayout>
-    )
+    return <Loader />
   }
 
   const paginateLinks = paginate?.total > paginate?.perPage && (
@@ -81,7 +73,7 @@ export const Search = (): JSX.Element => {
   )
 
   return (
-    <MainLayout>
+    <>
       <Head>
         <title>Öz Kitabını oxu | quran.az</title>
       </Head>
@@ -94,8 +86,12 @@ export const Search = (): JSX.Element => {
 
         {paginateLinks}
       </ul>
-    </MainLayout>
+    </>
   )
+}
+
+Search.getLayout = (page: ReactElement) => {
+  return <MainLayout>{page}</MainLayout>
 }
 
 // eslint-disable-next-line import/no-default-export

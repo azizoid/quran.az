@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 
 export type CardProps = {
   title: string | ReactNode
@@ -6,6 +6,7 @@ export type CardProps = {
   contentClass?: string | null
   className?: string
   size?: 'small' | 'medium' | 'fit'
+  children?: ReactNode
 }
 
 enum cardSize {
@@ -13,13 +14,13 @@ enum cardSize {
   medium = 'px-7',
 }
 
-export const Card: FC<CardProps> = ({
+export const Card = ({
   title,
   titleClassName = '',
   className = '',
   size = 'medium',
   children,
-}) => (
+}: CardProps) => (
   <div className="card">
     <div className={`card-title ${cardSize[size]} ${titleClassName}`}>{title}</div>
     <div className={`card-content ${cardSize[size]} ${className}`}>{children}</div>

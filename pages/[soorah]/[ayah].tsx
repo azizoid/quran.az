@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { MainLayout } from '@/layouts/MainLayout'
@@ -12,17 +13,13 @@ import { PaginateAyah } from '@/components'
 
 export const Ayah = ({ out, error }) => {
   if (error === PageStates.NOT_FOUND) {
-    return (
-      <MainLayout>
-        <div className="col-sm-12 alert alert-danger">Ayə tapılmamışdır</div>
-      </MainLayout>
-    )
+    return <div className="col-sm-12 alert alert-danger">Ayə tapılmamışdır</div>
   }
 
   const { soorah, ayah, content, translator, arabic, transliteration, prev, next } = out
 
   return (
-    <MainLayout>
+    <>
       <Head>
         <title>{soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az</title>
         <meta name="description" content={content} />
@@ -45,8 +42,12 @@ export const Ayah = ({ out, error }) => {
           <PaginateAyah {...{ soorah, ayah, prev, next, translator }} />
         </li>
       </ul>
-    </MainLayout>
+    </>
   )
+}
+
+Ayah.getLayout = (page: ReactElement) => {
+  return <MainLayout>{page}</MainLayout>
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

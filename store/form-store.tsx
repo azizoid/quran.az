@@ -6,7 +6,11 @@ import { getView } from '../utility/getView/getView'
 
 export const FormContext = createContext({} as FormProps)
 
-export const FormContextProvider: FC = ({ children }) => {
+type FormContextProviderProps = {
+  children?: React.ReactNode
+}
+
+export const FormContextProvider: FC<FormContextProviderProps> = ({ children }) => {
   const { query } = useRouter()
   const [state, setState] = useState<FormProps>()
 
