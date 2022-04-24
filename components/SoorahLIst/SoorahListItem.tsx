@@ -1,7 +1,6 @@
 import { SoorahListProps } from '@/assets/soorah-list-object'
 import { CityAndSize } from '@/ui'
 import Link from 'next/link'
-import { FaKaaba, FaMosque } from 'react-icons/fa'
 
 export type SoorahListItemProps = {
   soorah: SoorahListProps
