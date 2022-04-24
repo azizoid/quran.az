@@ -1,4 +1,5 @@
 import { SoorahListProps } from '@/assets/soorah-list-object'
+import { CityAndSize } from '@/ui'
 import Link from 'next/link'
 import { FaKaaba, FaMosque } from 'react-icons/fa'
 
@@ -15,23 +16,12 @@ export const SoorahListItem = ({ soorah }: SoorahListItemProps): JSX.Element => 
 
       <div className="px-4 py-2 -mx-3 flex flex-row w-full items-center justify-between">
         <div className="mx-3">
-          <span className="font-semibold text-emerald-500">{soorah.title}</span>
+          <span className="font-semibold text-emerald-400 group-hover:text-emerald-600">
+            {soorah.fullTitle}
+          </span>
 
           <p className="text-sm text-gray-600 w-full flex flex-row justify-start gap-3">
-            <span className="flex gap-1 align-middle whitespace-nowrap">
-              {soorah.city === 'Mecca' ? (
-                <>
-                  <FaKaaba size={18} className="text-gray-300 group-hover:text-gray-600" />
-                  Məkkə surəsi
-                </>
-              ) : (
-                <>
-                  <FaMosque size={18} className="text-gray-300 group-hover:text-gray-600" />
-                  Mədinə surəsi
-                </>
-              )}
-            </span>
-            /<span>{soorah.ayahCount} ayə</span>
+            <CityAndSize city={soorah.city} ayahCount={soorah.ayahCount} size="md" />
           </p>
         </div>
       </div>
