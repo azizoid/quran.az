@@ -11,7 +11,7 @@ export const Form = (): JSX.Element => {
   const router = useRouter()
   const formContext = useContext(FormContext)
 
-  const [state, setState] = useState<FormProps>()
+  const [state, setState] = useState<FormProps>(formContext)
 
   useEffect(() => setState(formContext), [formContext])
 
@@ -56,15 +56,16 @@ export const Form = (): JSX.Element => {
     event.preventDefault()
 
     const submitValue = getView(state)
+
     switch (submitValue.view) {
       case 'search':
-        router.push(`/search/${state.q}?t=${state.t}`)
+        router.push(`/search/${submitValue.q}?t=${submitValue.t}`)
         break
       case 'soorah':
-        router.push(`/${state.s}?t=${state.t}`)
+        router.push(`/${submitValue.s}?t=${submitValue.t}`)
         break
       case 'ayah':
-        router.push(`/${state.s}/${state.a}?t=${state.t}`)
+        router.push(`/${submitValue.s}/${submitValue.a}?t=${submitValue.t}`)
         break
       case 'empty':
       default:
