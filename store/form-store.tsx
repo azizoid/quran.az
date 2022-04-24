@@ -2,7 +2,7 @@ import { createContext, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { FormProps } from '@/lib/types'
 
-import { getView } from '../utility/getView/getView'
+import { getView } from '@/utility'
 
 export const FormContext = createContext({} as FormProps)
 

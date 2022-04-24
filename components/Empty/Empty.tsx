@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Card } from '@/ui'
-import { SoorahList } from '../SoorahLIst/SoorahList'
+import { SoorahList } from '@/components'
 
 export const Empty = (): JSX.Element => (
   <div className="space-y-4">
