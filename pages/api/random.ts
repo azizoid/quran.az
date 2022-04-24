@@ -5,11 +5,11 @@ import { DataPropsLatinized, ResponseData } from '@/lib/db-types'
 import { withMongo } from '@/lib/mongodb'
 import { runMiddleware } from '@/utility'
 
-export type ReponseProps = {
+export type ResponseProps = {
   out?: DisplayData
 }
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps | ResponseData>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps | ResponseData>) => {
   const { method } = req
 
   switch (method) {
