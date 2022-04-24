@@ -45,7 +45,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params, query } = context
-  const translator = query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const res = await getApiData(`/api/${params.soorah}?t=${translator}`)
 
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         error: '',
         out: res.out,
-        data: res.data,
+        data: { ...res.data, translator },
       },
     }
   }

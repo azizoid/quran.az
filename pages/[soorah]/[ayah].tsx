@@ -52,7 +52,7 @@ export const Ayah = ({ out, error }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = query.soorah
   const ayah = query.ayah
-  const translator = query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const res = await getApiData(`/api/${soorah}/${ayah}?t=${translator}`)
 
