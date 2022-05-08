@@ -28,7 +28,7 @@
   }
 
   .badge {
-    @apply mr-1 px-2 py-1 text-sm  rounded-full text-black bg-gray-200;
+    @apply mr-1 px-2 py-1 text-sm  rounded text-black bg-gray-200;
   }
 
   .badge-white {

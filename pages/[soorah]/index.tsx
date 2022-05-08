@@ -18,6 +18,8 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
     )
   }
 
+  const sajda = SOORAH_LIST[data.s]?.sajda
+
   return (
     <>
       <Head>
@@ -34,7 +36,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
         <SoorahCaption soorah={data.s} translator={data.translator} />
         {data.s !== 9 && <Bismillah />}
         {out.map((data: DisplayData) => (
-          <SoorahAyah data={data} key={data.id} />
+          <SoorahAyah data={data} key={data.id} sajda={sajda} />
         ))}
         <PaginateSoorahList soorah={data.s} translator={data.t} />
       </ul>
