@@ -58,7 +58,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => (
 
     <div className="flex-grow container mx-auto mt-10 pb-2">
       <div className="grid grid-cols-12">
-        <div className="col-span-12 lg:col-span-7 mx-4">
+        <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">
           <Form />
           {children}
         </div>
