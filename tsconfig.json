@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components": ["components/index"],
-      "@/components/*": ["components/*"],
+      "@/components/sidebar/*": ["components/sidebar/*"],
       "@/ui": ["ui/index"],
       "@/utility": ["utility/index"],
       "@/assets/*": ["assets/*"],
@@ -25,6 +25,6 @@
       "@/layouts/*": ["layouts/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.js", "jest-setup.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
