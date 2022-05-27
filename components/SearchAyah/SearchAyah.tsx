@@ -2,19 +2,21 @@ import Link from 'next/link'
 import Highlighter from 'react-highlight-words'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { DisplayData } from '@/lib/types'
+import { Sajda } from '@/ui'
 
 export type SearchAyahProps = {
   data: DisplayData
+  sajda?: number[]
   mark?: string
 }
 
-export const SearchAyah = ({ data, mark = '' }: SearchAyahProps): JSX.Element => (
+export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps): JSX.Element => (
   <li className="soorah-list-item">
-    <div className="text-start mx-1">
+    <div className="flex flex-row">
       <span className="badge">
         {data.soorah}:{data.ayah}
+        {sajda?.includes(data.ayah) && <Sajda />}
       </span>{' '}
-      {data.content}
       <Highlighter
         searchWords={[mark]}
         textToHighlight={data.content}

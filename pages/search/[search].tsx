@@ -11,6 +11,7 @@ import { getApiData, PaginationProps } from '@/utility'
 import { DisplayData, PageStates } from '@/lib/types'
 
 import Head from 'next/head'
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
 
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
@@ -80,9 +81,10 @@ export const Search = (): JSX.Element => {
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         {paginateLinks}
 
-        {out?.map((ayah) => (
-          <SearchAyah data={ayah} mark={query} key={ayah.id} />
-        ))}
+        {out?.map((ayah) => {
+          const sajda = SOORAH_LIST[ayah.soorah]?.sajda
+          return <SearchAyah data={ayah} sajda={sajda} mark={query} key={ayah.id} />
+        })}
 
         {paginateLinks}
       </ul>
