@@ -8,3 +8,5 @@ export * from './Logo/Logo'
 export * from './SoorahCaption/SoorahCaption'
 export * from './soorahAyahTitle/soorahAyahTitle'
 export * from './CityAndSize/CityAndSize'
+
+export * from './Sajda/Sajda'
