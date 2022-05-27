@@ -12,10 +12,11 @@ export type ReponseProps = {
   data?: FormProps
 } & ResponseData
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps>) => {
+const handler = async (
+  { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
+  res: NextApiResponse<ReponseProps>
+) => {
   res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
-
-  const { query, method } = req
 
   const soorah = Number(query.soorah.toString())
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)

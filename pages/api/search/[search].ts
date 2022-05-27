@@ -15,9 +15,10 @@ export type ReponseProps = ResponseData & {
   }
 }
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps | ResponseData>) => {
-  const { query, method } = req
-
+const handler = async (
+  { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
+  res: NextApiResponse<ReponseProps | ResponseData>
+) => {
   const search_query = query.search
     .toString()
     .replace(/[-/\^$*+?.()|[]{}]/g, '$&')

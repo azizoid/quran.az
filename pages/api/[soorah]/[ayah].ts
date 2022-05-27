@@ -23,9 +23,10 @@ export type ReponseProps = {
   data?: FormProps
 } & ResponseData
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<ReponseProps>) => {
-  const { query, method } = req
-
+const handler = async (
+  { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
+  res: NextApiResponse<ReponseProps>
+) => {
   const soorah = Number(query.soorah.toString())
   const ayah = Number(query.ayah.toString())
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)

@@ -10,9 +10,7 @@ export type ResponseProps = {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps | ResponseData>) => {
-  const { method } = req
-
-  switch (method) {
+  switch (req.method) {
     case 'GET':
       try {
         await runMiddleware(req, res)
