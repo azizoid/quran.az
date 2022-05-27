@@ -13,7 +13,9 @@ export const Form = (): JSX.Element => {
 
   const [state, setState] = useState<FormProps>(formContext)
 
-  useEffect(() => setState(formContext), [formContext])
+  useEffect(() => {
+    setState(formContext)
+  }, [formContext])
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
