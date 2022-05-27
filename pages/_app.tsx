@@ -25,11 +25,11 @@ const MyApp = ({ Component, pageProps }: MyAppWithLayout) => {
   }, [])
 
   return getLayout(
-    <FormContextProvider>
+    <>
       <NextNprogress />
 
       <Component {...pageProps} />
-    </FormContextProvider>
+    </>
   )
 }
 
