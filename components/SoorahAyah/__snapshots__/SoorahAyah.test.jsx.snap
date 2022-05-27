@@ -5,14 +5,17 @@ exports[`SoorahAyah Snapshot 1`] = `
   <li
     class="soorah-list-item"
   >
-    <div>
+    <div
+      class="flex flex-row"
+    >
       <span
         class="badge"
       >
         1
       </span>
-       
-      Yaradan Rəbbinin adı ilə oxu!
+      <span>
+        Yaradan Rəbbinin adı ilə oxu!
+      </span>
     </div>
     <a
       class="read-ayah"

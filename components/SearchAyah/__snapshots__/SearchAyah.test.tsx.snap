@@ -6,7 +6,7 @@ exports[`SearchAyah without mark word 1`] = `
     class="soorah-list-item"
   >
     <div
-      class="text-start mx-1"
+      class="flex flex-row"
     >
       <span
         class="badge"
@@ -16,7 +16,6 @@ exports[`SearchAyah without mark word 1`] = `
         1
       </span>
        
-      Alif Lam Mim
       <span>
         <span
           class=""
