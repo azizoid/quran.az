@@ -48,11 +48,11 @@ Soorah.getLayout = (page: ReactElement) => {
   return <MainLayout>{page}</MainLayout>
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params, query } = context
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const soorah = Number(query.soorah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(`/api/${params.soorah}?t=${translator}`)
+  const res = await getApiData(`/api/${soorah}?t=${translator}`)
 
   if (res?.success) {
     return {
