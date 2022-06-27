@@ -15,3 +15,19 @@ test('SoorahAyah Snapshot', () => {
 
   expect(container).toMatchSnapshot()
 })
+
+test('SoorahAyah Sajda', () => {
+  const { getByText } = render(
+    <SoorahAyah
+      data={{
+        soorah: 7,
+        ayah: 206,
+        content: 'Yaradan Rəbbinin adı ilə oxu!',
+        translator: 4,
+      }}
+      sajda={[206]}
+    />
+  )
+
+  expect(getByText('Səcdə ayəsi')).toBeInTheDocument()
+})
