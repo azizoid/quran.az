@@ -15,14 +15,16 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps): JSX.E
     <li
       className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center whitespace-nowrap`}
     >
-      <Link href={`/${soorah}?t=${translator}`}>
-        <a className="text-gray-400 hover:text-black decoration-1">
-          {`${soorah}. ${fullTitle}`}
-          <span className="flex flex-row justify-center gap-1 text-xs">
-            <CityAndSize city={city} ayahCount={ayahCount} devider={true} size="sm" />
-          </span>
-        </a>
+      <Link
+        href={`/${soorah}?t=${translator}`}
+        className="text-gray-400 hover:text-black decoration-1">
+
+        {`${soorah}. ${fullTitle}`}
+        <span className="flex flex-row justify-center gap-1 text-xs">
+          <CityAndSize city={city} ayahCount={ayahCount} devider={true} size="sm" />
+        </span>
+
       </Link>
     </li>
-  )
+  );
 }

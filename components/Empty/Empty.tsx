@@ -7,27 +7,27 @@ export const Empty = (): JSX.Element => (
     <ol className="py-2 w-full flex justify-center text-gray-500 space-x-5 text-sm md:text-base">
       <li>
         <Link href="/1">
-          <a>Fatihə surəsi</a>
+          Fatihə surəsi
         </Link>
       </li>
       <li>
         <Link href="/36">
-          <a>Ya-sin surəsi</a>
+          Ya-sin surəsi
         </Link>
       </li>
       <li>
         <Link href="/55">
-          <a>Ər-Rəhman surəsi</a>
+          Ər-Rəhman surəsi
         </Link>
       </li>
       <li>
         <Link href="/67">
-          <a>Əl-Mülk surəsi</a>
+          Əl-Mülk surəsi
         </Link>
       </li>
       <li>
         <Link href="/2/255">
-          <a>Ayətul-Kürsi</a>
+          Ayətul-Kürsi
         </Link>
       </li>
     </ol>
