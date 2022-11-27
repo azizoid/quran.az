@@ -23,7 +23,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
   return (
     <>
       <Head>
-        <title>{SOORAH_LIST[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az</title>
+        <title>{`${SOORAH_LIST[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az`}</title>
         <meta
           name="description"
           content={out

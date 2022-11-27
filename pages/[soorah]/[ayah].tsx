@@ -21,7 +21,7 @@ export const Ayah = ({ out, error }) => {
   return (
     <>
       <Head>
-        <title>{soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az</title>
+        <title>{`${soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az`}</title>
         <meta name="description" content={content} />
       </Head>
 
