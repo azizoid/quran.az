@@ -6,7 +6,7 @@ import { Empty } from '@/components'
 export const Home = (): JSX.Element => (
   <>
     <Head>
-      <title>Öz Kitabını oxu | quran.az </title>
+      <title>{`Öz Kitabını oxu | quran.az`}</title>
     </Head>
     <Empty />
   </>

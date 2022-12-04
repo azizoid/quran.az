@@ -76,7 +76,7 @@ export const Search = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Öz Kitabını oxu | quran.az</title>
+        <title>{`Öz Kitabını oxu | quran.az`}</title>
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         {paginateLinks}
