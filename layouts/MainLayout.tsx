@@ -39,9 +39,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => (
           <Link
             href="/"
             passHref={true}
-            className="py-3 flex items-center content-start text-gray-500 hover:opacity-75">
-
-            <Logo />Quran.az
+            className="py-3 flex items-center content-start text-gray-500 hover:opacity-75"
+          >
+            <Logo />
+            Quran.az
           </Link>
 
           <ul className="flex items-center space-x-2">

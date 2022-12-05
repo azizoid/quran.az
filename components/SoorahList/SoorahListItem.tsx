@@ -7,10 +7,10 @@ export type SoorahListItemProps = {
 }
 
 export const SoorahListItem = ({ soorah }: SoorahListItemProps): JSX.Element => (
-  (<Link
+  <Link
     href={`/${soorah.id}`}
-    className="group flex w-full my-4 mx-auto overflow-hidden bg-white rounded-lg shadow-md">
-
+    className="group flex w-full my-4 mx-auto overflow-hidden bg-white rounded-lg shadow-md"
+  >
     <div className="flex items-center justify-center w-14 bg-emerald-100 group-hover:bg-emerald-500 group-hover:text-white">
       <span className="px-2 py-1 rounded-full bg-white group-hover:text-black">{soorah.id}</span>
     </div>
@@ -25,9 +25,8 @@ export const SoorahListItem = ({ soorah }: SoorahListItemProps): JSX.Element => 
         </p>
       </div>
     </div>
-    <div className="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white">
+    <div className="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white">
       {soorah.arabic}
     </div>
-
-  </Link>)
+  </Link>
 )
