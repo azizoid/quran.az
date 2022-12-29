@@ -20,12 +20,21 @@ export const Search = (): JSX.Element => {
   const [page, setPage] = useState(1)
 
   const router = useRouter()
-  const query = router.query.search?.toString()
+  const query =
+    typeof router.query?.search === 'string' && router.query?.search?.length > 2
+      ? router.query?.search
+      : undefined
+
   const translator =
     Number(router.query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const getData = useCallback(async () => {
     setPageState(PageStates.LOADING)
+
+    if (!query) {
+      setPageState(PageStates.NOT_FOUND)
+      return
+    }
 
     await getApiData(`/api/search/${query}?page=${page}&t=${translator}`)
       .then(({ out, paginate, success }) => {
