@@ -16,27 +16,24 @@ import { SOORAH_LIST } from '@/assets/soorah-list-object'
 export const Search = (): JSX.Element => {
   const [paginate, setPaginate] = useState<PaginationProps>()
   const [out, setOut] = useState<DisplayData[]>()
-  const [pageState, setPageState] = useState(PageStates.EMPTY)
+  const [pageState, setPageState] = useState(() => PageStates.EMPTY)
   const [page, setPage] = useState(1)
 
-  const router = useRouter()
-  const query =
-    typeof router.query?.search === 'string' && router.query?.search?.length > 2
-      ? router.query?.search
-      : undefined
+  const { query } = useRouter()
+  const searchQuery =
+    typeof query?.search === 'string' && query?.search?.length > 2 ? query?.search : undefined
 
-  const translator =
-    Number(router.query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = Number(query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const getData = useCallback(async () => {
     setPageState(PageStates.LOADING)
 
-    if (!query) {
-      setPageState(PageStates.NOT_FOUND)
+    if (!searchQuery) {
+      setPageState(PageStates.EMPTY)
       return
     }
 
-    await getApiData(`/api/search/${query}?page=${page}&t=${translator}`)
+    await getApiData(`/api/search/${searchQuery}?page=${page}&t=${translator}`)
       .then(({ out, paginate, success }) => {
         if (success) {
           setOut(out)
@@ -48,11 +45,11 @@ export const Search = (): JSX.Element => {
         } else throw new Error('not found')
       })
       .catch(() => setPageState(PageStates.NOT_FOUND))
-  }, [page, query, translator])
+  }, [page, searchQuery, translator])
 
   useEffect(() => {
     setPage(1)
-  }, [query])
+  }, [searchQuery])
 
   useEffect(() => {
     getData()
@@ -92,7 +89,7 @@ export const Search = (): JSX.Element => {
 
         {out?.map((ayah) => {
           const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-          return <SearchAyah data={ayah} sajda={sajda} mark={query} key={ayah.id} />
+          return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
         })}
 
         {paginateLinks}

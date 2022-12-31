@@ -55,7 +55,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const ayah = Number(query.ayah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(`/api/${soorah}/${ayah}?t=${translator}`)
+  const res = await getApiData(
+    `${process.env.NEXT_PUBLIC_URL}/api/${soorah}/${ayah}?t=${translator}`
+  )
 
   if (res?.success) {
     return {
