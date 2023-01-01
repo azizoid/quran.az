@@ -23,6 +23,7 @@ export const Ayah = ({ out, error }) => {
       <Head>
         <title>{`${soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az`}</title>
         <meta name="description" content={content} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700 mb-4">

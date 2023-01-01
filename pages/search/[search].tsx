@@ -71,6 +71,7 @@ export const Search = () => {
     <>
       <Head>
         <title>{`Öz Kitabını oxu | quran.az`}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {data?.out.length === 0 && (
         <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
