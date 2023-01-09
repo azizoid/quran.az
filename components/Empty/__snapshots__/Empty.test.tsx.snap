@@ -102,7 +102,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفاتحة
         </div>
@@ -162,7 +162,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           البقرة
         </div>
@@ -222,7 +222,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           آل عمران
         </div>
@@ -282,7 +282,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النساء
         </div>
@@ -342,7 +342,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المائدة
         </div>
@@ -402,7 +402,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأنعام
         </div>
@@ -462,7 +462,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأعراف
         </div>
@@ -522,7 +522,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأنفال
         </div>
@@ -582,7 +582,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التوبة
         </div>
@@ -642,7 +642,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           يونس
         </div>
@@ -702,7 +702,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           هود
         </div>
@@ -762,7 +762,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           يوسف
         </div>
@@ -822,7 +822,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الرعد
         </div>
@@ -882,7 +882,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           ابراهيم
         </div>
@@ -942,7 +942,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحجر
         </div>
@@ -1002,7 +1002,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النحل
         </div>
@@ -1062,7 +1062,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الإسراء
         </div>
@@ -1122,7 +1122,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الكهف
         </div>
@@ -1182,7 +1182,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           مريم
         </div>
@@ -1242,7 +1242,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           طه
         </div>
@@ -1302,7 +1302,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأنبياء
         </div>
@@ -1362,7 +1362,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحج
         </div>
@@ -1422,7 +1422,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المؤمنون
         </div>
@@ -1482,7 +1482,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النور
         </div>
@@ -1542,7 +1542,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفرقان
         </div>
@@ -1602,7 +1602,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الشعراء
         </div>
@@ -1662,7 +1662,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النمل
         </div>
@@ -1722,7 +1722,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القصص
         </div>
@@ -1782,7 +1782,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           العنكبوت
         </div>
@@ -1842,7 +1842,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الروم
         </div>
@@ -1902,7 +1902,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           لقمان
         </div>
@@ -1962,7 +1962,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           السجدة
         </div>
@@ -2022,7 +2022,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأحزاب
         </div>
@@ -2082,7 +2082,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           سبإ
         </div>
@@ -2142,7 +2142,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           فاطر
         </div>
@@ -2202,7 +2202,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           يس
         </div>
@@ -2262,7 +2262,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الصافات
         </div>
@@ -2322,7 +2322,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           ص
         </div>
@@ -2382,7 +2382,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الزمر
         </div>
@@ -2442,7 +2442,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           غافر
         </div>
@@ -2502,7 +2502,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           فصلت
         </div>
@@ -2562,7 +2562,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الشورى
         </div>
@@ -2622,7 +2622,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الزخرف
         </div>
@@ -2682,7 +2682,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الدخان
         </div>
@@ -2742,7 +2742,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الجاثية
         </div>
@@ -2802,7 +2802,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأحقاف
         </div>
@@ -2862,7 +2862,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           محمد
         </div>
@@ -2922,7 +2922,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفتح
         </div>
@@ -2982,7 +2982,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحجرات
         </div>
@@ -3042,7 +3042,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           ق
         </div>
@@ -3102,7 +3102,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الذاريات
         </div>
@@ -3162,7 +3162,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الطور
         </div>
@@ -3222,7 +3222,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النجم
         </div>
@@ -3282,7 +3282,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القمر
         </div>
@@ -3342,7 +3342,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الرحمن
         </div>
@@ -3402,7 +3402,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الواقعة
         </div>
@@ -3462,7 +3462,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحديد
         </div>
@@ -3522,7 +3522,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المجادلة
         </div>
@@ -3582,7 +3582,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحشر
         </div>
@@ -3642,7 +3642,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الممتحنة
         </div>
@@ -3702,7 +3702,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الصف
         </div>
@@ -3762,7 +3762,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الجمعة
         </div>
@@ -3822,7 +3822,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المنافقون
         </div>
@@ -3882,7 +3882,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التغابن
         </div>
@@ -3942,7 +3942,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الطلاق
         </div>
@@ -4002,7 +4002,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التحريم
         </div>
@@ -4062,7 +4062,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الملك
         </div>
@@ -4122,7 +4122,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القلم
         </div>
@@ -4182,7 +4182,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الحاقة
         </div>
@@ -4242,7 +4242,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المعارج
         </div>
@@ -4302,7 +4302,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           نوح
         </div>
@@ -4362,7 +4362,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الجن
         </div>
@@ -4422,7 +4422,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المزمل
         </div>
@@ -4482,7 +4482,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المدثر
         </div>
@@ -4542,7 +4542,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القيامة
         </div>
@@ -4602,7 +4602,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الانسان
         </div>
@@ -4662,7 +4662,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المرسلات
         </div>
@@ -4722,7 +4722,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النبإ
         </div>
@@ -4782,7 +4782,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النازعات
         </div>
@@ -4842,7 +4842,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           عبس
         </div>
@@ -4902,7 +4902,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التكوير
         </div>
@@ -4962,7 +4962,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الإنفطار
         </div>
@@ -5022,7 +5022,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المطففين
         </div>
@@ -5082,7 +5082,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الإنشقاق
         </div>
@@ -5142,7 +5142,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           البروج
         </div>
@@ -5202,7 +5202,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الطارق
         </div>
@@ -5262,7 +5262,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الأعلى
         </div>
@@ -5322,7 +5322,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الغاشية
         </div>
@@ -5382,7 +5382,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفجر
         </div>
@@ -5442,7 +5442,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           البلد
         </div>
@@ -5502,7 +5502,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الشمس
         </div>
@@ -5562,7 +5562,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الليل
         </div>
@@ -5622,7 +5622,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الضحى
         </div>
@@ -5682,7 +5682,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الشرح
         </div>
@@ -5742,7 +5742,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التين
         </div>
@@ -5802,7 +5802,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           العلق
         </div>
@@ -5862,7 +5862,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القدر
         </div>
@@ -5922,7 +5922,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           البينة
         </div>
@@ -5982,7 +5982,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الزلزلة
         </div>
@@ -6042,7 +6042,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           العاديات
         </div>
@@ -6102,7 +6102,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           القارعة
         </div>
@@ -6162,7 +6162,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           التكاثر
         </div>
@@ -6222,7 +6222,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           العصر
         </div>
@@ -6282,7 +6282,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الهمزة
         </div>
@@ -6342,7 +6342,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفيل
         </div>
@@ -6402,7 +6402,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           قريش
         </div>
@@ -6462,7 +6462,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الماعون
         </div>
@@ -6522,7 +6522,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الكوثر
         </div>
@@ -6582,7 +6582,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الكافرون
         </div>
@@ -6642,7 +6642,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           النصر
         </div>
@@ -6702,7 +6702,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           المسد
         </div>
@@ -6762,7 +6762,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الإخلاص
         </div>
@@ -6822,7 +6822,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الفلق
         </div>
@@ -6882,7 +6882,7 @@ exports[`Empty Snapshot 1`] = `
           </div>
         </div>
         <div
-          class="flex items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
+          class="flex w-40 items-center justify-center px-5 text-right whitespace-nowrap text-lg text-gray-600 bg-emerald-50 group-hover:bg-emerald-500 group-hover:text-white"
         >
           الناس
         </div>

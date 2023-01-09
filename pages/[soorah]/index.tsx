@@ -31,6 +31,7 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
             .map(({ content }) => content)
             .join(' ')}
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         <SoorahCaption soorah={data.s} translator={data.translator} />
