@@ -84,15 +84,7 @@ export const Form = (): JSX.Element => {
     >
       <div className="form-row">
         <select
-          className="
-            form-control
-            col-span-7
-            focus:outline-none 
-            focus:bg-white 
-            focus:border-gray-500
-            active:outline-none 
-            active:border-gray-500
-          "
+          className="form-control col-span-7 focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
           name="soorah"
           value={state?.s}
           onChange={onHandleChange}
@@ -119,15 +111,7 @@ export const Form = (): JSX.Element => {
         />
 
         <select
-          className="
-            form-control
-            col-span-3 text-center
-            focus:outline-none 
-            focus:bg-white 
-            focus:border-gray-500
-            active:outline-none 
-            active:border-gray-500
-          "
+          className="form-control col-span-3 text-center focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
           name="translator"
           value={state?.t}
           onChange={onHandleChange}
