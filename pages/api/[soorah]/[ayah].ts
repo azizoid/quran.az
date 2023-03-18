@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
 import { withMongo } from '@/lib/mongodb'
-import { DataPropsLatinized, DetailsTypes, ResponseData } from '@/lib/db-types'
+import { ResponseData } from '@/lib/db-types'
 import { FormProps } from '@/lib/types'
 import { getView } from '@/utility'
 
@@ -40,41 +40,56 @@ const handler = async (
     case 'GET':
       try {
         const out = await withMongo(async (db: Db) => {
-          const contentCollection = db.collection<DataPropsLatinized>('quranaz')
-          const content = await contentCollection.findOne({
+          const contentCollection = db.collection('quranaz');
+
+          const content = await contentCollection.aggregate<AyahResponseType>([
+            {
+              $match: {
+                soorah: Number(data.s),
+                ayah: Number(data.a),
+                translator: data.t
+              }
+            },
+            {
+              $lookup: {
+                from: 'metadata',
+                localField: 'metadata_id',
+                foreignField: '_id',
+                as: 'metadata'
+              }
+            },
+            {
+              $unwind: '$metadata'
+            },
+            {
+              $project: {
+                _id: 1,
+                id: 1,
+                soorah: 1,
+                ayah: 1,
+                translator: 1,
+                content: 1,
+                content_latinized: 1,
+                arabic: '$metadata.content',
+                transliteration: '$metadata.transliteration',
+                juz: '$metadata.juz'
+              }
+            }
+          ]).next();
+
+          const prevAyah = Number(data.a) - 1
+          const nextAyah = Number(data.a) + 1
+
+          const prevAndNext = await contentCollection.find<{ ayah: number }>({
             soorah: data.s,
-            ayah: Number(data.a),
+            ayah: { $in: [prevAyah, nextAyah] },
             translator: data.t,
-          })
+          }, { projection: { ayah: 1, _id: 0 } }).toArray()
 
-          const prev = await contentCollection
-            .findOne({
-              soorah: data.s,
-              ayah: Number(data.a) - 1,
-              translator: data.t,
-            })
-            .then((data) => (data?.ayah ? data.ayah : null))
-          const next = await contentCollection
-            .findOne({
-              soorah: data.s,
-              ayah: Number(data.a) + 1,
-              translator: data.t,
-            })
-            .then((data) => (data?.ayah ? data.ayah : null))
+          const prev = prevAndNext.find((item) => item.ayah === prevAyah)?.ayah || null
+          const next = prevAndNext.find((item) => item.ayah === nextAyah)?.ayah || null
 
-          const detailsCollection = db.collection<DetailsTypes>('details')
-          const details = await detailsCollection
-            .findOne({
-              soorah_id: data.s,
-              aya_id: Number(data.a),
-            })
-            .then(({ content, transliteration, juz }) => ({
-              arabic: content,
-              transliteration,
-              juz,
-            }))
-
-          return { ...content, ...details, prev, next }
+          return { ...content, prev, next }
         })
 
         return res.json({ out, data, success: true })
