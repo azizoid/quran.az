@@ -1,30 +1,26 @@
-import { useEffect, useState } from 'react'
-
-import { DisplayData } from '@/lib/types'
-import { Card, soorahAyahTitle } from '@/ui'
+import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
+import { useQuery } from 'react-query'
 
 export const RandomAyah = (): JSX.Element => {
-  const [out, setOut] = useState<DisplayData>({
-    id: '',
-    soorah: 96,
-    ayah: 1,
-    content: 'Yaradan Rəbbinin adı ilə oxu!',
-    translator: Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR),
-  })
+  const { data, isLoading, isError } = useQuery('randomVerse', async () => {
+    const response = await fetch(`/api/random`);
+    const data = await response.json();
+    return data.success ? data.out : null;
+  }, {
+    staleTime: 60000,
+    cacheTime: 300000
+  });
 
-  useEffect(() => {
-    fetch(`/api/random`).then(res => res.json()).then((data) => {
-      if (data.success) {
-        setOut(data.out)
-      }
-      // eslint-disable-next-line no-console
-    }).catch(error => { console.error(error) })
-  }, [])
+  if (isLoading || isError) {
+    return <LoadingBoxes />
+  }
+
+  const { soorah, ayah, translator, content } = data
 
   return (
-    <Card title={soorahAyahTitle(out.soorah, out.ayah)}>
+    <Card title={soorahAyahTitle(soorah, ayah)}>
       <h6 className="text-blue-400 hover:underline">
-        <a href={`/${out.soorah}/${out.ayah}?t=${out.translator}`}>{out.content}</a>
+        <a href={`/${soorah}/${ayah}?t=${translator}`}>{content}</a>
       </h6>
     </Card>
   )
