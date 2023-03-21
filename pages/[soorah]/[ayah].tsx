@@ -5,8 +5,6 @@ import { MainLayout } from '@/layouts/MainLayout'
 
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
 
-import { getApiData } from '@/utility'
-
 import { PaginateAyah } from '@/components'
 
 export const Ayah = ({ soorah, ayah, content, translator, arabic, transliteration, prev, next }) => (
@@ -46,12 +44,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const ayah = Number(query.ayah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(
+  const res = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/${soorah}/${ayah}?t=${translator}`
-  )
+  ).then(res => res.json())
 
   if (!res?.success) {
-
     return {
       notFound: true
     }

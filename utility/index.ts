@@ -1,5 +1,5 @@
 export * from './cors/cors'
-export * from './getApiData/getApiData'
+
 export * from './getView/getView'
 export * from './numberSuffixAz/numberSuffixAz'
 export * from './paginate/paginate'

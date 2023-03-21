@@ -5,8 +5,8 @@ import { GetServerSideProps } from 'next'
 import { MainLayout } from '@/layouts/MainLayout'
 import { SoorahAyah, PaginateSoorahList } from '@/components'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { getApiData, numberSuffixAz } from '@/utility'
-import { DisplayData, PageStates } from '@/lib/types'
+import { numberSuffixAz } from '@/utility'
+import { DisplayData } from '@/lib/types'
 import { Bismillah, SoorahCaption } from '@/ui'
 
 export const Soorah = ({ out, data }): JSX.Element => {
@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = Number(query.soorah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await getApiData(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(res => res.json())
 
   if (!res?.success) {
     return {
