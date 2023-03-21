@@ -4,28 +4,21 @@ import Head from 'next/head'
 
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
-import { Footer, LoadingBoxes, Logo } from '@/ui'
+import { Footer, Logo } from '@/ui'
 import { Form } from '@/components'
 import { FormContextProvider } from 'store/form-store'
 
 const PrayerWidget = dynamic(
   () => import('@/components/sidebar/prayer.widget').then(({ PrayerWidget }) => PrayerWidget),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 )
 const RandomAyah = dynamic(
   () => import('@/components/sidebar/randomayah').then(({ RandomAyah }) => RandomAyah),
-  {
-    loading: () => <LoadingBoxes />,
-    ssr: false,
-  }
+  { ssr: false }
 )
 const FacebookPage = dynamic(
   () => import('@/components/sidebar/facebook.page').then(({ FacebookPage }) => FacebookPage),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 )
 
 type MainLayoutProps = {
