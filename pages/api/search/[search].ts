@@ -29,50 +29,56 @@ const handler = async (
 
   const data = getView({ q: search_query, t: translator })
 
-  switch (method) {
-    case 'GET':
-      try {
-        const ayahs = await withMongo(async (db: Db) => {
-          const collection = db.collection<DataPropsLatinized>('quranaz')
-          return await collection
-            .find(
-              {
-                content_latinized: new RegExp(data.q, 'i'),
-                translator: data.t,
-              },
-              {}
-            )
-            .sort(['soorah', 'aya'])
-            .toArray()
-        })
-        const out = paginate(ayahs, initialPaginate.perPage, currentPage).map(
-          ({ _id, soorah, ayah, content, translator }) => ({
-            id: _id,
-            soorah,
-            ayah,
-            content,
-            translator,
-          })
-        )
 
-        return res.json({
-          out,
-          data,
-          paginate: {
-            ...initialPaginate,
-            total: ayahs.length,
-            currentPage,
+  try {
+
+    if (method !== 'GET') {
+      throw new Error('Phrase not found')
+    }
+
+    const ayahs = await withMongo(async (db: Db) => {
+      const collection = db.collection<DataPropsLatinized>('quranaz')
+      return await collection
+        .find(
+          {
+            content_latinized: new RegExp(data.q, 'i'),
+            translator: data.t,
           },
-          success: out.length > 0,
-        })
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
-    default:
-      res.status(400).json({ success: false })
-      break
+          {}
+        )
+        .sort(['soorah', 'aya'])
+        .toArray()
+    })
+
+    if (!ayahs.length) {
+      throw new Error('Kelme tapilmadi')
+    }
+
+    const out = paginate(ayahs, initialPaginate.perPage, currentPage).map(
+      ({ _id, soorah, ayah, content, translator }) => ({
+        id: _id,
+        soorah,
+        ayah,
+        content,
+        translator,
+      })
+    )
+
+    return res.json({
+      out,
+      data,
+      paginate: {
+        ...initialPaginate,
+        total: ayahs.length,
+        currentPage,
+      },
+      success: out.length > 0,
+    })
+  } catch (error) {
+    console.log('asqwe')
+    res.status(400).json({ success: false, error: String(error) })
   }
+
 }
 
 // eslint-disable-next-line import/no-default-export

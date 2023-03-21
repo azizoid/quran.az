@@ -1,6 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 
 import { useQuery } from 'react-query'
 import Pagination from 'react-js-pagination'
@@ -18,7 +17,7 @@ export const Search = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const searchQuery =
-    typeof query?.search === 'string' && query?.search?.length > 2 ? query?.search : undefined
+    typeof query?.search === 'string' && query?.search?.length > 2 ? query.search : undefined
 
   const translator = Number(query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
@@ -39,16 +38,12 @@ export const Search = () => {
     }
   }, [refetch, searchQuery, translator])
 
-  if (error) {
-    return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
+  if (isLoading) {
+    return <Loader />
   }
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    )
+  if (error || !data?.success) {
+    return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
   const paginateLinks = data?.paginate?.total > data?.paginate?.perPage && (
@@ -68,28 +63,16 @@ export const Search = () => {
   )
 
   return (
-    <>
-      <Head>
-        <title>{`Öz Kitabını oxu | quran.az`}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      {data?.out.length === 0 && (
-        <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
-      )}
+    <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+      {paginateLinks}
 
-      {data?.out.length > 0 && (
-        <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-          {paginateLinks}
+      {data?.out?.map((ayah) => {
+        const sajda = SOORAH_LIST[ayah.soorah]?.sajda
+        return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
+      })}
 
-          {data?.out?.map((ayah) => {
-            const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-            return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
-          })}
-
-          {paginateLinks}
-        </ul>
-      )}
-    </>
+      {paginateLinks}
+    </ul>
   )
 }
 
