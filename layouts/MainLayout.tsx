@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Head from 'next/head'
 
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
@@ -33,6 +34,11 @@ type MainLayoutProps = {
 
 export const MainLayout = ({ children }: MainLayoutProps) => (
   <FormContextProvider>
+    <Head>
+      <title>{`Öz Kitabını oxu | quran.az`}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
+
     <div className="flex flex-col h-screen justify-between">
       <div className="bg-[url('/img/ornament.gif')] bg-gray-50 bg-repeat-x bg-bottom pb-[33px] px-3">
         <nav className="h-12 container mx-auto flex justify-between">
