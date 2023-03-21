@@ -51,7 +51,7 @@ const handler = async (
     })
 
     if (!ayahs.length) {
-      throw new Error('Kelme tapilmadi')
+      throw new Error('Not found')
     }
 
     const out = paginate(ayahs, initialPaginate.perPage, currentPage).map(
@@ -75,8 +75,7 @@ const handler = async (
       success: out.length > 0,
     })
   } catch (error) {
-    console.log('asqwe')
-    res.status(400).json({ success: false, error: String(error) })
+    res.status(404).json({ success: false, error: String(error) })
   }
 
 }

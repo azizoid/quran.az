@@ -24,13 +24,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
 
       const { id, soorah, ayah, content, content_latinized, translator } = await db
         .collection<DataPropsLatinized>('quranaz')
-        .aggregate(pipeline).next();
-
-      // if (!collection) {
-      //   throw new Error()
-      // }
-
-
+        .aggregate(pipeline).next().catch(error => {
+          throw new Error(error)
+        });
 
       return { id, soorah, ayah, content, content_latinized, translator }
     })

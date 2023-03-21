@@ -37,7 +37,7 @@ const handler = async (
 
     return res.json({ out, data, success: true })
   } catch (error) {
-    res.status(400).json({ success: false, error: String(error) })
+    res.status(404).json({ success: false, error: String(error) })
   }
 }
 
