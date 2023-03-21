@@ -72,18 +72,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => (
             <Form />
             {children}
           </div>
-          <div
-            className="
-          col-span-12
-          lg:col-span-4
-          mx-4
-          text-small 
-          flex 
-          flex-col
-          justify-items-start
-          space-y-4
-        "
-          >
+          <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start space-y-4">
             <PrayerWidget />
             <hr />
             <RandomAyah />

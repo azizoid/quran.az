@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 
 import { DisplayData } from '@/lib/types'
 import { Card, soorahAyahTitle } from '@/ui'
-import { getApiData } from '@/utility'
 
 export const RandomAyah = (): JSX.Element => {
   const [out, setOut] = useState<DisplayData>({
@@ -14,11 +13,12 @@ export const RandomAyah = (): JSX.Element => {
   })
 
   useEffect(() => {
-    getApiData(`/api/random`).then((data) => {
+    fetch(`/api/random`).then(res => res.json()).then((data) => {
       if (data.success) {
         setOut(data.out)
       }
-    })
+      // eslint-disable-next-line no-console
+    }).catch(error => { console.error(error) })
   }, [])
 
   return (
