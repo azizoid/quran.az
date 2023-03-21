@@ -5,25 +5,17 @@ import { GetServerSideProps } from 'next'
 import { MainLayout } from '@/layouts/MainLayout'
 import { SoorahAyah, PaginateSoorahList } from '@/components'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { getApiData } from '@/utility'
+import { getApiData, numberSuffixAz } from '@/utility'
 import { DisplayData, PageStates } from '@/lib/types'
 import { Bismillah, SoorahCaption } from '@/ui'
 
-export const Soorah = ({ out, data, error }): JSX.Element => {
-  if (error === PageStates.NOT_FOUND) {
-    return (
-      <div className="text-center">
-        <div className="col-sm-12 alert alert-danger">Surə tapılmamışdır</div>
-      </div>
-    )
-  }
-
+export const Soorah = ({ out, data }): JSX.Element => {
   const sajda = SOORAH_LIST[data.s]?.sajda
 
   return (
     <>
       <Head>
-        <title>{`${SOORAH_LIST[data.s]['fullTitle']} | Öz Kitabını oxu | quran.az`}</title>
+        <title>{`${SOORAH_LIST[data.s]['fullTitle']}, ${numberSuffixAz(SOORAH_LIST[data.s]['id'])} surə | Öz Kitabını oxu | quran.az`}</title>
         <meta
           name="description"
           content={out
@@ -35,10 +27,13 @@ export const Soorah = ({ out, data, error }): JSX.Element => {
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         <SoorahCaption soorah={data.s} translator={data.translator} />
+
         {data.s !== 9 && <Bismillah />}
+
         {out.map((data: DisplayData) => (
           <SoorahAyah data={data} key={data.id} sajda={sajda} />
         ))}
+
         <PaginateSoorahList soorah={data.s} translator={data.t} />
       </ul>
     </>
@@ -55,21 +50,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const res = await getApiData(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`)
 
-  if (res?.success) {
+  if (!res?.success) {
     return {
-      props: {
-        error: '',
-        out: res.out,
-        data: { ...res.data, translator },
-      },
+      notFound: true
     }
   }
 
   return {
     props: {
-      error: PageStates.NOT_FOUND,
-      out: [],
-      data: { s: 0, a: '', translator },
+      out: res.out,
+      data: { ...res.data, translator },
     },
   }
 }

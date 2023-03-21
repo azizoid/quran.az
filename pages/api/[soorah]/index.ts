@@ -22,28 +22,22 @@ const handler = async (
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, t: translator })
 
-  if (data.view === 'empty') {
-    return res.status(400).json({ success: false })
-  }
+  try {
+    if (method !== 'GET' || data.view === 'empty') {
+      throw new Error('Soorah not found')
+    }
 
-  switch (method) {
-    case 'GET':
-      try {
-        const out = await withMongo(async (db: Db) => {
-          const collection = db.collection<DataPropsLatinized>('quranaz')
-          return await collection
-            .find({ soorah: data.s, translator: data.t })
-            .sort(['soorah', 'ayah'])
-            .toArray()
-        })
-        return res.json({ out, data, success: true })
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
-    default:
-      res.status(400).json({ success: false })
-      break
+    const out = await withMongo(async (db: Db) => {
+      const collection = db.collection<DataPropsLatinized>('quranaz')
+      return await collection
+        .find({ soorah: data.s, translator: data.t })
+        .sort(['soorah', 'ayah'])
+        .toArray()
+    })
+
+    return res.json({ out, data, success: true })
+  } catch (error) {
+    res.status(400).json({ success: false, error: String(error) })
   }
 }
 
