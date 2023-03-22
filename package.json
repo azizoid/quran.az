@@ -14,7 +14,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
-    "moment-hijri": "^2.1.2",
     "mongodb": "^5.1.0",
     "next": "^13.2.4",
     "nextjs-progressbar": "^0.0.16",
@@ -31,7 +30,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/cors": "^2.8.13",
-    "@types/moment-hijri": "^2.1.0",
     "@types/node": "^18.15.5",
     "@types/react": "^18.0.28",
     "@types/react-gtm-module": "^2.0.1",
