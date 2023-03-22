@@ -1,46 +1,40 @@
-import { useState, useEffect, useCallback } from 'react'
-import moment from 'moment-hijri'
-import { hijriMonthList } from '@/assets/hijriMonthList'
-import { numberSuffixAz } from '@/utility'
+import { getDayOfYear } from 'date-fns'
+import { useQuery } from 'react-query';
+import { LoaderProgress } from '@/ui';
 
-const prayersListEmpty = [
-  { id: 1, title: 'Fəcr', time: '--:--' },
-  { id: 2, title: 'Günəş', time: '--:--' },
-  { id: 3, title: 'Zöhr', time: '--:--' },
-  { id: 4, title: 'Əsr', time: '--:--' },
-  { id: 5, title: 'Məğrib', time: '--:--' },
-  { id: 6, title: 'İşa', time: '--:--' },
-]
+const dayOfYear = getDayOfYear(new Date()) + 2
+
+const fetchPrayersData = async (dayOfYear) => {
+  const response = await fetch(`https://nam.az/api/1/${dayOfYear}`);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const data = await response.json();
+
+  return data
+};
 
 export const PrayerWidget = (): JSX.Element => {
-  const [prayers, setPrayers] = useState(prayersListEmpty)
-  const tarix = moment()
-  const dayOfYear = tarix.dayOfYear()
+  const { data, isLoading, isError } = useQuery(
+    ['prayers', dayOfYear],
+    () => fetchPrayersData(dayOfYear)
+    , {
+      staleTime: 60000,
+      cacheTime: 300000
+    });
 
-  const fetchData = useCallback(async () => {
-    await fetch(`https://nam.az/api/1/${dayOfYear}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const out = prayersListEmpty.map((prayer, i) => {
-          prayer['time'] = data['prayers'][i]
-          return prayer
-        })
-        setPrayers(out)
-      })
-  }, [dayOfYear])
+  if (isLoading || isError) {
+    return <LoaderProgress />
+  }
 
-  useEffect(() => {
-    fetchData()
-  }, [fetchData])
+  const { prayers } = data
 
   return (
     <table className="w-full table-auto text-sm" cellPadding={7}>
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={3}>
-            {hijriMonthList[Number(tarix.format('iM')) - 1]} ayı{', '}
-            {numberSuffixAz(Number(tarix.format('iD')))} gün{', '}
-            {tarix.format('iYYYY')}, Bakı
+            {`${data?.hijri}, Bakı`}
           </td>
           <td align="center">
             <a href="https://nam.az" target="_blank" rel="noreferrer" className="text-green-300">
@@ -51,22 +45,22 @@ export const PrayerWidget = (): JSX.Element => {
       </thead>
       <tbody>
         <tr>
-          <td align="right">{prayers[0]['title']}</td>
-          <td>{prayers[0]['time']}</td>
-          <td align="right">{prayers[1]['title']}</td>
-          <td>{prayers[1]['time']}</td>
+          <td align="right">Fəcr</td>
+          <td>{prayers[0]}</td>
+          <td align="right">Günəş</td>
+          <td>{prayers[1]}</td>
         </tr>
         <tr>
-          <td align="right">{prayers[2]['title']}</td>
-          <td>{prayers[2]['time']}</td>
-          <td align="right">{prayers[3]['title']}</td>
-          <td>{prayers[3]['time']}</td>
+          <td align="right">Zöhr</td>
+          <td>{prayers[2]}</td>
+          <td align="right">Əsr</td>
+          <td>{prayers[3]}</td>
         </tr>
         <tr>
-          <td align="right">{prayers[4]['title']}</td>
-          <td>{prayers[4]['time']}</td>
-          <td align="right">{prayers[5]['title']}</td>
-          <td>{prayers[5]['time']}</td>
+          <td align="right">Məğrib</td>
+          <td>{prayers[4]}</td>
+          <td align="right">İşa</td>
+          <td>{prayers[5]}</td>
         </tr>
       </tbody>
     </table>
