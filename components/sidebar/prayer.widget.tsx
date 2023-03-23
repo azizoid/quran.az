@@ -24,7 +24,7 @@ export const PrayerWidget = (): JSX.Element => {
     });
 
   if (isLoading || isError) {
-    return <LoaderProgress />
+    return <div className="flex justify-center items-center"><LoaderProgress /></div>
   }
 
   const { prayers } = data
