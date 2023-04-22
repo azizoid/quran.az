@@ -5,7 +5,7 @@ import { LoaderProgress } from '@/ui';
 const dayOfYear = getDayOfYear(new Date()) + 2
 
 const fetchPrayersData = async (dayOfYear) => {
-  const response = await fetch(`https://nam.az/api/1/${dayOfYear}`);
+  const response = await fetch(`https://nam.az/api/v1/1/${dayOfYear}`);
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
