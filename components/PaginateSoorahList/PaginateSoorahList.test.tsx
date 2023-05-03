@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { PaginateSoorahList } from './PaginateSoorahList'
 
 test('PaginateSoorahList Snapshot', () => {

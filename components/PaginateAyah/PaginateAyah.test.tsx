@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { PaginateAyah } from './PaginateAyah'
 
 test('PaginateAyah Snapshot', async () => {

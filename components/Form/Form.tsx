@@ -1,11 +1,13 @@
 import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
-import { FormContext } from '../../store/form-store'
-import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
 import { useRouter } from 'next/router'
+
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { TRANSLATOR_LIST } from '@/assets/translatorList'
 import { FormProps } from '@/lib/types'
 import { getView } from '@/utility'
+
+import { FormContext } from '../../store/form-store'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()
@@ -71,7 +73,7 @@ export const Form = (): JSX.Element => {
         break
       case 'empty':
       default:
-        router.push(`/`)
+        router.push('/')
     }
   }
 

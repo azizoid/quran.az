@@ -1,7 +1,9 @@
 import { render, fireEvent } from '@testing-library/react'
-import { Form } from './Form'
-import { FormContextProvider } from '../../store/form-store'
 import { useRouter } from 'next/router'
+
+import { FormContextProvider } from '../../store/form-store'
+
+import { Form } from './Form'
 
 const defaultTranslator = process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
@@ -40,7 +42,7 @@ test('Click submit button on empty form', () => {
   const submitBtn = getByRole('button')
   fireEvent.click(submitBtn)
 
-  expect(push).toHaveBeenLastCalledWith(`/`)
+  expect(push).toHaveBeenLastCalledWith('/')
 })
 
 test('Change Soorah to 2 and click Submit Button', () => {

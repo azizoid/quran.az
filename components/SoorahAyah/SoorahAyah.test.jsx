@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { SoorahAyah } from './SoorahAyah'
 
 test('SoorahAyah Snapshot', () => {

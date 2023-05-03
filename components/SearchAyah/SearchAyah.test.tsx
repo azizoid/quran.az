@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { SearchAyah } from './SearchAyah'
 
 test('SearchAyah with mark word', () => {

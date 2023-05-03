@@ -1,4 +1,5 @@
 import { SOORAH_LIST as soorahList } from '@/assets/soorah-list-object'
+
 import { SoorahListItem } from './SoorahListItem'
 
 export const SoorahList = () => (

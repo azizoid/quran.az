@@ -1,7 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
-import { withMongo } from '@/lib/mongodb'
+import { NextApiRequest, NextApiResponse } from 'next'
+
 import { ResponseData } from '@/lib/db-types'
+import { withMongo } from '@/lib/mongodb'
 import { FormProps } from '@/lib/types'
 import { getView } from '@/utility'
 
@@ -32,15 +33,13 @@ const handler = async (
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, a: ayah, t: translator })
 
-
-
   try {
     if (method !== 'GET' || data.view === 'empty') {
       throw new Error('Ayah not found')
     }
 
     const out = await withMongo(async (db: Db) => {
-      const contentCollection = db.collection('quranaz');
+      const contentCollection = db.collection('quranaz')
 
       const content = await contentCollection.aggregate<AyahResponseType>([
         {
@@ -75,7 +74,7 @@ const handler = async (
             juz: '$metadata.juz'
           }
         }
-      ]).next();
+      ]).next()
 
       if (!content) {
         throw new Error('Ayah not found')

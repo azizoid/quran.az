@@ -1,9 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import { Db } from 'mongodb'
-import { withMongo } from '@/lib/mongodb'
+import { NextApiRequest, NextApiResponse } from 'next'
+
 import { DataPropsLatinized, ResponseData } from '@/lib/db-types'
-import { initialPaginate, paginate, getView } from '@/utility'
+import { withMongo } from '@/lib/mongodb'
 import { DisplayData, FormProps } from '@/lib/types'
+import { initialPaginate, paginate, getView } from '@/utility'
 
 export type ReponseProps = ResponseData & {
   out: DisplayData[]
@@ -28,7 +29,6 @@ const handler = async (
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
   const data = getView({ q: search_query, t: translator })
-
 
   try {
 
@@ -55,12 +55,12 @@ const handler = async (
     }
 
     const out = paginate(ayahs, initialPaginate.perPage, currentPage).map(
-      ({ _id, soorah, ayah, content, translator }) => ({
+      ({ _id, soorah, ayah, content, translator: translatorId }) => ({
         id: _id,
         soorah,
         ayah,
         content,
-        translator,
+        translator: translatorId,
       })
     )
 

@@ -1,14 +1,14 @@
 import { ReactElement, useEffect, useState } from 'react'
+
 import { useRouter } from 'next/router'
 
-import { useQuery } from 'react-query'
 import Pagination from 'react-js-pagination'
+import { useQuery } from 'react-query'
 
-import { MainLayout } from '@/layouts/MainLayout'
-
-import { Loader } from '@/ui'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { SearchAyah } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
+import { Loader } from '@/ui'
 import { ReponseProps } from 'pages/api/search/[search]'
 
 export const Search = () => {

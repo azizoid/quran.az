@@ -1,18 +1,19 @@
 import { getDayOfYear } from 'date-fns'
-import { useQuery } from 'react-query';
-import { LoaderProgress } from '@/ui';
+import { useQuery } from 'react-query'
+
+import { LoaderProgress } from '@/ui'
 
 const dayOfYear = getDayOfYear(new Date()) + 2
 
-const fetchPrayersData = async (dayOfYear) => {
-  const response = await fetch(`https://nam.az/api/v1/1/${dayOfYear}`);
+const fetchPrayersData = async (dayOfTheYear: number) => {
+  const response = await fetch(`https://nam.az/api/v1/1/${dayOfTheYear}`)
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error('Network response was not ok')
   }
-  const data = await response.json();
+  const data = await response.json()
 
   return data
-};
+}
 
 export const PrayerWidget = (): JSX.Element => {
   const { data, isLoading, isError } = useQuery(
@@ -21,7 +22,7 @@ export const PrayerWidget = (): JSX.Element => {
     , {
       staleTime: 60000,
       cacheTime: 300000
-    });
+    })
 
   if (isLoading || isError) {
     return <div className="flex justify-center items-center"><LoaderProgress /></div>

@@ -1,13 +1,15 @@
 import { ReactElement } from 'react'
+
 import Head from 'next/head'
+
 import { GetServerSideProps } from 'next'
 
-import { MainLayout } from '@/layouts/MainLayout'
-import { SoorahAyah, PaginateSoorahList } from '@/components'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { numberSuffixAz } from '@/utility'
+import { SoorahAyah, PaginateSoorahList } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
 import { DisplayData } from '@/lib/types'
 import { Bismillah, SoorahCaption } from '@/ui'
+import { numberSuffixAz } from '@/utility'
 
 export const Soorah = ({ out, data }): JSX.Element => {
   const sajda = SOORAH_LIST[data.s]?.sajda
@@ -30,8 +32,8 @@ export const Soorah = ({ out, data }): JSX.Element => {
 
         {data.s !== 9 && <Bismillah />}
 
-        {out.map((data: DisplayData) => (
-          <SoorahAyah data={data} key={data.id} sajda={sajda} />
+        {out.map((outData: DisplayData) => (
+          <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
         ))}
 
         <PaginateSoorahList soorah={data.s} translator={data.t} />
@@ -48,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = Number(query.soorah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(res => res.json())
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(result => result.json())
 
   if (!res?.success) {
     return {

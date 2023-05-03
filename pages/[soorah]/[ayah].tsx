@@ -1,11 +1,12 @@
 import { ReactElement } from 'react'
-import { GetServerSideProps } from 'next'
-import Head from 'next/head'
-import { MainLayout } from '@/layouts/MainLayout'
 
-import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
+import Head from 'next/head'
+
+import { GetServerSideProps } from 'next'
 
 import { PaginateAyah } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
+import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
 
 export const Ayah = ({ soorah, ayah, content, translator, arabic, transliteration, prev, next }) => (
   <>
@@ -46,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/${soorah}/${ayah}?t=${translator}`
-  ).then(res => res.json())
+  ).then(result => result.json())
 
   if (!res?.success) {
     return {

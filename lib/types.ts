@@ -20,14 +20,3 @@ export type DisplayData = {
   content_latinized?: string
   translator: FormTranslatorProp
 }
-
-export enum PageStates {
-  EMPTY = 'Page is empty',
-  LOADING = 'Loading...',
-
-  SOORAH = 'Soorah View',
-  AYAH = 'Ayah View',
-  SEARCH = 'Search View',
-
-  NOT_FOUND = 'Not Found',
-}

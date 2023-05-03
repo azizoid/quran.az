@@ -1,12 +1,14 @@
 import { ReactElement } from 'react'
+
 import Head from 'next/head'
-import { MainLayout } from '@/layouts/MainLayout'
+
 import { Empty } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
 
 export const Home = (): JSX.Element => (
   <>
     <Head>
-      <title>{`Öz Kitabını oxu | quran.az`}</title>
+      <title>Öz Kitabını oxu | quran.az</title>
     </Head>
     <Empty />
   </>

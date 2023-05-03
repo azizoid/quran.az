@@ -1,15 +1,17 @@
-import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
 import { useQuery } from 'react-query'
+
+import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
 
 export const RandomAyah = (): JSX.Element => {
   const { data, isLoading, isError } = useQuery('randomVerse', async () => {
-    const response = await fetch(`/api/random`);
-    const data = await response.json();
-    return data.success ? data.out : null;
+
+    const response = await fetch('/api/random')
+    const responseData = await response.json()
+    return responseData.success ? responseData.out : null
   }, {
     staleTime: 60000,
     cacheTime: 300000
-  });
+  })
 
   if (isLoading || isError) {
     return <LoadingBoxes />
