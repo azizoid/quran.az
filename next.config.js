@@ -7,9 +7,6 @@ module.exports = {
   devIndicators: {
     buildActivity: false,
   },
-  experimental: {
-    largePageDataBytes: 128 * 100000,
-  },
   redirects: async () => [
     {
       source: '/aze/:soorah',
