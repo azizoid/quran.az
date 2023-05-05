@@ -18,14 +18,19 @@ const fetchPrayersData = async (dayOfTheYear: number) => {
 export const PrayerWidget = (): JSX.Element => {
   const { data, isLoading, isError } = useQuery(
     ['prayers', dayOfYear],
-    () => fetchPrayersData(dayOfYear)
-    , {
+    () => fetchPrayersData(dayOfYear),
+    {
       staleTime: 60000,
-      cacheTime: 300000
-    })
+      cacheTime: 300000,
+    }
+  )
 
   if (isLoading || isError) {
-    return <div className="flex justify-center items-center"><LoaderProgress /></div>
+    return (
+      <div className="flex justify-center items-center">
+        <LoaderProgress />
+      </div>
+    )
   }
 
   const { prayers } = data

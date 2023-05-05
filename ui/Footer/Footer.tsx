@@ -7,9 +7,7 @@ export const Footer = (): JSX.Element => (
         &copy; 2003-{new Date().getFullYear()}
       </li>
       <li className="mr-6">
-        <Link href="/">
-          Quran.az
-        </Link>
+        <Link href="/">Quran.az</Link>
       </li>
       <li>
         <a href="https://nam.az" target="_blank" rel="noreferrer">

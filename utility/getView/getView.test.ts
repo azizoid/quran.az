@@ -1,50 +1,50 @@
-import { getView } from "./getView";
+import { getView } from './getView'
 
-test("get Soorah view", () => {
+test('get Soorah view', () => {
   const data = getView({
-    s: 1
-  });
+    s: 1,
+  })
 
   expect(data.view).toEqual('soorah')
 })
 
-test("get Ayah view", () => {
+test('get Ayah view', () => {
   const data = getView({
     s: 1,
-    a: 5
-  });
+    a: 5,
+  })
 
   expect(data.view).toEqual('ayah')
 })
 
-test("get Search Query view", () => {
+test('get Search Query view', () => {
   const data = getView({
     s: 115,
-    q: "Musa"
-  });
+    q: 'Musa',
+  })
 
   expect(data.view).toEqual('search')
 })
 
-test("get Search Query is short", () => {
+test('get Search Query is short', () => {
   const data = getView({
-    q: "M"
-  });
+    q: 'M',
+  })
 
-  expect(data.q).toEqual("")
+  expect(data.q).toEqual('')
   expect(data.view).toEqual('empty')
 })
 
-test("get Empty view", () => {
-  const data = getView({});
+test('get Empty view', () => {
+  const data = getView({})
 
   expect(data.view).toEqual('empty')
 })
 
-test("render wrong translator", () => {
+test('render wrong translator', () => {
   const data = getView({
-    t: 3
-  });
+    t: 3,
+  })
 
   expect(data.t).toEqual(3)
 })

@@ -18,12 +18,8 @@ export const SoorahAyah = ({ data, sajda }: SoorahAyahProps): JSX.Element => (
       </span>
       <span>{data.content}</span>
     </div>
-    <Link
-      href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}
-      className="read-ayah">
-
+    <Link href={`/${data.soorah}/${data.ayah}?t=${data.translator}`} className="read-ayah">
       <FaExternalLinkAlt />
-
     </Link>
   </li>
 )

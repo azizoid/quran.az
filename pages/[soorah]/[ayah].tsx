@@ -8,7 +8,16 @@ import { PaginateAyah } from '@/components'
 import { MainLayout } from '@/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
 
-export const Ayah = ({ soorah, ayah, content, translator, arabic, transliteration, prev, next }) => (
+export const Ayah = ({
+  soorah,
+  ayah,
+  content,
+  translator,
+  arabic,
+  transliteration,
+  prev,
+  next,
+}) => (
   <>
     <Head>
       <title>{`${soorahAyahTitle(soorah, ayah)}, | Öz Kitabını oxu | quran.az`}</title>
@@ -47,20 +56,19 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/${soorah}/${ayah}?t=${translator}`
-  ).then(result => result.json())
+  ).then((result) => result.json())
 
   if (!res?.success) {
     return {
-      notFound: true
+      notFound: true,
     }
   }
 
   return {
     props: {
-      ...res.out
+      ...res.out,
     },
   }
-
 }
 
 // eslint-disable-next-line import/no-default-export

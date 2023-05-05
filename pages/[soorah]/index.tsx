@@ -17,7 +17,9 @@ export const Soorah = ({ out, data }): JSX.Element => {
   return (
     <>
       <Head>
-        <title>{`${SOORAH_LIST[data.s]['fullTitle']}, ${numberSuffixAz(SOORAH_LIST[data.s]['id'])} surə | Öz Kitabını oxu | quran.az`}</title>
+        <title>{`${SOORAH_LIST[data.s]['fullTitle']}, ${numberSuffixAz(
+          SOORAH_LIST[data.s]['id']
+        )} surə | Öz Kitabını oxu | quran.az`}</title>
         <meta
           name="description"
           content={out
@@ -50,11 +52,13 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = Number(query.soorah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(result => result.json())
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(
+    (result) => result.json()
+  )
 
   if (!res?.success) {
     return {
-      notFound: true
+      notFound: true,
     }
   }
 

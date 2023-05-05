@@ -17,14 +17,13 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps): JSX.E
     >
       <Link
         href={`/${soorah}?t=${translator}`}
-        className="text-gray-400 hover:text-black decoration-1">
-
+        className="text-gray-400 hover:text-black decoration-1"
+      >
         {`${soorah}. ${fullTitle}`}
         <span className="flex flex-row justify-center gap-1 text-xs">
           <CityAndSize city={city} ayahCount={ayahCount} devider={true} size="sm" />
         </span>
-
       </Link>
     </li>
-  );
+  )
 }

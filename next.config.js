@@ -27,6 +27,6 @@ module.exports = {
       source: '/rus/:soorah/:ayah',
       destination: '/:soorah/:ayah?t=3',
       permanent: true,
-    }
+    },
   ],
 }

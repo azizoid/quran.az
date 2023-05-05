@@ -19,13 +19,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
     }
 
     const random = await withMongo(async (db: Db) => {
-      const pipeline = [
-        { $sample: { size: 1 } }
-      ]
+      const pipeline = [{ $sample: { size: 1 } }]
 
       const { id, soorah, ayah, content, content_latinized, translator } = await db
         .collection<DataPropsLatinized>('quranaz')
-        .aggregate(pipeline).next().catch(error => {
+        .aggregate(pipeline)
+        .next()
+        .catch((error) => {
           throw new Error(error)
         })
 
@@ -36,7 +36,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
   } catch (error) {
     res.status(400).json({ success: false })
   }
-
 }
 // eslint-disable-next-line import/no-default-export
 export default handler

@@ -1,6 +1,6 @@
 import { FormProps } from './types'
 
-export type ResponseData = { success: boolean, error?: string }
+export type ResponseData = { success: boolean; error?: string }
 
 export type DataProps = {
   _id: string

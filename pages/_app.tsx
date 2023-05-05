@@ -27,16 +27,20 @@ const MyApp = ({ Component, pageProps }: MyAppWithLayout) => {
     TagManager.initialize({ gtmId: 'GTM-WZ9GX3M' })
   }, [])
 
-  return <QueryClientProvider client={queryClient}>
-    <Hydrate state={pageProps.dehydratedState}>
-      {getLayout(<>
-        <NextNprogress />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        {getLayout(
+          <>
+            <NextNprogress />
 
-        <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </>)}
-    </Hydrate>
-  </QueryClientProvider>
+            <Component {...pageProps} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </>
+        )}
+      </Hydrate>
+    </QueryClientProvider>
+  )
 }
 
 // eslint-disable-next-line import/no-default-export

@@ -31,7 +31,6 @@ const handler = async (
   const data = getView({ q: search_query, t: translator })
 
   try {
-
     if (method !== 'GET') {
       throw new Error('Phrase not found')
     }
@@ -77,7 +76,6 @@ const handler = async (
   } catch (error) {
     res.status(404).json({ success: false, error: String(error) })
   }
-
 }
 
 // eslint-disable-next-line import/no-default-export
