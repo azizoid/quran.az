@@ -11,7 +11,16 @@ export type SoorahListProps = {
 }
 
 export const SOORAH_LIST: SoorahListProps[] = [
-  ,
+  {
+    id: 0,
+    title: '',
+    fullTitle: '',
+    ayahCount: 0,
+    order: 0,
+    arabic: '',
+    city: 'Mecca',
+    juz: [0]
+  },
   {
     id: 1,
     title: 'Fatihə',
@@ -1167,3 +1176,5 @@ export const SOORAH_LIST: SoorahListProps[] = [
     juz: [30],
   },
 ]
+
+export const soorahList = SOORAH_LIST.slice(1)

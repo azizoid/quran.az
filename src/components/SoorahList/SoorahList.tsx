@@ -1,4 +1,4 @@
-import { SOORAH_LIST as soorahList } from 'src/assets/soorah-list-object'
+import { soorahList } from 'src/assets/soorah-list-object'
 
 import { SoorahListItem } from './SoorahListItem'
 

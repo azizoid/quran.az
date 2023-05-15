@@ -25,7 +25,7 @@ export const getView = (form: Partial<FormProps>): FormProps => {
     result.view = 'search'
   }
 
-  if (form?.t < TRANSLATOR_LIST.length) {
+  if (form?.t && form.t < TRANSLATOR_LIST.length) {
     result.t = form.t
   }
 

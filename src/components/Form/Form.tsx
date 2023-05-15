@@ -2,8 +2,8 @@ import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 're
 
 import { useRouter } from 'next/router'
 
-import { SOORAH_LIST } from 'src/assets/soorah-list-object'
-import { TRANSLATOR_LIST } from 'src/assets/translatorList'
+import { soorahList } from 'src/assets/soorah-list-object'
+import { translatorList } from 'src/assets/translatorList'
 import { FormProps } from 'src/lib/types'
 import { getView } from 'src/utility'
 
@@ -92,7 +92,7 @@ export const Form = (): JSX.Element => {
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>
-          {SOORAH_LIST.map(({ id, title }) => (
+          {soorahList.map(({ id, title }) => (
             <option value={id} key={id}>
               {`${title} surəsi. ${id}`}
             </option>
@@ -118,8 +118,8 @@ export const Form = (): JSX.Element => {
           value={state?.t}
           onChange={onHandleChange}
         >
-          {TRANSLATOR_LIST.map((soorah, index) => (
-            <option value={index} key={index}>
+          {translatorList.map((soorah, index) => (
+            <option value={index + 1} key={index}>
               {soorah}
             </option>
           ))}
