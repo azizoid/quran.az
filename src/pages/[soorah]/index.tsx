@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 
 import Head from 'next/head'
 
@@ -7,11 +7,16 @@ import { GetServerSideProps } from 'next'
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 import { SoorahAyah, PaginateSoorahList } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
-import { DisplayData } from 'src/lib/types'
+import { DisplayData, FormProps } from 'src/lib/types'
 import { Bismillah, SoorahCaption } from 'src/ui'
 import { numberSuffixAz } from 'src/utility'
 
-export const Soorah = ({ out, data }): JSX.Element => {
+type SoorahPageProps = {
+  out: DisplayData[]
+  data: FormProps & { translator: number }
+}
+
+export const Soorah: FC<SoorahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({ out, data }) => {
   const sajda = SOORAH_LIST[data.s]?.sajda
 
   return (

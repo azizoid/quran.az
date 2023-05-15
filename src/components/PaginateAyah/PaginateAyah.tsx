@@ -3,8 +3,8 @@ import Link from 'next/link'
 export type PaginateAyahProps = {
   soorah: number
   ayah: number
-  prev?: number
-  next?: number
+  prev?: number | null
+  next?: number | null
   translator?: number
 }
 

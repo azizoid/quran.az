@@ -5,7 +5,7 @@ export type CardProps = {
   titleClassName?: string | null
   contentClass?: string | null
   className?: string
-  size?: 'small' | 'medium' | 'fit'
+  size?: 'small' | 'medium'
   children?: ReactNode
 }
 

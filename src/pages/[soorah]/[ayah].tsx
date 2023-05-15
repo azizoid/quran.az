@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 
 import Head from 'next/head'
 
@@ -8,7 +8,13 @@ import { PaginateAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from 'src/ui'
 
-export const Ayah = ({
+import { AyahResponseType } from '../api/[soorah]/[ayah]'
+
+export interface AyahPageProps extends Pick<AyahResponseType, 'soorah' | 'ayah' | 'content' | 'arabic' | 'transliteration' | 'prev' | 'next'> {
+  translator: number
+}
+
+export const Ayah: FC<AyahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({
   soorah,
   ayah,
   content,

@@ -13,7 +13,7 @@ type FormContextProviderProps = {
 
 export const FormContextProvider = ({ children }: FormContextProviderProps) => {
   const { query } = useRouter()
-  const [state, setState] = useState<FormProps>()
+  const [state, setState] = useState<FormProps>({} as FormProps)
 
   const getDataFromRouter = useMemo(
     () =>

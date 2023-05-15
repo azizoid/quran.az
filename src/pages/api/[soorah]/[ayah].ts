@@ -28,8 +28,8 @@ const handler = async (
   { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
   res: NextApiResponse<ReponseProps>
 ) => {
-  const soorah = Number(query.soorah.toString())
-  const ayah = Number(query.ayah.toString())
+  const soorah = Number(query.soorah?.toString())
+  const ayah = Number(query.ayah?.toString())
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, a: ayah, t: translator })
 

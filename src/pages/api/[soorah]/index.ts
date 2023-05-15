@@ -18,7 +18,7 @@ const handler = async (
 ) => {
   res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
 
-  const soorah = Number(query.soorah.toString())
+  const soorah = Number(query.soorah?.toString())
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
   const data = getView({ s: soorah, t: translator })
 

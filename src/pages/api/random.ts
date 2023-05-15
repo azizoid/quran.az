@@ -21,13 +21,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
     const random = await withMongo(async (db: Db) => {
       const pipeline = [{ $sample: { size: 1 } }]
 
-      const { id, soorah, ayah, content, content_latinized, translator } = await db
-        .collection<DataPropsLatinized>('quranaz')
-        .aggregate(pipeline)
+      const randomAyah = await db
+        .collection('quranaz')
+        .aggregate<DataPropsLatinized>(pipeline)
         .next()
         .catch((error) => {
           throw new Error(error)
         })
+
+      const { id, soorah, ayah, content, content_latinized, translator } = randomAyah!
 
       return { id, soorah, ayah, content, content_latinized, translator }
     })

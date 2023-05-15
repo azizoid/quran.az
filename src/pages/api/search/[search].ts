@@ -25,6 +25,7 @@ const handler = async (
     .replace(/[-/\^$*+?.()|[]{}]/g, '$&')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+
   const currentPage = Number(query.page?.toString()) || 1
   const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
@@ -40,7 +41,7 @@ const handler = async (
       return await collection
         .find(
           {
-            content_latinized: new RegExp(data.q, 'i'),
+            content_latinized: data.q ? new RegExp(data.q, 'i') : undefined,
             translator: data.t,
           },
           {}
