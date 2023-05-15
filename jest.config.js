@@ -20,15 +20,15 @@ const customJestConfig = {
       lines: 90,
     },
   },
-  coveragePathIgnorePatterns: ['/node_modules/', '/utility/', '/components/sidebar', '/*/index'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/src/utility/', '/src/components/sidebar', '/*/index'],
   moduleNameMapper: {
-    '^@/components(.*)$': '<rootDir>/components$1',
-    '^@/ui(.*)$': '<rootDir>/ui$1',
+    '^@/components(.*)$': '<rootDir>/src/components$1',
+    '^@/ui(.*)$': '<rootDir>/src/ui$1',
 
-    '^@/utility$': '<rootDir>/utility/index',
-    '^@/assets/(.*)$': '<rootDir>/assets/$1',
-    '^@/lib/(.*)$': '<rootDir>/lib/$1',
-    '^@/layouts/(.*)$': '<rootDir>/layouts/$1',
+    '^@/utility$': '<rootDir>/src/utility/index',
+    '^@/assets/(.*)$': '<rootDir>/src/assets/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^@/layouts/(.*)$': '<rootDir>/src/layouts/$1',
   },
 }
 

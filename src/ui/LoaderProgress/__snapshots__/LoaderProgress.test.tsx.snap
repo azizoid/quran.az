@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the snapshot of LoaderProgress 1`] = `
+<div>
+  <div
+    class="progressLoader"
+  />
+</div>
+`;
