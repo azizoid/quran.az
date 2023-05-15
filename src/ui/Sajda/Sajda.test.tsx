@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { Sajda } from './Sajda'
 
 test('Render Sajda', () => {

@@ -1,7 +1,9 @@
 import Link from 'next/link'
+
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
-import styles from './SoorahCaption.module.css'
 import { CityAndSize } from 'src/ui'
+
+import styles from './SoorahCaption.module.css'
 
 export type SoorahCaptionProps = {
   soorah: number

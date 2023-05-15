@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { CityAndSize } from './CityAndSize'
 
 test('Render CityAndSize', () => {

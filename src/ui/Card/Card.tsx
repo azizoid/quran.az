@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 export type CardProps = {
   title: string | ReactNode
@@ -9,10 +9,10 @@ export type CardProps = {
   children?: ReactNode
 }
 
-enum cardSize {
-  small = 'px-4',
-  medium = 'px-7',
-}
+const cardSizes = {
+  small: 'px-4',
+  medium: 'px-7',
+} as const
 
 export const Card = ({
   title,
@@ -22,7 +22,7 @@ export const Card = ({
   children,
 }: CardProps) => (
   <div className="card">
-    <div className={`card-title ${cardSize[size]} ${titleClassName}`}>{title}</div>
-    <div className={`card-content ${cardSize[size]} ${className}`}>{children}</div>
+    <div className={`card-title ${cardSizes[size]} ${titleClassName}`}>{title}</div>
+    <div className={`card-content ${cardSizes[size]} ${className}`}>{children}</div>
   </div>
 )

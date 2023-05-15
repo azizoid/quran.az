@@ -1,7 +1,7 @@
-import { prettyDOM, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { useRouter } from 'next/router'
 
 import { FormContextProvider } from './form-store'
-import { useRouter } from 'next/router'
 
 const push = jest.fn()
 jest.mock('next/router', () => ({

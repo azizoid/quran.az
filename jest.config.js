@@ -20,7 +20,12 @@ const customJestConfig = {
       lines: 90,
     },
   },
-  coveragePathIgnorePatterns: ['/node_modules/', '/src/utility/', '/src/components/sidebar', '/*/index'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/src/utility/',
+    '/src/components/sidebar',
+    '/*/index',
+  ],
   moduleNameMapper: {
     '^@/components(.*)$': '<rootDir>/src/components$1',
     '^@/ui(.*)$': '<rootDir>/src/ui$1',

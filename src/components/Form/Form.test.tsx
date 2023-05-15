@@ -15,7 +15,7 @@ jest.mock('next/router', () => ({
 jest.mock('@/ui/LoadingBoxes/LoadingBoxes', () => <span>Loader</span>)
 
 beforeEach(() => {
-  ; (useRouter as jest.Mock).mockImplementation(() => ({
+  ;(useRouter as jest.Mock).mockImplementation(() => ({
     push,
     query: {},
   }))

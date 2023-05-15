@@ -1,9 +1,9 @@
 import { FaKaaba, FaMosque } from 'react-icons/fa'
 
-enum IconSize {
-  sm = 16,
-  md = 18,
-}
+const iconSizes = {
+  sm: 16,
+  md: 18,
+} as const
 
 export type CityAndSizeProps = {
   city: string
@@ -22,12 +22,12 @@ export const CityAndSize = ({
     <span className="flex gap-1 align-middle whitespace-nowrap">
       {city === 'Mecca' ? (
         <>
-          <FaKaaba size={IconSize[size]} className="text-gray-300 group-hover:text-gray-600" />
+          <FaKaaba size={iconSizes[size]} className="text-gray-300 group-hover:text-gray-600" />
           Məkkə surəsi
         </>
       ) : (
         <>
-          <FaMosque size={IconSize[size]} className="text-gray-300 group-hover:text-gray-600" />
+          <FaMosque size={iconSizes[size]} className="text-gray-300 group-hover:text-gray-600" />
           Mədinə surəsi
         </>
       )}
