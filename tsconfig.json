@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
@@ -16,15 +20,35 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components": ["components/index"],
-      "@/components/sidebar/*": ["components/sidebar/*"],
-      "@/ui": ["ui/index"],
-      "@/utility": ["utility/index"],
-      "@/assets/*": ["assets/*"],
-      "@/lib/*": ["lib/*"],
-      "@/layouts/*": ["layouts/*"]
+      "@/components": [
+        "src/components/index"
+      ],
+      "@/components/sidebar/*": [
+        "src/components/sidebar/*"
+      ],
+      "@/ui": [
+        "src/ui/index"
+      ],
+      "@/utility": [
+        "src/utility/index"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ],
+      "@/lib/*": [
+        "src/lib/*"
+      ],
+      "@/layouts/*": [
+        "src/layouts/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
