@@ -3,13 +3,13 @@ import { FC, ReactElement } from 'react'
 import Head from 'next/head'
 
 import { GetServerSideProps } from 'next'
+import { sirasayi } from 'sirasayi'
 
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 import { SoorahAyah, PaginateSoorahList } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { DisplayData, FormProps } from 'src/lib/types'
 import { Bismillah, SoorahCaption } from 'src/ui'
-import { numberSuffixAz } from 'src/utility'
 
 type SoorahPageProps = {
   out: DisplayData[]
@@ -22,7 +22,7 @@ export const Soorah: FC<SoorahPageProps> & { getLayout: (page: ReactElement) => 
   return (
     <>
       <Head>
-        <title>{`${SOORAH_LIST[data.s]['fullTitle']}, ${numberSuffixAz(
+        <title>{`${SOORAH_LIST[data.s]['fullTitle']}, ${sirasayi(
           SOORAH_LIST[data.s]['id']
         )} surə | Öz Kitabını oxu | quran.az`}</title>
         <meta

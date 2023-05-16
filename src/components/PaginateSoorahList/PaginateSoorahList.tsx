@@ -1,7 +1,8 @@
 import Link from 'next/link'
 
+import { sirasayi } from 'sirasayi'
+
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
-import { numberSuffixAz } from 'src/utility'
 
 export type PaginateSoorahListProps = {
   soorah: number
@@ -22,18 +23,18 @@ export const PaginateSoorahList = ({
           href={`/${prev}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
         >
-          {numberSuffixAz(prev)} {SOORAH_LIST[prev]['fullTitle']}
+          {sirasayi(prev)} {SOORAH_LIST[prev]['fullTitle']}
         </Link>
       )}
       <span className="pagination-disabled flex flex-col text-center">
-        {numberSuffixAz(soorah)} {SOORAH_LIST[soorah]['fullTitle']}
+        {sirasayi(soorah)} {SOORAH_LIST[soorah]['fullTitle']}
       </span>
       {next !== null && (
         <Link
           href={`/${next}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
         >
-          {numberSuffixAz(next)} {SOORAH_LIST[next]['fullTitle']}
+          {sirasayi(next)} {SOORAH_LIST[next]['fullTitle']}
         </Link>
       )}
     </div>
