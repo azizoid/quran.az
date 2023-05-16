@@ -102,6 +102,7 @@ jobs:
           script: |
             cd ${{ env.TARGET_DIRECTORY }}
             git fetch
+            git pull
             yarn
             pm2 restart 0
             echo "Files uploaded successfully!"
