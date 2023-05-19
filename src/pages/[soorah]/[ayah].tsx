@@ -2,8 +2,9 @@ import { FC, ReactElement } from 'react'
 
 import Head from 'next/head'
 
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 
+import { getAyah } from '@/lib/getAyah'
 import { PaginateAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from 'src/ui'
@@ -14,7 +15,7 @@ export interface AyahPageProps extends Pick<AyahResponseType, 'soorah' | 'ayah' 
   translator: number
 }
 
-export const Ayah: FC<AyahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({
+export const Ayah: NextPage<AyahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({
   soorah,
   ayah,
   content,
@@ -55,30 +56,18 @@ Ayah.getLayout = (page: ReactElement) => {
   return <MainLayout>{page}</MainLayout>
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ query }) => {
   const soorah = Number(query.soorah)
   const ayah = Number(query.ayah)
-  const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}/${ayah}?t=${translator}`)
+    const { out } = JSON.parse(await getAyah({ soorah, ayah, translator }))
 
-    if (res.ok) {
-      const data = await res.json()
-
-      if (!data.success) {
-        return {
-          notFound: true,
-        }
-      }
-
-      return {
-        props: {
-          ...data.out,
-        },
-      }
-    } else {
-      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`)
+    return {
+      props: {
+        ...out
+      },
     }
   } catch (error) {
     // eslint-disable-next-line no-console
