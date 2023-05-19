@@ -1,15 +1,13 @@
-import { FC, ReactElement } from 'react'
+import { ReactElement } from 'react'
 
 import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
 
-import { getAyahService } from '@/lib/getAyah'
+import { AyahResponseType, getAyahService } from '@/lib/getAyah'
 import { PaginateAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from 'src/ui'
-
-import { AyahResponseType } from '../api/[soorah]/[ayah]'
 
 export interface AyahPageProps extends Pick<AyahResponseType, 'soorah' | 'ayah' | 'content' | 'arabic' | 'transliteration' | 'prev' | 'next'> {
   translator: number

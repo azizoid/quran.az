@@ -1,13 +1,25 @@
 import { Db } from 'mongodb'
 
 import { getView } from '@/utility'
-import { AyahResponseType } from 'src/pages/api/[soorah]/[ayah]'
 
 import { GetSoorahServiceProps } from './getSoorah'
 import { withMongo } from './mongodb'
 
 interface GetAyahServiceProps extends GetSoorahServiceProps {
   ayah: number
+}
+
+export type AyahResponseType = {
+  id: string
+  soorah: number
+  ayah: number
+  content: string
+  content_latinized: string
+  arabic: string
+  transliteration: string
+  juz: number
+  prev: number | null
+  next: number | null
 }
 
 export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServiceProps) => {
