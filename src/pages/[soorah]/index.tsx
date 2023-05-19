@@ -57,23 +57,34 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const soorah = Number(query.soorah)
   const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`).then(
-    (result) => result.json()
-  )
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`)
 
-  if (!res?.success) {
+    if (res.ok) {
+      const data = await res.json()
+
+      if (!data.success) {
+        return {
+          notFound: true,
+        }
+      }
+
+      return {
+        props: {
+          out: data.out,
+          data: { ...data.data, translator },
+        },
+      }
+    } else {
+      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`)
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error fetching data:', error)
     return {
       notFound: true,
     }
   }
-
-  return {
-    props: {
-      out: res.out,
-      data: { ...res.data, translator },
-    },
-  }
 }
 
-// eslint-disable-next-line import/no-default-export
 export default Soorah
