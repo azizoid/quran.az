@@ -4464,9 +4464,9 @@ signal-exit@^3.0.3, signal-exit@^3.0.7:
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
 sirasayi@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/sirasayi/-/sirasayi-1.1.1.tgz#3985c45c8e13e576ca2b4d167d48a60c8b43b458"
-  integrity sha512-1LSGsK1VzlLZsx5tCfrMVA1Ej0mx80CatCQMBsLO9ZJxsMMcQUYfMiNYoEzuPVWujxTr+s7QAliD56Qgo5kKTw==
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/sirasayi/-/sirasayi-1.1.4.tgz#b9b36a3883c24c312fd0f4d648beb059e75e1183"
+  integrity sha512-K+wng9c1H+thveQyB+YG1mHXoqsCNS8vLjT9at5P5YtwKCRuKojNKWSpWdy32CeDvtSOGvxAGvxCSPA3ejrnBA==
 
 sisteransi@^1.0.5:
   version "1.0.5"
