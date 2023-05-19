@@ -5,12 +5,12 @@ import { getView } from '@/utility'
 import { DataPropsLatinized } from './db-types'
 import { withMongo } from './mongodb'
 
-export interface GetSoorahProps {
+export interface GetSoorahServiceProps {
   soorah: number
   translator: number
 }
 
-export const getSoorah = async ({ soorah, translator }: GetSoorahProps) => {
+export const getSoorahService = async ({ soorah, translator }: GetSoorahServiceProps) => {
   const data = getView({ s: soorah, t: translator })
 
   if (data.view === 'empty') {

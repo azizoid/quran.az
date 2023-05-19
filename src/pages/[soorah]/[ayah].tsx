@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
 
-import { getAyah } from '@/lib/getAyah'
+import { getAyahService } from '@/lib/getAyah'
 import { PaginateAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from 'src/ui'
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ qu
   const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
-    const { out } = JSON.parse(await getAyah({ soorah, ayah, translator }))
+    const { out } = JSON.parse(await getAyahService({ soorah, ayah, translator }))
 
     return {
       props: {

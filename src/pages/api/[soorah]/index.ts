@@ -1,7 +1,7 @@
 import { Db } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getSoorah } from '@/lib/getSoorah'
+import { getSoorahService } from '@/lib/getSoorah'
 import { ResponseData } from 'src/lib/db-types'
 import { FormProps } from 'src/lib/types'
 import { DisplayData } from 'src/lib/types'
@@ -15,7 +15,7 @@ const handler = async (
   { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
   res: NextApiResponse<ReponseProps>
 ) => {
-  // res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
+  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
 
   const soorah = Number(query.soorah?.toString())
   const translator = Number(query.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
@@ -25,7 +25,7 @@ const handler = async (
       throw new Error('Method is not allowed')
     }
 
-    const { out, data } = JSON.parse(await getSoorah({ soorah, translator }))
+    const { out, data } = JSON.parse(await getSoorahService({ soorah, translator }))
 
     return res.json({ out, data, success: true })
   } catch (error) {

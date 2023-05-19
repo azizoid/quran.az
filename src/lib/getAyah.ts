@@ -3,14 +3,14 @@ import { Db } from 'mongodb'
 import { getView } from '@/utility'
 import { AyahResponseType } from 'src/pages/api/[soorah]/[ayah]'
 
-import { GetSoorahProps } from './getSoorah'
+import { GetSoorahServiceProps } from './getSoorah'
 import { withMongo } from './mongodb'
 
-interface GetAyahProps extends GetSoorahProps {
+interface GetAyahServiceProps extends GetSoorahServiceProps {
   ayah: number
 }
 
-export const getAyah = async ({ soorah, ayah, translator }: GetAyahProps) => {
+export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServiceProps) => {
   const data = getView({ s: soorah, a: ayah, t: translator })
 
   if (data.view === 'empty') {

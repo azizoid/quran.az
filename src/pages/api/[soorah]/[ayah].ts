@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { getAyah } from '@/lib/getAyah'
+import { getAyahService } from '@/lib/getAyah'
 import { ResponseData } from 'src/lib/db-types'
 import { FormProps } from 'src/lib/types'
 
@@ -35,7 +35,7 @@ const handler = async (
       throw new Error('Method is not allowed')
     }
 
-    const { out, data } = JSON.parse(await getAyah({ soorah, ayah, translator }))
+    const { out, data } = JSON.parse(await getAyahService({ soorah, ayah, translator }))
 
     return res.json({ out, data, success: true })
   } catch (error) {

@@ -5,7 +5,7 @@ import Head from 'next/head'
 import { GetServerSideProps, NextPage } from 'next'
 import { sirasayi } from 'sirasayi'
 
-import { getSoorah } from '@/lib/getSoorah'
+import { getSoorahService } from '@/lib/getSoorah'
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 import { SoorahAyah, PaginateSoorahList } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
@@ -14,7 +14,7 @@ import { Bismillah, SoorahCaption } from 'src/ui'
 
 type SoorahPageProps = {
   out: DisplayData[]
-  data: FormProps & { translator: number }
+  data: FormProps
 }
 
 export const Soorah: NextPage<SoorahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({ out, data }) => {
@@ -36,7 +36,7 @@ export const Soorah: NextPage<SoorahPageProps> & { getLayout: (page: ReactElemen
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-        <SoorahCaption soorah={data.s} translator={data.translator} />
+        <SoorahCaption soorah={data.s} translator={data.t} />
 
         {data.s !== 9 && <Bismillah />}
 
@@ -59,12 +59,11 @@ export const getServerSideProps: GetServerSideProps<SoorahPageProps> = async ({ 
   const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
-    const result = JSON.parse(await getSoorah({ soorah, translator }))
+    const { out, data } = JSON.parse(await getSoorahService({ soorah, translator }))
 
     return {
       props: {
-        out: result.out,
-        data: { ...result.data, translator },
+        out, data,
       },
     }
   } catch (error) {
