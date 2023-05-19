@@ -1,0 +1,28 @@
+import { Db } from 'mongodb'
+
+import { getView } from '@/utility'
+
+import { DataPropsLatinized } from './db-types'
+import { withMongo } from './mongodb'
+
+export interface GetSoorahProps {
+  soorah: number
+  translator: number
+}
+
+export const getSoorah = async ({ soorah, translator }: GetSoorahProps) => {
+  const data = getView({ s: soorah, t: translator })
+
+  if (data.view === 'empty') {
+    throw new Error('Soorah not found')
+  }
+
+  const out = await withMongo(async (db: Db) => {
+    const collection = db.collection<DataPropsLatinized>('quranaz')
+    return await collection
+      .find({ soorah, translator })
+      .sort(['soorah', 'ayah'])
+      .toArray()
+  })
+  return JSON.stringify({ out, data })
+}

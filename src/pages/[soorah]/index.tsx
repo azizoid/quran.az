@@ -2,9 +2,10 @@ import { FC, ReactElement } from 'react'
 
 import Head from 'next/head'
 
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { sirasayi } from 'sirasayi'
 
+import { getSoorah } from '@/lib/getSoorah'
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 import { SoorahAyah, PaginateSoorahList } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
@@ -16,7 +17,7 @@ type SoorahPageProps = {
   data: FormProps & { translator: number }
 }
 
-export const Soorah: FC<SoorahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({ out, data }) => {
+export const Soorah: NextPage<SoorahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({ out, data }) => {
   const sajda = SOORAH_LIST[data.s]?.sajda
 
   return (
@@ -53,30 +54,18 @@ Soorah.getLayout = (page: ReactElement) => {
   return <MainLayout>{page}</MainLayout>
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps<SoorahPageProps> = async ({ query }) => {
   const soorah = Number(query.soorah)
-  const translator = Number(query?.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/${soorah}?t=${translator}`)
+    const result = JSON.parse(await getSoorah({ soorah, translator }))
 
-    if (res.ok) {
-      const data = await res.json()
-
-      if (!data.success) {
-        return {
-          notFound: true,
-        }
-      }
-
-      return {
-        props: {
-          out: data.out,
-          data: { ...data.data, translator },
-        },
-      }
-    } else {
-      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`)
+    return {
+      props: {
+        out: result.out,
+        data: { ...result.data, translator },
+      },
     }
   } catch (error) {
     // eslint-disable-next-line no-console
