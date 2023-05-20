@@ -56,7 +56,7 @@ Soorah.getLayout = (page: ReactElement) => {
 
 export const getServerSideProps: GetServerSideProps<SoorahPageProps> = async ({ query }) => {
   const soorah = Number(query.soorah)
-  const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
+  const translator = Number(query?.t?.toString()) || Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
     const { out, data } = JSON.parse(await getSoorahService({ soorah, translator }))

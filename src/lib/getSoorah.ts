@@ -14,7 +14,7 @@ export const getSoorahService = async ({ soorah, translator }: GetSoorahServiceP
   const data = getView({ s: soorah, t: translator })
 
   if (data.view === 'empty') {
-    throw new Error('Soorah not found')
+    throw new Error(`Soorah view is 'empty': { soorah: ${soorah}, translation: ${translator}}`)
   }
 
   const out = await withMongo(async (db: Db) => {
@@ -24,5 +24,10 @@ export const getSoorahService = async ({ soorah, translator }: GetSoorahServiceP
       .sort(['soorah', 'ayah'])
       .toArray()
   })
+
+  if (!out) {
+    throw new Error(`Soorah not found: { soorah: ${soorah}, translation: ${translator}}`)
+  }
+
   return JSON.stringify({ out, data })
 }

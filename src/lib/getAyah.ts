@@ -26,7 +26,7 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
   const data = getView({ s: soorah, a: ayah, t: translator })
 
   if (data.view === 'empty') {
-    throw new Error('Ayah not found')
+    throw new Error(`Ayah view is 'empty': soorah: ${soorah}, ayah: ${ayah}, translator: ${translator}`)
   }
 
   const out = await withMongo(async (db: Db) => {
@@ -70,7 +70,7 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
       .next()
 
     if (!content) {
-      throw new Error('Ayah not found')
+      throw new Error(`Ayah not found: soorah: ${soorah}, ayah: ${ayah}, translator: ${translator}`)
     }
 
     const prevAyah = Number(data.a) - 1

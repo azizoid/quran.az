@@ -57,7 +57,7 @@ Ayah.getLayout = (page: ReactElement) => {
 export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ query }) => {
   const soorah = Number(query.soorah)
   const ayah = Number(query.ayah)
-  const translator = Number(query?.t?.toString() || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
+  const translator = Number(query?.t?.toString()) || Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   try {
     const { out } = JSON.parse(await getAyahService({ soorah, ayah, translator }))
