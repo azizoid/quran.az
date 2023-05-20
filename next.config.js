@@ -45,7 +45,7 @@ module.exports = withSentryConfig(
     silent: true,
 
     org: 'good-ideas',
-    project: 'good-ideas',
+    project: 'quran-az',
   },
   {
     // For all available options, see:
