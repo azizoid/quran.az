@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@sentry/nextjs": "^7.52.1",
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
     "mongodb": "^5.3.0",
