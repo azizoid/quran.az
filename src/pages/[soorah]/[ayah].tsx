@@ -1,11 +1,12 @@
 import { ReactElement } from 'react'
 
-import * as Sentry from '@sentry/node'
+// import * as Sentry from '@sentry/node'
 import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
 
 import { AyahResponseType, getAyahService } from '@/lib/getAyah'
+import { getView } from '@/utility'
 import { PaginateAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from 'src/ui'
@@ -14,7 +15,7 @@ export interface AyahPageProps extends Pick<AyahResponseType, 'soorah' | 'ayah' 
   translator: number
 }
 
-export const Ayah: NextPage<AyahPageProps> & { getLayout: (page: ReactElement) => JSX.Element } = ({
+export const Ayah: NextPage<AyahPageProps> & { getLayout: (page: ReactElement) => ReactElement } = ({
   soorah,
   ayah,
   content,
@@ -60,7 +61,27 @@ export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ qu
   const ayah = Number(query.ayah)
   const translator = Number(query?.t?.toString()) || Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
+  const data = getView({ s: soorah, a: ayah, t: translator })
+
   try {
+    if (data.view !== 'ayah') {
+      if (data.view === 'soorah') {
+        return {
+          redirect: {
+            destination: `/${soorah}?t=${data.t}`,
+            permanent: false,
+          },
+        }
+      }
+
+      return {
+        redirect: {
+          destination: '/?not-an-ayah',
+          permanent: false,
+        },
+      }
+    }
+
     const { out } = JSON.parse(await getAyahService({ soorah, ayah, translator }))
 
     return {
@@ -72,7 +93,7 @@ export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ qu
     // eslint-disable-next-line no-console
     console.error('Error fetching data:', error)
 
-    Sentry.captureException(error) // Log the error to Sentry
+    // Sentry.captureException(error) // Log the error to Sentry
 
     return {
       notFound: true,

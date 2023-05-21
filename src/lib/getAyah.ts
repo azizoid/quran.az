@@ -1,7 +1,5 @@
 import { Db } from 'mongodb'
 
-import { getView } from '@/utility'
-
 import { GetSoorahServiceProps } from './getSoorah'
 import { withMongo } from './mongodb'
 
@@ -23,12 +21,6 @@ export type AyahResponseType = {
 }
 
 export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServiceProps) => {
-  const data = getView({ s: soorah, a: ayah, t: translator })
-
-  if (data.view === 'empty') {
-    throw new Error(`Ayah view is 'empty': soorah: ${soorah}, ayah: ${ayah}, translator: ${translator}`)
-  }
-
   const out = await withMongo(async (db: Db) => {
     const contentCollection = db.collection('quranaz')
 
@@ -36,9 +28,9 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
       .aggregate<AyahResponseType>([
         {
           $match: {
-            soorah: Number(data.s),
-            ayah: Number(data.a),
-            translator: data.t,
+            soorah,
+            ayah,
+            translator,
           },
         },
         {
@@ -73,15 +65,15 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
       throw new Error(`Ayah not found: soorah: ${soorah}, ayah: ${ayah}, translator: ${translator}`)
     }
 
-    const prevAyah = Number(data.a) - 1
-    const nextAyah = Number(data.a) + 1
+    const prevAyah = Number(ayah) - 1
+    const nextAyah = Number(ayah) + 1
 
     const prevAndNext = await contentCollection
       .find<{ ayah: number }>(
         {
-          soorah: data.s,
+          soorah,
           ayah: { $in: [prevAyah, nextAyah] },
-          translator: data.t,
+          translator,
         },
         { projection: { ayah: 1, _id: 0 } }
       )
@@ -93,5 +85,5 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
     return { ...content, prev, next }
   })
 
-  return JSON.stringify({ out, data })
+  return JSON.stringify({ out })
 }
