@@ -36,3 +36,6 @@ yarn-error.log*
 
 .sentryclirc
 sentry.properties
+
+# Sentry Auth Token
+.sentryclirc
