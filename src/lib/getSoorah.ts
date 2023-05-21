@@ -1,7 +1,5 @@
 import { Db } from 'mongodb'
 
-import { getView } from '@/utility'
-
 import { DataPropsLatinized } from './db-types'
 import { withMongo } from './mongodb'
 
@@ -11,12 +9,6 @@ export interface GetSoorahServiceProps {
 }
 
 export const getSoorahService = async ({ soorah, translator }: GetSoorahServiceProps) => {
-  const data = getView({ s: soorah, t: translator })
-
-  if (data.view === 'empty') {
-    throw new Error(`Soorah view is 'empty': { soorah: ${soorah}, translation: ${translator}}`)
-  }
-
   const out = await withMongo(async (db: Db) => {
     const collection = db.collection<DataPropsLatinized>('quranaz')
     return await collection
@@ -29,5 +21,5 @@ export const getSoorahService = async ({ soorah, translator }: GetSoorahServiceP
     throw new Error(`Soorah not found: { soorah: ${soorah}, translation: ${translator}}`)
   }
 
-  return JSON.stringify({ out, data })
+  return JSON.stringify({ out })
 }
