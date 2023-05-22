@@ -15,29 +15,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
     await runMiddleware(req, res)
 
     if (req.method !== 'GET') {
-      throw new Error()
+      throw new Error('Invalid method')
     }
 
-    const random = await withMongo(async (db: Db) => {
+    const randomAyah = await withMongo(async (db: Db) => {
       const pipeline = [{ $sample: { size: 1 } }]
-
-      const randomAyah = await db
-        .collection('quranaz')
-        .aggregate<DataPropsLatinized>(pipeline)
-        .next()
-        .catch((error) => {
-          throw new Error(error)
-        })
-
-      const { id, soorah, ayah, content, content_latinized, translator } = randomAyah!
-
-      return { id, soorah, ayah, content, content_latinized, translator }
+      const collection = db.collection<DataPropsLatinized>('quranaz')
+      return await collection.aggregate(pipeline).next()
     })
 
-    return res.json({ out: random, success: true })
+    if (!randomAyah) {
+      throw new Error('No random ayah found')
+    }
+
+    const { id, soorah, ayah, content, content_latinized, translator } = randomAyah
+
+    return res.json({ out: { id, soorah, ayah, content, content_latinized, translator }, success: true })
   } catch (error) {
-    res.status(400).json({ success: false })
+    return res.status(400).json({ success: false })
   }
 }
-// eslint-disable-next-line import/no-default-export
+
 export default handler
