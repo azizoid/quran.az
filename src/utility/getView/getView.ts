@@ -15,22 +15,24 @@ const initialStateProps: FormProps = {
 export const getView = (form: Partial<FormProps>): FormProps => {
   const result: Partial<FormProps> = {}
 
-  const soorah = soorahList.find(({ id }) => id === form.s)
+  if (form.s) {
+    const soorah = soorahList.find(({ id }) => id === form.s)
 
-  if (form?.s && soorah) {
-    result.s = soorah.id
-    result.view = 'soorah'
+    if (soorah) {
+      result.s = soorah.id
+      result.view = 'soorah'
 
-    if (form?.a && form.a > 0 && form.a <= soorah.ayahCount) {
-      result.a = form.a
-      result.view = 'ayah'
+      if (form.a && form.a > 0 && form.a <= soorah.ayahCount) {
+        result.a = form.a
+        result.view = 'ayah'
+      }
     }
-  } else if (form?.q && form.q.length > 2) {
+  } else if (form.q && form.q.length > 2) {
     result.q = form.q
     result.view = 'search'
   }
 
-  if (form?.t && form.t < TRANSLATOR_LIST.length) {
+  if (form.t !== undefined && form.t < TRANSLATOR_LIST.length) {
     result.t = form.t
   }
 
