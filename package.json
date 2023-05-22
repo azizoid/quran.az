@@ -9,7 +9,7 @@
     "lint": "next lint",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "type-check": "tsc",
-    "test": "jest"
+    "test": "jest --config ./config/jest.config.js"
   },
   "dependencies": {
     "@sentry/nextjs": "^7.52.1",
