@@ -13,18 +13,15 @@ import { Loader } from 'src/ui'
 
 export const Search = () => {
   const { query } = useRouter()
-
   const [currentPage, setCurrentPage] = useState(1)
-
-  const searchQuery =
-    typeof query?.search === 'string' && query?.search?.length > 2 ? query.search : undefined
+  const [searchQuery, setSearchQuery] = useState('')
 
   const translator = Number(query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
   const { data, isLoading, error, refetch } = useQuery<ReponseProps>(
     ['out', { page: currentPage, perPage: 30 }],
     () =>
-      fetch(`/api/search/${searchQuery}?page=${currentPage}&t=${translator}`).then((res) =>
+      fetch(`/api/search/${encodeURIComponent(searchQuery)}?page=${currentPage}&t=${translator}`).then((res) =>
         res.json()
       ),
     {
@@ -33,7 +30,13 @@ export const Search = () => {
   )
 
   useEffect(() => {
-    if (!!searchQuery) {
+    if (typeof query?.search === 'string' && query.search.length > 2) {
+      setSearchQuery(query.search)
+    }
+  }, [query])
+
+  useEffect(() => {
+    if (searchQuery) {
       refetch()
     }
   }, [refetch, searchQuery, translator])
@@ -46,21 +49,22 @@ export const Search = () => {
     return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
-  const paginateLinks = data?.paginate?.total > data?.paginate?.perPage && (
-    <li className="list-group-item">
-      <Pagination
-        activePage={data?.paginate.currentPage}
-        itemsCountPerPage={data?.paginate.perPage}
-        totalItemsCount={data?.paginate.total}
-        pageRangeDisplayed={5}
-        innerClass="pagination"
-        itemClass="pagination-item"
-        activeClass="pagination-active"
-        onChange={setCurrentPage}
-        hideDisabled={true}
-      />
-    </li>
-  )
+  const paginateLinks =
+    data?.paginate?.total > data?.paginate?.perPage ? (
+      <li className="list-group-item">
+        <Pagination
+          activePage={data?.paginate.currentPage}
+          itemsCountPerPage={data?.paginate.perPage}
+          totalItemsCount={data?.paginate.total}
+          pageRangeDisplayed={5}
+          innerClass="pagination"
+          itemClass="pagination-item"
+          activeClass="pagination-active"
+          onChange={setCurrentPage}
+          hideDisabled={true}
+        />
+      </li>
+    ) : null
 
   return (
     <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">

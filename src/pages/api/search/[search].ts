@@ -27,9 +27,11 @@ const handler = async (
 
     const search_query = query.search
       ?.toString()
-      .replace(/[-/\^$*+?.()|[]{}]/g, '$&')
+      .replace(/[^\w\s.,\-!?"']/g, '')
+      .replace(/\s+/g, ' ')
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
+      .trim()
 
     const currentPage = Number(query.page?.toString()) || 1
     const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
