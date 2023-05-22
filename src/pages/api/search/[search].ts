@@ -20,21 +20,21 @@ const handler = async (
   { query, method }: Pick<NextApiRequest, 'query' | 'method'>,
   res: NextApiResponse<ReponseProps | ResponseData>
 ) => {
-  const search_query = query.search
-    ?.toString()
-    .replace(/[-/\^$*+?.()|[]{}]/g, '$&')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-
-  const currentPage = Number(query.page?.toString()) || 1
-  const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
-
-  const data = getView({ q: search_query, t: translator })
-
   try {
     if (method !== 'GET') {
       throw new Error('Phrase not found')
     }
+
+    const search_query = query.search
+      ?.toString()
+      .replace(/[-/\^$*+?.()|[]{}]/g, '$&')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+
+    const currentPage = Number(query.page?.toString()) || 1
+    const translator = Number(query.t?.toString() || process.env.DEFAULT_TRANSLATOR)
+
+    const data = getView({ q: search_query, t: translator })
 
     const ayahs = await withMongo(async (db: Db) => {
       const collection = db.collection<DataPropsLatinized>('quranaz')
@@ -46,11 +46,11 @@ const handler = async (
           },
           {}
         )
-        .sort(['soorah', 'aya'])
+        .sort({ soorah: 1, ayah: 1 }) // Sort by soorah in ascending order, then by ayah in ascending order
         .toArray()
     })
 
-    if (!ayahs.length) {
+    if (ayahs.length === 0) {
       throw new Error('Not found')
     }
 
@@ -75,9 +75,8 @@ const handler = async (
       success: out.length > 0,
     })
   } catch (error) {
-    res.status(404).json({ success: false, error: String(error) })
+    return res.status(404).json({ success: false, error: String(error) })
   }
 }
 
-// eslint-disable-next-line import/no-default-export
 export default handler
