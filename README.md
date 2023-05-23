@@ -16,7 +16,7 @@ First version of the app was written in HTML in 2005, then PHP, then Moved to La
 - TypeScript
 - Tailwind CSS
 - Jest
-- React Query
+- ~~React Query~~ (replaced with SWR)
 - REST API
 - React Icons
 - MongoDB
@@ -27,5 +27,5 @@ First version of the app was written in HTML in 2005, then PHP, then Moved to La
 - Next.js for the React framework used in this project.
 - Tailwind CSS for the utility-first CSS framework used in this project.
 - Jest for the testing framework used in this project.
-- React Query for the data fetching and caching library used in this project.
+- ~~React Query~~ SWR for the data fetching and caching library used in this project.
 - MongoDB for the document database used in this project.

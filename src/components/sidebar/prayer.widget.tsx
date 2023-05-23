@@ -1,28 +1,14 @@
-import { getDayOfYear } from 'date-fns'
-import { useQuery } from 'react-query'
+import useSWR from 'swr'
 
+import { fetcher } from '@/utility'
 import { LoaderProgress } from 'src/ui'
 
-const dayOfYear = getDayOfYear(new Date()) + 2
-
-const fetchPrayersData = async (dayOfTheYear: number) => {
-  const response = await fetch('https://nam.az/api/v1/1')
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-  const data = await response.json()
-
-  return data
-}
-
 export const PrayerWidget = (): JSX.Element => {
-  const { data, isLoading, isError } = useQuery(
-    ['prayers', dayOfYear],
-    () => fetchPrayersData(dayOfYear),
-    {
-      staleTime: 60000,
-      cacheTime: 300000,
-    }
+  const { data, isLoading, error: isError } = useSWR(
+    'https://nam.az/api/v1/1', fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+  }
   )
 
   if (isLoading || isError) {

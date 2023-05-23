@@ -1,26 +1,21 @@
-import { useQuery } from 'react-query'
+import useSWR from 'swr'
 
+import { fetcher } from '@/utility'
 import { Card, LoadingBoxes, soorahAyahTitle } from 'src/ui'
 
 export const RandomAyah = (): JSX.Element => {
-  const { data, isLoading, isError } = useQuery(
-    'randomVerse',
-    async () => {
-      const response = await fetch('/api/random')
-      const responseData = await response.json()
-      return responseData.success ? responseData.out : null
-    },
-    {
-      staleTime: 60000,
-      cacheTime: 300000,
-    }
+  const { data, isLoading, error: isError } = useSWR(
+    '/api/random', fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+  }
   )
 
   if (isLoading || isError) {
     return <LoadingBoxes />
   }
 
-  const { soorah, ayah, translator, content } = data
+  const { soorah, ayah, translator, content } = data.out
 
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>

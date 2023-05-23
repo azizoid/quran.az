@@ -3,8 +3,9 @@ import { ReactElement, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import Pagination from 'react-js-pagination'
-import { useQuery } from 'react-query'
+import useSWR from 'swr'
 
+import { fetcher } from '@/utility'
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 import { SearchAyah } from 'src/components'
 import { MainLayout } from 'src/layouts/MainLayout'
@@ -18,15 +19,11 @@ export const Search = () => {
 
   const translator = Number(query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
-  const { data, isLoading, error, refetch } = useQuery<ReponseProps>(
-    ['out', { page: currentPage, perPage: 30 }],
-    () =>
-      fetch(`/api/search/${encodeURIComponent(searchQuery)}?page=${currentPage}&t=${translator}`).then((res) =>
-        res.json()
-      ),
-    {
-      enabled: !!searchQuery,
-    }
+  const { data, isLoading, error } = useSWR<ReponseProps>(
+    !!searchQuery ? `/api/search/${encodeURIComponent(searchQuery)}?page=${currentPage}&t=${translator}` : undefined, fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+  }
   )
 
   useEffect(() => {
@@ -34,12 +31,6 @@ export const Search = () => {
       setSearchQuery(query.search)
     }
   }, [query])
-
-  useEffect(() => {
-    if (searchQuery) {
-      refetch()
-    }
-  }, [refetch, searchQuery, translator])
 
   if (isLoading) {
     return <Loader />
