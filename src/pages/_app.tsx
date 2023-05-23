@@ -27,7 +27,7 @@ const MyApp = ({ Component, pageProps }: MyAppWithLayout) => {
     <>
       {getLayout(
         <>
-          <NextNprogress />
+          <NextNprogress color='#86EFAC' />
 
           <Component {...pageProps} />
         </>
