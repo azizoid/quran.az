@@ -5,12 +5,12 @@ import { useRouter } from 'next/router'
 import Pagination from 'react-js-pagination'
 import useSWR from 'swr'
 
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { SearchAyah } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
+import { Loader } from '@/ui'
 import { fetcher } from '@/utility'
-import { SOORAH_LIST } from 'src/assets/soorah-list-object'
-import { SearchAyah } from 'src/components'
-import { MainLayout } from 'src/layouts/MainLayout'
 import { ReponseProps } from 'src/pages/api/search/[search]'
-import { Loader } from 'src/ui'
 
 export const Search = () => {
   const { query } = useRouter()

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export type CardProps = {
+type CardProps = {
   title: string | ReactNode
   titleClassName?: string | null
   contentClass?: string | null

@@ -6,13 +6,13 @@ import Head from 'next/head'
 import { GetServerSideProps, NextPage } from 'next'
 import { sirasayi } from 'sirasayi'
 
+import { SoorahAyah, PaginateSoorahList } from '@/components'
+import { MainLayout } from '@/layouts/MainLayout'
 import { getSoorahService } from '@/lib/getSoorah'
+import { DisplayData, FormProps } from '@/lib/types'
+import { Bismillah, SoorahCaption } from '@/ui'
 import { getView } from '@/utility'
 import { SOORAH_LIST } from 'src/assets/soorah-list-object'
-import { SoorahAyah, PaginateSoorahList } from 'src/components'
-import { MainLayout } from 'src/layouts/MainLayout'
-import { DisplayData, FormProps } from 'src/lib/types'
-import { Bismillah, SoorahCaption } from 'src/ui'
 
 type SoorahPageProps = {
   out: DisplayData[]

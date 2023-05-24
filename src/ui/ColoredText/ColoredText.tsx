@@ -9,7 +9,7 @@ export const coloredTextcolors = [
   '#6cb2eb',
 ]
 
-export type ColoredTextProps = {
+type ColoredTextProps = {
   content: string
 }
 

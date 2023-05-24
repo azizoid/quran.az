@@ -1,6 +1,6 @@
 import { GiArabicDoor } from 'react-icons/gi'
 
-import { Tooltip } from 'src/ui/Tooltip/Tooltip'
+import { Tooltip } from '@/ui'
 
 export const Sajda = (): JSX.Element => (
   <Tooltip message="Səcdə ayəsi">

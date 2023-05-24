@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
-import { Form, PrayerWidget, RandomAyah, FacebookPage } from 'src/components'
+import { Form, PrayerWidget, RandomAyah, FacebookPage } from '@/components'
+import { Footer, Logo } from '@/ui'
 import { FormContextProvider } from 'src/store/form-store'
-import { Footer, Logo } from 'src/ui'
 
 type MainLayoutProps = {
   children?: React.ReactNode

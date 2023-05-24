@@ -19,7 +19,7 @@ test('get Ayah view', () => {
 
 test('get Search Query view', () => {
   const data = getView({
-    s: 115,
+    s: 0,
     q: 'Musa',
   })
 

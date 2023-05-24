@@ -5,7 +5,7 @@ const iconSizes = {
   md: 18,
 } as const
 
-export type CityAndSizeProps = {
+type CityAndSizeProps = {
   city: string
   ayahCount: number
   devider?: boolean

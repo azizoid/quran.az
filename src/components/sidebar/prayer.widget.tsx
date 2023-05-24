@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
+import { LoaderProgress } from '@/ui'
 import { fetcher } from '@/utility'
-import { LoaderProgress } from 'src/ui'
 
 export const PrayerWidget = (): JSX.Element => {
   const { data, isLoading, error: isError } = useSWR(
