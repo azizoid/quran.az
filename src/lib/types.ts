@@ -20,3 +20,19 @@ export type DisplayData = {
   content_latinized?: string
   translator: FormTranslatorProp
 }
+
+export type ResponseData = {
+  success: boolean
+  error?: string
+}
+
+export type DataPropsLatinized = {
+  _id: string
+  id: string
+  detail_id: number
+  soorah: number
+  ayah: number
+  content: string
+  content_latinized: string
+  translator: number
+}

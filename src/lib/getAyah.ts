@@ -1,7 +1,8 @@
 import { Db } from 'mongodb'
 
+import { withMongo } from '../utility/mongodb'
+
 import { GetSoorahServiceProps } from './getSoorah'
-import { withMongo } from './mongodb'
 
 interface GetAyahServiceProps extends GetSoorahServiceProps {
   ayah: number
