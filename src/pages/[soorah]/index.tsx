@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-// import * as Sentry from '@sentry/node'
+import * as Sentry from '@sentry/node'
 import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
@@ -52,9 +52,7 @@ export const Soorah: NextPage<SoorahPageProps> & { getLayout: (page: ReactElemen
   )
 }
 
-Soorah.getLayout = (page: ReactElement) => {
-  return <MainLayout>{page}</MainLayout>
-}
+Soorah.getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
 
 export const getServerSideProps: GetServerSideProps<SoorahPageProps> = async ({ query, res }) => {
   const soorah = Number(query.soorah)
@@ -81,9 +79,9 @@ export const getServerSideProps: GetServerSideProps<SoorahPageProps> = async ({ 
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Error fetching data:', error)
+    console.error('Soorah Error fetching data:', error)
 
-    // Sentry.captureException(error) // Log the error to Sentry
+    Sentry.captureException(error) // Log the error to Sentry
 
     return {
       notFound: true,

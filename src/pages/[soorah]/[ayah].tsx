@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-// import * as Sentry from '@sentry/node'
+import * as Sentry from '@sentry/node'
 import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
@@ -91,9 +91,9 @@ export const getServerSideProps: GetServerSideProps<AyahPageProps> = async ({ qu
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Error fetching data:', error)
+    console.error('Ayah: Error fetching data:', error)
 
-    // Sentry.captureException(error) // Log the error to Sentry
+    Sentry.captureException(error) // Log the error to Sentry
 
     return {
       notFound: true,

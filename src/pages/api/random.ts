@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/node' // Import Sentry
+
 import { Db } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -14,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
     await runMiddleware(req, res)
 
     if (req.method !== 'GET') {
-      throw new Error('Invalid method')
+      return res.status(405).json({ success: false, error: 'Invalid method' }) // 405 Method Not Allowed
     }
 
     const randomAyah = await withMongo(async (db: Db) => {
@@ -31,7 +33,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ResponseProps |
 
     return res.json({ out: { id, soorah, ayah, content, content_latinized, translator }, success: true })
   } catch (error) {
-    return res.status(400).json({ success: false })
+    Sentry.captureException(error)
+    return res.status(500).json({ success: false, error: String(error) }) // 500 Internal Server Error
   }
 }
 
