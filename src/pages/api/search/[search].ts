@@ -17,7 +17,7 @@ export type ReponseProps = ResponseData & {
   }
 }
 
-const REGEX_CLEAN = /[^\w\s.,\-!?"']/g
+const REGEX_CLEAN = /[^\w\s.,\(\)çğıöşüâəÇĞIÖŞÜÂƏа-яА-ЯёЁ]/g
 const REGEX_SPACES = /\s+/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g
 
