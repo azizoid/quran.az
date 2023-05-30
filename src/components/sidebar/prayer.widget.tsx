@@ -5,7 +5,7 @@ import { fetcher } from '@/utility'
 
 export const PrayerWidget = (): JSX.Element => {
   const { data, isLoading, error: isError } = useSWR(
-    'https://nam.az/api/v1/1', fetcher, {
+    'https://nam.az/api/v2/1', fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   }
