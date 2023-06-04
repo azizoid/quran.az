@@ -28,6 +28,41 @@ module.exports = {
       destination: '/:soorah/:ayah?t=3',
       permanent: true,
     },
+    {
+      source: '/:soorah/:ayah/t1',
+      destination: '/:soorah/:ayah?t=1',
+      permanent: true,
+    },
+    {
+      source: '/:soorah/:ayah/t2',
+      destination: '/:soorah/:ayah?t=2',
+      permanent: true,
+    },
+    {
+      source: '/:soorah/:ayah/t3',
+      destination: '/:soorah/:ayah?t=3',
+      permanent: true,
+    },
+    {
+      source: '/:soorah/:ayah/t:1',
+      destination: '/:soorah/:ayah?t=1',
+      permanent: true,
+    },
+    {
+      source: '/:soorah/:ayah/t:2',
+      destination: '/:soorah/:ayah?t=2',
+      permanent: true,
+    },
+    {
+      source: '/:soorah/:ayah/t:3',
+      destination: '/:soorah/:ayah?t=3',
+      permanent: true,
+    },
+    {
+      source: '/index.php/:redirect',
+      destination: '/:redirect',
+      permanent: true,
+    },
   ],
 }
 
