@@ -3,15 +3,24 @@ import useSWR from 'swr'
 import { LoaderProgress } from '@/ui'
 import { fetcher } from '@/utility'
 
-export const PrayerWidget = (): JSX.Element => {
-  const { data, isLoading, error: isError } = useSWR(
-    'https://nam.az/api/v2/1', fetcher, {
+export type PrayerReturnProps = {
+  cityName: string
+  hijri: string;
+  prayers: string[];
+}
+
+const prayerApi = 'https://nam.az/api/v2/1'
+const prayersTitle = ['Fəcr', 'Günəş', 'Zöhr', 'Əsr', 'Məğrib', 'İşa']
+
+export const PrayerWidget = () => {
+  const { data, isLoading, error: isError } = useSWR<PrayerReturnProps>(
+    prayerApi, fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   }
   )
 
-  if (isLoading || isError) {
+  if (isLoading || isError || !data) {
     return (
       <div className="flex justify-center items-center">
         <LoaderProgress />
@@ -19,14 +28,14 @@ export const PrayerWidget = (): JSX.Element => {
     )
   }
 
-  const { prayers } = data
+  const { cityName, hijri, prayers } = data
 
   return (
     <table className="w-full table-auto text-sm" cellPadding={7}>
       <thead className="bg-gray-700 text-white">
         <tr>
           <td align="center" colSpan={3}>
-            {`${data?.hijri}, Bakı`}
+            {`${hijri}, ${cityName}`}
           </td>
           <td align="center">
             <a href="https://nam.az" target="_blank" rel="noreferrer" className="text-green-300">
@@ -36,24 +45,14 @@ export const PrayerWidget = (): JSX.Element => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td align="right">Fəcr</td>
-          <td>{prayers[0]}</td>
-          <td align="right">Günəş</td>
-          <td>{prayers[1]}</td>
-        </tr>
-        <tr>
-          <td align="right">Zöhr</td>
-          <td>{prayers[2]}</td>
-          <td align="right">Əsr</td>
-          <td>{prayers[3]}</td>
-        </tr>
-        <tr>
-          <td align="right">Məğrib</td>
-          <td>{prayers[4]}</td>
-          <td align="right">İşa</td>
-          <td>{prayers[5]}</td>
-        </tr>
+        {[0, 2, 4].map((index) => (
+          <tr key={index}>
+            <td align="right">{prayersTitle[index]}</td>
+            <td>{prayers[index]}</td>
+            <td align="right">{prayersTitle[index + 1]}</td>
+            <td>{prayers[index + 1]}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   )
