@@ -17,8 +17,7 @@ export type ReponseProps = ResponseData & {
   }
 }
 
-const REGEX_CLEAN = /[^\w\s.,\(\)çğıöşüâəÇĞIÖŞÜÂƏа-яА-ЯёЁ]/g
-const REGEX_SPACES = /\s+/g
+const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g
 
 const handler = async (
@@ -34,8 +33,7 @@ const handler = async (
 
     if (search_query) {
       search_query = search_query
-        .replace(REGEX_CLEAN, '')
-        .replace(REGEX_SPACES, ' ')
+        .replace(REGEX_SANITIZE, '\\$&')
         .normalize('NFD')
         .replace(REGEX_DIACRITICS, '')
         .trim()
