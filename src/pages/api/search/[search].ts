@@ -64,8 +64,10 @@ const handler = async (
     const ayahs = await withMongo(async (db: Db) => {
       const collection = db.collection<DataPropsLatinized>('quranaz')
 
+      if (!data.q) return [] // very rare edge case
+
       const searchQuery = {
-        content_latinized: data.q ? new RegExp(data.q, 'i') : undefined,
+        $text: { $search: data.q },
         translator: data.t,
       }
 
