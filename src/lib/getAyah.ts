@@ -22,69 +22,30 @@ export type AyahResponseType = {
 }
 
 export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServiceProps) => {
-  const out = await withMongo(async (db: Db) => {
+  const result = await withMongo(async (db: Db) => {
     const contentCollection = db.collection('quranaz')
 
-    const content = await contentCollection
-      .aggregate<AyahResponseType>([
-        {
-          $match: {
-            soorah,
-            ayah,
-            translator,
-          },
-        },
-        {
-          $lookup: {
-            from: 'metadata',
-            localField: 'metadata_id',
-            foreignField: '_id',
-            as: 'metadata',
-          },
-        },
-        {
-          $unwind: '$metadata',
-        },
-        {
-          $project: {
-            _id: 1,
-            id: 1,
-            soorah: 1,
-            ayah: 1,
-            translator: 1,
-            content: 1,
-            content_latinized: 1,
-            arabic: '$metadata.content',
-            transliteration: '$metadata.transliteration',
-            juz: '$metadata.juz',
-          },
-        },
-      ])
-      .next()
+    const content = await contentCollection.findOne(
+      { soorah, ayah, translator },
+      { projection: { metadata_id: 1, _id: 1, id: 1, soorah: 1, ayah: 1, translator: 1, content: 1, content_latinized: 1 } }
+    )
 
     if (!content) {
       throw new Error(`Ayah not found: soorah: ${soorah}, ayah: ${ayah}, translator: ${translator}`)
     }
 
-    const prevAyah = Number(ayah) - 1
-    const nextAyah = Number(ayah) + 1
+    const metadata = await db.collection('metadata').findOne({ _id: content.metadata_id }, { projection: { content: 1, transliteration: 1, juz: 1 } })
 
-    const prevAndNext = await contentCollection
-      .find<{ ayah: number }>(
-        {
-          soorah,
-          ayah: { $in: [prevAyah, nextAyah] },
-          translator,
-        },
-        { projection: { ayah: 1, _id: 0 } }
-      )
-      .toArray()
+    const prevAndNext = await contentCollection.find(
+      { soorah, ayah: { $in: [content.ayah - 1, content.ayah + 1] }, translator },
+      { projection: { ayah: 1 } }
+    ).toArray()
 
-    const prev = prevAndNext.find((item) => item.ayah === prevAyah)?.ayah || null
-    const next = prevAndNext.find((item) => item.ayah === nextAyah)?.ayah || null
+    const prev = prevAndNext.find((item) => item.ayah === content.ayah - 1)?.ayah || null
+    const next = prevAndNext.find((item) => item.ayah === content.ayah + 1)?.ayah || null
 
-    return { ...content, prev, next }
+    return { ...content, arabic: metadata!.content, transliteration: metadata!.transliteration, juz: metadata!.juz, prev, next }
   })
 
-  return JSON.stringify({ out })
+  return JSON.stringify({ out: result })
 }
