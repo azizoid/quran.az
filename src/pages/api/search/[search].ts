@@ -80,10 +80,10 @@ const handler = async (
     })
 
     if (ayahs.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
-        error: 'Not found'
-      }) // 404 Not Found
+        error: 'No results found for the given search query.',
+      })
     }
 
     res.setHeader('Cache-Control', 'no-store')
