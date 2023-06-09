@@ -86,6 +86,8 @@ const handler = async (
       }) // 404 Not Found
     }
 
+    res.setHeader('Cache-Control', 'no-store')
+
     return res.json({
       out: ayahs,
       data,
