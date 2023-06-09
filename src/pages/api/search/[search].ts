@@ -67,18 +67,20 @@ const handler = async (
       if (!data.q) return [] // very rare edge case
 
       const searchQuery = {
-        $text: { $search: data.q },
+        content_latinized: { '$regex': data.q, '$options': 'i' },
         translator: data.t,
       }
 
       ayahsCount = await collection.countDocuments(searchQuery)
 
-      return await collection
+      const result = await collection
         .find(searchQuery)
         .sort({ soorah: 1, ayah: 1 }) // Sort by soorah in ascending order, then by ayah in ascending order
         .skip(skip)
         .limit(limit)
         .toArray()
+
+      return result
     })
 
     if (ayahs.length === 0) {
