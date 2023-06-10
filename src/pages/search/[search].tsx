@@ -6,12 +6,11 @@ import Pagination from 'react-js-pagination'
 import useSWR from 'swr'
 
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { SearchAyah } from '@/components'
+import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
 import { MainLayout } from '@/layouts/MainLayout'
-import { Loader } from '@/ui'
-import { fetcher } from '@/utility'
-
 import { ReponseProps } from '@/pages/api/search/[search]'
+import { Loader } from '@/ui'
+import { fetcher } from '@/utility/fetcher'
 
 export const Search = () => {
   const { query } = useRouter()

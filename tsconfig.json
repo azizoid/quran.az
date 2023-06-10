@@ -16,13 +16,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components": ["src/components/index"],
-      "@/components/sidebar/*": ["src/components/sidebar/*"],
       "@/ui": ["src/ui/index"],
-      "@/utility": ["src/utility/index"],
-      "@/assets/*": ["src/assets/*"],
-      "@/lib/*": ["src/lib/*"],
-      "@/layouts/*": ["src/layouts/*"],
       "@/*": ["src/*"]
     }
   },

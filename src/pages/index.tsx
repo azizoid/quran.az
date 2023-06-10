@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 
 import Head from 'next/head'
 
-import { Empty } from '@/components'
+import { Empty } from '@/components/Empty/Empty'
 import { MainLayout } from '@/layouts/MainLayout'
 
 export const Home = (): JSX.Element => (

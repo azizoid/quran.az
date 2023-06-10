@@ -17,7 +17,7 @@
             "position": "before"
           },
           {
-            "pattern": "src/**",
+            "pattern": "@/**",
             "group": "internal"
           },
           {

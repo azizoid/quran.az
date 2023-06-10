@@ -5,11 +5,11 @@ import Head from 'next/head'
 
 import { GetServerSideProps, NextPage } from 'next'
 
-import { PaginateAyah } from '@/components'
+import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
 import { MainLayout } from '@/layouts/MainLayout'
 import { AyahResponseType, getAyahService } from '@/lib/getAyah'
 import { ColoredText, Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
-import { getView } from '@/utility'
+import { getView } from '@/utility/getView/getView'
 
 export interface AyahPageProps extends Pick<AyahResponseType, 'soorah' | 'ayah' | 'content' | 'arabic' | 'transliteration' | 'prev' | 'next'> {
   translator: number

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { SoorahList } from '@/components'
+import { SoorahList } from '@/components/SoorahList/SoorahList'
 import { Card } from '@/ui'
 
 export const Empty = (): JSX.Element => (

@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 
 import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
-import { fetcher } from '@/utility'
+import { fetcher } from '@/utility/fetcher'
 
 export const RandomAyah = (): JSX.Element => {
   const { data, isLoading, error: isError } = useSWR(

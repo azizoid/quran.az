@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
 import { FormProps } from '@/lib/types'
-import { getView } from '@/utility'
+import { getView } from '@/utility/getView/getView'
 
 import { FormContext } from '../../store/form-store'
 

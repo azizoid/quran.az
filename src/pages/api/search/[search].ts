@@ -4,9 +4,9 @@ import { Db } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { DisplayData, FormProps, DataPropsLatinized, ResponseData } from '@/lib/types'
-import { initialPaginate, getView } from '@/utility'
-
+import { getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
+import { initialPaginate } from '@/utility/paginate/paginate'
 
 export type ReponseProps = ResponseData & {
   out: DisplayData[]

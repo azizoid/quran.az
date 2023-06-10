@@ -1,11 +1,24 @@
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Link from 'next/link'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
-import { Form, PrayerWidget, RandomAyah, FacebookPage } from '@/components'
+import { Form } from '@/components/Form/Form'
+import { FormContextProvider } from '@/store/form-store'
 import { Footer, Logo } from '@/ui'
 
-import { FormContextProvider } from '@/store/form-store'
+export const PrayerWidget = dynamic(
+  () => import('@/components/sidebar/prayer.widget').then((res) => res.PrayerWidget),
+  { ssr: false }
+)
+export const RandomAyah = dynamic(
+  () => import('@/components/sidebar/randomayah').then((res) => res.RandomAyah),
+  { ssr: false }
+)
+export const FacebookPage = dynamic(
+  () => import('@/components/sidebar/facebook.page').then((res) => res.FacebookPage),
+  { ssr: false }
+)
 
 type MainLayoutProps = {
   children?: React.ReactNode

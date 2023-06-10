@@ -1,7 +1,6 @@
 import { Db } from 'mongodb'
 
 import { DataPropsLatinized } from '@/lib/types'
-
 import { withMongo } from '@/utility/mongodb'
 
 export interface GetSoorahServiceProps {
