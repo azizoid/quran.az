@@ -4,8 +4,9 @@ import { Db } from 'mongodb'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { DataPropsLatinized, ResponseData, DisplayData } from '@/lib/types'
-import { runMiddleware } from 'src/utility/cors'
-import { withMongo } from 'src/utility/mongodb'
+
+import { runMiddleware } from '@/utility/cors'
+import { withMongo } from '@/utility/mongodb'
 
 export type ResponseProps = {
   out?: DisplayData

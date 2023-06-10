@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
+import { SoorahListProps } from '@/assets/soorah-list-object'
 import { CityAndSize } from '@/ui'
-import { SoorahListProps } from 'src/assets/soorah-list-object'
 
 export type SoorahListItemProps = {
   soorah: SoorahListProps

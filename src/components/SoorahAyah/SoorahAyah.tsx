@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
+import { DisplayData } from '@/lib/types'
 import { Sajda } from '@/ui'
-import { DisplayData } from 'src/lib/types'
 
 export type SoorahAyahProps = {
   data: DisplayData

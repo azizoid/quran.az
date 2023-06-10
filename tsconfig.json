@@ -22,7 +22,8 @@
       "@/utility": ["src/utility/index"],
       "@/assets/*": ["src/assets/*"],
       "@/lib/*": ["src/lib/*"],
-      "@/layouts/*": ["src/layouts/*"]
+      "@/layouts/*": ["src/layouts/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["next-env.d.ts", "config/environment.d.ts", "**/*.ts", "**/*.tsx"],

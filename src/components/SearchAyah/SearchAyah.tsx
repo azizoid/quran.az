@@ -3,8 +3,8 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import Highlighter from 'react-highlight-words'
 
+import { DisplayData } from '@/lib/types'
 import { Sajda } from '@/ui'
-import { DisplayData } from 'src/lib/types'
 
 export type SearchAyahProps = {
   data: DisplayData

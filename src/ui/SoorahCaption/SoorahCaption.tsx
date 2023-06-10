@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
+import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { CityAndSize } from '@/ui'
-import { SOORAH_LIST } from 'src/assets/soorah-list-object'
 
 import styles from './SoorahCaption.module.css'
 

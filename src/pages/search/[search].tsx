@@ -10,7 +10,8 @@ import { SearchAyah } from '@/components'
 import { MainLayout } from '@/layouts/MainLayout'
 import { Loader } from '@/ui'
 import { fetcher } from '@/utility'
-import { ReponseProps } from 'src/pages/api/search/[search]'
+
+import { ReponseProps } from '@/pages/api/search/[search]'
 
 export const Search = () => {
   const { query } = useRouter()

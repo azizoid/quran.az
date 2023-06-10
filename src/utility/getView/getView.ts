@@ -1,6 +1,6 @@
 import { soorahList } from '@/assets/soorah-list-object'
-import { TRANSLATOR_LIST } from 'src/assets/translatorList'
-import { FormProps } from 'src/lib/types'
+import { TRANSLATOR_LIST } from '@/assets/translatorList'
+import { FormProps } from '@/lib/types'
 
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 

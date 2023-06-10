@@ -4,7 +4,8 @@ import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
 import { Form, PrayerWidget, RandomAyah, FacebookPage } from '@/components'
 import { Footer, Logo } from '@/ui'
-import { FormContextProvider } from 'src/store/form-store'
+
+import { FormContextProvider } from '@/store/form-store'
 
 type MainLayoutProps = {
   children?: React.ReactNode

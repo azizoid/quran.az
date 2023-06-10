@@ -9,14 +9,14 @@ export * from './SoorahAyah/SoorahAyah'
 export * from './SoorahList/SoorahList'
 
 export const PrayerWidget = dynamic(
-  () => import('src/components/sidebar/prayer.widget').then((res) => res.PrayerWidget),
+  () => import('@/components/sidebar/prayer.widget').then((res) => res.PrayerWidget),
   { ssr: false }
 )
 export const RandomAyah = dynamic(
-  () => import('src/components/sidebar/randomayah').then((res) => res.RandomAyah),
+  () => import('@/components/sidebar/randomayah').then((res) => res.RandomAyah),
   { ssr: false }
 )
 export const FacebookPage = dynamic(
-  () => import('src/components/sidebar/facebook.page').then((res) => res.FacebookPage),
+  () => import('@/components/sidebar/facebook.page').then((res) => res.FacebookPage),
   { ssr: false }
 )

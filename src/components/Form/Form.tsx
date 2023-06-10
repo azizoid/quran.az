@@ -2,10 +2,10 @@ import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 're
 
 import { useRouter } from 'next/router'
 
-import { soorahList } from 'src/assets/soorah-list-object'
-import { translatorList } from 'src/assets/translatorList'
-import { FormProps } from 'src/lib/types'
-import { getView } from 'src/utility'
+import { soorahList } from '@/assets/soorah-list-object'
+import { translatorList } from '@/assets/translatorList'
+import { FormProps } from '@/lib/types'
+import { getView } from '@/utility'
 
 import { FormContext } from '../../store/form-store'
 
