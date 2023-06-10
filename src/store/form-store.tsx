@@ -1,6 +1,7 @@
+'use client'
 import { createContext, useEffect, useMemo, useState } from 'react'
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 import { FormProps } from '@/lib/types'
 import { getView } from '@/utility/getView/getView'

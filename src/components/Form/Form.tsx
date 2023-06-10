@@ -1,6 +1,7 @@
+'use client'
 import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
