@@ -1,10 +1,18 @@
-export const fetcher = async (url: string) => {
-  const response = await fetch(url)
-  const data = await response.json()
+export const fetcher = async <T>(url: string, data: T, method: 'GET' | 'POST' = 'GET') => {
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    ...(method === 'POST' && {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+  })
 
-  if (response.status !== 200) {
-    throw new Error(data.message)
+  if (!response.ok) {
+    throw new Error('An error occurred while fetching the data.')
   }
 
-  return data
+  const responseData = await response.json()
+  return responseData
 }
