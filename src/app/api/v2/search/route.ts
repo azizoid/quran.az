@@ -8,7 +8,7 @@ import { getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
 
-export type ReponseProps = ResponseData & {
+export type ResponseProps = {
   out: DisplayData[]
   data?: FormProps
   paginate: {
@@ -21,11 +21,13 @@ export type ReponseProps = ResponseData & {
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g
 
-export const POST = async (request: Request) => {
+export const POST = async (req: Request) => {
   try {
-    const content = await request.formData()
+    const content = await req.json()
 
-    const search = content.get('search')?.toString()
+    const { search: searchParam, page, t } = content
+
+    const search = searchParam?.toString()
       .replace(REGEX_SANITIZE, '\\$&')
       .normalize('NFD')
       .replace(REGEX_DIACRITICS, '')
@@ -35,8 +37,8 @@ export const POST = async (request: Request) => {
       return NextResponse.json({ error: 'Search query is required' }, { status: 400 })
     }
 
-    const currentPage = Number(content.get('page')?.toString()) || 1
-    const translator = Number(content.get('t')?.toString() || process.env.DEFAULT_TRANSLATOR)
+    const currentPage = Number(page?.toString()) || 1
+    const translator = Number(t?.toString() || process.env.DEFAULT_TRANSLATOR)
 
     const limit = initialPaginate.perPage
     const skip = (currentPage - 1) * limit
@@ -61,7 +63,7 @@ export const POST = async (request: Request) => {
       ayahsCount = await collection.countDocuments(searchQuery)
 
       const result = await collection
-        .find(searchQuery)
+        .find(searchQuery, { projection: { _id: 0 } })
         .sort({ soorah: 1, ayah: 1 }) // Sort by soorah in ascending order, then by ayah in ascending order
         .skip(skip)
         .limit(limit)
