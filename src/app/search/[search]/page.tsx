@@ -9,7 +9,6 @@ import useSWR from 'swr'
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
-import { Loader } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
 const Search = () => {
@@ -22,19 +21,18 @@ const Search = () => {
   const translator = searchParams?.get('t')
 
   const searchBody = {
-    search: params?.search,
+    search: searchQuery,
     page: String(currentPage),
     t: translator
   }
 
-  const { data, isLoading, error, mutate } = useSWR<ResponseProps>(
-    searchQuery?.length > 2 ? '/api/v2/search' : undefined,
-    (url: string) => fetcher(url, searchBody, 'POST'),
+  const { data, error, mutate } = useSWR<ResponseProps>(
+    ['/api/v2/search', searchBody],
+    searchQuery?.length > 2 ? (url: string) => fetcher(url[0], searchBody, 'POST') : null,
     {
-      // revalidateOnFocus: true,
-      // refreshInterval: 5000,
-      // revalidateOnMount: true,
+      refreshInterval: 0,
       dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+      keepPreviousData: false,
     }
   )
 
@@ -48,16 +46,12 @@ const Search = () => {
     mutate()
   }, [mutate, currentPage, translator, params?.search])
 
-  if (isLoading) {
-    return <Loader />
-  }
-
-  if (error || !data) {
+  if (error || data?.error) {
     return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
   const paginateLinks =
-    data?.paginate?.total > data?.paginate?.perPage ? (
+    data?.paginate?.total && data.paginate.total > data?.paginate?.perPage ? (
       <li className="list-group-item">
         <Pagination
           activePage={data?.paginate.currentPage}

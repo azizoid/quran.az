@@ -9,13 +9,14 @@ import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
 
 export type ResponseProps = {
-  out: DisplayData[]
+  out: DisplayData[] | null
   data?: FormProps
   paginate: {
     total: number
     perPage: number
     currentPage: number
   }
+  error?: string
 }
 
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
@@ -73,7 +74,7 @@ export const POST = async (req: Request) => {
     })
 
     if (ayahs.length === 0) {
-      return NextResponse.json({ error: 'No results found for the given search query.' }, { status: 200 })
+      return NextResponse.json({ out: null, error: 'No results found for the given search query.' }, { status: 200 })
     }
 
     return NextResponse.json({
