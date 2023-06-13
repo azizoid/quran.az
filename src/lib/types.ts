@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongodb'
+
 export type FormSoorahProp = number
 export type FormAyahProp = number | ''
 export type FormQueryProp = string | undefined
@@ -35,4 +37,5 @@ export type DataPropsLatinized = {
   content: string
   content_latinized: string
   translator: number
+  metadata_id: ObjectId
 }

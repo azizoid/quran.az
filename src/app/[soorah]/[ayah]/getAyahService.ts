@@ -1,8 +1,9 @@
 import { Db } from 'mongodb'
 
-import { withMongo } from '../utility/mongodb'
+import { DataPropsLatinized } from '@/lib/types'
+import { withMongo } from '@/utility/mongodb'
 
-import { GetSoorahServiceProps } from './getSoorah'
+import { GetSoorahServiceProps } from '../getSoorahService'
 
 interface GetAyahServiceProps extends GetSoorahServiceProps {
   ayah: number
@@ -23,11 +24,11 @@ export type AyahResponseType = {
 
 export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServiceProps) => {
   const result = await withMongo(async (db: Db) => {
-    const contentCollection = db.collection('quranaz')
+    const contentCollection = db.collection<DataPropsLatinized>('quranaz')
 
     const content = await contentCollection.findOne(
       { soorah, ayah, translator },
-      { projection: { metadata_id: 1, _id: 1, id: 1, soorah: 1, ayah: 1, translator: 1, content: 1, content_latinized: 1 } }
+      { projection: { metadata_id: 1, _id: 0, id: 1, soorah: 1, ayah: 1, translator: 1, content: 1, content_latinized: 1 } }
     )
 
     if (!content) {
@@ -47,5 +48,5 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
     return { ...content, arabic: metadata!.content, transliteration: metadata!.transliteration, juz: metadata!.juz, prev, next }
   })
 
-  return JSON.stringify({ out: result })
+  return result
 }
