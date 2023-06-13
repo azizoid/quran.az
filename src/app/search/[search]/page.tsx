@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useParams, useSearchParams } from 'next/navigation'
 
@@ -9,11 +9,10 @@ import useSWR from 'swr'
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
-import { FormContext } from '@/store/form-store'
 import { Loader } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
-export const Search = () => {
+const Search = () => {
   const params = useParams()
   const searchParams = useSearchParams()
 
@@ -88,5 +87,4 @@ export const Search = () => {
   )
 }
 
-// eslint-disable-next-line import/no-default-export
 export default Search
