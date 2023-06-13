@@ -1,24 +1,25 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
 import { FormProps } from '@/lib/types'
 import { getView } from '@/utility/getView/getView'
 
-import { FormContext } from '../../store/form-store'
-
 export const Form = (): JSX.Element => {
   const router = useRouter()
-  const formContext = useContext(FormContext)
 
-  const [state, setState] = useState<FormProps>(formContext)
+  const params = useParams()
+  const searchParams = useSearchParams()
 
-  useEffect(() => {
-    setState(formContext)
-  }, [formContext])
+  const soorah = Number(params?.soorah?.toString()) || 0
+  const ayah = Number(params?.ayah?.toString()) || ''
+  const query = params?.search ? decodeURIComponent(params?.search.toString()) : ''
+  const translator = Number(searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
+
+  const [state, setState] = useState<FormProps>(() => getView({ s: soorah, a: ayah, q: query, t: translator, }))
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
@@ -119,9 +120,9 @@ export const Form = (): JSX.Element => {
           value={state?.t}
           onChange={onHandleChange}
         >
-          {translatorList.map((soorah, index) => (
+          {translatorList.map((soorahTitle, index) => (
             <option value={index + 1} key={index}>
-              {soorah}
+              {soorahTitle}
             </option>
           ))}
         </select>
