@@ -22,6 +22,7 @@ export const PaginateSoorahList = ({
         <Link
           href={`/${prev}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
+          prefetch={false}
         >
           {sirasayi(prev)} {SOORAH_LIST[prev]['fullTitle']}
         </Link>
@@ -33,6 +34,7 @@ export const PaginateSoorahList = ({
         <Link
           href={`/${next}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
+          prefetch={false}
         >
           {sirasayi(next)} {SOORAH_LIST[next]['fullTitle']}
         </Link>

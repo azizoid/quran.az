@@ -30,8 +30,8 @@ export const MainTemplate = ({ children }: MainLayoutProps) => (
       <nav className="h-12 container mx-auto flex justify-between">
         <Link
           href="/"
-          passHref={true}
           className="py-3 flex items-center content-start text-gray-500 hover:opacity-75"
+          prefetch={false}
         >
           <Logo />
           Quran.az
