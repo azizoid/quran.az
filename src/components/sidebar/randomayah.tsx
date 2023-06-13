@@ -5,7 +5,7 @@ import { fetcher } from '@/utility/fetcher'
 
 export const RandomAyah = (): JSX.Element => {
   const { data, isLoading, error: isError } = useSWR(
-    '/api/random', fetcher, {
+    '/api/v2/random', fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   }
@@ -15,7 +15,7 @@ export const RandomAyah = (): JSX.Element => {
     return <LoadingBoxes />
   }
 
-  const { soorah, ayah, translator, content } = data.out
+  const { soorah, ayah, translator, content } = data
 
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>
