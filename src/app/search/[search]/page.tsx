@@ -1,42 +1,59 @@
-import { ReactElement, useEffect, useState } from 'react'
+'use client'
+import { useContext, useEffect, useState } from 'react'
 
-import { useRouter } from 'next/router'
+import { useParams, useSearchParams } from 'next/navigation'
 
 import Pagination from 'react-js-pagination'
 import useSWR from 'swr'
 
+import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
-import { MainLayout } from '@/layouts/MainLayout'
-import { ReponseProps } from '@/pages/api/search/[search]'
+import { FormContext } from '@/store/form-store'
 import { Loader } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
 export const Search = () => {
-  const { query } = useRouter()
+  const params = useParams()
+  const searchParams = useSearchParams()
+
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
-  const translator = Number(query.t?.toString()) || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
+  const translator = searchParams?.get('t')
 
-  const { data, isLoading, error } = useSWR<ReponseProps>(
-    !!searchQuery ? `/api/search/${encodeURIComponent(searchQuery)}?page=${currentPage}&t=${translator}` : undefined, fetcher, {
-    revalidateOnMount: true,
-    dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+  const searchBody = {
+    search: params?.search,
+    page: String(currentPage),
+    t: translator
   }
+
+  const { data, isLoading, error, mutate } = useSWR<ResponseProps>(
+    searchQuery?.length > 2 ? '/api/v2/search' : undefined,
+    (url: string) => fetcher(url, searchBody, 'POST'),
+    {
+      // revalidateOnFocus: true,
+      // refreshInterval: 5000,
+      // revalidateOnMount: true,
+      dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
+    }
   )
 
   useEffect(() => {
-    if (typeof query?.search === 'string' && query.search.length > 2) {
-      setSearchQuery(query.search)
+    if (typeof params?.search === 'string' && params.search.length > 2) {
+      setSearchQuery(decodeURIComponent(params.search.toString()))
     }
-  }, [query])
+  }, [params?.search])
+
+  useEffect(() => {
+    mutate()
+  }, [mutate, currentPage, translator, params?.search])
 
   if (isLoading) {
     return <Loader />
   }
 
-  if (error || !data?.success) {
+  if (error || !data) {
     return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
@@ -69,10 +86,6 @@ export const Search = () => {
       {paginateLinks}
     </ul>
   )
-}
-
-Search.getLayout = (page: ReactElement) => {
-  return <MainLayout>{page}</MainLayout>
 }
 
 // eslint-disable-next-line import/no-default-export
