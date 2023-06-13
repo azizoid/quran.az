@@ -8,9 +8,6 @@ import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
 
-export const dynamic = 'force-dynamic'
-export const dynamicParams = true
-
 type SoorahProps = {
   params: {
     soorah: string

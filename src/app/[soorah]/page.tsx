@@ -10,9 +10,6 @@ import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
 
-export const dynamic = 'force-dynamic'
-export const dynamicParams = true
-
 type SoorahProps = {
   params: {
     soorah: string
