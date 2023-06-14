@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/node' // Import Sentry
 import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
@@ -32,7 +31,8 @@ export const GET = async () => {
       }
     )
   } catch (error) {
-    Sentry.captureException(error)
+    // eslint-disable-next-line no-console
+    console.error(error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

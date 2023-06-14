@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/node'
 import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
@@ -100,7 +99,8 @@ export const POST = async (req: Request) => {
       }
     )
   } catch (error) {
-    Sentry.captureException(error)
+    // eslint-disable-next-line no-console
+    console.error(error)
     return NextResponse.json({ error: (error as Error).message }, { status: 500 })
   }
 }
