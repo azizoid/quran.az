@@ -7,9 +7,8 @@ import { Footer, Logo } from '@/ui'
 import { GA_TRACKING_ID } from '@/utility/gtag'
 
 import { MainMetadata } from './metadata'
-import { Sidebar } from './sidebar'
 
-type RootLayoutProps = {
+export type RootLayoutProps = {
   children?: React.ReactNode
 }
 
@@ -61,13 +60,7 @@ export const RootLayout = ({ children }: RootLayoutProps) => (
         </div>
 
         <div className="flex-grow container mx-auto mt-10 pb-2">
-          <div className="grid grid-cols-12">
-            <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">
-              {children}
-            </div>
-
-            <Sidebar />
-          </div>
+          {children}
         </div>
 
         <Footer />
