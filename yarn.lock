@@ -1026,11 +1026,6 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.3.0.tgz#719498898d5defab83c3560f45d8498f58d11938"
   integrity sha512-cumHmIAf6On83X7yP+LrsEyUOf/YlociZelmpRYaGFydoaPdxdt80MAbu6vWerQT2COCp2nPvHdsbD7tHn/YlQ==
 
-"@types/nprogress@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
-  integrity sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==
-
 "@types/prettier@^2.1.5":
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.3.tgz#3e51a17e291d01d17d3fc61422015a933af7a08f"
@@ -1047,11 +1042,6 @@
   integrity sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==
   dependencies:
     "@types/react" "*"
-
-"@types/react-gtm-module@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@types/react-gtm-module/-/react-gtm-module-2.0.1.tgz#b2c6cd14ec251d6ae7fa576edf1d43825908a378"
-  integrity sha512-T/DN9gAbCYk5wJ1nxf4pSwmXz4d1iVjM++OoG+mwMfz9STMAotGjSb65gJHOS5bPvl6vLSsJnuC+y/43OQrltg==
 
 "@types/react-highlight-words@^0.16.4":
   version "0.16.4"
@@ -3898,15 +3888,6 @@ next@^13.4.5:
     "@next/swc-win32-ia32-msvc" "13.4.5"
     "@next/swc-win32-x64-msvc" "13.4.5"
 
-nextjs-progressbar@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/nextjs-progressbar/-/nextjs-progressbar-0.0.16.tgz#d2c1e54ffc2c6d52b64282c0d764a44241fbc36e"
-  integrity sha512-GV0fD38EMD3vSDCmkq+tObmoup6QA91a6a9MxGuhJZuRk/9TNsrHGnIQQQ/sggkMkXuT4fBgF6jRjFwScDT3zA==
-  dependencies:
-    "@types/nprogress" "^0.2.0"
-    nprogress "^0.2.0"
-    prop-types "^15.8.1"
-
 node-fetch@^2.6.7:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.11.tgz#cde7fc71deef3131ef80a738919f999e6edfff25"
@@ -3947,11 +3928,6 @@ npm-run-path@^5.1.0:
   integrity sha512-sJOdmRGrY2sjNTRMbSvluQqg+8X7ZK61yvzBEIDhz4f8z1TZFYABsqjjCBd/0PUNE9M6QDgHJXQkGUEm7Q+l9Q==
   dependencies:
     path-key "^4.0.0"
-
-nprogress@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
-  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 nwsapi@^2.2.2:
   version "2.2.5"
@@ -4359,11 +4335,6 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-gtm-module@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/react-gtm-module/-/react-gtm-module-2.0.11.tgz#14484dac8257acd93614e347c32da9c5ac524206"
-  integrity sha512-8gyj4TTxeP7eEyc2QKawEuQoAZdjKvMY4pgWfycGmqGByhs17fR+zEBs0JUDq4US/l+vbTl+6zvUIx27iDo/Vw==
 
 react-highlight-words@^0.20.0:
   version "0.20.0"
