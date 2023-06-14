@@ -28,7 +28,8 @@ export const POST = async (req: Request) => {
 
     const { search: searchParam, page, t } = content
 
-    const search = searchParam?.toString()
+    const search = searchParam
+      ?.toString()
       .replace(REGEX_SANITIZE, '\\$&')
       .normalize('NFD')
       .replace(REGEX_DIACRITICS, '')
@@ -46,7 +47,7 @@ export const POST = async (req: Request) => {
 
     const data = getView({
       q: search,
-      t: translator
+      t: translator,
     })
 
     let ayahsCount = 0
@@ -57,7 +58,7 @@ export const POST = async (req: Request) => {
       if (!data.q) return [] // very rare edge case
 
       const searchQuery = {
-        content_latinized: { '$regex': data.q, '$options': 'i' },
+        content_latinized: { $regex: data.q, $options: 'i' },
         translator: data.t,
       }
 
@@ -74,23 +75,30 @@ export const POST = async (req: Request) => {
     })
 
     if (ayahs.length === 0) {
-      return NextResponse.json({ out: null, error: 'No results found for the given search query.' }, { status: 200 })
+      return NextResponse.json(
+        { out: null, error: 'No results found for the given search query.' },
+        { status: 200 }
+      )
     }
 
-    return NextResponse.json({
-      out: ayahs,
-      data,
-      paginate: {
-        ...initialPaginate,
-        total: ayahsCount,
-        currentPage,
+    return NextResponse.json(
+      {
+        out: ayahs,
+        data,
+        paginate: {
+          ...initialPaginate,
+          total: ayahsCount,
+          currentPage,
+        },
+        success: true,
       },
-      success: true,
-    }, {
-      status: 200, headers: {
-        'Cache-Control': 'no-store'
-      },
-    })
+      {
+        status: 200,
+        headers: {
+          'Cache-Control': 'no-store',
+        },
+      }
+    )
   } catch (error) {
     Sentry.captureException(error)
     return NextResponse.json({ error: (error as Error).message }, { status: 500 })

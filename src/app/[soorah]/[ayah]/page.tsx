@@ -15,7 +15,7 @@ type AyahProps = {
   params: {
     soorah: string
     ayah: string
-  },
+  }
   searchParams: {
     t: string
   }
@@ -25,16 +25,21 @@ export const generateMetadata = async ({ params }: AyahProps) => {
   const { soorah, ayah } = params
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))!
 
-  const title = `${soorahTitle.fullTitle}, ${sirasayi(soorahTitle.id)} surə, ${sirasayi(Number(ayah))} ayə`
+  const title = `${soorahTitle.fullTitle}, ${sirasayi(soorahTitle.id)} surə, ${sirasayi(
+    Number(ayah)
+  )} ayə`
 
   return {
     title,
     openGraph: { title },
-    twitter: { title }
+    twitter: { title },
   }
 }
 
-const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchParams: { t: translatorParam } }: AyahProps) => {
+const Ayah = async ({
+  params: { soorah: soorahParam, ayah: ayahParam },
+  searchParams: { t: translatorParam },
+}: AyahProps) => {
   try {
     const soorah = Number(soorahParam)
     const ayah = Number(ayahParam)
@@ -52,13 +57,7 @@ const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchPa
 
     const out = await getAyahService({ soorah: data.s, ayah: Number(data.a), translator: data.t })
 
-    const {
-      content,
-      arabic,
-      transliteration,
-      prev,
-      next,
-    } = out
+    const { content, arabic, transliteration, prev, next } = out
 
     return (
       <>

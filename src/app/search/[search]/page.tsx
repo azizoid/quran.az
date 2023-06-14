@@ -24,7 +24,7 @@ const Search = () => {
   const searchBody = {
     search: searchQuery,
     page: String(currentPage),
-    t: translator
+    t: translator,
   }
 
   const { data, error, mutate } = useSWR<ResponseProps>(

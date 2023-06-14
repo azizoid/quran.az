@@ -19,7 +19,7 @@ export const SOORAH_LIST: SoorahListProps[] = [
     order: 0,
     arabic: '',
     city: 'Mecca',
-    juz: [0]
+    juz: [0],
   },
   {
     id: 1,

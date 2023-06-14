@@ -19,7 +19,9 @@ export const Form = (): JSX.Element => {
   const query = params?.search ? decodeURIComponent(params?.search.toString()) : ''
   const translator = Number(searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
-  const [state, setState] = useState<FormProps>(() => getView({ s: soorah, a: ayah, q: query, t: translator, }))
+  const [state, setState] = useState<FormProps>(() =>
+    getView({ s: soorah, a: ayah, q: query, t: translator })
+  )
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target

@@ -1,10 +1,12 @@
 import { Form } from '@/components/Form/Form'
 import { LoadingBoxes } from '@/ui'
 
-export const MainLoader = () => <>
-  <Form />
+export const MainLoader = () => (
+  <>
+    <Form />
 
-  <LoadingBoxes />
-</>
+    <LoadingBoxes />
+  </>
+)
 
 export default MainLoader

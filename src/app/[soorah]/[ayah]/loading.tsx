@@ -1,6 +1,6 @@
 import { Bismillah } from '@/ui'
 
-const AyahLoading = () =>
+const AyahLoading = () => (
   <>
     <Bismillah />
 
@@ -16,5 +16,6 @@ const AyahLoading = () =>
       <div className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
     </li>
   </>
+)
 
 export default AyahLoading

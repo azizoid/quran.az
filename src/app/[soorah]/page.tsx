@@ -15,7 +15,7 @@ import { getSoorahService } from './getSoorahService'
 type SoorahProps = {
   params: {
     soorah: string
-  },
+  }
   searchParams: {
     t: string
   }
@@ -30,7 +30,7 @@ export const generateMetadata = async ({ params }: SoorahProps) => {
   return {
     title,
     openGraph: { title },
-    twitter: { title }
+    twitter: { title },
   }
 }
 
@@ -44,7 +44,7 @@ const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: S
       notFound()
     }
 
-    const sajda = soorahList.find(soorahItem => soorahItem.id === data.s)?.sajda
+    const sajda = soorahList.find((soorahItem) => soorahItem.id === data.s)?.sajda
 
     return (
       <>

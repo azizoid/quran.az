@@ -10,21 +10,22 @@ type SoorahTemplateProps = {
 }
 
 const SoorahTemplate = ({ children }: SoorahTemplateProps) => {
-
   const params = useParams()
   const searchParams = useSearchParams().get('t')
 
   const data = getView({ s: Number(params.soorah), t: Number(searchParams) })
 
-  return <>
-    <Form />
+  return (
+    <>
+      <Form />
 
-    <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-      <SoorahCaption soorah={data.s} translator={data.t} />
+      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+        <SoorahCaption soorah={data.s} translator={data.t} />
 
-      {children}
-    </ul>
-  </>
+        {children}
+      </ul>
+    </>
+  )
 }
 
 export default SoorahTemplate

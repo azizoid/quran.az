@@ -5,8 +5,8 @@ import { fetcher } from '@/utility/fetcher'
 
 export type PrayerReturnProps = {
   cityName: string
-  hijri: string;
-  prayers: string[];
+  hijri: string
+  prayers: string[]
 }
 
 const prayerApi = 'https://nam.az/api/v2/1'

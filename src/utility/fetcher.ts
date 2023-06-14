@@ -1,12 +1,12 @@
 export const fetcher = async <T>(url: string, data: T, method: 'GET' | 'POST' = 'GET') => {
   const response = await fetch(url, {
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     ...(method === 'POST' && {
       method: 'POST',
-      body: JSON.stringify(data)
-    })
+      body: JSON.stringify(data),
+    }),
   })
 
   if (!response.ok) {

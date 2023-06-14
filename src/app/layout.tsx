@@ -42,10 +42,7 @@ export const RootLayout = ({ children }: RootLayoutProps) => (
           </nav>
         </div>
 
-        <div className="flex-grow container mx-auto mt-10 pb-2">
-          {children}
-
-        </div>
+        <div className="flex-grow container mx-auto mt-10 pb-2">{children}</div>
 
         <Footer />
       </div>

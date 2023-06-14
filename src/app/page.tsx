@@ -1,10 +1,12 @@
 import { Empty } from '@/components/Empty/Empty'
 import { Form } from '@/components/Form/Form'
 
-const Home = (): JSX.Element => <>
-  <Form />
+const Home = (): JSX.Element => (
+  <>
+    <Form />
 
-  <Empty />
-</>
+    <Empty />
+  </>
+)
 
 export default Home

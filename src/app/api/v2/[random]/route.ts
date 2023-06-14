@@ -23,12 +23,14 @@ export const GET = async () => {
     return NextResponse.json(
       { id, soorah, ayah, content, content_latinized, translator },
       {
-        status: 200, headers: {
+        status: 200,
+        headers: {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
           'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         },
-      })
+      }
+    )
   } catch (error) {
     Sentry.captureException(error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
