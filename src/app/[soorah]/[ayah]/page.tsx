@@ -45,9 +45,7 @@ const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchPa
     } = out
 
     return (
-      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700 mb-4">
-        <SoorahCaption soorah={soorah} translator={translator} />
-
+      <>
         {soorah !== 1 && ayah !== 1 && <Bismillah />}
 
         <li className="ayah-list-item flex flex-col">
@@ -63,7 +61,7 @@ const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchPa
         <li>
           <PaginateAyah {...{ soorah, ayah, prev, next, translator }} />
         </li>
-      </ul>
+      </>
     )
   } catch (error) {
     Sentry.captureException(error)

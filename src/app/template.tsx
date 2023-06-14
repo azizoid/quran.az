@@ -28,11 +28,12 @@ export const MainTemplate = ({ children }: MainLayoutProps) => (
     </div>
 
     <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start space-y-4">
-      <PrayerWidget />
+      {/* <PrayerWidget />
       <hr />
       <RandomAyah />
       <hr />
-      <FacebookPage />
+      <FacebookPage /> */}
+      <hr />
     </div>
   </div>
 )

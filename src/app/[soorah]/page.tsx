@@ -32,9 +32,7 @@ const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: S
     const sajda = SOORAH_LIST[data.s]?.sajda
 
     return (
-      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-        <SoorahCaption soorah={data.s} translator={data.t} />
-
+      <>
         {data.s !== 9 && <Bismillah />}
 
         {out.map((outData) => (
@@ -42,7 +40,7 @@ const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: S
         ))}
 
         <PaginateSoorahList soorah={data.s} translator={data.t} />
-      </ul>
+      </>
     )
   } catch (error) {
     Sentry.captureException(error)
