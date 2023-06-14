@@ -1,7 +1,8 @@
 'use client'
 import dynamic from 'next/dynamic'
+import Script from 'next/script'
 
-import { Form } from '@/components/Form/Form'
+import { GA_TRACKING_ID } from '@/utility/gtag'
 
 export const PrayerWidget = dynamic(
   () => import('@/components/sidebar/prayer.widget').then((res) => res.PrayerWidget),
@@ -21,18 +22,34 @@ type MainLayoutProps = {
 }
 
 export const MainTemplate = ({ children }: MainLayoutProps) => (
-  <div className="grid grid-cols-12">
-    <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">{children}</div>
+  <>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      strategy="afterInteractive"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-    <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start space-y-4">
-      {/* <PrayerWidget />
+          gtag('config', '${GA_TRACKING_ID}');
+        `}
+    </Script>
+
+    <div className="grid grid-cols-12">
+      <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">{children}</div>
+
+      <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start space-y-4">
+        {/* <PrayerWidget />
       <hr />
       <RandomAyah />
       <hr />
       <FacebookPage /> */}
-      <hr />
+        <hr />
+      </div>
     </div>
-  </div>
+  </>
 )
 
 export default MainTemplate
