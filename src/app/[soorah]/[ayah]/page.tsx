@@ -2,13 +2,16 @@ import * as Sentry from '@sentry/node'
 import { notFound, redirect } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
+import sirasayi from 'sirasayi'
+
+import { soorahList } from '@/assets/soorah-list-object'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
 import { Bismillah, ColoredText, SoorahCaption, soorahAyahTitle } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
 
-type SoorahProps = {
+type AyahProps = {
   params: {
     soorah: string
     ayah: string
@@ -18,7 +21,20 @@ type SoorahProps = {
   }
 }
 
-const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchParams: { t: translatorParam } }: SoorahProps) => {
+export const generateMetadata = async ({ params }: AyahProps) => {
+  const { soorah, ayah } = params
+  const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))!
+
+  const title = `${soorahTitle.fullTitle}, ${sirasayi(soorahTitle.id)} surə, ${sirasayi(Number(ayah))} ayə`
+
+  return {
+    title,
+    openGraph: { title },
+    twitter: { title }
+  }
+}
+
+const Ayah = async ({ params: { soorah: soorahParam, ayah: ayahParam }, searchParams: { t: translatorParam } }: AyahProps) => {
   try {
     const soorah = Number(soorahParam)
     const ayah = Number(ayahParam)

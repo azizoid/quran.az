@@ -4,9 +4,13 @@ import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
 import { Footer, Logo } from '@/ui'
 
+import { MainMetadata } from './metadata'
+
 type RootLayoutProps = {
   children?: React.ReactNode
 }
+
+export const metadata = MainMetadata
 
 export const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="az">

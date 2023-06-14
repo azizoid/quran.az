@@ -2,10 +2,12 @@ import * as Sentry from '@sentry/node'
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
-import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import sirasayi from 'sirasayi'
+
+import { soorahList } from '@/assets/soorah-list-object'
 import { PaginateSoorahList } from '@/components/PaginateSoorahList/PaginateSoorahList'
 import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
-import { Bismillah, SoorahCaption } from '@/ui'
+import { Bismillah } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
@@ -19,6 +21,19 @@ type SoorahProps = {
   }
 }
 
+export const generateMetadata = async ({ params }: SoorahProps) => {
+  const { soorah } = params
+  const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))!
+
+  const title = `${soorahTitle.fullTitle}, ${sirasayi(soorahTitle.id)} surə`
+
+  return {
+    title,
+    openGraph: { title },
+    twitter: { title }
+  }
+}
+
 const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: SoorahProps) => {
   try {
     const data = getView({ s: Number(soorah), t: Number(translator) })
@@ -29,7 +44,7 @@ const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: S
       notFound()
     }
 
-    const sajda = SOORAH_LIST[data.s]?.sajda
+    const sajda = soorahList.find(soorahItem => soorahItem.id === data.s)?.sajda
 
     return (
       <>
