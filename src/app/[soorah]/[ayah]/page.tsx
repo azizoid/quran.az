@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 import sirasayi from 'sirasayi'
 
@@ -48,6 +48,10 @@ const AyahPage = async ({
   const data = getView({ s: soorah, a: ayah, t: translator })
 
   if (data.view !== 'ayah') {
+    if (data.view === 'soorah') {
+      redirect(`/${data.s}?t=${data.t}`)
+    }
+
     notFound()
   }
 

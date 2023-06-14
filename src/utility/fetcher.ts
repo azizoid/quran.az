@@ -1,12 +1,13 @@
-export const fetcher = async <T>(url: string, data: T, method: 'GET' | 'POST' = 'GET') => {
-  const response = await fetch(url, {
+export const fetcher = async <T>(url: [string, string], data: T | null = null, method: 'GET' | 'POST' = 'GET') => {
+  const [fetchUrl] = url
+
+  const response = await fetch(fetchUrl, {
     headers: {
       'Content-Type': 'application/json',
     },
-    ...(method === 'POST' && {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }),
+    mode: 'no-cors',
+    method: method === 'POST' ? 'POST' : 'GET',
+    ...(data && { body: JSON.stringify(data) })
   })
 
   if (!response.ok) {

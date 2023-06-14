@@ -29,7 +29,7 @@ const Search = () => {
 
   const { data, error, mutate } = useSWR<ResponseProps>(
     ['/api/v2/search', searchBody],
-    searchQuery?.length > 2 ? (url: string) => fetcher(url[0], searchBody, 'POST') : null,
+    searchQuery?.length > 2 ? (url: [string, string]) => fetcher(url, searchBody, 'POST') : null,
     {
       refreshInterval: 0,
       dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
