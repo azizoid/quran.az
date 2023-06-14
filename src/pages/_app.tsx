@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
-
 import type { AppProps } from 'next/app'
+import Script from 'next/script'
 
 import { NextPage } from 'next'
 import NextNprogress from 'nextjs-progressbar'
-import TagManager from 'react-gtm-module'
+
+import { GA_TRACKING_ID } from '@/utility/gtag'
+
 import '../styles/global.css'
 
 type MyAppProps = AppProps & {
@@ -16,12 +17,21 @@ type MyAppProps = AppProps & {
 const MyApp = ({ Component, pageProps }: MyAppProps) => {
   const getLayout = Component.getLayout ?? (page => page)
 
-  useEffect(() => {
-    TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID })
-  }, [])
-
   return getLayout(
     <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${GA_TRACKING_ID}');
+        `}
+      </Script>
       <NextNprogress color='#86EFAC' />
       <Component {...pageProps} />
     </>
