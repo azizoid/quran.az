@@ -1,6 +1,4 @@
-import * as Sentry from '@sentry/node'
 import { notFound } from 'next/navigation'
-import { NextResponse } from 'next/server'
 
 import sirasayi from 'sirasayi'
 
@@ -23,7 +21,9 @@ type SoorahProps = {
 
 export const generateMetadata = async ({ params }: SoorahProps) => {
   const { soorah } = params
-  const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))!
+  const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
+
+  if (!soorahTitle) return
 
   const title = `${soorahTitle.fullTitle}, ${sirasayi(soorahTitle.id)} surə`
 
@@ -34,33 +34,28 @@ export const generateMetadata = async ({ params }: SoorahProps) => {
   }
 }
 
-const Soorah = async ({ params: { soorah }, searchParams: { t: translator } }: SoorahProps) => {
-  try {
-    const data = getView({ s: Number(soorah), t: Number(translator) })
+const SoorahPage = async ({ params: { soorah }, searchParams: { t: translator } }: SoorahProps) => {
+  const data = getView({ s: Number(soorah), t: Number(translator) })
 
-    const out = await getSoorahService({ soorah: data.s, translator: data.t })
-
-    if (data.view !== 'soorah') {
-      notFound()
-    }
-
-    const sajda = soorahList.find((soorahItem) => soorahItem.id === data.s)?.sajda
-
-    return (
-      <>
-        {data.s !== 9 && <Bismillah />}
-
-        {out.map((outData) => (
-          <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
-        ))}
-
-        <PaginateSoorahList soorah={data.s} translator={data.t} />
-      </>
-    )
-  } catch (error) {
-    Sentry.captureException(error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  if (data.view !== 'soorah') {
+    notFound()
   }
+
+  const out = await getSoorahService({ soorah: data.s, translator: data.t })
+
+  const sajda = soorahList.find((soorahItem) => soorahItem.id === data.s)?.sajda
+
+  return (
+    <>
+      {data.s !== 9 && <Bismillah />}
+
+      {out.map((outData) => (
+        <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
+      ))}
+
+      <PaginateSoorahList soorah={data.s} translator={data.t} />
+    </>
+  )
 }
 
-export default Soorah
+export default SoorahPage
