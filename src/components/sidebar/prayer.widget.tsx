@@ -14,11 +14,10 @@ const prayersTitle = ['Fəcr', 'Günəş', 'Zöhr', 'Əsr', 'Məğrib', 'İşa']
 
 export const PrayerWidget = () => {
   const { data, isLoading, error: isError } = useSWR<PrayerReturnProps>(
-    prayerApi, fetcher, {
+    [prayerApi, 'prayerWidget'], ([url]: [url: string]) => fetcher(url), {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
-  }
-  )
+  })
 
   if (isLoading || isError || !data) {
     return (
