@@ -1,6 +1,7 @@
 'use client'
 import { useParams, useSearchParams } from 'next/navigation'
 
+import { Form } from '@/components/Form/Form'
 import { SoorahCaption } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
@@ -15,11 +16,15 @@ const SoorahTemplate = ({ children }: SoorahTemplateProps) => {
 
   const data = getView({ s: Number(params.soorah), t: Number(searchParams) })
 
-  return <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-    <SoorahCaption soorah={data.s} translator={data.t} />
+  return <>
+    <Form />
 
-    {children}
-  </ul>
+    <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+      <SoorahCaption soorah={data.s} translator={data.t} />
+
+      {children}
+    </ul>
+  </>
 }
 
 export default SoorahTemplate

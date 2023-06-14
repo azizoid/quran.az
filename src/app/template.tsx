@@ -23,7 +23,6 @@ type MainLayoutProps = {
 export const MainTemplate = ({ children }: MainLayoutProps) => (
   <div className="grid grid-cols-12">
     <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">
-      <Form />
       {children}
     </div>
 

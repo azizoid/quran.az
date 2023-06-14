@@ -8,6 +8,7 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { Form } from '@/components/Form/Form'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
 import { fetcher } from '@/utility/fetcher'
 
@@ -68,16 +69,20 @@ const Search = () => {
     ) : null
 
   return (
-    <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-      {paginateLinks}
+    <>
+      <Form />
 
-      {data?.out?.map((ayah) => {
-        const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-        return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
-      })}
+      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+        {paginateLinks}
 
-      {paginateLinks}
-    </ul>
+        {data?.out?.map((ayah) => {
+          const sajda = SOORAH_LIST[ayah.soorah]?.sajda
+          return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
+        })}
+
+        {paginateLinks}
+      </ul>
+    </>
   )
 }
 
