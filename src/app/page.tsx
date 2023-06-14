@@ -1,7 +1,7 @@
 import { Empty } from '@/components/Empty/Empty'
 import { Form } from '@/components/Form/Form'
 
-const Home = (): JSX.Element => (
+const Home = () => (
   <>
     <Form />
 

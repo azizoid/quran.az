@@ -1,10 +1,13 @@
 import '@/styles/global.css'
 import Link from 'next/link'
+import Script from 'next/script'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
 import { Footer, Logo } from '@/ui'
+import { GA_TRACKING_ID } from '@/utility/gtag'
 
 import { MainMetadata } from './metadata'
+import { Sidebar } from './sidebar'
 
 type RootLayoutProps = {
   children?: React.ReactNode
@@ -14,6 +17,21 @@ export const metadata = MainMetadata
 
 export const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="az">
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      strategy="afterInteractive"
+    />
+
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${GA_TRACKING_ID}');
+        `}
+    </Script>
+
     <body>
       <div className="flex flex-col h-screen justify-between">
         <div className="bg-[url('/img/ornament.gif')] bg-gray-50 bg-repeat-x bg-bottom pb-[33px] px-3">
@@ -42,7 +60,15 @@ export const RootLayout = ({ children }: RootLayoutProps) => (
           </nav>
         </div>
 
-        <div className="flex-grow container mx-auto mt-10 pb-2">{children}</div>
+        <div className="flex-grow container mx-auto mt-10 pb-2">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4">
+              {children}
+            </div>
+
+            <Sidebar />
+          </div>
+        </div>
 
         <Footer />
       </div>
