@@ -2,7 +2,7 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA4_ID
 
 declare global {
   interface Window {
-    gtag: Function;
+    gtag: Function
   }
 }
 

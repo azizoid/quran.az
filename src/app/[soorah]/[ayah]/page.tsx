@@ -40,7 +40,6 @@ const AyahPage = async ({
   params: { soorah: soorahParam, ayah: ayahParam },
   searchParams: { t: translatorParam },
 }: AyahProps) => {
-
   const soorah = Number(soorahParam)
   const ayah = Number(ayahParam)
   const translator = Number(translatorParam)

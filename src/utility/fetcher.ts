@@ -1,4 +1,8 @@
-export const fetcher = async <T>(url: [string, string], data: T | null = null, method: 'GET' | 'POST' = 'GET') => {
+export const fetcher = async <T>(
+  url: [string, string],
+  data: T | null = null,
+  method: 'GET' | 'POST' = 'GET'
+) => {
   const [fetchUrl] = url
 
   const response = await fetch(fetchUrl, {
@@ -6,7 +10,7 @@ export const fetcher = async <T>(url: [string, string], data: T | null = null, m
       'Content-Type': 'application/json',
     },
     method: method === 'POST' ? 'POST' : 'GET',
-    ...(data && { body: JSON.stringify(data) })
+    ...(data && { body: JSON.stringify(data) }),
   })
 
   if (!response.ok) {

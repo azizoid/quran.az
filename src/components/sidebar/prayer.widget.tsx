@@ -13,8 +13,11 @@ const prayerApi = 'https://nam.az/api/v2/1'
 const prayersTitle = ['Fəcr', 'Günəş', 'Zöhr', 'Əsr', 'Məğrib', 'İşa']
 
 export const PrayerWidget = () => {
-  const { data, isLoading, error: isError } = useSWR<PrayerReturnProps>(
-    [prayerApi, 'prayerWidget'], fetcher, {
+  const {
+    data,
+    isLoading,
+    error: isError,
+  } = useSWR<PrayerReturnProps>([prayerApi, 'prayerWidget'], fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
   })
