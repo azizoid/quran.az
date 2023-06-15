@@ -5,7 +5,6 @@ export const fetcher = async <T>(url: [string, string], data: T | null = null, m
     headers: {
       'Content-Type': 'application/json',
     },
-    mode: 'no-cors',
     method: method === 'POST' ? 'POST' : 'GET',
     ...(data && { body: JSON.stringify(data) })
   })
