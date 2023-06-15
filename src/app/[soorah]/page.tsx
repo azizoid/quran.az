@@ -34,26 +34,26 @@ export const generateMetadata = async ({ params }: SoorahProps) => {
   }
 }
 
-const SoorahPage = async ({ params: { soorah }, searchParams: { t: translator } }: SoorahProps) => {
-  const data = getView({ s: Number(soorah), t: Number(translator) })
+const SoorahPage = async ({ params: { soorah: soorahParam }, searchParams: { t: translatorParam } }: SoorahProps) => {
+  const { s: soorah, t: translator, view } = getView({ s: Number(soorahParam), t: Number(translatorParam) })
 
-  if (data.view !== 'soorah') {
+  if (view !== 'soorah') {
     notFound()
   }
 
-  const out = await getSoorahService({ soorah: data.s, translator: data.t })
+  const out = await getSoorahService({ soorah, translator })
 
-  const sajda = soorahList.find((soorahItem) => soorahItem.id === data.s)?.sajda
+  const sajda = soorahList.find((soorahItem) => soorahItem.id === soorah)?.sajda
 
   return (
     <>
-      {data.s !== 9 && <Bismillah />}
+      {soorah !== 9 && <Bismillah />}
 
       {out.map((outData) => (
         <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
       ))}
 
-      <PaginateSoorahList soorah={data.s} translator={data.t} />
+      <PaginateSoorahList soorah={soorah} translator={translator} />
     </>
   )
 }

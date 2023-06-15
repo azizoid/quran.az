@@ -15,6 +15,8 @@ const SoorahTemplate = ({ children }: SoorahTemplateProps) => {
 
   const data = getView({ s: Number(params.soorah), t: Number(searchParams) })
 
+  if (data.view !== 'soorah' && data.view !== 'ayah') return
+
   return (
     <>
       <Form />

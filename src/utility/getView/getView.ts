@@ -1,19 +1,51 @@
 import { soorahList } from '@/assets/soorah-list-object'
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
-import { FormProps } from '@/lib/types'
 
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
+export type FormProps = {
+  view: 'empty'
+  s: null
+  a: null
+  q: null
+  t: number
+} | {
+  view: 'soorah'
+  s: number
+  a: null
+  q: null
+  t: number
+} | {
+  view: 'ayah'
+  s: number
+  a: number
+  q: null
+  t: number
+} | {
+  view: 'search'
+  s: null
+  a: null
+  q: string
+  t: number
+}
+
 const initialStateProps: FormProps = {
-  s: 0,
-  a: '',
-  q: '',
+  s: null,
+  a: null,
+  q: null,
   view: 'empty',
   t: DEFAULT_TRANSLATOR,
 }
 
-export const getView = (form: Partial<FormProps>): FormProps => {
-  const result: Partial<FormProps> = {}
+type FormInputProps = {
+  s: number | null
+  a: number | null
+  q: string | null
+  t: number | null
+}
+
+export const getView = (form: Partial<FormInputProps> = initialStateProps): FormProps => {
+  const result = {} as FormProps
 
   if (form.s) {
     const soorah = soorahList.find(({ id }) => id === form.s)

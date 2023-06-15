@@ -5,8 +5,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
-import { FormProps } from '@/lib/types'
-import { getView } from '@/utility/getView/getView'
+import { FormProps, getView } from '@/utility/getView/getView'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()
@@ -14,9 +13,9 @@ export const Form = (): JSX.Element => {
   const params = useParams()
   const searchParams = useSearchParams()
 
-  const soorah = Number(params?.soorah?.toString()) || 0
-  const ayah = Number(params?.ayah?.toString()) || ''
-  const query = params?.search ? decodeURIComponent(params?.search.toString()) : ''
+  const soorah = Number(params?.soorah?.toString()) || null
+  const ayah = Number(params?.ayah?.toString()) || null
+  const query = params?.search ? decodeURIComponent(params?.search.toString()) : null
   const translator = Number(searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
   const [state, setState] = useState<FormProps>(() =>
@@ -31,25 +30,25 @@ export const Form = (): JSX.Element => {
         setState((prev) => ({
           ...prev,
           s: Number(value),
-          a: '',
-          q: '',
+          a: null,
+          q: null,
           view: name,
         }))
         break
       case 'ayah':
         setState((prev) => ({
           ...prev,
-          s: prev.s,
+          s: Number(prev.s),
           a: Number(value),
-          q: '',
+          q: null,
           view: name,
         }))
         break
       case 'search':
         setState((prev) => ({
           ...prev,
-          s: 0,
-          a: '',
+          s: null,
+          a: null,
           q: value,
           view: name,
         }))
@@ -92,7 +91,7 @@ export const Form = (): JSX.Element => {
         <select
           className="form-control col-span-7 focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
           name="soorah"
-          value={state?.s}
+          value={state?.s ?? 0}
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>

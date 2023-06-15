@@ -40,21 +40,17 @@ const AyahPage = async ({
   params: { soorah: soorahParam, ayah: ayahParam },
   searchParams: { t: translatorParam },
 }: AyahProps) => {
-  const soorah = Number(soorahParam)
-  const ayah = Number(ayahParam)
-  const translator = Number(translatorParam)
+  const { s: soorah, a: ayah, t: translator, view } = getView({ s: Number(soorahParam), a: Number(ayahParam), t: Number(translatorParam) })
 
-  const data = getView({ s: soorah, a: ayah, t: translator })
-
-  if (data.view !== 'ayah') {
-    if (data.view === 'soorah') {
-      redirect(`/${data.s}?t=${data.t}`)
+  if (view !== 'ayah') {
+    if (view === 'soorah') {
+      redirect(`/${soorah}?t=${translator}`)
     }
 
     notFound()
   }
 
-  const out = await getAyahService({ soorah: data.s, ayah: Number(data.a), translator: data.t })
+  const out = await getAyahService({ soorah, ayah, translator })
 
   const { content, arabic, transliteration, prev, next } = out
 

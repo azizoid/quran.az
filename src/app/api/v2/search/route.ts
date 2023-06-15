@@ -2,20 +2,22 @@ import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
 
-import { DisplayData, FormProps, DataPropsLatinized, ResponseData } from '@/lib/types'
-import { getView } from '@/utility/getView/getView'
+import { DisplayData, DataPropsLatinized } from '@/lib/types'
+import { FormProps, getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
 
 export type ResponseProps = {
-  out: DisplayData[] | null
+  out: DisplayData[]
   data?: FormProps
-  paginate: {
+  paginate?: {
     total: number
     perPage: number
     currentPage: number
   }
-  error?: string
+} | {
+  out: null
+  error: string
 }
 
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
@@ -32,7 +34,7 @@ export const POST = async (req: Request) => {
       .replace(REGEX_SANITIZE, '\\$&')
       .normalize('NFD')
       .replace(REGEX_DIACRITICS, '')
-      .trim()
+      .trim() as string
 
     if (!search) {
       return NextResponse.json({ error: 'Search query is required' }, { status: 400 })
@@ -74,13 +76,15 @@ export const POST = async (req: Request) => {
     })
 
     if (ayahs.length === 0) {
-      return NextResponse.json(
-        { out: null, error: 'No results found for the given search query.' },
+      return NextResponse.json<ResponseProps>(
+        {
+          out: null, error: 'No results found for the given search query.',
+        },
         { status: 200 }
       )
     }
 
-    return NextResponse.json(
+    return NextResponse.json<ResponseProps>(
       {
         out: ayahs,
         data,
@@ -89,7 +93,6 @@ export const POST = async (req: Request) => {
           total: ayahsCount,
           currentPage,
         },
-        success: true,
       },
       {
         status: 200,

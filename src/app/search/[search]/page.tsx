@@ -47,7 +47,7 @@ const Search = () => {
     mutate()
   }, [mutate, currentPage, translator, params?.search])
 
-  if (error || data?.error) {
+  if (error || data?.out === null) {
     return <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
   }
 
