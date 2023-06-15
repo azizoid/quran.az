@@ -12,7 +12,7 @@ export type SearchAyahProps = {
   mark?: string
 }
 
-export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps): JSX.Element => (
+export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps) => (
   <li className="soorah-list-item">
     <div className="flex flex-row">
       <span className="badge">

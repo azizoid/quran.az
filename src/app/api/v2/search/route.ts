@@ -7,18 +7,20 @@ import { FormProps, getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
 
-export type ResponseProps = {
-  out: DisplayData[]
-  data?: FormProps
-  paginate?: {
-    total: number
-    perPage: number
-    currentPage: number
-  }
-} | {
-  out: null
-  error: string
-}
+export type ResponseProps =
+  | {
+      out: DisplayData[]
+      data?: FormProps
+      paginate?: {
+        total: number
+        perPage: number
+        currentPage: number
+      }
+    }
+  | {
+      out: null
+      error: string
+    }
 
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g
@@ -78,7 +80,8 @@ export const POST = async (req: Request) => {
     if (ayahs.length === 0) {
       return NextResponse.json<ResponseProps>(
         {
-          out: null, error: 'No results found for the given search query.',
+          out: null,
+          error: 'No results found for the given search query.',
         },
         { status: 200 }
       )

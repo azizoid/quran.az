@@ -10,7 +10,7 @@ type SoorahCaptionProps = {
   translator: number
 }
 
-export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps): JSX.Element => {
+export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
   const { fullTitle, city, ayahCount } = SOORAH_LIST[soorah]
 
   return (

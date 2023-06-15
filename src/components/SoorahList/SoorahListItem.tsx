@@ -7,7 +7,7 @@ export type SoorahListItemProps = {
   soorah: SoorahListProps
 }
 
-export const SoorahListItem = ({ soorah }: SoorahListItemProps): JSX.Element => (
+export const SoorahListItem = ({ soorah }: SoorahListItemProps) => (
   <Link
     href={`/${soorah.id}`}
     className="group flex w-full my-4 mx-auto overflow-hidden bg-white rounded-lg shadow-md"

@@ -34,8 +34,15 @@ export const generateMetadata = async ({ params }: SoorahProps) => {
   }
 }
 
-const SoorahPage = async ({ params: { soorah: soorahParam }, searchParams: { t: translatorParam } }: SoorahProps) => {
-  const { s: soorah, t: translator, view } = getView({ s: Number(soorahParam), t: Number(translatorParam) })
+const SoorahPage = async ({
+  params: { soorah: soorahParam },
+  searchParams: { t: translatorParam },
+}: SoorahProps) => {
+  const {
+    s: soorah,
+    t: translator,
+    view,
+  } = getView({ s: Number(soorahParam), t: Number(translatorParam) })
 
   if (view !== 'soorah') {
     notFound()

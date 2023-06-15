@@ -40,7 +40,12 @@ const AyahPage = async ({
   params: { soorah: soorahParam, ayah: ayahParam },
   searchParams: { t: translatorParam },
 }: AyahProps) => {
-  const { s: soorah, a: ayah, t: translator, view } = getView({ s: Number(soorahParam), a: Number(ayahParam), t: Number(translatorParam) })
+  const {
+    s: soorah,
+    a: ayah,
+    t: translator,
+    view,
+  } = getView({ s: Number(soorahParam), a: Number(ayahParam), t: Number(translatorParam) })
 
   if (view !== 'ayah') {
     if (view === 'soorah') {

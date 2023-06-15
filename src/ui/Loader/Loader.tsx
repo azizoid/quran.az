@@ -1,6 +1,6 @@
 import styles from './Loader.module.scss'
 
-export const Loader = (): JSX.Element => (
+export const Loader = () => (
   <div className={styles.loader}>
     <div className={styles.loadingioSpinner}>
       <div className={styles.ldio}>

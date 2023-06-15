@@ -16,7 +16,7 @@ export const PaginateAyah = ({
   translator,
 }: PaginateAyahProps): JSX.Element => (
   <div className="pagination">
-    {prev && (
+    {prev ? (
       <Link
         href={`/${soorah}/${prev}?t=${translator}`}
         className="pagination-item"
@@ -24,9 +24,11 @@ export const PaginateAyah = ({
       >
         {prev}
       </Link>
-    )}
+    ) : null}
+
     <span className="pagination-disabled">{ayah}</span>
-    {next && (
+
+    {next ? (
       <Link
         href={`/${soorah}/${next}?t=${translator}`}
         className="pagination-item"
@@ -34,6 +36,6 @@ export const PaginateAyah = ({
       >
         {next}
       </Link>
-    )}
+    ) : null}
   </div>
 )

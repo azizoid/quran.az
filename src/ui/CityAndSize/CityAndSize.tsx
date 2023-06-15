@@ -32,7 +32,7 @@ export const CityAndSize = ({
         </>
       )}
     </span>
-    {devider && '/'}
+    {devider ? '/' : null}
     <span>{ayahCount} ayə</span>
   </>
 )

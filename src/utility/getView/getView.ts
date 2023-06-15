@@ -3,31 +3,35 @@ import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
-export type FormProps = {
-  view: 'empty'
-  s: null
-  a: null
-  q: null
-  t: number
-} | {
-  view: 'soorah'
-  s: number
-  a: null
-  q: null
-  t: number
-} | {
-  view: 'ayah'
-  s: number
-  a: number
-  q: null
-  t: number
-} | {
-  view: 'search'
-  s: null
-  a: null
-  q: string
-  t: number
-}
+export type FormProps =
+  | {
+      view: 'empty'
+      s: null
+      a: null
+      q: null
+      t: number
+    }
+  | {
+      view: 'soorah'
+      s: number
+      a: null
+      q: null
+      t: number
+    }
+  | {
+      view: 'ayah'
+      s: number
+      a: number
+      q: null
+      t: number
+    }
+  | {
+      view: 'search'
+      s: null
+      a: null
+      q: string
+      t: number
+    }
 
 const initialStateProps: FormProps = {
   s: null,
