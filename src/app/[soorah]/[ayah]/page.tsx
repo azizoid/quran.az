@@ -61,7 +61,7 @@ const AyahPage = async ({
 
   return (
     <>
-      {soorah !== 1 && ayah !== 1 && <Bismillah />}
+      <Bismillah />
 
       <li className="ayah-list-item flex flex-col">
         <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
