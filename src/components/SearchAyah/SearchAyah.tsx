@@ -12,7 +12,7 @@ export type SearchAyahProps = {
   mark?: string
 }
 
-export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps): JSX.Element => (
+export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps) => (
   <li className="soorah-list-item">
     <div className="flex flex-row">
       <span className="badge">
@@ -26,7 +26,11 @@ export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps): JSX.Ele
         highlightClassName="bg-warning"
       />
     </div>
-    <Link href={`/${data.soorah}/${data.ayah}?t=${data.translator}`} className="read-ayah">
+    <Link
+      href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}
+      className="read-ayah"
+      prefetch={false}
+    >
       <FaExternalLinkAlt />
     </Link>
   </li>

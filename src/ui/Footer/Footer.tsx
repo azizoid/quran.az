@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const Footer = (): JSX.Element => (
+export const Footer = () => (
   <nav className="py-4 bg-gray-700 text-slate-300">
     <ol className="container mx-auto w-lg flex">
       <li className="active mr-6" aria-current="page">

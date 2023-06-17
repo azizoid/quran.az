@@ -18,25 +18,29 @@ export const PaginateSoorahList = ({
 
   return (
     <div className="pagination">
-      {prev !== null && (
+      {prev !== null ? (
         <Link
           href={`/${prev}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
+          prefetch={false}
         >
           {sirasayi(prev)} {SOORAH_LIST[prev]['fullTitle']}
         </Link>
-      )}
+      ) : null}
+
       <span className="pagination-disabled flex flex-col text-center">
         {sirasayi(soorah)} {SOORAH_LIST[soorah]['fullTitle']}
       </span>
-      {next !== null && (
+
+      {next !== null ? (
         <Link
           href={`/${next}?t=${translator}`}
           className="pagination-item flex flex-col text-center"
+          prefetch={false}
         >
           {sirasayi(next)} {SOORAH_LIST[next]['fullTitle']}
         </Link>
-      )}
+      ) : null}
     </div>
   )
 }

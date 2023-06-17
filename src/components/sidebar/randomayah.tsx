@@ -3,19 +3,21 @@ import useSWR from 'swr'
 import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
-export const RandomAyah = (): JSX.Element => {
-  const { data, isLoading, error: isError } = useSWR(
-    '/api/random', fetcher, {
+export const RandomAyah = () => {
+  const {
+    data,
+    isLoading,
+    error: isError,
+  } = useSWR(['/api/v2/random', 'randomAyah'], fetcher, {
     revalidateOnMount: true,
     dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
-  }
-  )
+  })
 
   if (isLoading || isError) {
     return <LoadingBoxes />
   }
 
-  const { soorah, ayah, translator, content } = data.out
+  const { soorah, ayah, translator, content } = data
 
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>

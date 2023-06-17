@@ -10,7 +10,7 @@ type SoorahCaptionProps = {
   translator: number
 }
 
-export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps): JSX.Element => {
+export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
   const { fullTitle, city, ayahCount } = SOORAH_LIST[soorah]
 
   return (
@@ -20,6 +20,7 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps): JSX.E
       <Link
         href={`/${soorah}?t=${translator}`}
         className="text-gray-400 hover:text-black decoration-1"
+        prefetch={false}
       >
         {`${soorah}. ${fullTitle}`}
         <span className="flex flex-row justify-center gap-1 text-xs">
