@@ -51,16 +51,32 @@ describe('PaginateAyah', () => {
     expect(nextLink).toBeInTheDocument()
   })
 
-  test('renders the last ayah when next is null', () => {
-    render(<PaginateAyah {...mockProps} next={null} />)
+  test('renders the first ayah when prevSoorah is available', () => {
+    render(<PaginateAyah {...mockProps} next={null} prevSoorah="əl-Fatihə surəsi" />)
 
     const ayahText = screen.getByText('5')
     const prevLink = screen.queryByText('4')
-    const nextLink = screen.queryByText('6')
+    const prevSoorahLink = screen.getByText('1. əl-Fatihə surəsi ←')
 
     expect(ayahText).toBeInTheDocument()
     expect(prevLink).toBeInTheDocument()
-    expect(nextLink).not.toBeInTheDocument()
+    expect(prevSoorahLink).toBeInTheDocument()
+
+    expect(prevLink).toBeInTheDocument()
+  })
+
+  test('renders the last ayah when nextSoorah is available', () => {
+    render(<PaginateAyah {...mockProps} next={null} nextSoorah="Ali İmran surəsi" />)
+
+    const ayahText = screen.getByText('5')
+    const prevLink = screen.queryByText('4')
+    const nextSoorahLink = screen.getByText('3. Ali İmran surəsi →')
+
+    expect(ayahText).toBeInTheDocument()
+    expect(prevLink).toBeInTheDocument()
+    expect(nextSoorahLink).toBeInTheDocument()
+
+    expect(prevLink).toBeInTheDocument()
   })
 
 })
