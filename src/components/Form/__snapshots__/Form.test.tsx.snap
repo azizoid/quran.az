@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form Snapshot 1`] = `
+exports[`<Form> Form Snapshot 1`] = `
 <div>
   <form
     accept-charset="UTF-8"
