@@ -1,19 +1,66 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { PaginateAyah } from './PaginateAyah'
 
-test('PaginateAyah Snapshot', async () => {
-  const { container, getByText } = render(<PaginateAyah soorah={1} ayah={5} prev={4} next={6} />)
+describe('PaginateAyah', () => {
+  const mockProps = {
+    soorah: 2,
+    ayah: 5,
+    prev: 4,
+    next: 6,
+    translator: 1,
+  }
 
-  expect(getByText('4')).toBeInTheDocument()
-  expect(getByText('5')).toBeInTheDocument()
-  expect(getByText('6')).toBeInTheDocument()
+  test('renders pagination links correctly', () => {
+    render(<PaginateAyah {...mockProps} />)
 
-  expect(container).toMatchSnapshot()
-})
+    const prevLink = screen.getByText('4')
+    const ayahText = screen.getByText('5')
+    const nextLink = screen.getByText('6')
 
-test('PaginateAyah middle of ayah', async () => {
-  const { queryByText } = render(<PaginateAyah soorah={1} ayah={7} prev={6} />)
+    expect(prevLink).toBeInTheDocument()
+    expect(prevLink.getAttribute('href')).toBe('/2/4?t=1')
 
-  expect(queryByText('8')).not.toBeInTheDocument()
+    expect(ayahText).toBeInTheDocument()
+
+    expect(nextLink).toBeInTheDocument()
+    expect(nextLink.getAttribute('href')).toBe('/2/6?t=1')
+  })
+
+  test('renders only current ayah when prev and next are null', () => {
+    render(<PaginateAyah {...mockProps} prev={null} next={null} />)
+
+    const ayahText = screen.getByText('5')
+    const prevLink = screen.queryByText('4')
+    const nextLink = screen.queryByText('6')
+
+    expect(ayahText).toBeInTheDocument()
+    expect(prevLink).not.toBeInTheDocument()
+    expect(nextLink).not.toBeInTheDocument()
+  })
+
+  test('renders the first ayah when prev is null', () => {
+    render(<PaginateAyah {...mockProps} prev={null} />)
+
+    const ayahText = screen.getByText('5')
+    const prevLink = screen.queryByText('4')
+    const nextLink = screen.queryByText('6')
+
+    expect(ayahText).toBeInTheDocument()
+    expect(prevLink).not.toBeInTheDocument()
+    expect(nextLink).toBeInTheDocument()
+  })
+
+  test('renders the last ayah when next is null', () => {
+    render(<PaginateAyah {...mockProps} next={null} />)
+
+    const ayahText = screen.getByText('5')
+    const prevLink = screen.queryByText('4')
+    const nextLink = screen.queryByText('6')
+
+    expect(ayahText).toBeInTheDocument()
+    expect(prevLink).toBeInTheDocument()
+    expect(nextLink).not.toBeInTheDocument()
+  })
+
 })

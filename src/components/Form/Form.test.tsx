@@ -1,126 +1,110 @@
 import { render, fireEvent } from '@testing-library/react'
-import { useRouter } from 'next/router'
-
-import { FormContextProvider } from '../../store/form-store'
 
 import { Form } from './Form'
 
 const defaultTranslator = process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
 
 const push = jest.fn()
-jest.mock('next/router', () => ({
-  useRouter: jest.fn(),
+
+jest.mock('next/navigation', () => ({
+  useParams: () => ({}),
+  useRouter: () => ({ push: push }),
+  useSearchParams: () => ({
+    get: jest.fn().mockReturnValue({ t: defaultTranslator }),
+  }),
 }))
 
 jest.mock('@/ui/LoadingBoxes/LoadingBoxes', () => <span>Loader</span>)
 
-beforeEach(() => {
-  ;(useRouter as jest.Mock).mockImplementation(() => ({
-    push,
-    query: {},
-  }))
-})
+describe('<Form>', () => {
 
-test('Form Snapshot', () => {
-  const { container, getByRole, getAllByRole } = render(<Form />)
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
 
-  expect(getAllByRole('combobox')).toHaveLength(2)
-  expect(getByRole('spinbutton')).toBeInTheDocument()
-  expect(getByRole('textbox')).toBeInTheDocument()
-  expect(getByRole('button', { name: 'Axtar' })).toBeInTheDocument()
+  test('Form Snapshot', () => {
+    const { container, getByRole, getAllByRole } = render(<Form />)
 
-  expect(container).toMatchSnapshot()
-})
+    expect(getAllByRole('combobox')).toHaveLength(2)
+    expect(getByRole('spinbutton')).toBeInTheDocument()
+    expect(getByRole('textbox')).toBeInTheDocument()
+    expect(getByRole('button', { name: 'Axtar' })).toBeInTheDocument()
 
-test('Click submit button on empty form', () => {
-  const { getByRole } = render(
-    <FormContextProvider>
+    expect(container).toMatchSnapshot()
+  })
+
+  test('Click submit button on empty form', () => {
+    const { getByRole } = render(
       <Form />
-    </FormContextProvider>
-  )
+    )
 
-  const submitBtn = getByRole('button')
-  fireEvent.click(submitBtn)
+    const submitBtn = getByRole('button')
+    fireEvent.click(submitBtn)
 
-  expect(push).toHaveBeenLastCalledWith('/')
-})
+    expect(push).toHaveBeenLastCalledWith('/')
+  })
 
-test('Change Soorah to 2 and click Submit Button', () => {
-  const { getByRole, getAllByRole } = render(
-    <FormContextProvider>
-      <Form />
-    </FormContextProvider>
-  )
+  test('Change Soorah to 2 and click Submit Button', () => {
+    const { getByRole, getAllByRole } = render(<Form />)
 
-  const submitBtn = getByRole('button')
-  const [soorahSelectBox] = getAllByRole('combobox')
+    const submitBtn = getByRole('button')
+    const [soorahSelectBox] = getAllByRole('combobox')
 
-  fireEvent.change(soorahSelectBox, { target: { value: 2 } })
-  expect(soorahSelectBox).toHaveValue('2')
+    fireEvent.change(soorahSelectBox, { target: { value: 2 } })
+    expect(soorahSelectBox).toHaveValue('2')
 
-  fireEvent.click(submitBtn)
+    fireEvent.click(submitBtn)
 
-  expect(push).toHaveBeenLastCalledWith(`/2?t=${defaultTranslator}`)
-})
+    expect(push).toHaveBeenLastCalledWith(`/2?t=${defaultTranslator}`)
+  })
 
-test('Select Soorah 2 and Ayah 23 and click the button', () => {
-  const { getByRole, getAllByRole } = render(
-    <FormContextProvider>
-      <Form />
-    </FormContextProvider>
-  )
+  test('Select Soorah 2 and Ayah 23 and click the button', () => {
+    const { getByRole, getAllByRole } = render(<Form />)
 
-  const submitBtn = getByRole('button')
-  const [soorahSelectBox] = getAllByRole('combobox')
-  const ayah = getByRole('spinbutton')
+    const submitBtn = getByRole('button')
+    const [soorahSelectBox] = getAllByRole('combobox')
+    const ayah = getByRole('spinbutton')
 
-  fireEvent.change(soorahSelectBox, { target: { value: 2 } })
-  fireEvent.change(ayah, { target: { value: 23 } })
+    fireEvent.change(soorahSelectBox, { target: { value: 2 } })
+    fireEvent.change(ayah, { target: { value: 23 } })
 
-  fireEvent.click(submitBtn)
-  expect(push).toHaveBeenLastCalledWith(`/2/23?t=${defaultTranslator}`)
-})
+    fireEvent.click(submitBtn)
+    expect(push).toHaveBeenLastCalledWith(`/2/23?t=${defaultTranslator}`)
+  })
 
-test('Enter Search Query and click the button', () => {
-  const { getByRole, getByPlaceholderText } = render(
-    <FormContextProvider>
-      <Form />
-    </FormContextProvider>
-  )
+  test('Enter Search Query and click the button', () => {
+    const { getByRole, getByPlaceholderText } = render(<Form />)
 
-  const submitBtn = getByRole('button')
-  const query = getByPlaceholderText('Kəlmə')
+    const submitBtn = getByRole('button')
+    const query = getByPlaceholderText('Kəlmə')
 
-  fireEvent.change(query, { target: { value: 'Musa' } })
+    fireEvent.change(query, { target: { value: 'Musa' } })
 
-  fireEvent.click(submitBtn)
-  expect(push).toHaveBeenLastCalledWith(`/search/Musa?t=${defaultTranslator}`)
-})
+    fireEvent.click(submitBtn)
+    expect(push).toHaveBeenLastCalledWith(`/search/Musa?t=${defaultTranslator}`)
+  })
 
-test('Reset Soorah and Ayah on Query enter', () => {
-  const { getByRole, getByPlaceholderText, getAllByRole } = render(
-    <FormContextProvider>
-      <Form />
-    </FormContextProvider>
-  )
+  test('Reset Soorah and Ayah on Query enter', () => {
+    const { getByRole, getByPlaceholderText, getAllByRole } = render(<Form />)
 
-  const [soorahSelectBox, translatorSelectBox] = getAllByRole('combobox')
-  const ayah = getByRole('spinbutton')
-  const query = getByPlaceholderText('Kəlmə')
+    const [soorahSelectBox, translatorSelectBox] = getAllByRole('combobox')
+    const ayah = getByRole('spinbutton')
+    const query = getByPlaceholderText('Kəlmə')
 
-  fireEvent.change(soorahSelectBox, { target: { value: 2 } })
-  fireEvent.change(ayah, { target: { value: 23 } })
+    fireEvent.change(soorahSelectBox, { target: { value: 2 } })
+    fireEvent.change(ayah, { target: { value: 23 } })
 
-  expect(soorahSelectBox).toHaveValue('2')
-  expect(ayah).toHaveValue(23)
-  expect(translatorSelectBox).toHaveValue('4')
-  expect(query).toHaveValue('')
+    expect(soorahSelectBox).toHaveValue('2')
+    expect(ayah).toHaveValue(23)
+    expect(translatorSelectBox).toHaveValue('4')
+    expect(query).toHaveValue('')
 
-  fireEvent.change(query, { target: { value: 'Musa' } })
-  fireEvent.change(translatorSelectBox, { target: { value: 1 } })
+    fireEvent.change(query, { target: { value: 'Musa' } })
+    fireEvent.change(translatorSelectBox, { target: { value: 1 } })
 
-  expect(soorahSelectBox).toHaveValue('0')
-  expect(ayah).toHaveValue(null)
-  expect(translatorSelectBox).toHaveValue('1')
-  expect(query).toHaveValue('Musa')
+    expect(soorahSelectBox).toHaveValue('0')
+    expect(ayah).toHaveValue(null)
+    expect(translatorSelectBox).toHaveValue('1')
+    expect(query).toHaveValue('Musa')
+  })
 })

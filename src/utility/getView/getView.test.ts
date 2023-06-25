@@ -31,7 +31,7 @@ test('get Search Query is short', () => {
     q: 'M',
   })
 
-  expect(data.q).toEqual('')
+  expect(data.q).toEqual(null)
   expect(data.view).toEqual('empty')
 })
 
