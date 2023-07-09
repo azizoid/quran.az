@@ -51,29 +51,27 @@ describe('PaginateAyah', () => {
     expect(nextLink).toBeInTheDocument()
   })
 
-  test('renders the first ayah when prevSoorah is available', () => {
-    render(<PaginateAyah {...mockProps} next={null} prevSoorah="əl-Fatihə surəsi" />)
+  test('renders the first ayah when prev Soorah is available', () => {
+    render(<PaginateAyah {...({ ...mockProps, soorah: 2, ayah: 1 })} prev={null} />)
 
-    const ayahText = screen.getByText('5')
-    const prevLink = screen.queryByText('4')
-    const prevSoorahLink = screen.getByText('1. əl-Fatihə surəsi ←')
+    const ayahText = screen.getByText('1')
+    const prevSoorahLink = screen.getByRole('link', { name: '1. əl-Fatihə surəsi ←' })
+    const nextLink = screen.getByRole('link', { name: '6' })
 
-    expect(ayahText).toBeInTheDocument()
-    expect(prevLink).toBeInTheDocument()
+    expect(ayahText).toHaveClass('pagination-disabled')
     expect(prevSoorahLink).toBeInTheDocument()
 
-    expect(prevLink).toBeInTheDocument()
+    expect(nextLink).toBeInTheDocument()
   })
 
   test('renders the last ayah when nextSoorah is available', () => {
-    render(<PaginateAyah {...mockProps} next={null} nextSoorah="Ali İmran surəsi" />)
+    render(<PaginateAyah {...mockProps} next={null} />)
 
     const ayahText = screen.getByText('5')
     const prevLink = screen.queryByText('4')
     const nextSoorahLink = screen.getByText('3. Ali İmran surəsi →')
 
     expect(ayahText).toBeInTheDocument()
-    expect(prevLink).toBeInTheDocument()
     expect(nextSoorahLink).toBeInTheDocument()
 
     expect(prevLink).toBeInTheDocument()

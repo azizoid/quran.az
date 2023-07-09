@@ -59,9 +59,6 @@ const AyahPage = async ({
 
   const { content, arabic, transliteration, prev, next } = out
 
-  const prevSoorah = !prev && soorah > 1 ? soorahList.find((soorahItem) => soorahItem.id === Number(soorah - 1))?.fullTitle : undefined
-  const nextSoorah = !next && soorah < 114 ? soorahList.find((soorahItem) => soorahItem.id === Number(soorah + 1))?.fullTitle : undefined
-
   return (
     <>
       <Bismillah />
@@ -77,7 +74,7 @@ const AyahPage = async ({
         {arabic}
       </li>
       <li>
-        <PaginateAyah {...{ soorah, ayah, prev, prevSoorah, next, nextSoorah, translator }} />
+        <PaginateAyah {...{ soorah, ayah, prev, next, translator }} />
       </li>
     </>
   )
