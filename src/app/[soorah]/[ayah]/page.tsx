@@ -57,10 +57,7 @@ const AyahPage = async ({
 
   const out = await getAyahService({ soorah, ayah, translator })
 
-  const { content, arabic, transliteration, prev, next } = out
-
-  const prevSoorah = !prev && soorah > 1 ? soorahList.find((soorahItem) => soorahItem.id === Number(soorah - 1))?.fullTitle : undefined
-  const nextSoorah = !next && soorah < 114 ? soorahList.find((soorahItem) => soorahItem.id === Number(soorah + 1))?.fullTitle : undefined
+  const { content, arabic, transliteration } = out
 
   return (
     <>
@@ -77,7 +74,7 @@ const AyahPage = async ({
         {arabic}
       </li>
       <li>
-        <PaginateAyah {...{ soorah, ayah, prev, prevSoorah, next, nextSoorah, translator }} />
+        <PaginateAyah {...{ soorah, ayah, translator }} />
       </li>
     </>
   )
