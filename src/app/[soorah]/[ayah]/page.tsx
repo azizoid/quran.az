@@ -57,7 +57,7 @@ const AyahPage = async ({
 
   const out = await getAyahService({ soorah, ayah, translator })
 
-  const { content, arabic, transliteration, prev, next } = out
+  const { content, arabic, transliteration } = out
 
   return (
     <>
@@ -74,7 +74,7 @@ const AyahPage = async ({
         {arabic}
       </li>
       <li>
-        <PaginateAyah {...{ soorah, ayah, prev, next, translator }} />
+        <PaginateAyah {...{ soorah, ayah, translator }} />
       </li>
     </>
   )
