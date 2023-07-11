@@ -49,7 +49,7 @@ type FormInputProps = {
 }
 
 export const getView = (form: Partial<FormInputProps> = initialStateProps): FormProps => {
-  const result = {} as FormProps
+  const result = { ...initialStateProps } as FormProps
 
   if (form.s) {
     const soorah = soorahList.find(({ id }) => id === form.s)
@@ -72,5 +72,5 @@ export const getView = (form: Partial<FormInputProps> = initialStateProps): Form
     result.t = form.t
   }
 
-  return { ...initialStateProps, ...result }
+  return result
 }

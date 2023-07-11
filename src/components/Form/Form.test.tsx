@@ -17,7 +17,6 @@ jest.mock('next/navigation', () => ({
 jest.mock('@/ui/LoadingBoxes/LoadingBoxes', () => <span>Loader</span>)
 
 describe('<Form>', () => {
-
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -34,9 +33,7 @@ describe('<Form>', () => {
   })
 
   test('Click submit button on empty form', () => {
-    const { getByRole } = render(
-      <Form />
-    )
+    const { getByRole } = render(<Form />)
 
     const submitBtn = getByRole('button')
     fireEvent.click(submitBtn)
