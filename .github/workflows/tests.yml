@@ -2,6 +2,9 @@ name: Run tests and linter
 
 on: [push, pull_request]
 
+env:
+  NEXT_PUBLIC_DEFAULT_TRANSLATOR: ${{ vars.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
