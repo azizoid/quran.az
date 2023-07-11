@@ -10,6 +10,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "type-check": "tsc",
     "test": "jest --config ./config/jest.config.js",
+    "test:coverage": "jest --config ./config/jest.config.js --coverage",
     "prettier": "prettier --write ."
   },
   "dependencies": {

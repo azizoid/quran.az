@@ -15,7 +15,6 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   rootDir: '..',
   setupFilesAfterEnv: ['<rootDir>/config/jest-setup.ts'],
-  collectCoverage: true,
   coverageThreshold: {
     global: {
       lines: 90,
