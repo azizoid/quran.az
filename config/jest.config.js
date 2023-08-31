@@ -7,6 +7,7 @@ const createJestConfig = nextJest({
 })
 
 // Add any custom config to be passed to Jest
+/* @type {import('jest').Config} */
 const customJestConfig = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
@@ -15,6 +16,7 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   rootDir: '..',
   setupFilesAfterEnv: ['<rootDir>/config/jest-setup.ts'],
+  preset: 'ts-jest',
   coverageThreshold: {
     global: {
       lines: 90,
