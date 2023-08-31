@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { SearchAyah } from './SearchAyah'
 
 test('SearchAyah with mark word', () => {
-  const { getByText } = render(
+  render(
     <SearchAyah
       data={{
         id: 'fakeId',
@@ -16,7 +16,7 @@ test('SearchAyah with mark word', () => {
     />
   )
 
-  expect(getByText('Lam')).toHaveClass('bg-warning')
+  expect(screen.getByText('Lam')).toHaveClass('bg-warning')
 })
 
 test('SearchAyah without mark word', () => {
@@ -36,7 +36,7 @@ test('SearchAyah without mark word', () => {
 })
 
 test('SearchAyah with Sajda', () => {
-  const { getByText } = render(
+  render(
     <SearchAyah
       data={{
         id: 'fakeId3',
@@ -49,5 +49,5 @@ test('SearchAyah with Sajda', () => {
     />
   )
 
-  expect(getByText('Səcdə ayəsi')).toBeInTheDocument()
+  expect(screen.getByText('Səcdə ayəsi')).toBeInTheDocument()
 })

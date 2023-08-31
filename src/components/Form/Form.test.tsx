@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent,screen } from '@testing-library/react'
 
 import { Form } from './Form'
 
@@ -22,30 +22,30 @@ describe('<Form>', () => {
   })
 
   test('Form Snapshot', () => {
-    const { container, getByRole, getAllByRole } = render(<Form />)
+    const { container } = render(<Form />)
 
-    expect(getAllByRole('combobox')).toHaveLength(2)
-    expect(getByRole('spinbutton')).toBeInTheDocument()
-    expect(getByRole('textbox')).toBeInTheDocument()
-    expect(getByRole('button', { name: 'Axtar' })).toBeInTheDocument()
+    expect(screen.getAllByRole('combobox')).toHaveLength(2)
+    expect(screen.getByRole('spinbutton')).toBeInTheDocument()
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Axtar' })).toBeInTheDocument()
 
     expect(container).toMatchSnapshot()
   })
 
   test('Click submit button on empty form', () => {
-    const { getByRole } = render(<Form />)
+    render(<Form />)
 
-    const submitBtn = getByRole('button')
+    const submitBtn = screen.getByRole('button')
     fireEvent.click(submitBtn)
 
     expect(push).toHaveBeenLastCalledWith('/')
   })
 
   test('Change Soorah to 2 and click Submit Button', () => {
-    const { getByRole, getAllByRole } = render(<Form />)
+    render(<Form />)
 
-    const submitBtn = getByRole('button')
-    const [soorahSelectBox] = getAllByRole('combobox')
+    const submitBtn = screen.getByRole('button')
+    const [soorahSelectBox] = screen.getAllByRole('combobox')
 
     fireEvent.change(soorahSelectBox, { target: { value: 2 } })
     expect(soorahSelectBox).toHaveValue('2')
@@ -56,11 +56,11 @@ describe('<Form>', () => {
   })
 
   test('Select Soorah 2 and Ayah 23 and click the button', () => {
-    const { getByRole, getAllByRole } = render(<Form />)
+    render(<Form />)
 
-    const submitBtn = getByRole('button')
-    const [soorahSelectBox] = getAllByRole('combobox')
-    const ayah = getByRole('spinbutton')
+    const submitBtn = screen.getByRole('button')
+    const [soorahSelectBox] = screen.getAllByRole('combobox')
+    const ayah = screen.getByRole('spinbutton')
 
     fireEvent.change(soorahSelectBox, { target: { value: 2 } })
     fireEvent.change(ayah, { target: { value: 23 } })
@@ -70,10 +70,10 @@ describe('<Form>', () => {
   })
 
   test('Enter Search Query and click the button', () => {
-    const { getByRole, getByPlaceholderText } = render(<Form />)
+    render(<Form />)
 
-    const submitBtn = getByRole('button')
-    const query = getByPlaceholderText('Kəlmə')
+    const submitBtn = screen.getByRole('button')
+    const query = screen.getByPlaceholderText('Kəlmə')
 
     fireEvent.change(query, { target: { value: 'Musa' } })
 
@@ -82,11 +82,11 @@ describe('<Form>', () => {
   })
 
   test('Reset Soorah and Ayah on Query enter', () => {
-    const { getByRole, getByPlaceholderText, getAllByRole } = render(<Form />)
+    render(<Form />)
 
-    const [soorahSelectBox, translatorSelectBox] = getAllByRole('combobox')
-    const ayah = getByRole('spinbutton')
-    const query = getByPlaceholderText('Kəlmə')
+    const [soorahSelectBox, translatorSelectBox] = screen.getAllByRole('combobox')
+    const ayah = screen.getByRole('spinbutton')
+    const query = screen.getByPlaceholderText('Kəlmə')
 
     fireEvent.change(soorahSelectBox, { target: { value: 2 } })
     fireEvent.change(ayah, { target: { value: 23 } })

@@ -17,12 +17,12 @@ describe('PaginateAyah', () => {
     const nextLink = screen.getByText('6')
 
     expect(prevLink).toBeInTheDocument()
-    expect(prevLink.getAttribute('href')).toBe('/2/4?t=1')
+    expect(prevLink).toHaveAttribute('href', '/2/4?t=1')
 
     expect(ayahText).toBeInTheDocument()
 
     expect(nextLink).toBeInTheDocument()
-    expect(nextLink.getAttribute('href')).toBe('/2/6?t=1')
+    expect(nextLink).toHaveAttribute('href', '/2/6?t=1')
   })
 
   test('renders the first ayah when prev Soorah is available', () => {
@@ -55,13 +55,13 @@ describe('PaginateAyah', () => {
     render(<PaginateAyah {...mockProps} soorah={1} ayah={1} />)
 
     expect(screen.queryByText('←')).not.toBeInTheDocument()
-    expect(screen.queryByText('1')).toBeInTheDocument()
+    expect(screen.getByText('1')).toBeInTheDocument()
   })
 
   test('does not render next link when on last Soorah and Ayah', () => {
     render(<PaginateAyah {...{ ...mockProps, soorah: 114, ayah: 6 }} />)
 
     expect(screen.queryByText('→')).not.toBeInTheDocument()
-    expect(screen.queryByText('6')).toBeInTheDocument()
+    expect(screen.getByText('6')).toBeInTheDocument()
   })
 })
