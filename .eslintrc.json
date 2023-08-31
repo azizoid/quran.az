@@ -1,10 +1,21 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
   "rules": {
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         "pathGroups": [
           {
             "pattern": "react",
@@ -26,7 +37,9 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
@@ -43,8 +56,14 @@
       }
     ],
     "no-console": "error",
-    "semi": ["error", "never"],
-    "quotes": ["error", "single"],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "no-mixed-spaces-and-tabs": "error",
     "no-trailing-spaces": "error",
     "no-multi-spaces": "error",
