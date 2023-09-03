@@ -82,5 +82,5 @@ jobs:
             git checkout main
             git pull
             pnpm install
-            pm2 restart 0
+            pm2 restart quran.az
             echo "Files uploaded successfully!"
