@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { SoorahAyah } from './SoorahAyah'
 
@@ -18,7 +18,7 @@ test('SoorahAyah Snapshot', () => {
 })
 
 test('SoorahAyah Sajda', () => {
-  const { getByText } = render(
+  render(
     <SoorahAyah
       data={{
         soorah: 7,
@@ -30,5 +30,5 @@ test('SoorahAyah Sajda', () => {
     />
   )
 
-  expect(getByText('Səcdə ayəsi')).toBeInTheDocument()
+  expect(screen.getByText('Səcdə ayəsi')).toBeInTheDocument()
 })
