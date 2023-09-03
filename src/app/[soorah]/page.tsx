@@ -19,8 +19,7 @@ type SoorahProps = {
   }
 }
 
-export const generateMetadata = async ({ params }: SoorahProps) => {
-  const { soorah } = params
+export const generateMetadata = async ({ params: { soorah } }: SoorahProps) => {
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
 
   if (!soorahTitle) return
