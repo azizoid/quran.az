@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface PaginationProps {
   activePage: number;
   itemsCountPerPage: number;
@@ -9,14 +7,13 @@ interface PaginationProps {
   hideDisabled?: boolean;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+export const Pagination = ({
   activePage,
   itemsCountPerPage,
   totalItemsCount,
   pageRangeDisplayed,
   onChange,
-  hideDisabled = true,
-}) => {
+}:PaginationProps) => {
   const totalPages = Math.ceil(totalItemsCount / itemsCountPerPage)
   const isFirstPage = activePage === 1
   const isLastPage = activePage === totalPages
@@ -49,15 +46,6 @@ export const Pagination: React.FC<PaginationProps> = ({
         </li>
       )}
 
-      {(activePage > 1 || !hideDisabled) && (
-        <li
-          className={`pagination-item ${isFirstPage && 'pagination-disabled'}`}
-          onClick={() => !hideDisabled && handleClick(activePage - 1)}
-        >
-          ⟨
-        </li>
-      )}
-
       {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
         <li
           key={page}
@@ -67,15 +55,6 @@ export const Pagination: React.FC<PaginationProps> = ({
           {page}
         </li>
       ))}
-
-      {(activePage < totalPages || !hideDisabled) && (
-        <li
-          className={`pagination-item ${isLastPage && 'pagination-disabled'}`}
-          onClick={() => !hideDisabled && handleClick(activePage + 1)}
-        >
-          ⟩
-        </li>
-      )}
 
       {!isLastPage && (
         <li className="pagination-item" onClick={() => handleClick(totalPages)}>
