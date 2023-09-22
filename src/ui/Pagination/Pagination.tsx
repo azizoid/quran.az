@@ -1,4 +1,4 @@
-interface PaginationProps {
+export interface PaginationProps {
   activePage: number;
   itemsCountPerPage: number;
   totalItemsCount: number;
@@ -37,6 +37,19 @@ export const Pagination = ({
       onChange(page)
     }
   }
+
+  console.log({ activePage,
+    itemsCountPerPage,
+    totalItemsCount,
+    pageRangeDisplayed,})
+
+    console.log({
+      totalPages,
+      isFirstPage,
+      isLastPage,
+      startPage,
+      endPage,
+    })
 
   return (
     <ul className="pagination">
