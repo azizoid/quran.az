@@ -38,19 +38,6 @@ export const Pagination = ({
     }
   }
 
-  console.log({ activePage,
-    itemsCountPerPage,
-    totalItemsCount,
-    pageRangeDisplayed,})
-
-    console.log({
-      totalPages,
-      isFirstPage,
-      isLastPage,
-      startPage,
-      endPage,
-    })
-
   return (
     <ul className="pagination">
       {!isFirstPage && (
