@@ -20,3 +20,8 @@ export type DataPropsLatinized = {
   translator: number
   metadata_id: ObjectId
 }
+
+export type ResponseErrorType = {
+  out: null
+  error: string
+}

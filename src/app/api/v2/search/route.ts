@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
 
-import { DisplayData, DataPropsLatinized } from '@/lib/types'
+import { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/lib/types'
 import { FormProps, getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
@@ -16,10 +16,6 @@ export type ResponseProps =
         perPage: number
         currentPage: number
       }
-    }
-  | {
-      out: null
-      error: string
     }
 
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
@@ -78,7 +74,7 @@ export const POST = async (req: Request) => {
     })
 
     if (ayahs.length === 0) {
-      return NextResponse.json<ResponseProps>(
+      return NextResponse.json<ResponseErrorType>(
         {
           out: null,
           error: 'No results found for the given search query.',
