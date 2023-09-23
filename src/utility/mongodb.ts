@@ -1,32 +1,23 @@
-declare global {
-  var mongo: any
-}
-
 import { Db, MongoClient, MongoClientOptions } from 'mongodb'
 
 const MONGODB_URI = process.env.MONGODB_URI!
 const MONGODB_DB = process.env.MONGODB_DB!
 
-if (!global.mongo) {
-  global.mongo = { conn: null, promise: null }
-}
+let cachedDb: Db
 
 const connectToDatabase = async () => {
-  if (global.mongo.conn) {
-    return global.mongo.conn
+  if (cachedDb) {
+    return { db: cachedDb }
   }
 
-  if (!global.mongo.promise) {
-    const opts: MongoClientOptions = {}
-    global.mongo.promise = MongoClient.connect(MONGODB_URI, opts).then((client) => {
-      return {
-        client,
-        db: client.db(MONGODB_DB),
-      }
-    })
-  }
-  global.mongo.conn = await global.mongo.promise
-  return global.mongo.conn
+  const opts: MongoClientOptions = {}
+  const client = await MongoClient.connect(MONGODB_URI, opts)
+
+  const db = client.db(MONGODB_DB)
+
+  cachedDb = db
+
+  return { db }
 }
 
 export async function withMongo<T>(fn: (db: Db) => Promise<T>): Promise<T> {
