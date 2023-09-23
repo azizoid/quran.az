@@ -1,3 +1,7 @@
+import { useMemo } from 'react'
+
+import { calculatePageBounds } from '@/utility/calculatePageBounds'
+
 export interface PaginationProps {
   activePage: number
   itemsCountPerPage: number
@@ -18,19 +22,10 @@ export const Pagination = ({
   const isFirstPage = activePage === 1
   const isLastPage = activePage === totalPages
 
-  // Calculate start and end page numbers for the pagination
-  let startPage = Math.max(1, activePage - Math.floor(pageRangeDisplayed / 1))
-  let endPage = Math.min(totalPages, activePage + Math.floor(pageRangeDisplayed / 2))
-
-  // Adjust if closer to the lower boundary
-  if (activePage - startPage < Math.floor(pageRangeDisplayed / 2)) {
-    endPage = Math.min(totalPages, endPage + (startPage - activePage))
-  }
-
-  // Adjust if closer to the upper boundary
-  if (endPage - activePage < Math.floor(pageRangeDisplayed / 2)) {
-    startPage = Math.max(1, startPage - (endPage - activePage))
-  }
+  const { startPage, endPage } = useMemo(
+    () => calculatePageBounds(activePage, totalPages, pageRangeDisplayed),
+    [activePage, totalPages, pageRangeDisplayed]
+  )
 
   const handleClick = (page: number) => {
     if (page !== activePage) {
@@ -49,7 +44,7 @@ export const Pagination = ({
       {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
         <li
           key={page}
-          className={`pagination-item ${activePage === page && 'pagination-active'}`}
+          className={`pagination-item ${activePage === page ? 'pagination-active' : ''}`}
           onClick={() => handleClick(page)}
         >
           {page}
