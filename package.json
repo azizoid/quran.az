@@ -21,7 +21,6 @@
     "react-dom": "^18.2.0",
     "react-highlight-words": "^0.20.0",
     "react-icons": "^4.11.0",
-    "react-js-pagination": "^3.0.3",
     "sirasayi": "^1.1.7",
     "swr": "^2.2.2"
   },
@@ -34,7 +33,6 @@
     "@types/node": "^20.6.2",
     "@types/react": "^18.2.21",
     "@types/react-highlight-words": "^0.16.4",
-    "@types/react-js-pagination": "^3.0.4",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",

@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react'
 
 import { useParams, useSearchParams } from 'next/navigation'
 
-import Pagination from 'react-js-pagination'
 import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { Form } from '@/components/Form/Form'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
+import { Pagination } from '@/ui/Pagination/Pagination'
 import { fetcher } from '@/utility/fetcher'
 
 const Search = () => {
@@ -64,11 +64,7 @@ const Search = () => {
           itemsCountPerPage={data?.paginate.perPage}
           totalItemsCount={data?.paginate.total}
           pageRangeDisplayed={5}
-          innerClass="pagination"
-          itemClass="pagination-item"
-          activeClass="pagination-active"
           onChange={setCurrentPage}
-          hideDisabled={true}
         />
       </li>
     ) : null
