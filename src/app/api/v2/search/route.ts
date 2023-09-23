@@ -7,16 +7,15 @@ import { FormProps, getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'
 
-export type ResponseProps =
-  | {
-      out: DisplayData[]
-      data?: FormProps
-      paginate?: {
-        total: number
-        perPage: number
-        currentPage: number
-      }
-    }
+export type ResponseProps = {
+  out: DisplayData[]
+  data?: FormProps
+  paginate?: {
+    total: number
+    perPage: number
+    currentPage: number
+  }
+}
 
 const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g

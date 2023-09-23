@@ -1,10 +1,10 @@
 export interface PaginationProps {
-  activePage: number;
-  itemsCountPerPage: number;
-  totalItemsCount: number;
-  pageRangeDisplayed: number;
-  onChange: (page: number) => void;
-  hideDisabled?: boolean;
+  activePage: number
+  itemsCountPerPage: number
+  totalItemsCount: number
+  pageRangeDisplayed: number
+  onChange: (page: number) => void
+  hideDisabled?: boolean
 }
 
 export const Pagination = ({
@@ -13,7 +13,7 @@ export const Pagination = ({
   totalItemsCount,
   pageRangeDisplayed,
   onChange,
-}:PaginationProps) => {
+}: PaginationProps) => {
   const totalPages = Math.ceil(totalItemsCount / itemsCountPerPage)
   const isFirstPage = activePage === 1
   const isLastPage = activePage === totalPages

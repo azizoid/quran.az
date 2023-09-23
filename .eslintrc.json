@@ -5,22 +5,13 @@
     "plugin:jest-dom/recommended",
     "prettier"
   ],
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "pathGroups": [
           {
             "pattern": "react",
@@ -42,9 +33,7 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "react"
-        ],
+        "pathGroupsExcludedImportTypes": ["react"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
@@ -61,14 +50,8 @@
       }
     ],
     "no-console": "error",
-    "semi": [
-      "error",
-      "never"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
     "no-mixed-spaces-and-tabs": "error",
     "no-trailing-spaces": "error",
     "no-multi-spaces": "error",
