@@ -20,6 +20,7 @@ const connectToDatabase = async () => {
 
     return { db }
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error connecting to database:', error)
     throw error // Re-throw the error if you want it to propagate
   }
@@ -30,6 +31,7 @@ export async function withMongo<T>(fn: (db: Db) => Promise<T>): Promise<T> {
     const conn = await connectToDatabase()
     return await fn(conn.db)
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error in withMongo function:', error)
     throw error // Re-throw the error if you want it to propagate
   }
