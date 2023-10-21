@@ -5,6 +5,7 @@ import Highlighter from 'react-highlight-words'
 
 import { DisplayData } from '@/lib/types'
 import { Sajda } from '@/ui'
+import { buildUrl } from '@/utility/buildUrl'
 
 export type SearchAyahProps = {
   data: DisplayData
@@ -27,7 +28,7 @@ export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps) => (
       />
     </div>
     <Link
-      href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}
+      href={buildUrl(data.soorah, data.ayah, data.translator)}
       className="read-ayah"
       prefetch={false}
     >

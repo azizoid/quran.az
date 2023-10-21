@@ -1,4 +1,5 @@
 import { soorahList } from '@/assets/soorah-list-object'
+import { buildUrl } from '@/utility/buildUrl'
 
 import { PaginationLink } from '../PaginationLink/PaginationLink'
 
@@ -20,23 +21,23 @@ export const PaginateAyah = ({ soorah, ayah, translator }: PaginateAyahProps) =>
   return (
     <div className="pagination">
       {prevSoorah && (
-        <PaginationLink href={`/${soorah - 1}?t=${translator}`}>{`${
-          soorah - 1
-        }. ${prevSoorah} ←`}</PaginationLink>
+        <PaginationLink href={buildUrl(soorah - 1, undefined, translator)}>
+          {`${soorah - 1}. ${prevSoorah} ←`}
+        </PaginationLink>
       )}
       {prevAyah && (
-        <PaginationLink href={`/${soorah}/${prevAyah}?t=${translator}`}>{prevAyah}</PaginationLink>
+        <PaginationLink href={buildUrl(soorah, prevAyah, translator)}>{prevAyah}</PaginationLink>
       )}
 
       <span className="pagination-disabled">{ayah}</span>
 
       {nextAyah && (
-        <PaginationLink href={`/${soorah}/${nextAyah}?t=${translator}`}>{nextAyah}</PaginationLink>
+        <PaginationLink href={buildUrl(soorah, nextAyah, translator)}>{nextAyah}</PaginationLink>
       )}
       {nextSoorah && (
-        <PaginationLink href={`/${soorah + 1}?t=${translator}`}>{`${
-          soorah + 1
-        }. ${nextSoorah} →`}</PaginationLink>
+        <PaginationLink href={buildUrl(soorah + 1, undefined, translator)}>
+          {`${soorah + 1}. ${nextSoorah} →`}
+        </PaginationLink>
       )}
     </div>
   )

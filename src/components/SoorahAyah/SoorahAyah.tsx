@@ -3,6 +3,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { DisplayData } from '@/lib/types'
 import { Sajda } from '@/ui'
+import { buildUrl } from '@/utility/buildUrl'
 
 export type SoorahAyahProps = {
   data: DisplayData
@@ -19,7 +20,7 @@ export const SoorahAyah = ({ data, sajda }: SoorahAyahProps): JSX.Element => (
       <span>{data.content}</span>
     </div>
     <Link
-      href={`/${data.soorah}/${data.ayah}?t=${data.translator}`}
+      href={buildUrl(data.soorah, data.ayah, data.translator)}
       className="read-ayah"
       prefetch={false}
     >

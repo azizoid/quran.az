@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 
 import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
+import { buildUrl } from '@/utility/buildUrl'
 import { fetcher } from '@/utility/fetcher'
 
 export const RandomAyah = () => {
@@ -22,7 +23,7 @@ export const RandomAyah = () => {
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>
       <h6 className="text-blue-400 hover:underline">
-        <a href={`/${soorah}/${ayah}?t=${translator}`}>{content}</a>
+        <a href={buildUrl(soorah, ayah, translator)}>{content}</a>
       </h6>
     </Card>
   )

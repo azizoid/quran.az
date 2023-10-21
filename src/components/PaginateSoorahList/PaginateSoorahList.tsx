@@ -1,9 +1,8 @@
-import Link from 'next/link'
-
 import { sirasayi } from 'sirasayi'
 
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { PaginationLink } from '@/components/PaginationLink/PaginationLink'
+import { buildUrl } from '@/utility/buildUrl'
 
 export type PaginateSoorahListProps = {
   soorah: number
@@ -20,7 +19,10 @@ export const PaginateSoorahList = ({
   return (
     <div className="pagination">
       {prev !== null ? (
-        <PaginationLink href={`/${prev}?t=${translator}`} className="flex flex-col text-center">
+        <PaginationLink
+          href={buildUrl(prev, undefined, translator)}
+          className="flex flex-col text-center"
+        >
           {sirasayi(prev)} {SOORAH_LIST[prev]['fullTitle']}
         </PaginationLink>
       ) : null}
@@ -30,7 +32,10 @@ export const PaginateSoorahList = ({
       </span>
 
       {next !== null ? (
-        <PaginationLink href={`/${next}?t=${translator}`} className="flex flex-col text-center">
+        <PaginationLink
+          href={buildUrl(next, undefined, translator)}
+          className="flex flex-col text-center"
+        >
           {sirasayi(next)} {SOORAH_LIST[next]['fullTitle']}
         </PaginationLink>
       ) : null}
