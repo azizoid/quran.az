@@ -6,21 +6,31 @@ const MONGODB_DB = process.env.MONGODB_DB!
 let cachedDb: Db
 
 const connectToDatabase = async () => {
-  if (cachedDb) {
-    return { db: cachedDb }
+  try {
+    if (cachedDb) {
+      return { db: cachedDb }
+    }
+
+    const opts: MongoClientOptions = {}
+    const client = await MongoClient.connect(MONGODB_URI, opts)
+
+    const db = client.db(MONGODB_DB)
+
+    cachedDb = db
+
+    return { db }
+  } catch (error) {
+    console.error('Error connecting to database:', error)
+    throw error // Re-throw the error if you want it to propagate
   }
-
-  const opts: MongoClientOptions = {}
-  const client = await MongoClient.connect(MONGODB_URI, opts)
-
-  const db = client.db(MONGODB_DB)
-
-  cachedDb = db
-
-  return { db }
 }
 
 export async function withMongo<T>(fn: (db: Db) => Promise<T>): Promise<T> {
-  const conn = await connectToDatabase()
-  return await fn(conn.db)
+  try {
+    const conn = await connectToDatabase()
+    return await fn(conn.db)
+  } catch (error) {
+    console.error('Error in withMongo function:', error)
+    throw error // Re-throw the error if you want it to propagate
+  }
 }
