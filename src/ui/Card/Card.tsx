@@ -1,13 +1,12 @@
-import { ReactNode } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 
-type CardProps = {
+type CardProps = PropsWithChildren<{
   title: string | ReactNode
   titleClassName?: string | null
   contentClass?: string | null
   className?: string
   size?: 'small' | 'medium'
-  children?: ReactNode
-}
+}>
 
 const cardSizes = {
   small: 'px-4',

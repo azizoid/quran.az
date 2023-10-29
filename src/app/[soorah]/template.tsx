@@ -1,19 +1,18 @@
 'use client'
+import { PropsWithChildren } from 'react'
+
 import { useParams, useSearchParams } from 'next/navigation'
 
 import { Form } from '@/components/Form/Form'
 import { SoorahCaption } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
-type SoorahTemplateProps = {
-  children?: React.ReactNode
-}
-
-const SoorahTemplate = ({ children }: SoorahTemplateProps) => {
+const SoorahTemplate = ({ children }: PropsWithChildren) => {
   const params = useParams()
-  const searchParams = useSearchParams().get('t')
+  const searchParams = useSearchParams()
+  const translator = searchParams.get('t')
 
-  const data = getView({ s: Number(params.soorah), t: Number(searchParams) })
+  const data = getView({ s: Number(params.soorah), t: Number(translator) })
 
   if (data.view !== 'soorah' && data.view !== 'ayah') return
 

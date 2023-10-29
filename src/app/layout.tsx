@@ -1,4 +1,6 @@
 import '@/styles/global.css'
+import { PropsWithChildren } from 'react'
+
 import Link from 'next/link'
 import Script from 'next/script'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
@@ -6,15 +8,12 @@ import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 import { Footer, Logo } from '@/ui'
 import { GA_TRACKING_ID } from '@/utility/gtag'
 
-import { MainMetadata } from './metadata'
-
-export type RootLayoutProps = {
-  children?: React.ReactNode
-}
+import { MainMetadata, MainViewport } from './metadata'
 
 export const metadata = MainMetadata
+export const viewport = MainViewport
 
-export const RootLayout = ({ children }: RootLayoutProps) => (
+const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="az">
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
