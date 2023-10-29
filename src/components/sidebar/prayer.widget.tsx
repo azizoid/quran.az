@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 
+import { Xerite } from '@/components/Xerite/Xerite'
 import { LoaderProgress } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
@@ -33,29 +34,36 @@ export const PrayerWidget = () => {
   const { cityName, hijri, prayers } = data
 
   return (
-    <table className="w-full table-auto text-sm" cellPadding={7}>
-      <thead className="bg-gray-700 text-white">
-        <tr>
-          <td align="center" colSpan={3}>
-            {`${hijri}, ${cityName}`}
-          </td>
-          <td align="center">
-            <a href="https://nam.az" target="_blank" rel="noreferrer" className="text-green-300">
-              <u>Digər şəhərlər</u>
-            </a>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        {[0, 2, 4].map((index) => (
-          <tr key={index}>
-            <td align="right">{prayersTitle[index]}</td>
-            <td>{prayers[index]}</td>
-            <td align="right">{prayersTitle[index + 1]}</td>
-            <td>{prayers[index + 1]}</td>
+    <>
+      <table className="w-full table-auto text-sm" cellPadding={7}>
+        <thead className="bg-gray-700 text-white">
+          <tr>
+            <td align="center" colSpan={3}>
+              {`${hijri}, ${cityName}`}
+            </td>
+            <td align="center">
+              <a href="https://nam.az" target="_blank" rel="noreferrer" className="text-green-300">
+                <u>Digər şəhərlər</u>
+              </a>
+            </td>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {[0, 2, 4].map((index) => (
+            <tr key={index}>
+              <td align="right">{prayersTitle[index]}</td>
+              <td>{prayers[index]}</td>
+              <td align="right">{prayersTitle[index + 1]}</td>
+              <td>{prayers[index + 1]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Xerite
+        onClick={(city: number) => {
+          window.open(`https://nam.az/${city}`, '_blank')
+        }}
+      />
+    </>
   )
 }
