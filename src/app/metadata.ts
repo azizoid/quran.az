@@ -12,7 +12,6 @@ export const MainMetadata: Metadata = {
   icons: './favicon.ico',
   title: metadataTitle,
   description: metadataDescription,
-  themeColor: '#155724',
   keywords: [
     'Quran Azərbaycan dilinə tərcümə',
     'Azərbaycanca Quran kitabı',
@@ -46,11 +45,6 @@ export const MainMetadata: Metadata = {
     'Изучайте Коран на азербайджанском и русском языке',
   ],
   metadataBase: metadataUrl,
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   openGraph: {
     title: metadataTitle,
     description: metadataDescription,
@@ -65,4 +59,11 @@ export const MainMetadata: Metadata = {
     images: 'https://quran.az/img/kuran.jpg',
     card: 'summary_large_image',
   },
+}
+
+export const MainViewport = {
+  themeColor: '#155724',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
