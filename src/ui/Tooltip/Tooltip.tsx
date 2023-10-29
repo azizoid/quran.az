@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
-type TooltipProps = { message: string; children: ReactNode }
+type TooltipProps = PropsWithChildren<{ message: string }>
 
 export const Tooltip = ({ message, children }: TooltipProps) => {
   return (
