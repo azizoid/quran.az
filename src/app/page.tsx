@@ -1,9 +1,13 @@
+import { Suspense } from 'react'
+
 import { Empty } from '@/components/Empty/Empty'
 import { Form } from '@/components/Form/Form'
 
 const Home = () => (
   <>
-    <Form />
+    <Suspense fallback={'Loading...'}>
+      <Form />
+    </Suspense>
 
     <Empty />
   </>
