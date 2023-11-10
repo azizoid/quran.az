@@ -1,6 +1,5 @@
 import useSWR from 'swr'
 
-import { Xerite } from '@/components/Xerite/Xerite'
 import { LoaderProgress } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
 
@@ -59,11 +58,6 @@ export const PrayerWidget = () => {
           ))}
         </tbody>
       </table>
-      <Xerite
-        onClick={(city: number) => {
-          window.open(`https://nam.az/${city}`, '_blank')
-        }}
-      />
     </>
   )
 }
