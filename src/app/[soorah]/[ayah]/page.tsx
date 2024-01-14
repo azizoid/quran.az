@@ -3,8 +3,9 @@ import { notFound, redirect } from 'next/navigation'
 import sirasayi from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
+import { Form } from '@/components/Form/Form'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { Bismillah, ColoredText, soorahAyahTitle } from '@/ui'
+import { Bismillah, ColoredText, SoorahCaption, soorahAyahTitle } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
@@ -18,14 +19,6 @@ type AyahProps = {
     t: string
   }
 }
-
-export const dynamicParams = false
-
-export const generateStaticParams = async () =>
-  soorahList.map((item) => ({
-    soorah: item.id.toString(),
-    ayah: item.ayahCount.toString(),
-  }))
 
 export const generateMetadata = async ({ params }: AyahProps) => {
   const { soorah, ayah } = params
@@ -69,21 +62,25 @@ const AyahPage = async ({
 
   return (
     <>
-      <Bismillah />
+      <Form />
 
-      <li className="ayah-list-item flex flex-col">
-        <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
-        {content}
-      </li>
-      <li className="ayah-list-item ">
-        <ColoredText key="transliteration" content={transliteration} />
-      </li>
-      <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
-        {arabic}
-      </li>
-      <li>
-        <PaginateAyah {...{ soorah, ayah, translator }} />
-      </li>
+      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+        <SoorahCaption soorah={soorah} translator={translator} />
+        <Bismillah />
+        <li className="ayah-list-item flex flex-col">
+          <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
+          {content}
+        </li>
+        <li className="ayah-list-item ">
+          <ColoredText key="transliteration" content={transliteration} />
+        </li>
+        <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
+          {arabic}
+        </li>
+        <li>
+          <PaginateAyah {...{ soorah, ayah, translator }} />
+        </li>{' '}
+      </ul>
     </>
   )
 }

@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation'
 import sirasayi from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
+import { Form } from '@/components/Form/Form'
 import { PaginateSoorahList } from '@/components/PaginateSoorahList/PaginateSoorahList'
 import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
-import { Bismillah } from '@/ui'
+import { Bismillah, SoorahCaption } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
@@ -60,13 +61,19 @@ const SoorahPage = async ({
 
   return (
     <>
-      {soorah !== 9 && <Bismillah />}
+      <Form />
 
-      {out.map((outData) => (
-        <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
-      ))}
+      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
+        <SoorahCaption soorah={soorah} translator={translator} />
 
-      <PaginateSoorahList soorah={soorah} translator={translator} />
+        {soorah !== 9 && <Bismillah />}
+
+        {out.map((outData) => (
+          <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
+        ))}
+
+        <PaginateSoorahList soorah={soorah} translator={translator} />
+      </ul>
     </>
   )
 }
