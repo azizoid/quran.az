@@ -19,6 +19,14 @@ type AyahProps = {
   }
 }
 
+export const dynamicParams = false
+
+export const generateStaticParams = async () =>
+  soorahList.map((item) => ({
+    soorah: item.id.toString(),
+    ayah: item.ayahCount.toString(),
+  }))
+
 export const generateMetadata = async ({ params }: AyahProps) => {
   const { soorah, ayah } = params
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
