@@ -1175,6 +1175,6 @@ export const SOORAH_LIST: SoorahListProps[] = [
     city: 'Mecca',
     juz: [30],
   },
-]
+] as const
 
 export const soorahList = SOORAH_LIST.slice(1)
