@@ -3,10 +3,11 @@ import { notFound, redirect } from 'next/navigation'
 import sirasayi from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
-import { Form } from '@/components/Form/Form'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { Bismillah, ColoredText, SoorahCaption, soorahAyahTitle } from '@/ui'
+import { ColoredText, soorahAyahTitle } from '@/ui'
 import { getView } from '@/utility/getView/getView'
+
+import TemplateWithForm from '../TemplateWithForm'
 
 import { getAyahService } from './getAyahService'
 
@@ -61,27 +62,21 @@ const AyahPage = async ({
   const { content, arabic, transliteration } = out
 
   return (
-    <>
-      <Form />
-
-      <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
-        <SoorahCaption soorah={soorah} translator={translator} />
-        <Bismillah />
-        <li className="ayah-list-item flex flex-col">
-          <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
-          {content}
-        </li>
-        <li className="ayah-list-item ">
-          <ColoredText key="transliteration" content={transliteration} />
-        </li>
-        <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
-          {arabic}
-        </li>
-        <li>
-          <PaginateAyah {...{ soorah, ayah, translator }} />
-        </li>{' '}
-      </ul>
-    </>
+    <TemplateWithForm soorah={soorah} translator={translator}>
+      <li className="ayah-list-item flex flex-col">
+        <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
+        {content}
+      </li>
+      <li className="ayah-list-item ">
+        <ColoredText key="transliteration" content={transliteration} />
+      </li>
+      <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
+        {arabic}
+      </li>
+      <li>
+        <PaginateAyah {...{ soorah, ayah, translator }} />
+      </li>{' '}
+    </TemplateWithForm>
   )
 }
 
