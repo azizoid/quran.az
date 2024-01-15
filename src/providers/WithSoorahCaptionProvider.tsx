@@ -1,24 +1,22 @@
 import { PropsWithChildren } from 'react'
 
-import { Form } from '@/components/Form/Form'
 import { PaginateSoorahList } from '@/components/PaginateSoorahList/PaginateSoorahList'
+import { WithFormProvider } from '@/providers/WithFormProvider'
 import { Bismillah, SoorahCaption } from '@/ui'
 
-type TemplateWithFormProps = PropsWithChildren<{
+type WithSoorahCaptionProviderProps = PropsWithChildren<{
   soorah: number
   translator: number
   bismillah?: boolean
 }>
 
-const TemplateWithForm = ({
+export const WithSoorahCaptionProvider = ({
   soorah,
   translator,
   bismillah = true,
   children,
-}: TemplateWithFormProps) => (
-  <>
-    <Form />
-
+}: WithSoorahCaptionProviderProps) => (
+  <WithFormProvider>
     <ul className="page-template-list">
       <SoorahCaption soorah={soorah} translator={translator} />
 
@@ -28,7 +26,5 @@ const TemplateWithForm = ({
 
       <PaginateSoorahList soorah={soorah} translator={translator} />
     </ul>
-  </>
+  </WithFormProvider>
 )
-
-export default TemplateWithForm

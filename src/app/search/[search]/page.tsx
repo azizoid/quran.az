@@ -9,6 +9,7 @@ import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { Form } from '@/components/Form/Form'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
+import { WithFormProvider } from '@/providers/WithFormProvider'
 import { Pagination } from '@/ui/Pagination/Pagination'
 import { fetcher } from '@/utility/fetcher'
 
@@ -70,9 +71,7 @@ const Search = () => {
     ) : null
 
   return (
-    <>
-      <Form />
-
+    <WithFormProvider>
       <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
         {paginateLinks}
 
@@ -83,7 +82,7 @@ const Search = () => {
 
         {paginateLinks}
       </ul>
-    </>
+    </WithFormProvider>
   )
 }
 

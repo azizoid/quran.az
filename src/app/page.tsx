@@ -1,19 +1,12 @@
-import { Suspense } from 'react'
-
 import { Empty } from '@/components/Empty/Empty'
-import { Form } from '@/components/Form/Form'
-import { LoaderProgress } from '@/ui'
+import { WithFormProvider } from '@/providers/WithFormProvider'
 
 export const dynamic = 'force-static'
 
 const Home = () => (
-  <>
-    <Suspense fallback={<LoaderProgress />}>
-      <Form />
-    </Suspense>
-
+  <WithFormProvider>
     <Empty />
-  </>
+  </WithFormProvider>
 )
 
 export default Home
