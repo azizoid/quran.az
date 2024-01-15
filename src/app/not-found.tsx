@@ -7,7 +7,7 @@ export const dynamic = 'force-static'
 
 const NotFoundPage = () => (
   <WithFormProvider>
-    <div className="flex flex-col items-center justify-center min-h-full py-10 bg-red-100">
+    <div className="flex flex-col items-center justify-center py-10 bg-red-100  ">
       <MdError className="text-red-600 text-6xl" />
 
       <h1 className="text-2xl font-bold text-red-600 mt-4">Axtarışınız nəticəsiz alınıb</h1>
