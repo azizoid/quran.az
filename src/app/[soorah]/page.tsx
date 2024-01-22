@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import sirasayi from 'sirasayi'
+import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
