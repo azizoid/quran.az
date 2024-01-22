@@ -7,6 +7,11 @@ module.exports = {
   devIndicators: {
     buildActivity: false,
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: 'default-src "self"; script-src "none"; sandbox;',
+    domains: ['quran.az'],
+  },
   redirects: async () => [
     {
       source: '/aze/:soorah',
