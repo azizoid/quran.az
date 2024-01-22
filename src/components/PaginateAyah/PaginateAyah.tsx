@@ -7,16 +7,19 @@ export type PaginateAyahProps = {
   soorah: number
   ayah: number
   translator?: number
+  ayahOnly?: boolean
 }
 
-export const PaginateAyah = ({ soorah, ayah, translator }: PaginateAyahProps) => {
+export const PaginateAyah = ({ soorah, ayah, translator, ayahOnly = true }: PaginateAyahProps) => {
   const soorahIndex = soorah - 1
 
   const prevAyah = ayah === 1 ? null : ayah - 1
   const nextAyah = ayah === soorahList[soorahIndex]?.ayahCount ? null : ayah + 1
 
-  const prevSoorah = !prevAyah && soorah > 1 ? soorahList[soorahIndex - 1]?.fullTitle : null
-  const nextSoorah = !nextAyah && soorah < 114 ? soorahList[soorahIndex + 1]?.fullTitle : null
+  const prevSoorah =
+    !ayahOnly && !prevAyah && soorah > 1 ? soorahList[soorahIndex - 1]?.fullTitle : null
+  const nextSoorah =
+    !ayahOnly && !nextAyah && soorah < 114 ? soorahList[soorahIndex + 1]?.fullTitle : null
 
   return (
     <div className="pagination">
