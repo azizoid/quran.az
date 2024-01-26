@@ -1,3 +1,4 @@
+/** @type {import("next").NextConfig} */
 module.exports = {
   swcMinify: true,
   compress: true,
@@ -10,7 +11,23 @@ module.exports = {
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: 'default-src "self"; script-src "none"; sandbox;',
-    domains: ['quran.az'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.quran.az',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'quran.az',
+        port: '',
+      },
+    ],
+  },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['quran.az', 'localhost:3000'],
+    },
   },
   redirects: async () => [
     {
