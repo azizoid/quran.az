@@ -1,8 +1,8 @@
 import '@/styles/global.css'
 import { PropsWithChildren } from 'react'
 
+import { GoogleTagManager } from '@next/third-parties/google'
 import Link from 'next/link'
-import Script from 'next/script'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
 import { Footer, Logo } from '@/ui'
@@ -15,21 +15,6 @@ export const viewport = MainViewport
 
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="az">
-    <Script
-      src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      strategy="afterInteractive"
-    />
-
-    <Script id="google-analytics" strategy="afterInteractive">
-      {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${GA_TRACKING_ID}');
-        `}
-    </Script>
-
     <body>
       <div className="flex flex-col h-screen justify-between">
         <div className="bg-[url('/img/ornament.gif')] bg-gray-50 bg-repeat-x bg-bottom pb-[33px] px-3">
@@ -62,6 +47,7 @@ const RootLayout = ({ children }: PropsWithChildren) => (
 
         <Footer />
       </div>
+      <GoogleTagManager gtmId={GA_TRACKING_ID} />
     </body>
   </html>
 )
