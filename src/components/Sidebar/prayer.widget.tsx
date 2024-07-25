@@ -9,7 +9,7 @@ export type PrayerReturnProps = {
   prayers: string[]
 }
 
-const prayerApi = 'https://nam.az/api/v2/1'
+const prayerApi = 'https://nam.az/api/v3/baki'
 const prayersTitle = ['Fəcr', 'Günəş', 'Zöhr', 'Əsr', 'Məğrib', 'İşa']
 
 export const PrayerWidget = () => {
