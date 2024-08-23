@@ -15,7 +15,7 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
   const { fullTitle, city, ayahCount } = SOORAH_LIST[soorah]
 
   return (
-    <li
+    <div
       className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center whitespace-nowrap`}
     >
       <Link
@@ -28,6 +28,6 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
           <CityAndSize city={city} ayahCount={ayahCount} devider={true} size="sm" />
         </span>
       </Link>
-    </li>
+    </div>
   )
 }

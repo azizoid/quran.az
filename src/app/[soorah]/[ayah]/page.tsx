@@ -3,12 +3,11 @@ import { notFound, redirect } from 'next/navigation'
 import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
-import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { WithSoorahCaptionProvider } from '@/providers/WithSoorahCaptionProvider'
-import { ColoredText, soorahAyahTitle } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
+import { AyahView } from './AyahView'
+import { WithFormProvider } from '@/providers/WithFormProvider'
 
 type AyahProps = {
   params: {
@@ -58,24 +57,10 @@ const AyahPage = async ({
 
   const out = await getAyahService({ soorah, ayah, translator })
 
-  const { content, arabic, transliteration } = out
-
   return (
-    <WithSoorahCaptionProvider soorah={soorah} translator={translator}>
-      <li className="ayah-list-item flex flex-col">
-        <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
-        {content}
-      </li>
-      <li className="ayah-list-item ">
-        <ColoredText key="transliteration" content={transliteration} />
-      </li>
-      <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
-        {arabic}
-      </li>
-      <li>
-        <PaginateAyah {...{ soorah, ayah, translator }} />
-      </li>
-    </WithSoorahCaptionProvider>
+    <WithFormProvider>
+      <AyahView {...out} />
+    </WithFormProvider>
   )
 }
 

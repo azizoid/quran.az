@@ -17,7 +17,7 @@ export const WithSoorahCaptionProvider = ({
   children,
 }: WithSoorahCaptionProviderProps) => (
   <WithFormProvider>
-    <ul className="page-template-list">
+    <div className="page-template-list">
       <SoorahCaption soorah={soorah} translator={translator} />
 
       {bismillah ? <Bismillah /> : null}
@@ -25,6 +25,6 @@ export const WithSoorahCaptionProvider = ({
       {children}
 
       <PaginateSoorahList soorah={soorah} translator={translator} />
-    </ul>
+    </div>
   </WithFormProvider>
 )

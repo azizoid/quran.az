@@ -63,8 +63,10 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
     const prev = prevAndNext.find((item) => item.ayah === content.ayah - 1)?.ayah || null
     const next = prevAndNext.find((item) => item.ayah === content.ayah + 1)?.ayah || null
 
+    const { metadata_id, ...excludedData } = content
+
     return {
-      ...content,
+      ...excludedData,
       arabic: metadata!.content,
       transliteration: metadata!.transliteration,
       juz: metadata!.juz,
