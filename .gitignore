@@ -38,3 +38,5 @@ sentry.properties
 
 # Sentry Auth Token
 .sentryclirc
+
+/public/images
