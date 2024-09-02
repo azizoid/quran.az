@@ -20,6 +20,7 @@
     "html-to-image": "^1.11.11",
     "mongodb": "^6.6.2",
     "next": "^14.2.4",
+    "puppeteer": "^23.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-highlight-words": "^0.20.0",
