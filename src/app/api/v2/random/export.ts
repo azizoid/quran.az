@@ -21,20 +21,18 @@ export const exportAyah = async ({ soorah, ayah, content, translator }: ExportAy
     const page = await browser.newPage();
 
     const htmlContent = `
-    <html>
-      <body style="width: 540px; height: 540px; display: flex; align-items: center; justify-content: center; background-color: white;">
-        <div style="text-align: center;">
-          <div>
-            <h2>${soorahAyahTitle(soorah, ayah)}</h2>
-            <p>${content}</p>
-            <p>Bismillah</p>
-            <p>${translator}</p>
-            <p style="color: gray;">https://quran.az/${soorah}/${ayah}</p>
+      <html>
+        <body style="font-family: ui-sans-serif, system-ui, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0;">
+          <div style="text-align: center; margin: 20px;">&#65021;</div>
+
+          <div style="text-align: center; margin: 20px;">
+              <h3 style="font-size: 18px; margin: 0; color: #555; line-height: 1.6;">${soorahAyahTitle(soorah, ayah)}</h3>
+              <p style="font-size: 16px; margin: 10px 0; color: #333; line-height: 1.8;">${content}</p>
           </div>
-        </div>
-      </body>
-    </html>
-  `;
+
+          <p style="text-align: center; color: #333; margin: 20px;">https://quran.az/${soorah}/${ayah}</p>
+        </body>
+      </html>`;
 
     await page.setContent(htmlContent);
     const screenshotBuffer = await page.screenshot({ type: 'png', omitBackground: true });
