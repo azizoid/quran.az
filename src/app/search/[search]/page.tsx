@@ -52,7 +52,7 @@ const Search = () => {
     return (
       <>
         <Form />
-        <div className="col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
+        <div className="prose col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>
       </>
     )
   }

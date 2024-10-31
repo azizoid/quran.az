@@ -25,7 +25,7 @@ export const Empty = (): JSX.Element => (
 
     <SoorahList />
 
-    <div className="col">
+    <div className="prose col">
       <h6 className="alert alert-success">
         Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong>{' '}
         riayət edin:
