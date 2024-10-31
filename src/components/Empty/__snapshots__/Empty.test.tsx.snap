@@ -6889,7 +6889,7 @@ exports[`Empty Snapshot 1`] = `
       </a>
     </div>
     <div
-      class="col"
+      class="prose col"
     >
       <h6
         class="alert alert-success"

@@ -28,27 +28,25 @@
   }
 
   .badge {
-    @apply mr-1 px-2 py-1 text-sm  rounded text-black bg-gray-200;
-  }
-
-  .badge-white {
-    @apply text-black bg-white;
+    @apply mr-2 px-2 py-1 text-sm rounded-r text-black bg-gray-50;
   }
 
   .soorah-list-item {
-    @apply flex justify-between px-4 py-2 hover:bg-gray-100 hover:cursor-pointer;
-  }
+    @apply prose flex justify-between py-2 pr-2;
 
-  .soorah-list-item:hover .badge {
-    @apply text-white bg-blue-400;
-  }
+    &:hover {
+      .badge {
+        @apply text-white bg-blue-400;
+      }
 
-  .soorah-list-item .read-ayah {
-    @apply text-gray-500 ml-2;
-  }
+      .read-ayah {
+        @apply text-blue-500;
+      }
+    }
 
-  .soorah-list-item:hover .read-ayah {
-    @apply text-blue-500;
+    & .read-ayah {
+      @apply text-gray-200 ml-2;
+    }
   }
 
   .pagination {

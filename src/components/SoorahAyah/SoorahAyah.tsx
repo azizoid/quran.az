@@ -23,6 +23,7 @@ export const SoorahAyah = ({ data, sajda }: SoorahAyahProps): JSX.Element => (
       href={buildUrl(data.soorah, data.ayah, data.translator)}
       className="read-ayah"
       prefetch={false}
+      title="oxu"
     >
       <FaExternalLinkAlt />
     </Link>

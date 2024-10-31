@@ -22,8 +22,10 @@ export const RandomAyah = () => {
 
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>
-      <h6 className="text-blue-400 hover:underline">
-        <a href={buildUrl(soorah, ayah, translator)}>{content}</a>
+      <h6>
+        <a href={buildUrl(soorah, ayah, translator)} className="text-blue-400 hover:underline">
+          {content}
+        </a>
       </h6>
     </Card>
   )
