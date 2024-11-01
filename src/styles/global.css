@@ -32,7 +32,7 @@
   }
 
   .soorah-list-item {
-    @apply prose flex justify-between py-2 pr-2;
+    @apply prose !max-w-none flex justify-between py-2 pr-2;
 
     &:hover {
       .badge {

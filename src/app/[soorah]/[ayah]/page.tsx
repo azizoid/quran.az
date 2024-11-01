@@ -62,11 +62,11 @@ const AyahPage = async ({
 
   return (
     <WithSoorahCaptionProvider soorah={soorah} translator={translator}>
-      <li className="prose ayah-list-item flex flex-col">
+      <li className="prose !max-w-none ayah-list-item flex flex-col">
         <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
         {content}
       </li>
-      <li className="prose ayah-list-item">
+      <li className="prose !max-w-none ayah-list-item">
         <ColoredText key="transliteration" content={transliteration} />
       </li>
       <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
