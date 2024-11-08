@@ -1,3 +1,6 @@
+'use client'
+import Link from 'next/link'
+
 import useSWR from 'swr'
 
 import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
@@ -23,9 +26,13 @@ export const RandomAyah = () => {
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>
       <h6>
-        <a href={buildUrl(soorah, ayah, translator)} className="text-blue-400 hover:underline">
+        <Link
+          href={buildUrl(soorah, ayah, translator)}
+          className="text-blue-400 hover:underline"
+          prefetch={false}
+        >
           {content}
-        </a>
+        </Link>
       </h6>
     </Card>
   )
