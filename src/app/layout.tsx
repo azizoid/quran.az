@@ -5,6 +5,8 @@ import { GoogleTagManager } from '@next/third-parties/google'
 import Link from 'next/link'
 import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
+import { Form } from '@/components/Form/Form'
+import { Sidebar } from '@/components/Sidebar/Sidebar'
 import { Footer, Logo } from '@/ui'
 import { GA_TRACKING_ID } from '@/utility/gtag'
 
@@ -43,7 +45,19 @@ const RootLayout = ({ children }: PropsWithChildren) => (
           </nav>
         </div>
 
-        <div className="flex-grow container mx-auto mt-10 pb-2">{children}</div>
+        <div className="flex-grow container mx-auto mt-10 pb-2">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4 mb-4">
+              <Form />
+
+              {children}
+            </div>
+
+            <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start space-y-4">
+              <Sidebar />
+            </div>
+          </div>
+        </div>
 
         <Footer />
       </div>

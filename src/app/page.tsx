@@ -1,12 +1,7 @@
 import { Empty } from '@/components/Empty/Empty'
-import { WithFormProvider } from '@/providers/WithFormProvider'
 
 export const dynamic = 'force-static'
 
-const Home = () => (
-  <WithFormProvider>
-    <Empty />
-  </WithFormProvider>
-)
+const Home = () => <Empty />
 
 export default Home

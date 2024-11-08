@@ -4,7 +4,6 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { WithSoorahCaptionProvider } from '@/providers/WithSoorahCaptionProvider'
 import { ColoredText, soorahAyahTitle } from '@/ui'
 import { getView } from '@/utility/getView/getView'
 
@@ -61,7 +60,7 @@ const AyahPage = async ({
   const { content, arabic, transliteration } = out
 
   return (
-    <WithSoorahCaptionProvider soorah={soorah} translator={translator}>
+    <>
       <li className="prose !max-w-none ayah-list-item flex flex-col">
         <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
         {content}
@@ -75,7 +74,7 @@ const AyahPage = async ({
       <li>
         <PaginateAyah {...{ soorah, ayah, translator }} />
       </li>
-    </WithSoorahCaptionProvider>
+    </>
   )
 }
 

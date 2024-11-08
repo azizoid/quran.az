@@ -4,7 +4,7 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
-import { WithSoorahCaptionProvider } from '@/providers/WithSoorahCaptionProvider'
+import { Bismillah } from '@/ui/Bismillah/Bismillah'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
@@ -58,11 +58,13 @@ const SoorahPage = async ({
   const sajda = soorahList.find((soorahItem) => soorahItem.id === soorah)?.sajda
 
   return (
-    <WithSoorahCaptionProvider soorah={soorah} translator={translator} bismillah={soorah !== 9}>
+    <>
+      {soorah !== 9 ? <Bismillah /> : null}
+
       {out.map((outData) => (
         <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
       ))}
-    </WithSoorahCaptionProvider>
+    </>
   )
 }
 

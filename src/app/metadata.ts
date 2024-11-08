@@ -9,7 +9,7 @@ const metadataUrl = new URL('https://quran.az')
 const metadataDescription = 'Qurani-Kərimin Azərbaycanca və Rusca tərcüməsi axtarış sistemi.'
 
 export const MainMetadata: Metadata = {
-  icons: './favicon.ico',
+  icons: '/static/favicon.ico',
   title: metadataTitle,
   description: metadataDescription,
   keywords: [

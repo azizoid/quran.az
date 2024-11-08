@@ -1,10 +1,5 @@
-import { WithFormProvider } from '@/providers/WithFormProvider'
 import { LoadingBoxes } from '@/ui'
 
-export const MainLoader = () => (
-  <WithFormProvider>
-    <LoadingBoxes />
-  </WithFormProvider>
-)
+export const MainLoader = () => <LoadingBoxes />
 
 export default MainLoader
