@@ -1,5 +1,5 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useState, type JSX } from 'react'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 

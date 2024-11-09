@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 import { Card } from '@/ui'
 
 export const FacebookPage = (): JSX.Element => (
