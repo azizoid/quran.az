@@ -12,7 +12,7 @@ type SoorahCaptionProps = {
 }
 
 export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
-  const { fullTitle, city, ayahCount } = SOORAH_LIST[soorah]
+  const { fullTitle, city, ayahCount } = SOORAH_LIST[soorah] || {}
 
   return (
     <li

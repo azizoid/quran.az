@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import { MdError } from 'react-icons/md'
 
-export const dynamic = 'force-static'
-
 const NotFoundPage = () => (
   <div className="flex flex-col items-center justify-center py-10 bg-red-100  ">
     <MdError className="text-red-600 text-6xl" />
