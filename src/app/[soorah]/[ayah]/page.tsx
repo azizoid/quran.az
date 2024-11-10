@@ -10,17 +10,18 @@ import { getView } from '@/utility/getView/getView'
 import { getAyahService } from './getAyahService'
 
 type AyahProps = {
-  params: {
+  params: Promise<{
     soorah: string
     ayah: string
-  }
-  searchParams: {
+  }>
+  searchParams: Promise<{
     t: string
-  }
+  }>
 }
 
-export const generateMetadata = async ({ params }: AyahProps) => {
-  const { soorah, ayah } = params
+export const generateMetadata = async (props: AyahProps) => {
+  const { soorah, ayah } = (await props.params) || {}
+
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
 
   if (!soorahTitle) return
@@ -36,10 +37,11 @@ export const generateMetadata = async ({ params }: AyahProps) => {
   }
 }
 
-const AyahPage = async ({
-  params: { soorah: soorahParam, ayah: ayahParam },
-  searchParams: { t: translatorParam },
-}: AyahProps) => {
+const AyahPage = async (props: AyahProps) => {
+  const { t: translatorParam } = (await props.searchParams) || {}
+
+  const { soorah: soorahParam, ayah: ayahParam } = (await props.params) || {}
+
   const {
     s: soorah,
     a: ayah,
