@@ -3,7 +3,7 @@ import type { JSX } from 'react'
 import Link from 'next/link'
 
 import { SoorahList } from '@/components/SoorahList/SoorahList'
-import { Card } from '@/ui'
+import { Card } from '@/ui/Card/Card'
 
 const topLinks = [
   ['/1', 'Fatihə surəsi'],

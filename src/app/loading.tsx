@@ -1,4 +1,4 @@
-import { LoadingBoxes } from '@/ui'
+import { LoadingBoxes } from "@/ui/LoadingBoxes/LoadingBoxes"
 
 export const MainLoader = () => <LoadingBoxes />
 

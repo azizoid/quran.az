@@ -3,9 +3,11 @@ import Link from 'next/link'
 
 import useSWR from 'swr'
 
-import { Card, LoadingBoxes, soorahAyahTitle } from '@/ui'
 import { buildUrl } from '@/utility/buildUrl'
 import { fetcher } from '@/utility/fetcher'
+import { LoadingBoxes } from '@/ui/LoadingBoxes/LoadingBoxes'
+import { soorahAyahTitle } from '@/ui/soorahAyahTitle/soorahAyahTitle'
+import { Card } from '@/ui/Card/Card'
 
 export const RandomAyah = () => {
   const {

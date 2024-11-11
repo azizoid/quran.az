@@ -1,6 +1,5 @@
+import { Card } from '@/ui/Card/Card'
 import type { JSX } from 'react'
-
-import { Card } from '@/ui'
 
 export const FacebookPage = (): JSX.Element => (
   <Card title="BİZİ BƏYƏN" titleClassName="px-7">

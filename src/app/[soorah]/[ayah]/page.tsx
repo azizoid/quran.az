@@ -4,10 +4,12 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { ColoredText, soorahAyahTitle } from '@/ui'
+
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
+import { soorahAyahTitle } from '@/ui/soorahAyahTitle/soorahAyahTitle'
+import { ColoredText } from '@/ui/ColoredText/ColoredText'
 
 type AyahProps = {
   params: Promise<{
