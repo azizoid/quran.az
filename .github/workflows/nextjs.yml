@@ -11,6 +11,9 @@ env:
   USERNAME: ${{ secrets.USERNAME }}
   TARGET_DIRECTORY: ${{ secrets.TARGET_DIRECTORY }}
 
+  NEXT_PUBLIC_DEFAULT_TRANSLATOR: ${{ vars.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}
+  NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}  
+
 jobs:
   build:
     runs-on: ubuntu-latest
