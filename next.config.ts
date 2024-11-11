@@ -1,6 +1,6 @@
-/** @type {import("next").NextConfig} */
-module.exports = {
-  swcMinify: true,
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
@@ -86,4 +86,6 @@ module.exports = {
       permanent: true,
     },
   ],
-}
+};
+
+export default nextConfig;
