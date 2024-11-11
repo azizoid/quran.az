@@ -19,21 +19,21 @@ jobs:
         node-version: [21]
 
     steps:
-      - uses: actions/checkout@main
-      - uses: pnpm/action-setup@master
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: pnpm@9.12.3
+          version: 9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@main
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm run ci
 
       - name: Cache pnpm and Next.js build cache
-        uses: actions/cache@main
+        uses: actions/cache@v4
         with:
           path: |
             ~/.pnpm-store
@@ -87,6 +87,6 @@ jobs:
             git fetch
             git checkout main
             git pull
-            pnpm install
+            pnpm run ci
             pm2 restart quran.az
             echo "Files uploaded successfully!"
