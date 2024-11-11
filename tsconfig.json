@@ -18,13 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
     "paths": {
-      "@/ui": [
-        "src/ui/index"
-      ],
       "@/*": [
-        "src/*"
+        "./src/*"
       ]
     },
     "plugins": [
