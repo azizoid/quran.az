@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 import useSWR from 'swr'
 
-import { Card } from '@/ui/Card/Card'
+import { Card } from '@/components/Card/Card'
+import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { LoadingBoxes } from '@/ui/LoadingBoxes/LoadingBoxes'
-import { soorahAyahTitle } from '@/ui/soorahAyahTitle/soorahAyahTitle'
 import { buildUrl } from '@/utility/buildUrl'
 import { fetcher } from '@/utility/fetcher'
 

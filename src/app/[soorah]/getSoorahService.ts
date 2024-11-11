@@ -1,7 +1,7 @@
 'use server-only'
 import { Db } from 'mongodb'
 
-import { DataPropsLatinized } from '@/lib/types'
+import { DataPropsLatinized } from '@/helpers/types'
 import { withMongo } from '@/utility/mongodb'
 
 export interface GetSoorahServiceProps {

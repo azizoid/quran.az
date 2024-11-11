@@ -3,9 +3,10 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import Highlighter from 'react-highlight-words'
 
-import { DisplayData } from '@/lib/types'
-import { Sajda } from '@/ui/Sajda/Sajda'
+import { DisplayData } from '@/helpers/types'
 import { buildUrl } from '@/utility/buildUrl'
+
+import { Sajda } from '../Sajda/Sajda'
 
 export type SearchAyahProps = {
   data: DisplayData

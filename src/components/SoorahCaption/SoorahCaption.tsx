@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { buildUrl } from '@/utility/buildUrl'
 
-import { CityAndSize } from '../CityAndSize/CityAndSize'
+import { CityAndSize } from '../../components/CityAndSize/CityAndSize'
 
 import styles from './SoorahCaption.module.css'
 

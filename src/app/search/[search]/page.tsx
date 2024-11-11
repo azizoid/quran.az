@@ -7,8 +7,8 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { Pagination } from '@/components/Pagination/Pagination'
 import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
-import { Pagination } from '@/ui/Pagination/Pagination'
 import { fetcher } from '@/utility/fetcher'
 
 const Search = () => {

@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
+import { Bismillah } from '@/components/Bismillah/Bismillah'
 import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
-import { Bismillah } from '@/ui/Bismillah/Bismillah'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'

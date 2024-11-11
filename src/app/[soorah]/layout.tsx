@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
 
-import { SoorahCaption } from '@/ui/SoorahCaption/SoorahCaption'
+import { SoorahCaption } from '@/components/SoorahCaption/SoorahCaption'
 
 type SoorahLayoutProps = PropsWithChildren<{
   params: Promise<{

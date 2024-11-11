@@ -3,9 +3,9 @@ import { notFound, redirect } from 'next/navigation'
 import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
+import { ColoredText } from '@/components/ColoredText/ColoredText'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
-import { ColoredText } from '@/ui/ColoredText/ColoredText'
-import { soorahAyahTitle } from '@/ui/soorahAyahTitle/soorahAyahTitle'
+import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'

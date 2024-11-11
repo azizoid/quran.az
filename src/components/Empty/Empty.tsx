@@ -2,8 +2,8 @@ import type { JSX } from 'react'
 
 import Link from 'next/link'
 
+import { Card } from '@/components/Card/Card'
 import { SoorahList } from '@/components/SoorahList/SoorahList'
-import { Card } from '@/ui/Card/Card'
 
 const topLinks = [
   ['/1', 'Fatihə surəsi'],
