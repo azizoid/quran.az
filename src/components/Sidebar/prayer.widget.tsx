@@ -1,8 +1,8 @@
 'use client'
 import useSWR from 'swr'
 
-import { fetcher } from '@/utility/fetcher'
 import { LoaderProgress } from '@/ui/LoaderProgress/LoaderProgress'
+import { fetcher } from '@/utility/fetcher'
 
 export type PrayerReturnProps = {
   cityName: string

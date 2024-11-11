@@ -10,10 +10,10 @@ import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 import LogoSvg from '@/assets/img/logo.svg'
 import { Form } from '@/components/Form/Form'
 import { Sidebar } from '@/components/Sidebar/Sidebar'
+import { Footer } from '@/ui/Footer/Footer'
 import { GA_TRACKING_ID } from '@/utility/gtag'
 
 import { MainMetadata, MainViewport } from './metadata'
-import { Footer } from '@/ui/Footer/Footer'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
