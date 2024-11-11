@@ -29,8 +29,7 @@ const customJestConfig = {
     '/*/index',
   ],
   moduleNameMapper: {
-    '^@/src/(.*)$': '<rootDir>/src/$1',
-    '^@/ui(.*)$': '<rootDir>/src/ui$1',
+    '^@/(.*)$': '<rootDir>/src/$1'
   },
 }
 

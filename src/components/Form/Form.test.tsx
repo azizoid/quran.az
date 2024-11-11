@@ -14,7 +14,7 @@ jest.mock('next/navigation', () => ({
   }),
 }))
 
-jest.mock('@/ui/LoaderDots/LoaderDots', () => <span>Loader</span>)
+jest.mock('@/components/LoaderDots', () => <span>Loader</span>)
 
 describe('<Form>', () => {
   beforeEach(() => {

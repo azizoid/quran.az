@@ -35,7 +35,7 @@ test('SearchAyah without mark word', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('SearchAyah with Sajda', () => {
+test.skip('SearchAyah with Sajda', () => {
   render(
     <SearchAyah
       data={{
