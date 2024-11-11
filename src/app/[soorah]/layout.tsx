@@ -11,11 +11,11 @@ type SoorahLayoutProps = PropsWithChildren<{
 const SoorahLayout = async ({ params, children }: SoorahLayoutProps) => {
   const { soorah: soorahParam } = await params
 
-  const sooran = Number(soorahParam)
+  const soorah = Number(soorahParam)
 
   return (
     <ul className="page-template-list">
-      {sooran ? <SoorahCaption soorah={sooran} translator={1} /> : null}
+      {soorah ? <SoorahCaption soorah={soorah} translator={1} /> : null}
 
       {children}
     </ul>

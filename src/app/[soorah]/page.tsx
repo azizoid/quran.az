@@ -4,10 +4,10 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { Bismillah } from '@/components/Bismillah/Bismillah'
-import { SoorahAyah } from '@/components/SoorahAyah/SoorahAyah'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
+import { SoorahAyah } from './SoorahAyah/SoorahAyah'
 
 type SoorahProps = {
   params: Promise<{
