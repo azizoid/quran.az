@@ -89,7 +89,7 @@
   }
 
   .page-template-list {
-    @apply list-none divide-y divide-gray-100 bg-white text-gray-700
+    @apply list-none divide-y divide-gray-100 bg-white text-gray-700;
   }
 }
 

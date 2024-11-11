@@ -8,10 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
-    "type-check": "tsc",
-    "test": "jest --config ./config/jest.config.js",
-    "test:watch": "jest --config ./config/jest.config.js --watch",
-    "test:coverage": "jest --config ./config/jest.config.js --coverage",
     "prettier": "prettier --write .",
     "preinstall": "npx only-allow pnpm",
     "ci": "pnpm install --frozen-lockfile"
