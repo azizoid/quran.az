@@ -10,12 +10,12 @@ import { getView } from '@/utility/getView/getView'
 import { getSoorahService } from './getSoorahService'
 
 type SoorahProps = {
-  params: {
+  params: Promise<{
     soorah: string
-  }
-  searchParams: {
+  }>
+  searchParams: Promise<{
     t: string
-  }
+  }>
 }
 
 export const dynamicParams = false
@@ -25,7 +25,8 @@ export const generateStaticParams = async () =>
     soorah: item.id.toString(),
   }))
 
-export const generateMetadata = async ({ params: { soorah } }: SoorahProps) => {
+export const generateMetadata = async (props: SoorahProps) => {
+  const { soorah } = (await props.params) || {}
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
 
   if (!soorahTitle) return
@@ -39,10 +40,11 @@ export const generateMetadata = async ({ params: { soorah } }: SoorahProps) => {
   }
 }
 
-const SoorahPage = async ({
-  params: { soorah: soorahParam },
-  searchParams: { t: translatorParam },
-}: SoorahProps) => {
+const SoorahPage = async (props: SoorahProps) => {
+  const { t: translatorParam } = (await props.searchParams) || {}
+
+  const { soorah: soorahParam } = (await props.params) || {}
+
   const {
     s: soorah,
     t: translator,

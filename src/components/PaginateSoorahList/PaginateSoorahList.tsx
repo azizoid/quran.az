@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 import { sirasayi } from 'sirasayi'
 
 import { SOORAH_LIST } from '@/assets/soorah-list-object'

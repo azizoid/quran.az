@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@main
       - uses: pnpm/action-setup@master
         with:
-          version: 8.7.1
+          version: pnpm@9.12.3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@main
         with:

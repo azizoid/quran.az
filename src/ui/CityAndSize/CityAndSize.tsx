@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 import { FaKaaba, FaMosque } from 'react-icons/fa'
 
 const iconSizes = {
