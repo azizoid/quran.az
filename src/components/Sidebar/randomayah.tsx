@@ -4,9 +4,9 @@ import Link from 'next/link'
 import useSWR from 'swr'
 
 import { Card } from '@/components/Card/Card'
+import { buildUrl } from '@/helpers/buildUrl'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { LoadingBoxes } from '@/ui/LoadingBoxes/LoadingBoxes'
-import { buildUrl } from '@/helpers/buildUrl'
 import { fetcher } from '@/utility/fetcher'
 
 export const RandomAyah = () => {

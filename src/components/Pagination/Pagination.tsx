@@ -1,15 +1,15 @@
+import { useMemo } from 'react'
+
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+
 import {
   Pagination as PaginationShadcn,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-} from "@/components/ui/pagination"
-import { calculatePageBounds } from "@/utility/calculatePageBounds/calculatePageBounds"
-
-
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
-import { useMemo } from 'react'
+} from '@/components/ui/pagination'
+import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'
 
 export interface PaginationProps {
   activePage: number
@@ -52,7 +52,7 @@ export const Pagination = ({
       <PaginationContent>
         {!isFirstPage && !pageNumbers.includes(1) && (
           <PaginationItem>
-            <PaginationLink onClick={() => handleClick(1)} href={""}>
+            <PaginationLink onClick={() => handleClick(1)} href={''}>
               <ChevronLeftIcon className="h-4 w-4" />
             </PaginationLink>
           </PaginationItem>
@@ -63,7 +63,9 @@ export const Pagination = ({
 
           return (
             <PaginationItem key={page}>
-              <PaginationLink onClick={() => handleClick(page)} href="#" isActive={isCurrPage}>{page}</PaginationLink>
+              <PaginationLink onClick={() => handleClick(page)} href="#" isActive={isCurrPage}>
+                {page}
+              </PaginationLink>
             </PaginationItem>
           )
         })}

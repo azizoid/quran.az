@@ -4,8 +4,8 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 import Highlighter from 'react-highlight-words'
 
 import { Sajda } from '@/components/Sajda/Sajda'
-import { DisplayData } from '@/helpers/types'
 import { buildUrl } from '@/helpers/buildUrl'
+import { DisplayData } from '@/helpers/types'
 
 export type SearchAyahProps = {
   data: DisplayData

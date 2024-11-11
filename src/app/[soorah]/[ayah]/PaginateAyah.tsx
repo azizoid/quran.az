@@ -1,12 +1,11 @@
+import { soorahList } from '@/assets/soorah-list-object'
 import {
   Pagination as PaginationShadcn,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-} from "@/components/ui/pagination"
-
-import { soorahList } from '@/assets/soorah-list-object'
+} from '@/components/ui/pagination'
 import { buildUrl } from '@/helpers/buildUrl'
 
 export type PaginateAyahProps = {
@@ -38,7 +37,9 @@ export const PaginateAyah = ({ soorah, ayah }: PaginateAyahProps) => {
         )}
 
         <PaginationItem>
-          <PaginationLink href="#" isActive>{ayah}</PaginationLink>
+          <PaginationLink href="#" isActive>
+            {ayah}
+          </PaginationLink>
         </PaginationItem>
 
         {nextAyah && (
@@ -54,8 +55,6 @@ export const PaginateAyah = ({ soorah, ayah }: PaginateAyahProps) => {
             )}
           </>
         )}
-
-
       </PaginationContent>
     </PaginationShadcn>
   )

@@ -1,6 +1,7 @@
+import Link from 'next/link'
+
 import { soorahList } from '@/assets/soorah-list-object'
 
-import Link from 'next/link'
 import { CityAndSize } from '../CityAndSize/CityAndSize'
 
 export const SoorahList = () => (
@@ -13,7 +14,9 @@ export const SoorahList = () => (
         prefetch={false}
       >
         <div className="flex items-center justify-center w-14 bg-emerald-100 group-hover:bg-emerald-500 group-hover:text-white">
-          <span className="px-2 py-1 rounded-full bg-white group-hover:text-black">{soorah.id}</span>
+          <span className="px-2 py-1 rounded-full bg-white group-hover:text-black">
+            {soorah.id}
+          </span>
         </div>
         <div className="px-4 py-2 -mx-3 flex flex-row w-full items-center justify-between">
           <div className="mx-3">
