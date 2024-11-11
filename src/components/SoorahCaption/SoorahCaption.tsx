@@ -1,11 +1,10 @@
 import Link from 'next/link'
 
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { buildUrl } from '@/utility/buildUrl'
-
-import { CityAndSize } from '../../components/CityAndSize/CityAndSize'
+import { buildUrl } from '@/helpers/buildUrl'
 
 import styles from './SoorahCaption.module.css'
+import { CityAndSize } from '../CityAndSize/CityAndSize'
 
 type SoorahCaptionProps = {
   soorah: number

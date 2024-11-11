@@ -1,6 +1,15 @@
-import { useMemo } from 'react'
+import {
+  Pagination as PaginationShadcn,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+} from "@/components/ui/pagination"
+import { calculatePageBounds } from "@/utility/calculatePageBounds/calculatePageBounds"
 
-import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'
+
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import { useMemo } from 'react'
 
 export interface PaginationProps {
   activePage: number
@@ -39,28 +48,40 @@ export const Pagination = ({
   }
 
   return (
-    <ul className="pagination">
-      {!isFirstPage && !pageNumbers.includes(1) && (
-        <li className="pagination-item" onClick={() => handleClick(1)}>
-          «
-        </li>
-      )}
+    <PaginationShadcn>
+      <PaginationContent>
+        {!isFirstPage && !pageNumbers.includes(1) && (
+          <PaginationItem>
+            <PaginationLink onClick={() => handleClick(1)} href={""}>
+              <ChevronLeftIcon className="h-4 w-4" />
+            </PaginationLink>
+          </PaginationItem>
+        )}
 
-      {pageNumbers.map((page) => (
-        <li
-          key={page}
-          className={`pagination-item ${activePage === page ? 'pagination-active' : ''}`}
-          onClick={() => handleClick(page)}
-        >
-          {page}
-        </li>
-      ))}
+        {pageNumbers.map((page) => {
+          const isCurrPage = page === activePage
 
-      {!isLastPage && !pageNumbers.includes(totalPages) && (
-        <li className="pagination-item" onClick={() => handleClick(totalPages)}>
-          »
-        </li>
-      )}
-    </ul>
+          return (
+            <PaginationItem key={page}>
+              <PaginationLink onClick={() => handleClick(page)} href="#" isActive={isCurrPage}>{page}</PaginationLink>
+            </PaginationItem>
+          )
+        })}
+
+        {pageNumbers.length < totalPages && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
+
+        {!isLastPage && !pageNumbers.includes(totalPages) && (
+          <PaginationItem>
+            <PaginationLink onClick={() => handleClick(totalPages)} href="#">
+              <ChevronRightIcon className="h-4 w-4" />
+            </PaginationLink>
+          </PaginationItem>
+        )}
+      </PaginationContent>
+    </PaginationShadcn>
   )
 }

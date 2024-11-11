@@ -5,7 +5,7 @@ import Highlighter from 'react-highlight-words'
 
 import { Sajda } from '@/components/Sajda/Sajda'
 import { DisplayData } from '@/helpers/types'
-import { buildUrl } from '@/utility/buildUrl'
+import { buildUrl } from '@/helpers/buildUrl'
 
 export type SearchAyahProps = {
   data: DisplayData

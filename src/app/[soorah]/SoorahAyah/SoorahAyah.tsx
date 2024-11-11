@@ -5,7 +5,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import { Sajda } from '@/components/Sajda/Sajda'
 import { DisplayData } from '@/helpers/types'
-import { buildUrl } from '@/utility/buildUrl'
+import { buildUrl } from '@/helpers/buildUrl'
 
 export type SoorahAyahProps = {
   data: DisplayData

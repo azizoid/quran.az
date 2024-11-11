@@ -9,7 +9,7 @@ import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { getView } from '@/utility/getView/getView'
 
 import { getAyahService } from './getAyahService'
-import { PaginateAyah } from './PaginateAyah/PaginateAyah'
+import { PaginateAyah } from './PaginateAyah'
 
 type AyahProps = {
   params: Promise<{

@@ -1,27 +1,30 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import React, { PropsWithChildren } from "react"
 
-type CardProps = PropsWithChildren<{
-  title: string | ReactNode
-  titleClassName?: string | null
-  contentClass?: string | null
+import {
+  Card as CardShadcn,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from "@/components/ui/card"
+
+export type CardProps = PropsWithChildren<{
+  title: string,
   className?: string
-  size?: 'small' | 'medium'
 }>
-
-const cardSizes = {
-  small: 'px-4',
-  medium: 'px-7',
-} as const
 
 export const Card = ({
   title,
-  titleClassName = '',
-  className = '',
-  size = 'medium',
+  className = "",
   children,
 }: CardProps) => (
-  <div className="card">
-    <div className={`card-title ${cardSizes[size]} ${titleClassName}`}>{title}</div>
-    <div className={`card-content ${cardSizes[size]} ${className}`}>{children}</div>
-  </div>
+  <CardShadcn>
+    <CardHeader className="p-4 pb-0">
+      <CardDescription>{title}</CardDescription>
+    </CardHeader>
+    <CardContent className="p-4" >
+      <CardDescription className={className}>
+        {children}
+      </CardDescription>
+    </CardContent>
+  </CardShadcn>
 )
