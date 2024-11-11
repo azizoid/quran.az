@@ -53,7 +53,7 @@ const Search = () => {
 
   const paginateLinks =
     data?.paginate?.total && data.paginate.total > data?.paginate?.perPage ? (
-      <li className="list-group-item">
+      <li className="list-group-item py-2">
         <Pagination
           activePage={data?.paginate.currentPage}
           itemsCountPerPage={data?.paginate.perPage}
