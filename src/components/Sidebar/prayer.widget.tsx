@@ -1,8 +1,9 @@
 'use client'
 import useSWR from 'swr'
 
-import { LoaderProgress } from '@/ui'
 import { fetcher } from '@/utility/fetcher'
+
+import { LoaderDots } from '../LoaderDots'
 
 export type PrayerReturnProps = {
   cityName: string
@@ -26,7 +27,7 @@ export const PrayerWidget = () => {
   if (isLoading || isError || !data) {
     return (
       <div className="flex justify-center items-center">
-        <LoaderProgress />
+        <LoaderDots />
       </div>
     )
   }

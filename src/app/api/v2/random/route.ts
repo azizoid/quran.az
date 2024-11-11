@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
 
-import { DataPropsLatinized } from '@/lib/types'
+import { DataPropsLatinized } from '@/helpers/types'
 import { withMongo } from '@/utility/mongodb'
 
 export const dynamic = 'force-dynamic'

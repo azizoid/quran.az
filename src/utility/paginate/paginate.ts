@@ -1,4 +1,4 @@
-import { DataPropsLatinized } from '@/lib/types'
+import { DataPropsLatinized } from '@/helpers/types'
 
 export type PaginationProps = {
   currentPage: number

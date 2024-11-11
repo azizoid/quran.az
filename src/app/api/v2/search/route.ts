@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 import { Db } from 'mongodb'
 
-import { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/lib/types'
+import { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/helpers/types'
 import { FormProps, getView } from '@/utility/getView/getView'
 import { withMongo } from '@/utility/mongodb'
 import { initialPaginate } from '@/utility/paginate/paginate'

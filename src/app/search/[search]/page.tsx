@@ -7,9 +7,10 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { SearchAyah } from '@/components/SearchAyah/SearchAyah'
-import { Pagination } from '@/ui/Pagination/Pagination'
+import { Pagination } from '@/components/Pagination/Pagination'
 import { fetcher } from '@/utility/fetcher'
+
+import { SearchAyah } from './SearchAyah/SearchAyah'
 
 const Search = () => {
   const params = useParams()
@@ -52,7 +53,7 @@ const Search = () => {
 
   const paginateLinks =
     data?.paginate?.total && data.paginate.total > data?.paginate?.perPage ? (
-      <li className="list-group-item">
+      <li className="list-group-item py-2">
         <Pagination
           activePage={data?.paginate.currentPage}
           itemsCountPerPage={data?.paginate.perPage}

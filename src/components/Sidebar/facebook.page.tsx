@@ -1,9 +1,9 @@
 import type { JSX } from 'react'
 
-import { Card } from '@/ui'
+import { Card } from '@/components/Card/Card'
 
 export const FacebookPage = (): JSX.Element => (
-  <Card title="BİZİ BƏYƏN" titleClassName="px-7">
+  <Card title="BİZİ BƏYƏN">
     <div className="flex justify-center">
       <iframe
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fquranaz%2F&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=10177953140"
