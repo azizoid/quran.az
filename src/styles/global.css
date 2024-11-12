@@ -68,10 +68,6 @@
     @apply px-4 md:px-8 py-4;
   }
 
-  .form-row {
-    @apply grid grid-cols-12 items-center space-x-4;
-  }
-
   .form-control {
     @apply border-gray-400 bg-gray-50 text-sm rounded-md text-gray-700 focus:border-gray-200 focus:transition-none;
   }
