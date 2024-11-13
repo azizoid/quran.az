@@ -1,18 +1,18 @@
-import type { JSX } from 'react'
-
 import Link from 'next/link'
-import { FaExternalLinkAlt } from 'react-icons/fa'
+
+import { ExternalLink } from 'lucide-react'
 
 import { Sajda } from '@/components/Sajda/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
 import { DisplayData } from '@/helpers/types'
+
 
 export type SoorahAyahProps = {
   data: DisplayData
   sajda?: number[]
 }
 
-export const SoorahAyah = ({ data, sajda }: SoorahAyahProps): JSX.Element => (
+export const SoorahAyah = ({ data, sajda }: SoorahAyahProps) => (
   <li className="soorah-list-item">
     <div className="flex flex-row">
       <span className="badge">
@@ -27,7 +27,7 @@ export const SoorahAyah = ({ data, sajda }: SoorahAyahProps): JSX.Element => (
       prefetch={false}
       title="oxu"
     >
-      <FaExternalLinkAlt />
+      <ExternalLink />
     </Link>
   </li>
 )

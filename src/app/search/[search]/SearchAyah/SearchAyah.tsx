@@ -1,11 +1,12 @@
 import Link from 'next/link'
-import { FaExternalLinkAlt } from 'react-icons/fa'
 
+import { ExternalLink } from 'lucide-react'
 import Highlighter from 'react-highlight-words'
 
 import { Sajda } from '@/components/Sajda/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
 import { DisplayData } from '@/helpers/types'
+
 
 export type SearchAyahProps = {
   data: DisplayData
@@ -32,7 +33,7 @@ export const SearchAyah = ({ data, sajda, mark = '' }: SearchAyahProps) => (
       className="read-ayah"
       prefetch={false}
     >
-      <FaExternalLinkAlt />
+      <ExternalLink />
     </Link>
   </li>
 )
