@@ -1,39 +1,36 @@
+import { ReactNode } from 'react'
+
 import Link from 'next/link'
 
-import { ExternalLink } from 'lucide-react'
-import Highlighter from 'react-highlight-words'
+import { NotebookTextIcon } from 'lucide-react'
 
 import { Sajda } from '@/components/Sajda/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
 import { DisplayData } from '@/helpers/types'
 
-
 export type SearchAyahProps = {
   data: DisplayData
+  variant?: 'full' | 'short'
   sajda?: number[]
-  mark?: string
+  content?: ReactNode
 }
 
-export const SearchAyahTemplate = ({ data, sajda, mark = '' }: SearchAyahProps) => (
+export const TemplateAyahList = ({ variant = 'full', data, sajda, content }: SearchAyahProps) => (
   <li className="soorah-list-item">
     <div className="flex flex-row">
       <span className="badge">
-        {data.soorah}:{data.ayah}
+        {variant === 'full' ? `${data.soorah}:${data.ayah}` : data.ayah}
         {sajda?.includes(data.ayah) && <Sajda />}
-      </span>{' '}
-      <Highlighter
-        searchWords={[mark]}
-        textToHighlight={data.content}
-        autoEscape={true}
-        highlightClassName="bg-warning"
-      />
+      </span>
+      {content ?? data.content}
     </div>
     <Link
       href={buildUrl(data.soorah, data.ayah, data.translator)}
       className="read-ayah"
+      title="oxu"
       prefetch={false}
     >
-      <ExternalLink />
+      <NotebookTextIcon />
     </Link>
   </li>
 )

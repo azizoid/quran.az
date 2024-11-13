@@ -137,7 +137,10 @@ export const Form = (): JSX.Element => {
           onChange={onHandleChange}
         />
 
-        <button className="col-span-5 bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300" type="submit">
+        <button
+          className="col-span-5 bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300"
+          type="submit"
+        >
           Axtar
         </button>
       </div>

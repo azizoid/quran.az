@@ -4,10 +4,10 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { Bismillah } from '@/components/Bismillah/Bismillah'
+import { TemplateAyahList } from '@/helpers/TemplateAyahList'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
-import { SoorahAyahTemplate } from './SoorahAyah.template'
 
 type SoorahProps = {
   params: Promise<{
@@ -64,7 +64,7 @@ const SoorahPage = async (props: SoorahProps) => {
       {soorah !== 9 ? <Bismillah /> : null}
 
       {out.map((outData) => (
-        <SoorahAyahTemplate data={outData} key={outData.id} sajda={sajda} />
+        <TemplateAyahList data={outData} key={outData.id} sajda={sajda} variant="short" />
       ))}
     </>
   )

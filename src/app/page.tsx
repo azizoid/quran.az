@@ -26,8 +26,8 @@ const Home = () => (
     <SoorahList />
 
     <div className="prose !max-w-none alert alert-success">
-      Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong>{' '}
-      riayət edin:
+      Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong> riayət
+      edin:
     </div>
 
     <div className="grid grid-1 md:grid-cols-3 gap-2 py-4">

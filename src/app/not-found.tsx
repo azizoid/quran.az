@@ -1,5 +1,6 @@
-import { ShieldAlertIcon } from 'lucide-react'
 import Link from 'next/link'
+
+import { ShieldAlertIcon } from 'lucide-react'
 
 const NotFoundPage = () => (
   <div className="flex flex-col items-center justify-center py-10 bg-red-100  ">
