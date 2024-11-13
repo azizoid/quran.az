@@ -2,9 +2,9 @@ import { notFound, redirect } from 'next/navigation'
 
 import { sirasayi } from 'sirasayi'
 
+import { ColoredText } from '@/app/[soorah]/[ayah]/ColoredText'
 import { soorahList } from '@/assets/soorah-list-object'
 import { Bismillah } from '@/components/Bismillah/Bismillah'
-import { ColoredText } from '@/components/ColoredText/ColoredText'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { getView } from '@/utility/getView/getView'
 
@@ -72,7 +72,7 @@ const AyahPage = async (props: AyahPageProps) => {
         {content}
       </li>
       <li className="prose !max-w-none ayah-list-item">
-        <ColoredText key="transliteration" content={transliteration} />
+        <ColoredText content={transliteration} />
       </li>
       <li className="ayah-list-item text-3xl font-Nunito text-right" dir="rtl">
         {arabic}
