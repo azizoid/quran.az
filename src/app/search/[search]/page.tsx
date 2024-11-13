@@ -9,7 +9,7 @@ import useSWR from 'swr'
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { Pagination } from '@/components/Pagination/Pagination'
-import { TemplateAyahList } from '@/helpers/TemplateAyahList'
+import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
 
 const Search = () => {

@@ -4,7 +4,7 @@ import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { Bismillah } from '@/components/Bismillah/Bismillah'
-import { TemplateAyahList } from '@/helpers/TemplateAyahList'
+import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
