@@ -11,7 +11,7 @@ import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
 
-import { PaginateSearch } from './PaginateSearch'
+import { PaginateSearch } from '../components/PaginateSearch'
 
 const Search = () => {
   const params = useParams()
