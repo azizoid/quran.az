@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
 import {
@@ -11,7 +9,7 @@ import {
 } from '@/components/ui/pagination'
 import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'
 
-export interface PaginationProps {
+export interface PaginateSearchProps {
   activePage: number
   itemsCountPerPage: number
   totalItemsCount: number
@@ -20,26 +18,20 @@ export interface PaginationProps {
   hideDisabled?: boolean
 }
 
-export const Pagination = ({
+export const PaginateSearch = ({
   activePage,
   itemsCountPerPage,
   totalItemsCount,
   pageRangeDisplayed,
   onChange,
-}: PaginationProps) => {
+}: PaginateSearchProps) => {
+
   const totalPages = Math.ceil(totalItemsCount / itemsCountPerPage)
   const isFirstPage = activePage === 1
   const isLastPage = activePage === totalPages
 
-  const { startPage, endPage } = useMemo(
-    () => calculatePageBounds(activePage, totalPages, pageRangeDisplayed),
-    [activePage, totalPages, pageRangeDisplayed]
-  )
-
-  const pageNumbers = useMemo(
-    () => Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i),
-    [startPage, endPage]
-  )
+  const { startPage, endPage } = calculatePageBounds(activePage, totalPages, pageRangeDisplayed)
+  const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
 
   const handleClick = (page: number) => {
     if (page !== activePage) {

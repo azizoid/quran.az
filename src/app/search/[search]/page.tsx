@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 import { useParams, useSearchParams } from 'next/navigation'
 
@@ -8,7 +8,7 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { Pagination } from '@/components/Pagination/Pagination'
+import { PaginateSearch } from './PaginateSearch'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
 
@@ -54,7 +54,7 @@ const Search = () => {
   const paginateLinks =
     data?.paginate?.total && data.paginate.total > data?.paginate?.perPage ? (
       <li className="list-group-item py-2">
-        <Pagination
+        <PaginateSearch
           activePage={data?.paginate.currentPage}
           itemsCountPerPage={data?.paginate.perPage}
           totalItemsCount={data?.paginate.total}
