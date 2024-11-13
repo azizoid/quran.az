@@ -78,7 +78,7 @@ const AyahPage = async (props: AyahPageProps) => {
         {arabic}
       </li>
       <li className="py-2">
-        <PaginateAyah {...{ soorah, ayah, translator }} />
+        <PaginateAyah {...{ soorah, activePage: ayah, translator }} />
       </li>
     </>
   )

@@ -25,7 +25,6 @@ export const PaginateSearch = ({
   pageRangeDisplayed,
   onChange,
 }: PaginateSearchProps) => {
-
   const totalPages = Math.ceil(totalItemsCount / itemsCountPerPage)
   const isFirstPage = activePage === 1
   const isLastPage = activePage === totalPages

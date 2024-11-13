@@ -8,9 +8,10 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
-import { PaginateSearch } from './PaginateSearch'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
+
+import { PaginateSearch } from './PaginateSearch'
 
 const Search = () => {
   const params = useParams()

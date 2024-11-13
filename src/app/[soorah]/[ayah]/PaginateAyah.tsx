@@ -1,3 +1,5 @@
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+
 import { soorahList } from '@/assets/soorah-list-object'
 import {
   Pagination as PaginationShadcn,
@@ -7,53 +9,55 @@ import {
   PaginationLink,
 } from '@/components/ui/pagination'
 import { buildUrl } from '@/helpers/buildUrl'
+import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'
 
 export type PaginateAyahProps = {
   soorah: number
-  ayah: number
+  activePage: number
+  pageRangeDisplayed?: number
 }
 
-export const PaginateAyah = ({ soorah, ayah }: PaginateAyahProps) => {
-  const soorahIndex = soorah - 1
+export const PaginateAyah = ({ soorah, activePage, pageRangeDisplayed = 5 }: PaginateAyahProps) => {
+  const totalPages = soorahList[soorah - 1].ayahCount
 
-  const prevAyah = ayah === 1 ? null : ayah - 1
-  const nextAyah = ayah === soorahList[soorahIndex]?.ayahCount ? null : ayah + 1
+  const { startPage, endPage } = calculatePageBounds(activePage, totalPages, pageRangeDisplayed)
+  const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
 
   return (
     <PaginationShadcn>
       <PaginationContent>
-        {prevAyah && (
-          <>
-            {prevAyah > 1 && (
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-            )}
-
-            <PaginationItem>
-              <PaginationLink href={buildUrl(soorah, prevAyah)}>{prevAyah}</PaginationLink>
-            </PaginationItem>
-          </>
+        {activePage > 1 && !pageNumbers.includes(1) && (
+          <PaginationItem>
+            <PaginationLink href={buildUrl(soorah, activePage - 1)}>
+              <ChevronLeftIcon className="h-4 w-4" />
+            </PaginationLink>
+          </PaginationItem>
         )}
 
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            {ayah}
-          </PaginationLink>
-        </PaginationItem>
+        {pageNumbers.map((page) => {
+          const isCurrPage = page === activePage
 
-        {nextAyah && (
-          <>
-            <PaginationItem>
-              <PaginationLink href={buildUrl(soorah, nextAyah)}>{nextAyah}</PaginationLink>
+          return (
+            <PaginationItem key={page}>
+              <PaginationLink href={buildUrl(soorah, page)} isActive={isCurrPage}>
+                {page}
+              </PaginationLink>
             </PaginationItem>
+          )
+        })}
 
-            {nextAyah < soorahList[soorahIndex].ayahCount && (
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-            )}
-          </>
+        {!pageNumbers.includes(activePage) && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
+
+        {activePage !== totalPages && !pageNumbers.includes(totalPages) && (
+          <PaginationItem>
+            <PaginationLink href={buildUrl(soorah, activePage + 1)}>
+              <ChevronRightIcon className="h-4 w-4" />
+            </PaginationLink>
+          </PaginationItem>
         )}
       </PaginationContent>
     </PaginationShadcn>
