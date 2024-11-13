@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
-    @apply bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300 hover:transition-transform hover:-translate-y-0.5 active:-translate-y-0;
-  }
-
   .alert {
     @apply border-t-4 rounded-b px-4 py-3 shadow-md;
   }
@@ -21,10 +17,6 @@
 
   .alert-danger {
     @apply bg-red-100  border-red-500 text-red-900;
-  }
-
-  code {
-    @apply text-red-400;
   }
 
   .badge {
@@ -49,47 +41,12 @@
     }
   }
 
-  .pagination {
-    @apply flex justify-center space-x-1 py-4;
-  }
-  .pagination-item {
-    @apply px-4 py-2 text-blue-400 rounded-md border hover:bg-gray-50 hover:text-gray-400 cursor-pointer;
-  }
-
-  .pagination-active {
-    @apply bg-blue-400 text-blue-50;
-  }
-
-  .pagination-disabled {
-    @apply px-4 py-2 bg-gray-50 rounded-md text-gray-500;
-  }
-
   .ayah-list-item {
     @apply px-4 md:px-8 py-4;
   }
 
-  .form-row {
-    @apply grid grid-cols-12 items-center space-x-4;
-  }
-
   .form-control {
     @apply border-gray-400 bg-gray-50 text-sm rounded-md text-gray-700 focus:border-gray-200 focus:transition-none;
-  }
-
-  .card {
-    @apply border border-solid border-gray-300 rounded-t shadow-lg;
-  }
-
-  .card-title {
-    @apply bg-gray-100 border-b text-sm py-3;
-  }
-
-  .card-content {
-    @apply space-y-1  text-sm py-3;
-  }
-
-  .page-template-list {
-    @apply list-none divide-y divide-gray-100 bg-white text-gray-700;
   }
 }
 

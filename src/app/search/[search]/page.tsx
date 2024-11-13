@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 
 import { useParams, useSearchParams } from 'next/navigation'
 
+import Highlighter from 'react-highlight-words'
 import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { Pagination } from '@/components/Pagination/Pagination'
+import { TemplateAyahList } from '@/helpers/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
-
-import { SearchAyah } from './SearchAyah/SearchAyah'
 
 const Search = () => {
   const params = useParams()
@@ -70,7 +70,17 @@ const Search = () => {
 
       {data?.out?.map((ayah) => {
         const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-        return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
+
+        const content = (
+          <Highlighter
+            searchWords={[searchQuery]}
+            textToHighlight={ayah.content}
+            autoEscape={true}
+            highlightClassName="bg-warning"
+          />
+        )
+
+        return <TemplateAyahList data={ayah} sajda={sajda} key={ayah.id} content={content} />
       })}
 
       {paginateLinks}

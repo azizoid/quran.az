@@ -87,7 +87,7 @@ export const Form = (): JSX.Element => {
       acceptCharset="UTF-8"
       onSubmit={onSubmit}
     >
-      <div className="form-row">
+      <div className="grid grid-cols-12 items-center gap-x-4 gap-y-2">
         <select
           className="form-control col-span-7 focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
           name="soorah"
@@ -127,9 +127,7 @@ export const Form = (): JSX.Element => {
             </option>
           ))}
         </select>
-      </div>
 
-      <div className="form-row">
         <input
           type="text"
           placeholder="Kəlmə"
@@ -139,7 +137,10 @@ export const Form = (): JSX.Element => {
           onChange={onHandleChange}
         />
 
-        <button className="btn btn-success col-span-5" type="submit">
+        <button
+          className="col-span-5 bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300"
+          type="submit"
+        >
           Axtar
         </button>
       </div>
