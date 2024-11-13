@@ -11,7 +11,7 @@ import { getView } from '@/utility/getView/getView'
 import { getAyahService } from './getAyahService'
 import { PaginateAyah } from './PaginateAyah'
 
-type AyahProps = {
+type AyahPageProps = {
   params: Promise<{
     soorah: string
     ayah: string
@@ -21,7 +21,7 @@ type AyahProps = {
   }>
 }
 
-export const generateMetadata = async (props: AyahProps) => {
+export const generateMetadata = async (props: AyahPageProps) => {
   const { soorah, ayah } = (await props.params) || {}
 
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
@@ -39,7 +39,7 @@ export const generateMetadata = async (props: AyahProps) => {
   }
 }
 
-const AyahPage = async (props: AyahProps) => {
+const AyahPage = async (props: AyahPageProps) => {
   const { t: translatorParam } = (await props.searchParams) || {}
 
   const { soorah: soorahParam, ayah: ayahParam } = (await props.params) || {}

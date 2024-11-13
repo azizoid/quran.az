@@ -5,7 +5,8 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
-import { FormProps, getView } from '@/utility/getView/getView'
+import { getView } from '@/utility/getView/getView'
+import type { FormProps } from '@/utility/getView/getView.types'
 
 export const Form = (): JSX.Element => {
   const router = useRouter()

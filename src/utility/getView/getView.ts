@@ -1,41 +1,9 @@
 import { soorahList } from '@/assets/soorah-list-object'
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
+import { FormProps } from './getView.types'
+
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
-
-type EmptyState = {
-  view: 'empty'
-  s: null
-  a: null
-  q: null
-  t: number
-}
-
-type SoorahState = {
-  view: 'soorah'
-  s: number
-  a: null
-  q: null
-  t: number
-}
-
-type AyahState = {
-  view: 'ayah'
-  s: number
-  a: number
-  q: null
-  t: number
-}
-
-type SearchState = {
-  view: 'search'
-  s: null
-  a: null
-  q: string
-  t: number
-}
-
-export type FormProps = EmptyState | SoorahState | AyahState | SearchState
 
 const initialStateProps: FormProps = {
   s: null,

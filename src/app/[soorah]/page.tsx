@@ -9,7 +9,7 @@ import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
 
-type SoorahProps = {
+type SoorahPageProps = {
   params: Promise<{
     soorah: string
   }>
@@ -25,7 +25,7 @@ export const generateStaticParams = async () =>
     soorah: item.id.toString(),
   }))
 
-export const generateMetadata = async (props: SoorahProps) => {
+export const generateMetadata = async (props: SoorahPageProps) => {
   const { soorah } = (await props.params) || {}
   const soorahTitle = soorahList.find((soorahItem) => soorahItem.id === Number(soorah))
 
@@ -40,7 +40,7 @@ export const generateMetadata = async (props: SoorahProps) => {
   }
 }
 
-const SoorahPage = async (props: SoorahProps) => {
+const SoorahPage = async (props: SoorahPageProps) => {
   const { t: translatorParam } = (await props.searchParams) || {}
 
   const { soorah: soorahParam } = (await props.params) || {}
