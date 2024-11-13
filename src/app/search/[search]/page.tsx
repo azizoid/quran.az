@@ -10,7 +10,7 @@ import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { Pagination } from '@/components/Pagination/Pagination'
 import { fetcher } from '@/utility/fetcher'
 
-import { SearchAyah } from './SearchAyah/SearchAyah'
+import { SearchAyahTemplate } from './SearchAyah.template'
 
 const Search = () => {
   const params = useParams()
@@ -70,7 +70,7 @@ const Search = () => {
 
       {data?.out?.map((ayah) => {
         const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-        return <SearchAyah data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
+        return <SearchAyahTemplate data={ayah} sajda={sajda} mark={searchQuery} key={ayah.id} />
       })}
 
       {paginateLinks}

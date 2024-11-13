@@ -7,7 +7,7 @@ import { Bismillah } from '@/components/Bismillah/Bismillah'
 import { getView } from '@/utility/getView/getView'
 
 import { getSoorahService } from './getSoorahService'
-import { SoorahAyah } from './SoorahAyah/SoorahAyah'
+import { SoorahAyahTemplate } from './SoorahAyah.template'
 
 type SoorahProps = {
   params: Promise<{
@@ -64,7 +64,7 @@ const SoorahPage = async (props: SoorahProps) => {
       {soorah !== 9 ? <Bismillah /> : null}
 
       {out.map((outData) => (
-        <SoorahAyah data={outData} key={outData.id} sajda={sajda} />
+        <SoorahAyahTemplate data={outData} key={outData.id} sajda={sajda} />
       ))}
     </>
   )
