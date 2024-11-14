@@ -7,10 +7,10 @@ import { Bismillah } from '@/components/Bismillah/Bismillah'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { getView } from '@/utility/getView/getView'
 
+import { ColoredText } from '../components/ColoredText'
 import { PaginateAyah } from '../components/PaginateAyah'
 
 import { getAyahService } from './getAyahService'
-import { ColoredText } from '../components/ColoredText'
 
 type AyahPageProps = {
   params: Promise<{

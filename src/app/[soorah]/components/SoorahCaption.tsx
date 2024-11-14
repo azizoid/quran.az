@@ -1,9 +1,8 @@
 import Link from 'next/link'
 
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { CityAndSize } from '@/components/CityAndSize'
 import { buildUrl } from '@/helpers/buildUrl'
-
-import { CityAndSize } from '@/components/CityAndSize/CityAndSize'
 
 type SoorahCaptionProps = {
   soorah: number
@@ -15,7 +14,7 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
 
   return (
     <li
-      className="flex justify-center items-center text-center text-lg md:text-2xl font-thin whitespace-nowrap text-gray-400 hover:text-black before:mr-2 after:ml-2 
+      className="flex justify-center items-center text-center text-lg md:text-2xl font-thin whitespace-nowrap text-gray-400 hover:text-black before:mr-2 after:ml-2
       before:content-[url('/img/caption-left.png')] after:content-[url('/img/caption-right.png')]"
     >
       <Link
@@ -25,7 +24,7 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
       >
         {`${soorah}. ${fullTitle}`}
         <span className="flex flex-row justify-center gap-1 text-xs">
-          <CityAndSize city={city} ayahCount={ayahCount} devider={true} size="sm" />
+          <CityAndSize city={city} ayahCount={ayahCount} size="sm" />
         </span>
       </Link>
     </li>

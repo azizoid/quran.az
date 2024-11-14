@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { SoorahCaption } from './components/SoorahCaption'
 
 type SoorahLayoutProps = PropsWithChildren<{
