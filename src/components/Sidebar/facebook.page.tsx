@@ -1,20 +1,40 @@
-import type { JSX } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FaFacebookSquare, FaInstagramSquare } from 'react-icons/fa'
 
 import { Card } from '@/components/Card'
 
-export const FacebookPage = (): JSX.Element => (
-  <Card title="BİZİ BƏYƏN">
-    <div className="flex justify-center">
-      <iframe
-        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fquranaz%2F&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=10177953140"
-        width="340"
-        height="130"
-        style={{ border: 'none', overflow: 'hidden' }}
-        scrolling="no"
-        frameBorder="0"
-        allowFullScreen={true}
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-      />
+import fbPageLogo from '../../assets/img/fb-page-logo.jpg'
+
+export const FacebookPage = () => (
+  <Card title="BİZİ BƏYƏN" className='bg-[url("/img/kuran.jpg")] bg-cover relative'>
+    <div className="absolute inset-0 bg-black opacity-30" />
+    <div className="flex w-full h-40 flex-col justify-between p-2 relative z-10">
+      <div className="flex flex-row gap-2">
+        <div className="h-16 w-16 bg-sky-500 border-2">
+          <Image src={fbPageLogo} alt="facebook page" />
+        </div>
+        <div className="grow flex flex-col text-white font-semibold">
+          <span className="text-lg">quran.az</span>
+          <span className="text-xs">8.255 followers</span>
+        </div>
+      </div>
+      <div className="flex flex-row justify-between">
+        <Link
+          href="https://facebook.com/quranaz"
+          target="_blank"
+          className="bg-white flex flex-row items-center py-0.5 px-1.5 gap-1 font-bold"
+        >
+          <FaFacebookSquare size="16" /> Follow on Facebook
+        </Link>
+        <Link
+          href="https://instagram.com/quranaz"
+          target="_blank"
+          className="bg-white flex flex-row items-center py-0.5 px-1.5 gap-1 font-bold"
+        >
+          <FaInstagramSquare size="16" /> Follow on Instagram
+        </Link>
+      </div>
     </div>
   </Card>
 )
