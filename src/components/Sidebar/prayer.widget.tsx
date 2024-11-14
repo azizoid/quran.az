@@ -25,11 +25,7 @@ export const PrayerWidget = () => {
   })
 
   if (isLoading || isError || !data) {
-    return (
-      <div className="flex justify-center items-center">
-        <LoaderDots />
-      </div>
-    )
+    return <LoaderDots />
   }
 
   const { cityName, hijri, prayers } = data

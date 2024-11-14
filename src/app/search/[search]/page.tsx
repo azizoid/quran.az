@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useParams, useSearchParams } from 'next/navigation'
 
@@ -8,6 +8,7 @@ import useSWR from 'swr'
 
 import { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
+import { LoaderDots } from '@/components/LoaderDots'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
 import { fetcher } from '@/utility/fetcher'
 
@@ -28,7 +29,7 @@ const Search = () => {
     t: translator,
   }
 
-  const { data, error, mutate } = useSWR<ResponseProps>(
+  const { data, error, isLoading, mutate } = useSWR<ResponseProps>(
     ['/api/v2/search', searchBody],
     searchQuery?.length > 2 ? (url: [string, string]) => fetcher(url, searchBody, 'POST') : null,
     {
@@ -47,6 +48,10 @@ const Search = () => {
   useEffect(() => {
     mutate()
   }, [mutate, currentPage, translator, params?.search])
+
+  if (isLoading) {
+    return <LoaderDots />
+  }
 
   if (error || data?.out === null) {
     return <div className="prose !max-w-none col-sm-12 alert alert-danger">Kəlmə tapılmamışdır</div>

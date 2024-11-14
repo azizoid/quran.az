@@ -14,7 +14,7 @@ const SoorahLayout = async ({ params, children }: SoorahLayoutProps) => {
   const soorah = Number(soorahParam)
 
   return (
-    <ul className="page-template-list">
+    <ul>
       {soorah ? <SoorahCaption soorah={soorah} translator={1} /> : null}
 
       {children}
