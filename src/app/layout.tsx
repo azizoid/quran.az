@@ -1,5 +1,5 @@
 import '@/styles/global.css'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, Suspense } from 'react'
 
 import { GoogleTagManager } from '@next/third-parties/google'
 import localFont from 'next/font/local'
@@ -35,7 +35,9 @@ const RootLayout = ({ children }: PropsWithChildren) => (
         <div className="flex-grow container mx-auto mt-10 pb-2">
           <div className="grid grid-cols-12">
             <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4 mb-4">
-              <Form />
+              <Suspense>
+                <Form />
+              </Suspense>
 
               {children}
             </div>

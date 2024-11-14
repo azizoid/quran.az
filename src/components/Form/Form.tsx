@@ -1,5 +1,5 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useState, type JSX } from 'react'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
@@ -8,7 +8,7 @@ import { translatorList } from '@/assets/translatorList'
 import { getView } from '@/utility/getView/getView'
 import type { FormProps } from '@/utility/getView/getView.types'
 
-export const Form = (): JSX.Element => {
+export const Form = () => {
   const router = useRouter()
 
   const params = useParams()
