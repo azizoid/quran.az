@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { Card } from '@/components/Card/Card'
-import { SoorahList } from '@/components/SoorahList/SoorahList'
+import { Card } from '@/components/Card'
+import { SoorahList } from '@/components/SoorahList'
 
 const topLinks = [
   ['/1', 'Fatihə surəsi'],

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { NotebookTextIcon } from 'lucide-react'
 
-import { Sajda } from '@/components/Sajda/Sajda'
+import { Sajda } from '@/components/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
 import { DisplayData } from '@/helpers/types'
 

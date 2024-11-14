@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import useSWR from 'swr'
 
-import { Card } from '@/components/Card/Card'
+import { Card } from '@/components/Card'
 import { buildUrl } from '@/helpers/buildUrl'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { fetcher } from '@/utility/fetcher'

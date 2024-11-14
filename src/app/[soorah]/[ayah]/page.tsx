@@ -2,8 +2,8 @@ import { notFound, redirect } from 'next/navigation'
 
 import { sirasayi } from 'sirasayi'
 
+import { Bismillah } from '@/app/[soorah]/components/Bismillah'
 import { soorahList } from '@/assets/soorah-list-object'
-import { Bismillah } from '@/components/Bismillah/Bismillah'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { getView } from '@/utility/getView/getView'
 

@@ -1,6 +1,6 @@
 import type { JSX } from 'react'
 
-import { Card } from '@/components/Card/Card'
+import { Card } from '@/components/Card'
 
 export const FacebookPage = (): JSX.Element => (
   <Card title="BİZİ BƏYƏN">

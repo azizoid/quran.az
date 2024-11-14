@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { soorahList } from '@/assets/soorah-list-object'
 
-import { CityAndSize } from '../CityAndSize'
+import { CityAndSize } from './CityAndSize'
 
 export const SoorahList = () => (
   <div className="mt-2 border-t border-gray-300">
