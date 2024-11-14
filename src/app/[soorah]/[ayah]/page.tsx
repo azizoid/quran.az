@@ -2,7 +2,6 @@ import { notFound, redirect } from 'next/navigation'
 
 import { sirasayi } from 'sirasayi'
 
-import { ColoredText } from '@/app/[soorah]/components/ColoredText'
 import { soorahList } from '@/assets/soorah-list-object'
 import { Bismillah } from '@/components/Bismillah/Bismillah'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
@@ -11,6 +10,7 @@ import { getView } from '@/utility/getView/getView'
 import { PaginateAyah } from '../components/PaginateAyah'
 
 import { getAyahService } from './getAyahService'
+import { ColoredText } from '../components/ColoredText'
 
 type AyahPageProps = {
   params: Promise<{

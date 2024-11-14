@@ -3,9 +3,7 @@ import Link from 'next/link'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { buildUrl } from '@/helpers/buildUrl'
 
-import { CityAndSize } from '../CityAndSize/CityAndSize'
-
-import styles from './SoorahCaption.module.css'
+import { CityAndSize } from '@/components/CityAndSize/CityAndSize'
 
 type SoorahCaptionProps = {
   soorah: number
@@ -17,7 +15,8 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
 
   return (
     <li
-      className={`ayah-list-item text-center text-lg md:text-2xl font-thin ${styles.header} flex align-middle justify-center whitespace-nowrap`}
+      className="flex justify-center items-center text-center text-lg md:text-2xl font-thin whitespace-nowrap text-gray-400 hover:text-black before:mr-2 after:ml-2 
+      before:content-[url('/img/caption-left.png')] after:content-[url('/img/caption-right.png')]"
     >
       <Link
         href={buildUrl(soorah, undefined, translator)}
