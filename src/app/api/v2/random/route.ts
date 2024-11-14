@@ -5,8 +5,6 @@ import { Db } from 'mongodb'
 import { DataPropsLatinized } from '@/helpers/types'
 import { withMongo } from '@/utility/mongodb'
 
-export const dynamic = 'force-dynamic'
-
 export const GET = async () => {
   try {
     const randomAyah = await withMongo(async (db: Db) => {
