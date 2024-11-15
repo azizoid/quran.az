@@ -22,7 +22,7 @@ export const ColoredText = ({ content }: ColoredTextProps) => {
         <span
           key={index}
           style={{ color: coloredTextColors[index % coloredTextColors.length] }}
-          className="px-1 py-0.5 hover:bg-gray-100 hover:cursor-pointer"
+          className="px-1 py-0.5 hover:cursor-pointer hover:bg-gray-100"
         >
           {word}{' '}
         </span>

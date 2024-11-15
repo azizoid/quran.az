@@ -29,17 +29,17 @@ export const viewport = MainViewport
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="az">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <div className="flex flex-col h-screen justify-between">
+      <div className="flex h-screen flex-col justify-between">
         <Header />
 
-        <div className="grow container mx-auto mt-10 pb-2">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <div className="container mx-auto mt-10 grow pb-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
             <Suspense>
-              <div className="md:col-span-8 bg-white">
+              <div className="bg-white md:col-span-8">
                 <Form />
               </div>
 
-              <div className="md:col-span-4 hidden md:block">
+              <div className="hidden md:col-span-4 md:block">
                 <PrayerWidget />
               </div>
             </Suspense>

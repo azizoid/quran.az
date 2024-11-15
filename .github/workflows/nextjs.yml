@@ -12,7 +12,7 @@ env:
   TARGET_DIRECTORY: ${{ secrets.TARGET_DIRECTORY }}
 
   NEXT_PUBLIC_DEFAULT_TRANSLATOR: ${{ vars.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}
-  NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}  
+  NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
 
 jobs:
   build:
@@ -41,7 +41,9 @@ jobs:
           path: |
             ~/.pnpm-store
             ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          key:
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js',
+            '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
