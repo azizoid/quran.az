@@ -34,16 +34,16 @@ export const PrayerWidget = () => {
   return (
     <>
       <div className="w-full text-sm">
-        <div className="bg-gray-700 text-white flex w-full justify-evenly items-center py-2 px-4">
+        <div className="flex w-full items-center justify-evenly bg-gray-700 px-4 py-2 text-white">
           <div className="text-center">{`${hijri}, ${cityName}`}</div>
           <a href="https://nam.az" target="_blank" rel="noreferrer">
             <MapPinnedIcon size={14} className="text-green-300" />
           </a>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 divide-y">
+        <div className="grid grid-cols-2 divide-y lg:grid-cols-3">
           {prayers.map((prayerTime, index) => (
-            <div key={index} className="flex place-content-center p-2 gap-2 hover:bg-gray-100">
+            <div key={index} className="flex place-content-center gap-2 p-2 hover:bg-gray-100">
               <span className="text-right">{prayersTitle[index]}</span>
               <span className="">{prayerTime}</span>
             </div>

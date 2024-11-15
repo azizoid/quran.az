@@ -5,11 +5,11 @@ import { TiSocialFacebookCircular, TiSocialInstagram, TiSocialGithub } from 'rea
 import LogoSvg from '@/assets/img/logo.svg'
 
 export const Header = () => (
-  <div className="bg-[url('/img/ornament.gif')] bg-gray-50 bg-repeat-x bg-bottom pb-[33px] px-3">
-    <nav className="h-12 container mx-auto flex justify-between">
+  <div className="bg-gray-50 bg-[url('/img/ornament.gif')] bg-bottom bg-repeat-x px-3 pb-[33px]">
+    <nav className="container mx-auto flex h-12 justify-between">
       <Link
         href="/"
-        className="py-3 flex gap-1 items-center content-start text-gray-500 hover:opacity-75"
+        className="flex content-start items-center gap-1 py-3 text-gray-500 hover:opacity-75"
         prefetch={false}
       >
         <Image src={LogoSvg} alt={'Quran.az Logo'} width={32} />

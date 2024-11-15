@@ -84,13 +84,13 @@ export const Form = () => {
   return (
     <form
       id="search"
-      className="space-y-2 mb-6 alert alert-gray"
+      className="alert alert-gray mb-6 space-y-2"
       acceptCharset="UTF-8"
       onSubmit={onSubmit}
     >
       <div className="grid grid-cols-12 items-center gap-x-4 gap-y-2">
         <select
-          className="form-control col-span-7 focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
+          className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
           name="soorah"
           value={state?.s ?? 0}
           onChange={onHandleChange}
@@ -117,7 +117,7 @@ export const Form = () => {
         />
 
         <select
-          className="form-control col-span-3 text-center focus:outline-none focus:bg-white focus:border-gray-500 active:outline-none active:border-gray-500"
+          className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
           name="translator"
           value={state?.t}
           onChange={onHandleChange}
@@ -139,7 +139,7 @@ export const Form = () => {
         />
 
         <button
-          className="col-span-5 bg-green-200 py-2 px-3 rounded-md shadow text-green-900 hover:bg-green-300"
+          className="col-span-5 rounded-md bg-green-200 px-3 py-2 text-green-900 shadow hover:bg-green-300"
           type="submit"
         >
           Axtar

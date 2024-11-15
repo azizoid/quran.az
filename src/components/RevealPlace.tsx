@@ -35,7 +35,7 @@ export const RevealPlace = ({ city, size = 'md' }: RevealPlaceProps) => {
   const { Icon, title } = cityList[city]
 
   return (
-    <span className="flex gap-1 align-middle whitespace-nowrap">
+    <span className="flex gap-1 whitespace-nowrap align-middle">
       <Icon size={iconSizes[size]} className="text-gray-300 group-hover:text-gray-600" />
       {title}
     </span>
