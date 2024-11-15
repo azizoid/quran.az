@@ -1,6 +1,8 @@
 ### Quran.az
 
-This is an educational project that provides translations of the Quran in Azerbaijani and Russian languages. The website makes it easy to search and navigate between the surahs and ayahs of the Quran.
+This is an educational project that provides translations of the Quran in Azerbaijani and Russian
+languages. The website makes it easy to search and navigate between the surahs and ayahs of the
+Quran.
 
 ### Basic Usage
 
