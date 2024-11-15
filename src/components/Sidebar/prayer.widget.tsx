@@ -43,8 +43,8 @@ export const PrayerWidget = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-3 divide-y">
           {prayers.map((prayerTime, index) => (
-            <div key={index} className="flex place-content-around p-2 hover:bg-gray-100">
-              <span className="text-right">{prayersTitle[index]}</span>-
+            <div key={index} className="flex place-content-center p-2 gap-2 hover:bg-gray-100">
+              <span className="text-right">{prayersTitle[index]}</span>
               <span className="">{prayerTime}</span>
             </div>
           ))}
