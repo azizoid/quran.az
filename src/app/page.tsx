@@ -11,7 +11,7 @@ const topLinks = [
 ]
 
 const Home = () => (
-  <div className="space-y-4">
+  <div className="py-2 px-2 space-y-4">
     <ol className="w-full flex justify-center text-gray-500 space-x-5 text-sm md:text-base">
       {topLinks.map(([url, urlText]) => (
         <li key={url}>

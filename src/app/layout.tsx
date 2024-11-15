@@ -45,7 +45,7 @@ const RootLayout = ({ children }: PropsWithChildren) => (
             </Suspense>
           </div>
 
-          <div className="bg-white py-2 px-2">{children}</div>
+          {children}
         </div>
 
         <Footer />

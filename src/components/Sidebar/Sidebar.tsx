@@ -1,25 +1,23 @@
 'use client'
 
-import { Card } from '../Card'
+// import { Card } from '../Card'
 
 import { FacebookPage } from './facebook.page'
-import { PrayerWidget } from './prayer.widget'
+// import { PrayerWidget } from './prayer.widget'
 import { RandomAyah } from './randomayah'
 
 export const Sidebar = () => (
   <div className="col-span-12 lg:col-span-4 mx-4 text-small flex flex-col justify-items-start gap-y-4">
-    <PrayerWidget />
-    <hr />
     <RandomAyah />
     <hr />
     <FacebookPage />
-
+    {/*
     <div className="prose !max-w-none alert alert-success">
       Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong> riayət
       edin:
     </div>
 
-    <div className="grid grid-1 md:grid-cols-3 gap-2 py-4">
+    <div className="space-y-2">
       <Card title="İstifadə qaydaları">
         quran.az/<code>[surə]</code>
         <br />
@@ -38,6 +36,6 @@ export const Sidebar = () => (
         Axtardığınız fikir tərcümədə olmaya bilər; <br />
         Müəlliflərdən qaynaqlanaraq tərcümələrdəki sözlər və fikirlər fərqli ola bilər
       </Card>
-    </div>
+    </div> */}
   </div>
 )

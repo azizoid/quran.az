@@ -1,10 +1,10 @@
 'use client'
+import { MapPinnedIcon } from 'lucide-react'
 import useSWR from 'swr'
 
 import { fetcher } from '@/utility/fetcher'
 
 import { LoaderDots } from '../LoaderDots'
-import { MapPinnedIcon } from 'lucide-react'
 
 export type PrayerReturnProps = {
   cityName: string
@@ -35,9 +35,7 @@ export const PrayerWidget = () => {
     <>
       <div className="w-full text-sm">
         <div className="bg-gray-700 text-white flex w-full justify-evenly items-center py-2 px-4">
-          <div className="text-center">
-            {`${hijri}, ${cityName}`}
-          </div>
+          <div className="text-center">{`${hijri}, ${cityName}`}</div>
           <a href="https://nam.az" target="_blank" rel="noreferrer">
             <MapPinnedIcon size={14} className="text-green-300" />
           </a>
@@ -46,8 +44,7 @@ export const PrayerWidget = () => {
         <div className="grid grid-cols-2 lg:grid-cols-3 divide-y">
           {prayers.map((prayerTime, index) => (
             <div key={index} className="flex place-content-around p-2 hover:bg-gray-100">
-              <span className="text-right">{prayersTitle[index]}</span>
-              -
+              <span className="text-right">{prayersTitle[index]}</span>-
               <span className="">{prayerTime}</span>
             </div>
           ))}
