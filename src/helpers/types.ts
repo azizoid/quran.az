@@ -25,3 +25,5 @@ export type ResponseErrorType = {
   out: null
   error: string
 }
+
+export type TanzilCityType = 'Mecca' | 'Medina'

@@ -7,7 +7,7 @@ import localFont from 'next/font/local'
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form/Form'
 import { Header } from '@/components/Header'
-import { Sidebar } from '@/components/Sidebar/Sidebar'
+import { PrayerWidget } from '@/components/Sidebar/prayer.widget'
 import { GA_TRACKING_ID } from '@/utility/gtag'
 
 import { MainMetadata, MainViewport } from './metadata'
@@ -32,18 +32,20 @@ const RootLayout = ({ children }: PropsWithChildren) => (
       <div className="flex flex-col h-screen justify-between">
         <Header />
 
-        <div className="flex-grow container mx-auto mt-10 pb-2">
-          <div className="grid grid-cols-12">
-            <div className="col-span-12 lg:col-span-7 mx-0 lg:mx-4 mb-4">
-              <Suspense>
+        <div className="grow container mx-auto mt-10 pb-2">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <Suspense>
+              <div className="md:col-span-8 bg-white">
                 <Form />
-              </Suspense>
+              </div>
 
-              {children}
-            </div>
-
-            <Sidebar />
+              <div className="md:col-span-4 hidden md:block">
+                <PrayerWidget />
+              </div>
+            </Suspense>
           </div>
+
+          {children}
         </div>
 
         <Footer />
