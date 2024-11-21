@@ -1,7 +1,7 @@
 import '@/styles/global.css'
 import { PropsWithChildren, Suspense } from 'react'
 
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'
 
 import { Footer } from '@/components/Footer'
@@ -50,7 +50,7 @@ const RootLayout = ({ children }: PropsWithChildren) => (
 
         <Footer />
       </div>
-      <GoogleTagManager gtmId={GA_TRACKING_ID} />
+      <GoogleAnalytics gaId={GA_TRACKING_ID} />
     </body>
   </html>
 )
