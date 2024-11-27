@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import { soorahList } from '@/assets/soorah-list-object'
+import { Link } from '@/components/Link'
 
 import { RevealPlace } from './RevealPlace'
 
@@ -12,7 +11,6 @@ export const SoorahList = () => (
           key={soorah.id}
           href={`/${soorah.id}`}
           className="group flex w-full overflow-hidden rounded-l-xl bg-white text-sm text-gray-600"
-          prefetch={false}
         >
           <div className="flex w-14 items-center justify-center bg-gray-50 group-hover:bg-emerald-300 group-hover:font-semibold">
             {soorah.id}

@@ -1,7 +1,6 @@
-import Link from 'next/link'
-
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { CityAndSize } from '@/components/CityAndSize'
+import { Link } from '@/components/Link'
 import { buildUrl } from '@/helpers/buildUrl'
 
 type SoorahCaptionProps = {
@@ -17,7 +16,6 @@ export const SoorahCaption = ({ soorah, translator }: SoorahCaptionProps) => {
       <Link
         href={buildUrl(soorah, undefined, translator)}
         className="text-gray-400 decoration-1 hover:text-black"
-        prefetch={false}
       >
         {`${soorah}. ${fullTitle}`}
         <span className="flex flex-row justify-center gap-1 text-xs">

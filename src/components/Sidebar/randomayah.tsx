@@ -1,9 +1,8 @@
 'use client'
-import Link from 'next/link'
-
 import useSWR from 'swr'
 
 import { Card } from '@/components/Card'
+import { Link } from '@/components/Link'
 import { buildUrl } from '@/helpers/buildUrl'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
 import { fetcher } from '@/utility/fetcher'
@@ -29,11 +28,7 @@ export const RandomAyah = () => {
   return (
     <Card title={soorahAyahTitle(soorah, ayah)}>
       <h6>
-        <Link
-          href={buildUrl(soorah, ayah, translator)}
-          className="text-blue-400 hover:underline"
-          prefetch={false}
-        >
+        <Link href={buildUrl(soorah, ayah, translator)} className="text-blue-400 hover:underline">
           {content}
         </Link>
       </h6>

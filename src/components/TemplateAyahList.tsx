@@ -1,9 +1,8 @@
 import { ReactNode } from 'react'
 
-import Link from 'next/link'
-
 import { NotebookTextIcon } from 'lucide-react'
 
+import { Link } from '@/components/Link'
 import { Sajda } from '@/components/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
 import { DisplayData } from '@/helpers/types'
@@ -28,7 +27,6 @@ export const TemplateAyahList = ({ variant = 'full', data, sajda, content }: Sea
       href={buildUrl(data.soorah, data.ayah, data.translator)}
       className="read-ayah"
       title="oxu"
-      prefetch={false}
     >
       <NotebookTextIcon />
     </Link>

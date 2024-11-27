@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { TiSocialFacebookCircular, TiSocialInstagram, TiSocialGithub } from 'react-icons/ti'
 
 import LogoSvg from '@/assets/img/logo.svg'
+import { Link } from '@/components/Link'
 
 export const Header = () => (
   <div className="bg-gray-50 bg-[url('/img/ornament.gif')] bg-bottom bg-repeat-x px-3 pb-[33px]">
@@ -10,7 +10,6 @@ export const Header = () => (
       <Link
         href="/"
         className="flex content-start items-center gap-1 py-3 text-gray-500 hover:opacity-75"
-        prefetch={false}
       >
         <Image src={LogoSvg} alt={'Quran.az Logo'} width={32} />
         Quran.az

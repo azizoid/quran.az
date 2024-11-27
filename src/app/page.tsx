@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import { Link } from '@/components/Link'
 import { SoorahList } from '@/components/SoorahList'
 
 const topLinks = [
@@ -15,9 +14,7 @@ const Home = () => (
     <ol className="flex w-full justify-center space-x-5 text-sm text-gray-500 md:text-base">
       {topLinks.map(([url, urlText]) => (
         <li key={url}>
-          <Link href={url} prefetch={false}>
-            {urlText}
-          </Link>
+          <Link href={url}>{urlText}</Link>
         </li>
       ))}
     </ol>
