@@ -14,10 +14,16 @@ import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePage
 export type PaginateAyahProps = {
   soorah: number
   activePage: number
+  translator: number
   pageRangeDisplayed?: number
 }
 
-export const PaginateAyah = ({ soorah, activePage, pageRangeDisplayed = 5 }: PaginateAyahProps) => {
+export const PaginateAyah = ({
+  soorah,
+  activePage,
+  translator,
+  pageRangeDisplayed = 5,
+}: PaginateAyahProps) => {
   const totalPages = soorahList[soorah - 1].ayahCount
 
   const { startPage, endPage } = calculatePageBounds(activePage, totalPages, pageRangeDisplayed)
@@ -28,7 +34,7 @@ export const PaginateAyah = ({ soorah, activePage, pageRangeDisplayed = 5 }: Pag
       <PaginationContent>
         {activePage > 1 && !pageNumbers.includes(1) && (
           <PaginationItem>
-            <PaginationLink href={buildUrl(soorah, activePage - 1)}>
+            <PaginationLink href={buildUrl(soorah, activePage - 1, translator)}>
               <ChevronLeftIcon className="h-4 w-4" />
             </PaginationLink>
           </PaginationItem>
@@ -39,7 +45,7 @@ export const PaginateAyah = ({ soorah, activePage, pageRangeDisplayed = 5 }: Pag
 
           return (
             <PaginationItem key={page}>
-              <PaginationLink href={buildUrl(soorah, page)} isActive={isCurrPage}>
+              <PaginationLink href={buildUrl(soorah, page, translator)} isActive={isCurrPage}>
                 {page}
               </PaginationLink>
             </PaginationItem>
@@ -54,7 +60,7 @@ export const PaginateAyah = ({ soorah, activePage, pageRangeDisplayed = 5 }: Pag
 
         {activePage !== totalPages && !pageNumbers.includes(totalPages) && (
           <PaginationItem>
-            <PaginationLink href={buildUrl(soorah, activePage + 1)}>
+            <PaginationLink href={buildUrl(soorah, activePage + 1, translator)}>
               <ChevronRightIcon className="h-4 w-4" />
             </PaginationLink>
           </PaginationItem>
