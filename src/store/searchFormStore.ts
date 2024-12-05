@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+import { getView } from '@/utility/getView/getView'
+
 type SearchFormState = {
   soorah: number | null
   ayah: number | null
@@ -21,7 +23,7 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
   ayah: null,
   query: null,
   translator: 1,
-  view: null,
+  view: 'empty',
 
   // Actions
   setSoorah: (value) =>
@@ -43,7 +45,7 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
       soorah: null,
       ayah: null,
       query: value,
-      view: 'query',
+      view: 'search',
     }),
   setTranslator: (value) =>
     set((state) => ({
@@ -53,8 +55,20 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
 
   // Batch state initialization
   initializeState: (initState) =>
-    set((state) => ({
-      ...state,
-      ...initState,
-    })),
+    set((state) => {
+      const generatedState = getView({
+        s: initState.soorah,
+        a: initState.ayah,
+        q: initState.query,
+        t: initState.translator,
+      })
+
+      return {
+        ...state,
+        soorah: generatedState.s,
+        ayah: generatedState.a,
+        query: generatedState.q,
+        translator: generatedState.t,
+      }
+    }),
 }))

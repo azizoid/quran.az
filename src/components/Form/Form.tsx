@@ -1,12 +1,11 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useEffect } from 'react'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
 import { useSearchFormStore } from '@/store/searchFormStore'
-import { getView } from '@/utility/getView/getView'
 
 export const Form = () => {
   const router = useRouter()
@@ -31,6 +30,7 @@ export const Form = () => {
     ayah,
     query,
     translator,
+    view,
   } = useSearchFormStore()
 
   useEffect(() => {
@@ -66,17 +66,15 @@ export const Form = () => {
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
 
-    const submitValue = getView({ s: soorah, a: ayah, q: query, t: translator })
-
-    switch (submitValue.view) {
+    switch (view) {
       case 'search':
-        router.push(`/search/${submitValue.q}?t=${submitValue.t}`)
+        router.push(`/search/${query}?t=${translator}`)
         break
       case 'soorah':
-        router.push(`/${submitValue.s}?t=${submitValue.t}`)
+        router.push(`/${soorah}?t=${translator}`)
         break
       case 'ayah':
-        router.push(`/${submitValue.s}/${submitValue.a}?t=${submitValue.t}`)
+        router.push(`/${soorah}/${ayah}?t=${translator}`)
         break
       case 'empty':
       default:
