@@ -1,5 +1,12 @@
+export const enum ViewProps {
+  EMPTY = 'empty',
+  SOORAH = 'soorah',
+  AYAH = 'ayah',
+  SEARCH = 'search',
+}
+
 type EmptyState = {
-  view: 'empty'
+  view: ViewProps.EMPTY
   s: null
   a: null
   q: null
@@ -7,7 +14,7 @@ type EmptyState = {
 }
 
 type SoorahState = {
-  view: 'soorah'
+  view: ViewProps.SOORAH
   s: number
   a: null
   q: null
@@ -15,7 +22,7 @@ type SoorahState = {
 }
 
 type AyahState = {
-  view: 'ayah'
+  view: ViewProps.AYAH
   s: number
   a: number
   q: null
@@ -23,7 +30,7 @@ type AyahState = {
 }
 
 type SearchState = {
-  view: 'search'
+  view: ViewProps.SEARCH
   s: null
   a: null
   q: string
