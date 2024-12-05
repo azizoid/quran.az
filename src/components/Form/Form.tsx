@@ -6,6 +6,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
 import { useSearchFormStore } from '@/store/searchFormStore'
+import { ViewProps } from '@/utility/getView/getView.types'
 
 export const Form = () => {
   const router = useRouter()
@@ -67,16 +68,16 @@ export const Form = () => {
     event.preventDefault()
 
     switch (view) {
-      case 'search':
+      case ViewProps.SEARCH:
         router.push(`/search/${query}?t=${translator}`)
         break
-      case 'soorah':
+      case ViewProps.SOORAH:
         router.push(`/${soorah}?t=${translator}`)
         break
-      case 'ayah':
+      case ViewProps.AYAH:
         router.push(`/${soorah}/${ayah}?t=${translator}`)
         break
-      case 'empty':
+      case ViewProps.EMPTY:
       default:
         router.push('/')
     }

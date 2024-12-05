@@ -1,13 +1,14 @@
 import { create } from 'zustand'
 
 import { getView } from '@/utility/getView/getView'
+import { ViewProps } from '@/utility/getView/getView.types'
 
 type SearchFormState = {
   soorah: number | null
   ayah: number | null
   query: string | null
   translator: number
-  view: string | null
+  view: ViewProps
 }
 
 type SearchFormActions = {
@@ -23,7 +24,7 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
   ayah: null,
   query: null,
   translator: 1,
-  view: 'empty',
+  view: ViewProps.EMPTY,
 
   // Actions
   setSoorah: (value) =>
@@ -31,21 +32,21 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
       soorah: value,
       ayah: null,
       query: null,
-      view: 'soorah',
+      view: ViewProps.SOORAH,
     }),
   setAyah: (value) =>
     set((state) => ({
       ...state,
       ayah: value,
       query: null,
-      view: 'ayah',
+      view: ViewProps.AYAH,
     })),
   setQuery: (value) =>
     set({
       soorah: null,
       ayah: null,
       query: value,
-      view: 'search',
+      view: ViewProps.SEARCH,
     }),
   setTranslator: (value) =>
     set((state) => ({
@@ -69,6 +70,7 @@ export const useSearchFormStore = create<SearchFormState & SearchFormActions>((s
         ayah: generatedState.a,
         query: generatedState.q,
         translator: generatedState.t,
+        view: generatedState.view,
       }
     }),
 }))
