@@ -1,12 +1,12 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
+import { useSearchFormStore } from '@/store/searchFormStore'
 import { getView } from '@/utility/getView/getView'
-import type { FormProps } from '@/utility/getView/getView.types'
 
 export const Form = () => {
   const router = useRouter()
@@ -14,48 +14,51 @@ export const Form = () => {
   const params = useParams()
   const searchParams = useSearchParams()
 
-  const soorah = Number(params?.soorah?.toString()) || null
-  const ayah = Number(params?.ayah?.toString()) || null
-  const query = params?.search ? decodeURIComponent(params?.search.toString()) : null
-  const translator = Number(searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
-
-  const [state, setState] = useState<FormProps>(() =>
-    getView({ s: soorah, a: ayah, q: query, t: translator })
+  const soorahParam = Number(params?.soorah?.toString()) || null
+  const ayahParam = Number(params?.ayah?.toString()) || null
+  const queryParam = params?.search ? decodeURIComponent(params?.search.toString()) : null
+  const translatorParam = Number(
+    searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR
   )
+
+  const {
+    initializeState,
+    setSoorah,
+    setAyah,
+    setQuery,
+    setTranslator,
+    soorah,
+    ayah,
+    query,
+    translator,
+  } = useSearchFormStore()
+
+  useEffect(() => {
+    initializeState({
+      soorah: soorahParam,
+      ayah: ayahParam,
+      query: queryParam,
+      translator: translatorParam,
+    })
+  }, [soorahParam, ayahParam, queryParam, translatorParam, initializeState])
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
 
     switch (name) {
       case 'soorah':
-        setState((prev) => ({
-          ...prev,
-          s: Number(value),
-          a: null,
-          q: null,
-          view: name,
-        }))
+        setSoorah(Number(value))
         break
       case 'ayah':
-        setState((prev) => ({
-          ...prev,
-          s: Number(prev.s),
-          a: Number(value),
-          q: null,
-          view: name,
-        }))
+        setAyah(Number(value))
         break
       case 'search':
-        setState((prev) => ({
-          ...prev,
-          s: null,
-          a: null,
-          q: value,
-          view: name,
-        }))
+        setQuery(value)
         break
       case 'translator':
-        setState((prev) => ({ ...prev, t: Number(value) }))
+        setTranslator(Number(value))
+        break
+      default:
         break
     }
   }
@@ -63,7 +66,7 @@ export const Form = () => {
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
 
-    const submitValue = getView(state)
+    const submitValue = getView({ s: soorah, a: ayah, q: query, t: translator })
 
     switch (submitValue.view) {
       case 'search':
@@ -92,7 +95,7 @@ export const Form = () => {
         <select
           className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
           name="soorah"
-          value={state?.s ?? 0}
+          value={soorah ?? 0}
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>
@@ -112,14 +115,14 @@ export const Form = () => {
           maxLength={3}
           min={0}
           max={286}
-          value={state?.a || ''}
+          value={ayah || ''}
           onChange={onHandleChange}
         />
 
         <select
           className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
           name="translator"
-          value={state?.t}
+          value={translator}
           onChange={onHandleChange}
         >
           {translatorList.map((soorahTitle, index) => (
@@ -134,7 +137,7 @@ export const Form = () => {
           placeholder="Kəlmə"
           className="form-control col-span-7"
           name="search"
-          value={state?.q || ''}
+          value={query || ''}
           onChange={onHandleChange}
         />
 
