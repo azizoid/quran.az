@@ -1,15 +1,15 @@
 import { soorahList } from '@/assets/soorah-list-object'
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
-import { FormProps } from './getView.types'
+import { FormProps, ViewProps } from './getView.types'
 
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
-const initialStateProps: FormProps = {
+export const initialStateProps: FormProps = {
   s: null,
   a: null,
   q: null,
-  view: 'empty',
+  view: ViewProps.EMPTY,
   t: DEFAULT_TRANSLATOR,
 }
 
@@ -28,16 +28,16 @@ export const getView = (form: Partial<FormInputProps> = initialStateProps): Form
 
     if (soorah) {
       result.s = soorah.id
-      result.view = 'soorah'
+      result.view = ViewProps.SOORAH
 
       if (form.a && form.a > 0 && form.a <= soorah.ayahCount) {
         result.a = form.a
-        result.view = 'ayah'
+        result.view = ViewProps.AYAH
       }
     }
   } else if (form.q && form.q.length > 2) {
     result.q = form.q
-    result.view = 'search'
+    result.view = ViewProps.SEARCH
   }
 
   if (form?.t && form.t < TRANSLATOR_LIST.length) {

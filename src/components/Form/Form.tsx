@@ -6,7 +6,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
 import { getView } from '@/utility/getView/getView'
-import type { FormProps } from '@/utility/getView/getView.types'
+import { ViewProps, type FormProps } from '@/utility/getView/getView.types'
 
 export const Form = () => {
   const router = useRouter()
@@ -27,7 +27,7 @@ export const Form = () => {
     const { name, value } = event.target
 
     switch (name) {
-      case 'soorah':
+      case ViewProps.SOORAH:
         setState((prev) => ({
           ...prev,
           s: Number(value),
@@ -36,7 +36,7 @@ export const Form = () => {
           view: name,
         }))
         break
-      case 'ayah':
+      case ViewProps.AYAH:
         setState((prev) => ({
           ...prev,
           s: Number(prev.s),
@@ -45,7 +45,7 @@ export const Form = () => {
           view: name,
         }))
         break
-      case 'search':
+      case ViewProps.SEARCH:
         setState((prev) => ({
           ...prev,
           s: null,
@@ -66,16 +66,16 @@ export const Form = () => {
     const submitValue = getView(state)
 
     switch (submitValue.view) {
-      case 'search':
+      case ViewProps.SEARCH:
         router.push(`/search/${submitValue.q}?t=${submitValue.t}`)
         break
-      case 'soorah':
+      case ViewProps.SOORAH:
         router.push(`/${submitValue.s}?t=${submitValue.t}`)
         break
-      case 'ayah':
+      case ViewProps.AYAH:
         router.push(`/${submitValue.s}/${submitValue.a}?t=${submitValue.t}`)
         break
-      case 'empty':
+      case ViewProps.EMPTY:
       default:
         router.push('/')
     }
