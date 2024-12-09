@@ -1,11 +1,11 @@
 'use client'
-import { ChangeEvent, SyntheticEvent, useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react'
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import { translatorList } from '@/assets/translatorList'
-import { getView } from '@/utility/getView/getView'
+import { getView, initialStateProps } from '@/utility/getView/getView'
 import { ViewProps, type FormProps } from '@/utility/getView/getView.types'
 
 export const Form = () => {
@@ -19,9 +19,11 @@ export const Form = () => {
   const query = params?.search ? decodeURIComponent(params?.search.toString()) : null
   const translator = Number(searchParams?.get('t') || process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 
-  const [state, setState] = useState<FormProps>(() =>
-    getView({ s: soorah, a: ayah, q: query, t: translator })
-  )
+  const [state, setState] = useState<FormProps>(initialStateProps)
+
+  useEffect(() => {
+    setState(getView({ s: soorah, a: ayah, q: query, t: translator }))
+  }, [ayah, query, soorah, translator])
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
