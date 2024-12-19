@@ -27,14 +27,14 @@ export const POST = async (req: Request) => {
 
     const { search: searchParam, page, t } = content
 
-    const search = searchParam
+    const query = searchParam
       ?.toString()
       .replace(REGEX_SANITIZE, '\\$&')
       .normalize('NFD')
       .replace(REGEX_DIACRITICS, '')
       .trim() as string
 
-    if (!search) {
+    if (!query) {
       return NextResponse.json({ error: 'Search query is required' }, { status: 400 })
     }
 
@@ -45,8 +45,8 @@ export const POST = async (req: Request) => {
     const skip = (currentPage - 1) * limit
 
     const data = getView({
-      q: search,
-      t: translator,
+      query,
+      translator,
     })
 
     let ayahsCount = 0
@@ -54,11 +54,11 @@ export const POST = async (req: Request) => {
     const ayahs = await withMongo(async (db: Db) => {
       const collection = db.collection<DataPropsLatinized>('quranaz')
 
-      if (!data.q) return [] // very rare edge case
+      if (!data.query) return [] // very rare edge case
 
       const searchQuery = {
-        content_latinized: { $regex: data.q, $options: 'i' },
-        translator: data.t,
+        content_latinized: { $regex: data.query, $options: 'i' },
+        translator: data.translator,
       }
 
       ayahsCount = await collection.countDocuments(searchQuery)

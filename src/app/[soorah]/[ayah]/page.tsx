@@ -45,12 +45,11 @@ const AyahPage = async (props: AyahPageProps) => {
 
   const { soorah: soorahParam, ayah: ayahParam } = (await props.params) || {}
 
-  const {
-    s: soorah,
-    a: ayah,
-    t: translator,
-    view,
-  } = getView({ s: Number(soorahParam), a: Number(ayahParam), t: Number(translatorParam) })
+  const { soorah, ayah, translator, view } = getView({
+    soorah: Number(soorahParam),
+    ayah: Number(ayahParam),
+    translator: Number(translatorParam),
+  })
 
   if (view !== 'ayah') {
     if (view === 'soorah') {

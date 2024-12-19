@@ -45,11 +45,10 @@ const SoorahPage = async (props: SoorahPageProps) => {
 
   const { soorah: soorahParam } = (await props.params) || {}
 
-  const {
-    s: soorah,
-    t: translator,
-    view,
-  } = getView({ s: Number(soorahParam), t: Number(translatorParam) })
+  const { soorah, translator, view } = getView({
+    soorah: Number(soorahParam),
+    translator: Number(translatorParam),
+  })
 
   if (view !== 'soorah') {
     notFound()

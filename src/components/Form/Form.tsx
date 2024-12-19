@@ -22,7 +22,7 @@ export const Form = () => {
   const [state, setState] = useState<FormProps>(initialStateProps)
 
   useEffect(() => {
-    setState(getView({ s: soorah, a: ayah, q: query, t: translator }))
+    setState(getView({ soorah, ayah, query, translator }))
   }, [ayah, query, soorah, translator])
 
   const onHandleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -32,32 +32,32 @@ export const Form = () => {
       case ViewProps.SOORAH:
         setState((prev) => ({
           ...prev,
-          s: Number(value),
-          a: null,
-          q: null,
+          soorah: Number(value),
+          ayah: null,
+          query: null,
           view: name,
         }))
         break
       case ViewProps.AYAH:
         setState((prev) => ({
           ...prev,
-          s: Number(prev.s),
-          a: Number(value),
-          q: null,
+          soorah: Number(prev.soorah),
+          ayah: Number(value),
+          query: null,
           view: name,
         }))
         break
-      case ViewProps.SEARCH:
+      case ViewProps.QUERY:
         setState((prev) => ({
           ...prev,
-          s: null,
-          a: null,
-          q: value,
+          soorah: null,
+          ayah: null,
+          query: value,
           view: name,
         }))
         break
       case 'translator':
-        setState((prev) => ({ ...prev, t: Number(value) }))
+        setState((prev) => ({ ...prev, translator: Number(value) }))
         break
     }
   }
@@ -68,14 +68,14 @@ export const Form = () => {
     const submitValue = getView(state)
 
     switch (submitValue.view) {
-      case ViewProps.SEARCH:
-        router.push(`/search/${submitValue.q}?t=${submitValue.t}`)
+      case ViewProps.QUERY:
+        router.push(`/search/${submitValue.query}?t=${submitValue.translator}`)
         break
       case ViewProps.SOORAH:
-        router.push(`/${submitValue.s}?t=${submitValue.t}`)
+        router.push(`/${submitValue.soorah}?t=${submitValue.translator}`)
         break
       case ViewProps.AYAH:
-        router.push(`/${submitValue.s}/${submitValue.a}?t=${submitValue.t}`)
+        router.push(`/${submitValue.soorah}/${submitValue.ayah}?t=${submitValue.translator}`)
         break
       case ViewProps.EMPTY:
       default:
@@ -93,8 +93,8 @@ export const Form = () => {
       <div className="grid grid-cols-12 items-center gap-x-4 gap-y-2">
         <select
           className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
-          name="soorah"
-          value={state?.s ?? 0}
+          name={ViewProps.SOORAH}
+          value={state.soorah ?? 0}
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>
@@ -109,19 +109,19 @@ export const Form = () => {
           type="number"
           placeholder="Ayə"
           className="form-control col-span-2"
-          name="ayah"
+          name={ViewProps.AYAH}
           size={3}
           maxLength={3}
           min={0}
           max={286}
-          value={state?.a || ''}
+          value={state.ayah || ''}
           onChange={onHandleChange}
         />
 
         <select
           className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
           name="translator"
-          value={state?.t}
+          value={state.translator ?? 0}
           onChange={onHandleChange}
         >
           {translatorList.map((soorahTitle, index) => (
@@ -135,14 +135,14 @@ export const Form = () => {
           type="text"
           placeholder="Kəlmə"
           className="form-control col-span-7"
-          name="search"
-          value={state?.q || ''}
+          name={ViewProps.QUERY}
+          value={state.query ?? ''}
           onChange={onHandleChange}
         />
 
         <button
-          className="col-span-5 rounded-md bg-green-200 px-3 py-2 text-green-900 shadow hover:bg-green-300"
           type="submit"
+          className="col-span-5 rounded-md bg-green-200 px-3 py-2 text-green-900 shadow hover:bg-green-300"
         >
           Axtar
         </button>
