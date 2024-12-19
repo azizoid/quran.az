@@ -2,39 +2,39 @@ export const enum ViewProps {
   EMPTY = 'empty',
   SOORAH = 'soorah',
   AYAH = 'ayah',
-  SEARCH = 'search',
+  QUERY = 'query',
 }
 
 type EmptyState = {
   view: ViewProps.EMPTY
-  s: null
-  a: null
-  q: null
-  t: number
+  soorah: null
+  ayah: null
+  query: null
+  translator: number
 }
 
 type SoorahState = {
   view: ViewProps.SOORAH
-  s: number
-  a: null
-  q: null
-  t: number
+  soorah: number
+  ayah: null
+  query: null
+  translator: number
 }
 
 type AyahState = {
   view: ViewProps.AYAH
-  s: number
-  a: number
-  q: null
-  t: number
+  soorah: number
+  ayah: number
+  query: null
+  translator: number
 }
 
 type SearchState = {
-  view: ViewProps.SEARCH
-  s: null
-  a: null
-  q: string
-  t: number
+  view: ViewProps.QUERY
+  soorah: null
+  ayah: null
+  query: string
+  translator: number
 }
 
 export type FormProps = EmptyState | SoorahState | AyahState | SearchState
