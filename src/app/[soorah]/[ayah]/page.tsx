@@ -5,12 +5,11 @@ import { sirasayi } from 'sirasayi'
 import { Bismillah } from '@/app/[soorah]/components/Bismillah'
 import { soorahList } from '@/assets/soorah-list-object'
 import { soorahAyahTitle } from '@/helpers/soorahAyahTitle'
+import { getAyahService } from '@/servises/getAyahService'
 import { getView } from '@/utility/getView/getView'
 
 import { ColoredText } from '../components/ColoredText'
 import { PaginateAyah } from '../components/PaginateAyah'
-
-import { getAyahService } from './getAyahService'
 
 type AyahPageProps = {
   params: Promise<{
