@@ -5,17 +5,14 @@ import { getSoorahService } from '@/servises/getSoorahService'
 
 export const dynamic = 'force-static'
 
-interface RouteContext {
+interface ResponseProps {
   params: Promise<{
     soorah: string
   }>
-  searchParams: Promise<{
-    t?: string
-  }>
 }
 
-export const GET = async (req: Request, segmentData: RouteContext) => {
-  const soorahParam = (await segmentData.params).soorah
+export const GET = async (req: Request, { params }: ResponseProps) => {
+  const soorahParam = (await params).soorah
 
   const url = new URL(req.url)
   const tParam = url.searchParams.get('t') ?? '2'
