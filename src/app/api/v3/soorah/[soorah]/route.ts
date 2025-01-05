@@ -1,9 +1,8 @@
+import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
 import { getSoorahService } from '@/servises/getSoorahService'
-
-export const dynamic = 'force-static'
 
 interface ResponseProps {
   params: Promise<{
@@ -12,17 +11,19 @@ interface ResponseProps {
 }
 
 export const GET = async (req: Request, { params }: ResponseProps) => {
-  const soorahParam = (await params).soorah
+  const soorahParam = Number((await params).soorah)
 
   const url = new URL(req.url)
-  const tParam = url.searchParams.get('t') ?? '2'
+  const tParam = Number(url.searchParams.get('t'))
 
-  const translatorParam = ['1', '2', '3'].includes(tParam) ? tParam : 1
+  if (!(soorahParam > 1 && soorahParam < 114 && [1, 2, 3].includes(tParam))) {
+    return notFound()
+  }
 
   try {
     const soorahContent = await getSoorahService({
       soorah: Number(soorahParam),
-      translator: Number(translatorParam),
+      translator: tParam,
     })
 
     const result = soorahContent.map(({ soorah, ayah, content, translator }) => ({
@@ -35,7 +36,7 @@ export const GET = async (req: Request, { params }: ResponseProps) => {
     return Response.json(result, {
       status: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*', // TODO: specify where from
+        'Access-Control-Allow-Origin': '*', // TODO: specify allowed origins
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       },
