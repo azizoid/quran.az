@@ -1,8 +1,18 @@
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
+import { z } from 'zod'
+
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
+import { soorahValidation, translatorValidation } from '@/helpers/validations'
 import { getSoorahService } from '@/servises/getSoorahService'
+
+const QuerySchema = z.object({
+  soorah: soorahValidation,
+  t: translatorValidation.refine((t) => [1, 2, 3].includes(t), {
+    message: 'Translator must be one of 1, 2, or 3',
+  }),
+})
 
 interface ResponseProps {
   params: Promise<{
@@ -16,14 +26,18 @@ export const GET = async (req: Request, { params }: ResponseProps) => {
   const url = new URL(req.url)
   const tParam = Number(url.searchParams.get('t'))
 
-  if (!(soorahParam > 1 && soorahParam < 114 && [1, 2, 3].includes(tParam))) {
+  const validationResult = QuerySchema.safeParse({ soorah: soorahParam, t: tParam })
+
+  if (!validationResult.success) {
     return notFound()
   }
 
+  const { soorah: soorahValidated, t: translatorValidated } = validationResult.data
+
   try {
     const soorahContent = await getSoorahService({
-      soorah: Number(soorahParam),
-      translator: tParam,
+      soorah: soorahValidated,
+      translator: translatorValidated,
     })
 
     const result = soorahContent.map(({ soorah, ayah, content, translator }) => ({
