@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
-import { getSoorahService } from '@/servises/getSoorahService'
+import { getSoorahService } from '@/services/getSoorahService'
 
 interface ResponseProps {
   params: Promise<{

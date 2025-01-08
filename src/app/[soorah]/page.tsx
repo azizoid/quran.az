@@ -5,7 +5,7 @@ import { sirasayi } from 'sirasayi'
 import { Bismillah } from '@/app/[soorah]/components/Bismillah'
 import { soorahList } from '@/assets/soorah-list-object'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
-import { getSoorahService } from '@/servises/getSoorahService'
+import { getSoorahService } from '@/services/getSoorahService'
 import { getView } from '@/utility/getView/getView'
 
 type SoorahPageProps = {
