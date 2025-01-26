@@ -16,7 +16,7 @@ export const GET = async (req: Request, { params }: ResponseProps) => {
   const url = new URL(req.url)
   const tParam = Number(url.searchParams.get('t'))
 
-  if (!(soorahParam > 1 && soorahParam < 114 && [1, 2, 3].includes(tParam))) {
+  if (!(soorahParam >= 1 && soorahParam <= 114 && [1, 2, 3].includes(tParam))) {
     return notFound()
   }
 
