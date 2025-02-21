@@ -1,0 +1,21 @@
+services:
+  quranaz-app:
+    image: ghcr.io/azizoid/quran.az:latest
+    container_name: quranaz-app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MONGODB_URI: ${MONGODB_URI}
+        MONGODB_DB: ${MONGODB_DB}
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    external: true

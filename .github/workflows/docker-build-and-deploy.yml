@@ -1,0 +1,106 @@
+name: Deploy via GHCR
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get Runner's Public IP
+        id: fetch_ip
+        run: |
+          echo "public_ip=$(curl -s https://api.ipify.org)" >> $GITHUB_ENV
+
+      - name: Add IP to MongoDB Atlas Access List
+        id: add_ip
+        run: |
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          expire_time=$(date -u -d "$current_time + 6 hours" +"%Y-%m-%dT%H:%M:%SZ")
+          ip_data=$(jq -n --arg ip "$public_ip" --arg expire "$expire_time" '[{ipAddress: $ip, comment: "GitHub Actions Runner", deleteAfterDate: $expire}]')
+          curl -u "$ATLAS_API_KEY" --digest \
+               -H "Content-Type: application/json" \
+               -X POST "https://cloud.mongodb.com/api/atlas/v1.0/groups/$ATLAS_GROUP_ID/accessList" \
+               -d "$ip_data"
+        env:
+          ATLAS_API_KEY: ${{ secrets.ATLAS_API_KEY }}
+          ATLAS_GROUP_ID: ${{ secrets.ATLAS_GROUP_ID }}
+          public_ip: ${{ env.public_ip }}
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: azizoid
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build & Push Image
+        run: |
+          IMAGE_NAME=ghcr.io/azizoid/quran.az
+          docker buildx build \
+            --push \
+            --tag $IMAGE_NAME:latest \
+            --cache-from=type=local,src=/tmp/.buildx-cache \
+            --cache-to=type=local,dest=/tmp/.buildx-cache \
+            --build-arg "MONGODB_URI=${{ secrets.MONGODB_URI }}" \
+            --build-arg "MONGODB_DB=${{ secrets.MONGODB_DB }}" \
+            .
+
+      - name: Remove IP from MongoDB Atlas Access List (Always Run)
+        if: always()
+        run: |
+          curl -u "$ATLAS_API_KEY" --digest \
+                -X DELETE "https://cloud.mongodb.com/api/atlas/v1.0/groups/$ATLAS_GROUP_ID/accessList/$public_ip"
+        env:
+          ATLAS_API_KEY: ${{ secrets.ATLAS_API_KEY }}
+          ATLAS_GROUP_ID: ${{ secrets.ATLAS_GROUP_ID }}
+          public_ip: ${{ env.public_ip }}
+
+  pull-and-restart:
+    name: Pull & Restart on Server
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into Server & Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            IMAGE_NAME=ghcr.io/azizoid/quran.az
+            cd ${{ secrets.SSH_TARGET }}
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "Logging into GHCR..."
+            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u azizoid --password-stdin
+
+            echo "Pulling latest image..."
+            docker pull $IMAGE_NAME:latest
+
+            echo "Restarting only the Next.js container..."
+            docker compose up -d --no-deps --force-recreate quranaz-app
+
+            echo "Cleaning up old images..."
+            docker image prune -a -f
