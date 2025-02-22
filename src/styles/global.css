@@ -1,58 +1,122 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer components {
-  .alert {
-    @apply rounded-b border-t-4 px-4 py-3 shadow-md;
-  }
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animate';
 
-  .alert-success {
-    @apply border-teal-500 bg-teal-100 text-teal-900;
-  }
+@custom-variant dark (&:is(.dark *));
 
-  .alert-gray {
-    @apply border-gray-500 bg-gray-100 text-gray-900;
-  }
+@theme {
+  --font-Nunito: Nunito;
 
-  .alert-danger {
-    @apply border-red-500 bg-red-100 text-red-900;
-  }
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 
-  .badge {
-    @apply mr-2 rounded-r bg-gray-50 px-2 py-1 text-sm text-black;
-  }
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-  .soorah-list-item {
-    @apply prose flex !max-w-none justify-between py-2 pr-2;
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
 
-    &:hover {
-      .badge {
-        @apply bg-blue-400 text-white;
-      }
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
 
-      .read-ayah {
-        @apply text-blue-500;
-      }
-    }
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 
-    & .read-ayah {
-      @apply ml-2 text-gray-200;
-    }
-  }
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
-  .ayah-list-item {
-    @apply px-4 py-4 md:px-8;
-  }
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
-  .form-control {
-    @apply rounded-md border-gray-400 bg-gray-50 text-sm text-gray-700 focus:border-gray-200 focus:transition-none;
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
 }
 
-html,
-body {
-  overflow-x: hidden;
+@utility alert {
+  @apply rounded-b border-t-4 px-4 py-3 shadow-md;
+}
+
+@utility alert-success {
+  @apply border-teal-500 bg-teal-100 text-teal-900;
+}
+
+@utility alert-gray {
+  @apply border-gray-500 bg-gray-100 text-gray-900;
+}
+
+@utility alert-danger {
+  @apply border-red-500 bg-red-100 text-red-900;
+}
+
+@utility badge {
+  @apply mr-2 rounded-r bg-gray-50 px-2 py-1 text-sm text-black;
+}
+
+@utility soorah-list-item {
+  @apply prose flex max-w-none! justify-between py-2 pr-2;
+
+  &:hover {
+    .badge {
+      @apply bg-blue-400 text-white;
+    }
+
+    .read-ayah {
+      @apply text-blue-500;
+    }
+  }
+
+  & .read-ayah {
+    @apply ml-2 text-gray-200;
+  }
+}
+
+@utility ayah-list-item {
+  @apply px-4 py-4 md:px-8;
+}
+
+@utility form-control {
+  @apply rounded-md border-gray-400 bg-gray-50 text-sm text-gray-700 focus:border-gray-200 focus:transition-none;
+}
+
+@layer utilities {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 
 @layer base {
