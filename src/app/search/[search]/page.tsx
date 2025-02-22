@@ -54,7 +54,7 @@ const Search = () => {
   }
 
   if (error || data?.out === null) {
-    return <div className="col-sm-12 alert alert-danger prose !max-w-none">Kəlmə tapılmamışdır</div>
+    return <div className="col-sm-12 alert alert-danger prose max-w-none!">Kəlmə tapılmamışdır</div>
   }
 
   const paginateLinks =

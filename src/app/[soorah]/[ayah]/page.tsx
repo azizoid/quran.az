@@ -66,11 +66,11 @@ const AyahPage = async (props: AyahPageProps) => {
     <>
       <Bismillah />
 
-      <li className="ayah-list-item prose flex !max-w-none flex-col">
+      <li className="ayah-list-item prose flex max-w-none! flex-col">
         <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
         {content}
       </li>
-      <li className="ayah-list-item prose !max-w-none">
+      <li className="ayah-list-item prose max-w-none!">
         <ColoredText content={transliteration} />
       </li>
       <li className="ayah-list-item text-right font-Nunito text-3xl" dir="rtl">

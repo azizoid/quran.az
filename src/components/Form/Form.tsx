@@ -92,7 +92,7 @@ export const Form = () => {
     >
       <div className="grid grid-cols-12 items-center gap-x-4 gap-y-2">
         <select
-          className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
+          className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-hidden active:border-gray-500 active:outline-hidden"
           name={ViewProps.SOORAH}
           value={state.soorah ?? 0}
           onChange={onHandleChange}
@@ -119,7 +119,7 @@ export const Form = () => {
         />
 
         <select
-          className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-none active:border-gray-500 active:outline-none"
+          className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-hidden active:border-gray-500 active:outline-hidden"
           name="translator"
           value={state.translator ?? 0}
           onChange={onHandleChange}
@@ -142,7 +142,7 @@ export const Form = () => {
 
         <button
           type="submit"
-          className="col-span-5 rounded-md bg-green-200 px-3 py-2 text-green-900 shadow hover:bg-green-300"
+          className="col-span-5 rounded-md bg-green-200 px-3 py-2 text-green-900 shadow-sm hover:bg-green-300"
         >
           Axtar
         </button>

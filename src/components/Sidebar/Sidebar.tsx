@@ -12,7 +12,7 @@ export const Sidebar = () => (
     <hr />
     <FacebookPage />
     {/*
-    <div className="prose !max-w-none alert alert-success">
+    <div className="prose max-w-none! alert alert-success">
       Axtarışınızın <strong>uğurlu</strong> olması üçün aşağıdakı <strong>qaydalara</strong> riayət
       edin:
     </div>
