@@ -13,9 +13,11 @@ RUN npm install -g pnpm
 
 ARG MONGODB_URI
 ARG MONGODB_DB
+ARG NEXT_PUBLIC_BASE_API_URL
 
 ENV MONGODB_URI=${MONGODB_URI}
 ENV MONGODB_DB=${MONGODB_DB}
+ENV NEXT_PUBLIC_BASE_API_URL=${NEXT_PUBLIC_BASE_API_URL}
 
 # Dependencies Layer (Optimize Caching)
 FROM base AS dependencies
@@ -42,6 +44,7 @@ RUN chown -R quranaz-user:quranaz-user /app
 
 ENV MONGODB_URI=${MONGODB_URI}
 ENV MONGODB_DB=${MONGODB_DB}
+ENV NEXT_PUBLIC_BASE_API_URL=${NEXT_PUBLIC_BASE_API_URL}
 
 # Switch to non-root user
 USER quranaz-user
