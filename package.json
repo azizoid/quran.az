@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "lint-fix": "next lint --fix",
     "prettier": "prettier --write .",
     "preinstall": "npx only-allow pnpm",
     "ci": "pnpm install --frozen-lockfile"
@@ -32,6 +32,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.0.8",
     "@tailwindcss/typography": "^0.5.16",
@@ -39,12 +40,9 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/react-highlight-words": "^0.20.0",
-    "eslint": "^9.21.0",
+    "eslint": "^9",
     "eslint-config-next": "15.1.7",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-jest-dom": "^5.5.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-testing-library": "^7.1.1",
+    "eslint-plugin-import": "^2.31.0",
     "postcss": "^8.5.3",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
