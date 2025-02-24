@@ -1,4 +1,5 @@
 'use client'
+
 import { MapPinnedIcon } from 'lucide-react'
 import useSWR from 'swr'
 

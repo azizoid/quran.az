@@ -1,4 +1,5 @@
 'use server-only'
+
 import { Db } from 'mongodb'
 
 import { DataPropsLatinized } from '@/helpers/types'
