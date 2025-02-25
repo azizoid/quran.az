@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { ShieldAlertIcon } from 'lucide-react'
 
-const NotFoundPage = () => (
+const AppNotFound = () => (
   <div className="flex flex-col items-center justify-center bg-red-100 py-10">
     <ShieldAlertIcon size={48} className="text-red-600" />
 
@@ -13,4 +13,4 @@ const NotFoundPage = () => (
     </Link>
   </div>
 )
-export default NotFoundPage
+export default AppNotFound

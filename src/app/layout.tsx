@@ -17,6 +17,7 @@ const geistSans = localFont({
   variable: '--font-geist-sans',
   weight: '100 900',
 })
+
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
@@ -26,7 +27,7 @@ const geistMono = localFont({
 export const metadata = MainMetadata
 export const viewport = MainViewport
 
-const RootLayout = ({ children }: PropsWithChildren) => (
+const AppLayout = ({ children }: PropsWithChildren) => (
   <html lang="az">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <div className="flex h-screen flex-col justify-between">
@@ -55,4 +56,4 @@ const RootLayout = ({ children }: PropsWithChildren) => (
   </html>
 )
 
-export default RootLayout
+export default AppLayout

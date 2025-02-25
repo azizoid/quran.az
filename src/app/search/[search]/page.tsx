@@ -14,7 +14,7 @@ import { fetcher } from '@/utility/fetcher'
 
 import { PaginateSearch } from '../components/PaginateSearch'
 
-const Search = () => {
+const SearchPage = () => {
   const params = useParams()
   const searchParams = useSearchParams()
 
@@ -94,4 +94,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchPage
