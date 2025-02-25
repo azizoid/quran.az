@@ -48,8 +48,8 @@ importers:
         specifier: ^5.5.0
         version: 5.5.0(react@19.0.0)
       sirasayi:
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^3.1.0
+        version: 3.1.0
       swr:
         specifier: ^2.3.2
         version: 2.3.2(react@19.0.0)
@@ -90,9 +90,9 @@ importers:
       eslint-config-next:
         specifier: 15.1.7
         version: 15.1.7(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3)
-      eslint-plugin-import:
-        specifier: ^2.31.0
-        version: 2.31.0(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3))(eslint-import-resolver-typescript@3.8.3)(eslint@9.21.0(jiti@2.4.2))
+      eslint-plugin-propper-nextjs:
+        specifier: ^2.2.1
+        version: 2.2.1(eslint-plugin-import@2.31.0)(eslint@9.21.0(jiti@2.4.2))
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
@@ -1097,6 +1097,12 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
+  eslint-plugin-propper-nextjs@2.2.1:
+    resolution: {integrity: sha512-bg+dwUdAM7oahmAX8kTT0U55WKP4RTIY3qzU5TXDf/2pZMWLlCW5ndI7ccJ5mJQ0+4MV/n9XB3HA0WzJdDrALw==}
+    peerDependencies:
+      eslint: '>=8.0.0 <10.0.0'
+      eslint-plugin-import: ^2.31.0
+
   eslint-plugin-react-hooks@5.1.0:
     resolution: {integrity: sha512-mpJRtPgHN2tNAvZ35AMfqeB3Xqeo273QxrHJsbBEPWODRM4r0yB6jfoROqKEYrOn27UtRPpcpHc2UqyBSuUNTw==}
     engines: {node: '>=10'}
@@ -1917,8 +1923,8 @@ packages:
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
-  sirasayi@2.0.1:
-    resolution: {integrity: sha512-iavUi8/UydyyqcohXOZa1tE2BieEmxJ+QDFjEQBFRDT0j4tgAdK62vRhPtCJ4oNRkWeAM0iUBBdnquaQh20muQ==}
+  sirasayi@3.1.0:
+    resolution: {integrity: sha512-Lhu/WDX7mVtRPRPGSAxhyfxGgnuQH0PcFfoq+8nkQEtRKq5yfZl1WF+5cya1zqdmunr1l0y4hsaKgiqnVzdqiQ==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -3156,6 +3162,11 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
+  eslint-plugin-propper-nextjs@2.2.1(eslint-plugin-import@2.31.0)(eslint@9.21.0(jiti@2.4.2)):
+    dependencies:
+      eslint: 9.21.0(jiti@2.4.2)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3))(eslint-import-resolver-typescript@3.8.3)(eslint@9.21.0(jiti@2.4.2))
+
   eslint-plugin-react-hooks@5.1.0(eslint@9.21.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.21.0(jiti@2.4.2)
@@ -3991,7 +4002,7 @@ snapshots:
       is-arrayish: 0.3.2
     optional: true
 
-  sirasayi@2.0.1: {}
+  sirasayi@3.1.0: {}
 
   source-map-js@1.2.1: {}
 
