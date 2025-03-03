@@ -9,8 +9,8 @@ services:
       args:
         MONGODB_URI: ${MONGODB_URI}
         MONGODB_DB: ${MONGODB_DB}
-        NEXT_PUBLIC_BASE_API_URL: ${NEXT_PUBLIC_BASE_API_URL}
         NEXT_PUBLIC_DEFAULT_TRANSLATOR: ${NEXT_PUBLIC_DEFAULT_TRANSLATOR}
+        NEXT_PUBLIC_GA4_ID: ${NEXT_PUBLIC_GA4_ID}
     env_file:
       - .env
     ports:

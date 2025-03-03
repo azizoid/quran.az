@@ -62,8 +62,8 @@ jobs:
             --cache-to=type=local,dest=/tmp/.buildx-cache \
             --build-arg "MONGODB_URI=${{ secrets.MONGODB_URI }}" \
             --build-arg "MONGODB_DB=${{ secrets.MONGODB_DB }}" \
-            --build-arg "NEXT_PUBLIC_BASE_API_URL=${{ secrets.NEXT_PUBLIC_BASE_API_URL }}" \
             --build-arg "NEXT_PUBLIC_DEFAULT_TRANSLATOR=${{ secrets.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}" \
+            --build-arg "NEXT_PUBLIC_GA4_ID=${{ secrets.NEXT_PUBLIC_GA4_ID }}" \
             .
 
       - name: Remove IP from MongoDB Atlas Access List (Always Run)
