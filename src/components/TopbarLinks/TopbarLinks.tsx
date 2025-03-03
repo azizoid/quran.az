@@ -8,7 +8,7 @@ import { fetcher } from '@/utility/fetcher'
 
 export const TopbarLinks = () => {
   const { data: topLinks } = useSWR<SoorahListProps[]>(
-    [`/random/topbar`, 'topbarLinks'],
+    [`https://quran.az/api/v2/random/topbar`, 'topbarLinks'],
     (url: [string, string]) => fetcher(url),
     {
       refreshInterval: 0,
