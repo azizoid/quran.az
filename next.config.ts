@@ -6,9 +6,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   generateEtags: false,
   reactStrictMode: true,
-  devIndicators: {
-    buildActivity: false,
-  },
+  devIndicators: false,
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: 'default-src "self"; script-src "none"; sandbox;',

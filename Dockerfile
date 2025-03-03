@@ -11,24 +11,17 @@ WORKDIR /app
 # Install pnpm globally
 RUN npm install -g pnpm
 
-ARG MONGODB_URI
-ARG MONGODB_DB
-ARG NEXT_PUBLIC_DEFAULT_TRANSLATOR
-ARG NEXT_PUBLIC_GA4_ID
-
-ENV MONGODB_URI=${MONGODB_URI}
-ENV MONGODB_DB=${MONGODB_DB}
-ENV NEXT_PUBLIC_DEFAULT_TRANSLATOR=${NEXT_PUBLIC_DEFAULT_TRANSLATOR}
-ENV NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
 
 # Dependencies Layer (Optimize Caching)
 FROM base AS dependencies
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prefer-offline
 
-# Build Stage (Uses Env Variables)
 FROM dependencies AS builder
 COPY . .
+
+ARG ENV_FILE
+RUN echo "$ENV_FILE" | base64 -d > .env.production
 RUN pnpm run build
 
 # Production Image (Final)
@@ -43,10 +36,6 @@ COPY --from=dependencies /app/node_modules ./node_modules
 
 # Set permissions
 RUN chown -R quranaz-user:quranaz-user /app
-
-# ENV MONGODB_URI=${MONGODB_URI}
-# ENV MONGODB_DB=${MONGODB_DB}
-# ENV NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
 
 # Switch to non-root user
 USER quranaz-user

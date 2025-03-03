@@ -6,11 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        MONGODB_URI: ${MONGODB_URI}
-        MONGODB_DB: ${MONGODB_DB}
-        NEXT_PUBLIC_DEFAULT_TRANSLATOR: ${NEXT_PUBLIC_DEFAULT_TRANSLATOR}
-        NEXT_PUBLIC_GA4_ID: ${NEXT_PUBLIC_GA4_ID}
     env_file:
       - .env
     ports:

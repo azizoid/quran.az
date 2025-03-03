@@ -14,6 +14,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Create .env.production file
+        run: |
+          cat <<EOF > .env.production
+          MONGODB_URI=${{ secrets.MONGODB_URI }}
+          MONGODB_DB=${{ secrets.MONGODB_DB }}
+          NEXT_PUBLIC_DEFAULT_TRANSLATOR=${{ secrets.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}
+          NEXT_PUBLIC_GA4_ID=${{ secrets.NEXT_PUBLIC_GA4_ID }}
+          EOF
+
       - name: Get Runner's Public IP
         id: fetch_ip
         run: |
@@ -55,15 +64,15 @@ jobs:
       - name: Build & Push Image
         run: |
           IMAGE_NAME=ghcr.io/azizoid/quran.az
+          # Encode all environment variables in .env.production
+          BASE64_ENV_FILE=$(cat .env.production | base64 -w 0)
+
           docker buildx build \
             --push \
             --tag $IMAGE_NAME:latest \
             --cache-from=type=local,src=/tmp/.buildx-cache \
             --cache-to=type=local,dest=/tmp/.buildx-cache \
-            --build-arg "MONGODB_URI=${{ secrets.MONGODB_URI }}" \
-            --build-arg "MONGODB_DB=${{ secrets.MONGODB_DB }}" \
-            --build-arg "NEXT_PUBLIC_DEFAULT_TRANSLATOR=${{ secrets.NEXT_PUBLIC_DEFAULT_TRANSLATOR }}" \
-            --build-arg "NEXT_PUBLIC_GA4_ID=${{ secrets.NEXT_PUBLIC_GA4_ID }}" \
+            --build-arg ENV_FILE="$BASE64_ENV_FILE" \
             .
 
       - name: Remove IP from MongoDB Atlas Access List (Always Run)
