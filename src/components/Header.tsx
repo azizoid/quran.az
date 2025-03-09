@@ -29,11 +29,6 @@ export const Header = () => (
             <TiSocialInstagram color="#E1306C" size="24" />
           </a>
         </li>
-        <li>
-          <a href="https://github.com/azizoid/quran.az" target="_blank" rel="noreferrer">
-            <TiSocialGithub color="#000" size="24" />
-          </a>
-        </li>
       </ul>
     </nav>
   </div>
