@@ -13,41 +13,47 @@
     "ci": "pnpm install --frozen-lockfile"
   },
   "dependencies": {
-    "@next/third-parties": "15.2.0",
+    "@next/third-parties": "15.2.3",
     "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.476.0",
-    "mongodb": "^6.13.1",
-    "next": "15.2.0",
+    "lucide-react": "^0.483.0",
+    "mongodb": "^6.15.0",
+    "next": "15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-highlight-words": "^0.21.0",
     "react-icons": "^5.5.0",
     "sirasayi": "^3.1.0",
-    "swr": "^2.3.2",
+    "swr": "^2.3.3",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.0",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.0.9",
+    "@tailwindcss/postcss": "^4.0.14",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^22.13.5",
-    "@types/react": "^19.0.10",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.11",
     "@types/react-dom": "^19.0.4",
     "@types/react-highlight-words": "^0.20.0",
-    "eslint": "^9.21.0",
-    "eslint-config-next": "15.2.0",
+    "eslint": "^9.22.0",
+    "eslint-config-next": "15.2.3",
     "eslint-plugin-propper-nextjs": "^2.4.2",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "postcss": "^8.5.3",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.0.9",
-    "typescript": "^5.7.3"
+    "tailwindcss": "^4.0.14",
+    "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
+  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  }
 }

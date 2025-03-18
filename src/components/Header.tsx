@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { TiSocialFacebookCircular, TiSocialInstagram, TiSocialGithub } from 'react-icons/ti'
+import { TiSocialFacebookCircular, TiSocialInstagram } from 'react-icons/ti'
 
 import LogoSvg from '@/assets/img/logo.svg'
 import { Link } from '@/components/Link'
