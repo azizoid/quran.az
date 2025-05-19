@@ -5,8 +5,6 @@ import { Db } from 'mongodb'
 import { DataPropsLatinized } from '@/lib/types'
 import { withMongo } from '@/utility/mongodb'
 
-import { exportAyah } from './export'
-
 export const GET = async () => {
   try {
     const randomAyah = await withMongo(async (db: Db) => {
@@ -20,8 +18,6 @@ export const GET = async () => {
     }
 
     const { id, soorah, ayah, content, content_latinized, translator } = randomAyah
-
-    exportAyah({ soorah, ayah, content, translator })
 
     return NextResponse.json(
       { id, soorah, ayah, content, content_latinized, translator },
