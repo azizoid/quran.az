@@ -1,17 +1,17 @@
-import { notFound, redirect } from 'next/navigation'
 import dynamic from 'next/dynamic'
+import { notFound, redirect } from 'next/navigation'
 
 import { sirasayi } from 'sirasayi'
 
 import { soorahList } from '@/assets/soorah-list-object'
+import { WithFormProvider } from '@/providers/WithFormProvider'
 import { getView } from '@/utility/getView/getView'
 
-import { getAyahService } from './getAyahService'
 import { AyahView } from './AyahView'
-import { WithFormProvider } from '@/providers/WithFormProvider'
+import { getAyahService } from './getAyahService'
 
-const AyahPrint = dynamic(() => import('./AyahPrint').then(mod => mod.AyahPrint), {
-  loading: () => <div>Loading...</div>
+const AyahPrint = dynamic(() => import('./AyahPrint').then((mod) => mod.AyahPrint), {
+  loading: () => <div>Loading...</div>,
 })
 
 type AyahProps = {

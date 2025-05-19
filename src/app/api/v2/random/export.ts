@@ -1,24 +1,29 @@
-import puppeteer from 'puppeteer';
-import path from 'path';
-import fs from 'fs';
+import fs from 'fs'
+import path from 'path'
+import puppeteer from 'puppeteer'
 
-import { DisplayData } from "@/lib/types";
-import { soorahAyahTitle } from "@/ui";
-import { fileNameNormalizer } from '@/utility/exportedImageFileName';
+import { DisplayData } from '@/lib/types'
+import { soorahAyahTitle } from '@/ui'
+import { fileNameNormalizer } from '@/utility/exportedImageFileName'
 
 type ExportAyahProps = Pick<DisplayData, 'soorah' | 'ayah' | 'content' | 'translator'>
 
 export const exportAyah = async ({ soorah, ayah, content, translator }: ExportAyahProps) => {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'images', fileNameNormalizer({ soorah, ayah, translator }));
+    const filePath = path.join(
+      process.cwd(),
+      'public',
+      'images',
+      fileNameNormalizer({ soorah, ayah, translator })
+    )
 
     if (fs.existsSync(filePath)) {
-      console.log('File already exists:', filePath);
-      return filePath;
+      console.log('File already exists:', filePath)
+      return filePath
     }
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
 
     const htmlContent = `
       <html>
@@ -32,21 +37,21 @@ export const exportAyah = async ({ soorah, ayah, content, translator }: ExportAy
 
           <p style="text-align: center; color: #333; margin: 20px;">https://quran.az/${soorah}/${ayah}</p>
         </body>
-      </html>`;
+      </html>`
 
-    await page.setContent(htmlContent);
-    const screenshotBuffer = await page.screenshot({ type: 'png', omitBackground: true });
+    await page.setContent(htmlContent)
+    const screenshotBuffer = await page.screenshot({ type: 'png', omitBackground: true })
 
-    await browser.close();
+    await browser.close()
 
     // Ensure the directory exists
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.mkdirSync(path.dirname(filePath), { recursive: true })
 
     // Save the image to the file system
-    fs.writeFileSync(filePath, screenshotBuffer);
+    fs.writeFileSync(filePath, screenshotBuffer)
 
-    return filePath; // Return the path to the newly created image
+    return filePath // Return the path to the newly created image
   } catch (error) {
-    console.error('Error generating image', error);
+    console.error('Error generating image', error)
   }
 }

@@ -4,6 +4,7 @@ import { Db } from 'mongodb'
 
 import { DataPropsLatinized } from '@/lib/types'
 import { withMongo } from '@/utility/mongodb'
+
 import { exportAyah } from './export'
 
 export const GET = async () => {

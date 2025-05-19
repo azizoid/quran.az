@@ -1,4 +1,4 @@
-import { DisplayData } from "@/lib/types";
+import { DisplayData } from '@/lib/types'
 
 type FileNameNormalizerProps = Pick<DisplayData, 'soorah' | 'ayah' | 'translator'>
 

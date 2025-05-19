@@ -1,17 +1,20 @@
 'use client'
 
-import { Bismillah, SoorahCaption, soorahAyahTitle } from "@/ui";
-import { AyahViewProps } from "./AyahView";
-import { useState, useRef } from "react";
-import { toPng } from 'html-to-image';
+import { useState, useRef } from 'react'
+
+import { toPng } from 'html-to-image'
+
+import { Bismillah, SoorahCaption, soorahAyahTitle } from '@/ui'
+
+import { AyahViewProps } from './AyahView'
 
 type AyahPrintProps = Pick<AyahViewProps, 'soorah' | 'ayah' | 'content' | 'translator'> & {
-  width?: number;
-  height?: number;
-  onDownloadStart?: () => void;
-  onDownloadComplete?: () => void;
-  onError?: (error: Error) => void;
-};
+  width?: number
+  height?: number
+  onDownloadStart?: () => void
+  onDownloadComplete?: () => void
+  onError?: (error: Error) => void
+}
 
 export const AyahPrint = ({
   soorah,
@@ -22,42 +25,41 @@ export const AyahPrint = ({
   height = 540,
   onDownloadStart,
   onDownloadComplete,
-  onError
+  onError,
 }: AyahPrintProps) => {
-  const printRef = useRef<HTMLDivElement>(null);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const printRef = useRef<HTMLDivElement>(null)
+  const [isGenerating, setIsGenerating] = useState(false)
 
   const handleDownload = async () => {
-    if (!printRef.current) return;
+    if (!printRef.current) return
 
     try {
-      setIsGenerating(true);
-      onDownloadStart?.();
+      setIsGenerating(true)
+      onDownloadStart?.()
 
       const dataUrl = await toPng(printRef.current, {
         width,
         height,
         quality: 1.0,
-        pixelRatio: 2 // For better quality on retina displays
-      });
+        pixelRatio: 2, // For better quality on retina displays
+      })
 
-      const link = document.createElement('a');
-      const filename = `quran.az-${soorah}-${ayah}-${translator}.png`;
-      link.href = dataUrl;
-      link.download = filename;
-      link.click();
+      const link = document.createElement('a')
+      const filename = `quran.az-${soorah}-${ayah}-${translator}.png`
+      link.href = dataUrl
+      link.download = filename
+      link.click()
 
-      onDownloadComplete?.();
+      onDownloadComplete?.()
     } catch (err) {
-      console.error('Error generating image:', err);
-      onError?.(err instanceof Error ? err : new Error('Failed to generate image'));
+      console.error('Error generating image:', err)
+      onError?.(err instanceof Error ? err : new Error('Failed to generate image'))
     } finally {
-      setIsGenerating(false);
+      setIsGenerating(false)
     }
-  };
+  }
 
   return (
-
     <div className="flex flex-col items-center gap-4">
       <div
         ref={printRef}
@@ -73,9 +75,7 @@ export const AyahPrint = ({
               <span className="text-gray-400">{soorahAyahTitle(soorah, ayah)}</span>
             </div>
 
-            <div>
-              {content}
-            </div>
+            <div>{content}</div>
             <div className="mb-4 pr-4 text-end w-full text-gray-400">
               {`https://quran.az/${soorah}/${ayah}/`}
             </div>
@@ -91,5 +91,5 @@ export const AyahPrint = ({
         {isGenerating ? 'Generating...' : 'Download Image'}
       </button>
     </div>
-  );
-};
+  )
+}

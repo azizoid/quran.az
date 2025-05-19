@@ -1,26 +1,30 @@
 'use client'
 import { PaginateAyah } from '@/components/PaginateAyah/PaginateAyah'
+import { PaginateSoorahList } from '@/components/PaginateSoorahList/PaginateSoorahList'
 import { Bismillah, ColoredText, SoorahCaption, soorahAyahTitle } from '@/ui'
-import { PaginateSoorahList } from '@/components/PaginateSoorahList/PaginateSoorahList';
-
 
 export type AyahViewProps = {
-  arabic: any;
-  transliteration: any;
-  juz: any;
-  prev: number | null;
-  next: number | null;
-  soorah: number;
-  ayah: number;
-  translator: number;
-  id: string;
-  detail_id: number;
-  content: string;
-  content_latinized: string;
+  arabic: any
+  transliteration: any
+  juz: any
+  prev: number | null
+  next: number | null
+  soorah: number
+  ayah: number
+  translator: number
+  id: string
+  detail_id: number
+  content: string
+  content_latinized: string
 }
 
 export const AyahView = ({
-  soorah, ayah, translator, content, arabic, transliteration
+  soorah,
+  ayah,
+  translator,
+  content,
+  arabic,
+  transliteration,
 }: AyahViewProps) => (
   <div id="ayah">
     <SoorahCaption soorah={soorah} translator={translator} />
