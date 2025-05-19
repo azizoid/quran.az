@@ -1,4 +1,5 @@
 import { notFound, redirect } from 'next/navigation'
+import dynamic from 'next/dynamic'
 
 import { sirasayi } from 'sirasayi'
 
@@ -9,6 +10,10 @@ import { getAyahService } from './getAyahService'
 import { AyahView } from './AyahView'
 import { WithFormProvider } from '@/providers/WithFormProvider'
 
+const AyahPrint = dynamic(() => import('./AyahPrint').then(mod => mod.AyahPrint), {
+  loading: () => <div>Loading...</div>
+})
+
 type AyahProps = {
   params: {
     soorah: string
@@ -16,6 +21,7 @@ type AyahProps = {
   }
   searchParams: {
     t: string
+    share: boolean
   }
 }
 
@@ -38,7 +44,7 @@ export const generateMetadata = async ({ params }: AyahProps) => {
 
 const AyahPage = async ({
   params: { soorah: soorahParam, ayah: ayahParam },
-  searchParams: { t: translatorParam },
+  searchParams: { t: translatorParam, share },
 }: AyahProps) => {
   const {
     s: soorah,
@@ -56,6 +62,10 @@ const AyahPage = async ({
   }
 
   const out = await getAyahService({ soorah, ayah, translator })
+
+  if (share !== undefined) {
+    return <AyahPrint {...out} />
+  }
 
   return (
     <WithFormProvider>
