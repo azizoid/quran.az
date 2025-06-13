@@ -30,13 +30,15 @@ export const viewport = MainViewport
 const AppLayout = ({ children }: PropsWithChildren) => (
   <html lang="az">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <div className="absolute inset-0 z-[-1] bg-[url('/img/abstract-lines.svg')] bg-cover bg-center opacity-10" />
+
       <div className="flex h-screen flex-col justify-between">
         <Header />
 
         <div className="container mx-auto mt-10 grow pb-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
             <Suspense>
-              <div className="bg-white md:col-span-8">
+              <div className="md:col-span-8">
                 <Form />
               </div>
 

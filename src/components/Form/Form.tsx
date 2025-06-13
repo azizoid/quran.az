@@ -94,7 +94,7 @@ export const Form = () => {
         <select
           className="form-control col-span-7 focus:border-gray-500 focus:bg-white focus:outline-hidden active:border-gray-500 active:outline-hidden"
           name={ViewProps.SOORAH}
-          value={state.soorah ?? 0}
+          value={state.soorah || 0}
           onChange={onHandleChange}
         >
           <option value="0">Surələr:</option>
@@ -121,7 +121,7 @@ export const Form = () => {
         <select
           className="form-control col-span-3 text-center focus:border-gray-500 focus:bg-white focus:outline-hidden active:border-gray-500 active:outline-hidden"
           name="translator"
-          value={state.translator ?? 0}
+          value={state.translator || 0}
           onChange={onHandleChange}
         >
           {translatorList.map((soorahTitle, index) => (

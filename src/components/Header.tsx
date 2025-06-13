@@ -16,9 +16,9 @@ export const Header = () => (
       </Link>
 
       <ul className="flex items-center gap-2">
-        <li>
+        {/* <li>
           <Link href="https://nam.az/" target="_blank">Yeni Ramazan Təqvimi</Link>
-        </li>
+        </li> */}
         <li>
           <a href="https://facebook.com/quranaz" target="_blank" rel="noreferrer">
             <TiSocialFacebookCircular color="#4267B2" size="24" />

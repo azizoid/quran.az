@@ -10,9 +10,9 @@ export const SoorahList = () => (
         <Link
           key={soorah.id}
           href={`/${soorah.id}`}
-          className="group flex w-full overflow-hidden rounded-l-xl bg-white text-sm text-gray-600"
+          className="group flex w-full overflow-hidden rounded-l-xl bg-white/50 text-sm text-gray-600"
         >
-          <div className="flex w-14 items-center justify-center bg-gray-50 group-hover:bg-emerald-300 group-hover:font-semibold">
+          <div className="flex w-14 items-center justify-center  group-hover:bg-emerald-300 group-hover:font-semibold">
             {soorah.id}
           </div>
           <div className="flex w-full flex-row items-center justify-between px-2 py-2 group-hover:bg-gray-100">
