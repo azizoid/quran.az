@@ -101,7 +101,7 @@ export const POST = async (req: Request) => {
       }
     )
   } catch (error) {
-    // eslint-disable-next-line no-console
+     
     console.error(error)
     return NextResponse.json({ error: (error as Error).message }, { status: 500 })
   }

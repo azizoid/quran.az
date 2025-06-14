@@ -1,8 +1,6 @@
 'use client'
-import { useEffect, useState } from 'react'
-
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
-
 import Highlighter from 'react-highlight-words'
 import useSWR from 'swr'
 
@@ -17,21 +15,27 @@ import { PaginateSearch } from '../components/PaginateSearch'
 const SearchPage = () => {
   const params = useParams()
   const searchParams = useSearchParams()
+  const translator = searchParams?.get('t')
 
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
-  const translator = searchParams?.get('t')
-
-  const searchBody = {
+  // Memoize search body to prevent unnecessary re-renders
+  const searchBody = useMemo(() => ({
     search: searchQuery,
     page: String(currentPage),
     t: translator,
-  }
+  }), [searchQuery, currentPage, translator])
+
+  // Memoize the fetcher function
+  const fetcherWithBody = useCallback(
+    (url: [string, string]) => fetcher(url, searchBody, 'POST'),
+    [searchBody]
+  )
 
   const { data, error, isLoading, mutate } = useSWR<ResponseProps>(
-    ['/api/v2/search', searchBody],
-    searchQuery?.length > 2 ? (url: [string, string]) => fetcher(url, searchBody, 'POST') : null,
+    searchQuery?.length > 2 ? ['/api/v2/search', searchBody] : null,
+    fetcherWithBody,
     {
       refreshInterval: 0,
       dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
@@ -49,16 +53,12 @@ const SearchPage = () => {
     mutate()
   }, [mutate, currentPage, translator, params?.search])
 
-  if (isLoading) {
-    return <LoaderDots />
-  }
+  const paginateLinks = useMemo(() => {
+    if (!data?.paginate?.total || data.paginate.total <= data?.paginate?.perPage) {
+      return null
+    }
 
-  if (error || data?.out === null) {
-    return <div className="col-sm-12 alert alert-danger prose max-w-none!">Kəlmə tapılmamışdır</div>
-  }
-
-  const paginateLinks =
-    data?.paginate?.total && data.paginate.total > data?.paginate?.perPage ? (
+    return (
       <li className="list-group-item py-2">
         <PaginateSearch
           activePage={data?.paginate.currentPage}
@@ -68,7 +68,16 @@ const SearchPage = () => {
           onChange={setCurrentPage}
         />
       </li>
-    ) : null
+    )
+  }, [data?.paginate, setCurrentPage])
+
+  if (isLoading) {
+    return <LoaderDots />
+  }
+
+  if (error || data?.out === null) {
+    return <div className="col-sm-12 alert alert-danger prose max-w-none!">Kəlmə tapılmamışdır</div>
+  }
 
   return (
     <ul className="list-none divide-y divide-gray-100 bg-white text-gray-700">
@@ -76,7 +85,6 @@ const SearchPage = () => {
 
       {data?.out?.map((ayah) => {
         const sajda = SOORAH_LIST[ayah.soorah]?.sajda
-
         const content = (
           <Highlighter
             searchWords={[searchQuery]}
