@@ -6,7 +6,7 @@ import { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/helpers/ty
 import { getView } from '@/utility/getView/getView'
 import type { FormProps } from '@/utility/getView/getView.types'
 import { withMongo } from '@/utility/mongodb'
-import { initialPaginate } from '@/utility/paginate/paginate'
+import { initialPaginate } from '@/utility/paginate'
 
 export type ResponseProps = {
   out: DisplayData[]

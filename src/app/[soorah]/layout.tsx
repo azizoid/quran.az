@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+import { notFound } from 'next/navigation'
 
 import { Sidebar } from '@/components/Sidebar/Sidebar'
 
@@ -13,7 +14,12 @@ type SoorahLayoutProps = PropsWithChildren<{
 const SoorahLayout = async ({ params, children }: SoorahLayoutProps) => {
   const { soorah: soorahParam } = await params
 
-  const soorah = Number(soorahParam)
+  const soorah = parseInt(soorahParam, 10)
+
+  // Validate soorah number
+  if (isNaN(soorah) || soorah < 1 || soorah > 114) {
+    notFound()
+  }
 
   return (
     <div className="flex flex-wrap px-2 py-2">

@@ -32,7 +32,7 @@ export type RevealPlaceProps = {
 }
 
 export const RevealPlace = ({ city, size = 'md' }: RevealPlaceProps) => {
-  const { Icon, title } = cityList[city]
+  const { Icon, title } = cityList[city] || {}
 
   return (
     <span className="flex gap-1 whitespace-nowrap align-middle">
