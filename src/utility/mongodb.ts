@@ -10,7 +10,20 @@ const connectToDatabase = async () => {
     return { db: cachedDb }
   }
 
-  const opts: MongoClientOptions = {}
+  const opts: MongoClientOptions = {
+    ssl: true,
+    tls: true,
+    tlsAllowInvalidCertificates: false,
+    tlsAllowInvalidHostnames: false,
+    retryWrites: true,
+    retryReads: true,
+    maxPoolSize: 10,
+    minPoolSize: 5,
+    maxIdleTimeMS: 60000,
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+  }
+
   const client = await MongoClient.connect(MONGODB_URI, opts)
 
   const db = client.db(MONGODB_DB)
