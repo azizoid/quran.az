@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint-fix": "next lint --fix",
-    "prettier": "prettier --write .",
+    "lint": "biome check .",
+    "lint-fix": "biome check --write .",
+    "format": "biome format --write .",
     "preinstall": "npx only-allow pnpm",
     "ci": "pnpm install --frozen-lockfile"
   },
@@ -32,7 +32,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@biomejs/biome": "^1.9.4",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.10",
     "@tailwindcss/typography": "^0.5.16",
@@ -40,13 +40,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/react-highlight-words": "^0.20.0",
-    "eslint": "^9.29.0",
-    "eslint-config-next": "15.3.3",
-    "eslint-plugin-propper-nextjs": "^2.4.2",
-    "eslint-plugin-react-hooks": "^5.2.0",
     "postcss": "^8.5.5",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
