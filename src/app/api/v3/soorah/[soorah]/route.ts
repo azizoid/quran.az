@@ -42,7 +42,6 @@ export const GET = async (req: Request, { params }: ResponseProps) => {
       },
     })
   } catch (error) {
-     
     console.error(error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }

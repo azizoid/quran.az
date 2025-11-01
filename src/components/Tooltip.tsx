@@ -1,9 +1,9 @@
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import {
-  Tooltip as TooltipShadcn,
   TooltipContent,
   TooltipProvider,
+  Tooltip as TooltipShadcn,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 

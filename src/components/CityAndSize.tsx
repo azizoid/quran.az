@@ -1,4 +1,4 @@
-import { RevealPlace, RevealPlaceProps } from './RevealPlace'
+import { RevealPlace, type RevealPlaceProps } from './RevealPlace'
 
 interface CityAndSizeProps extends RevealPlaceProps {
   ayahCount: number

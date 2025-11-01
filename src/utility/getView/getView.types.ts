@@ -1,4 +1,4 @@
-export const enum ViewProps {
+export enum ViewProps {
   EMPTY = 'empty',
   SOORAH = 'soorah',
   AYAH = 'ayah',

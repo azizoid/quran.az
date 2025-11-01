@@ -1,7 +1,7 @@
 import { soorahList } from '@/assets/soorah-list-object'
 import { TRANSLATOR_LIST } from '@/assets/translatorList'
 
-import { FormProps, ViewProps } from './getView.types'
+import { type FormProps, ViewProps } from './getView.types'
 
 const DEFAULT_TRANSLATOR = Number(process.env.NEXT_PUBLIC_DEFAULT_TRANSLATOR)
 

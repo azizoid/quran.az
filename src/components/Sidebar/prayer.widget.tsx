@@ -1,8 +1,8 @@
 'use client'
 
 import { MapPinnedIcon } from 'lucide-react'
-import useSWR from 'swr'
 import { useMemo } from 'react'
+import useSWR from 'swr'
 
 import { fetcher } from '@/utility/fetcher'
 import { LoaderDots } from '../LoaderDots'

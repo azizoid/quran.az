@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react'
+import React, { type PropsWithChildren } from 'react'
 
-import { Card as CardShadcn, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
+import { CardContent, CardDescription, CardHeader, Card as CardShadcn } from '@/components/ui/card'
 
 export type CardProps = PropsWithChildren<{
   title: string

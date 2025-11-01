@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react'
 import { notFound } from 'next/navigation'
+import type { PropsWithChildren } from 'react'
 
 import { Sidebar } from '@/components/Sidebar/Sidebar'
 
@@ -14,7 +14,7 @@ type SoorahLayoutProps = PropsWithChildren<{
 const SoorahLayout = async ({ params, children }: SoorahLayoutProps) => {
   const { soorah: soorahParam } = await params
 
-  const soorah = parseInt(soorahParam, 10)
+  const soorah = Number.parseInt(soorahParam, 10)
 
   // Validate soorah number
   if (isNaN(soorah) || soorah < 1 || soorah > 114) {

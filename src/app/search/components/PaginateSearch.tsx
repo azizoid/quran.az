@@ -1,11 +1,11 @@
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
 import {
-  Pagination as PaginationShadcn,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
+  Pagination as PaginationShadcn,
 } from '@/components/ui/pagination'
 import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'
 

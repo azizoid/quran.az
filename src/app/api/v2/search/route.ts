@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 
-import { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/helpers/types'
+import type { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/helpers/types'
 import { getView } from '@/utility/getView/getView'
 import type { FormProps } from '@/utility/getView/getView.types'
 import { withMongo } from '@/utility/mongodb'
@@ -101,7 +101,6 @@ export const POST = async (req: Request) => {
       }
     )
   } catch (error) {
-     
     console.error(error)
     return NextResponse.json({ error: (error as Error).message }, { status: 500 })
   }

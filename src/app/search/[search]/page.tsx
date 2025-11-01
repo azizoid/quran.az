@@ -1,10 +1,10 @@
 'use client'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Highlighter from 'react-highlight-words'
 import useSWR from 'swr'
 
-import { ResponseProps } from '@/app/api/v2/search/route'
+import type { ResponseProps } from '@/app/api/v2/search/route'
 import { SOORAH_LIST } from '@/assets/soorah-list-object'
 import { LoaderDots } from '@/components/LoaderDots'
 import { TemplateAyahList } from '@/components/TemplateAyahList'
@@ -21,11 +21,14 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   // Memoize search body to prevent unnecessary re-renders
-  const searchBody = useMemo(() => ({
-    search: searchQuery,
-    page: String(currentPage),
-    t: translator,
-  }), [searchQuery, currentPage, translator])
+  const searchBody = useMemo(
+    () => ({
+      search: searchQuery,
+      page: String(currentPage),
+      t: translator,
+    }),
+    [searchQuery, currentPage, translator]
+  )
 
   // Memoize the fetcher function
   const fetcherWithBody = useCallback(

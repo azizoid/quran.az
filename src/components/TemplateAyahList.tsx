@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import { NotebookTextIcon } from 'lucide-react'
 
 import { Link } from '@/components/Link'
 import { Sajda } from '@/components/Sajda'
 import { buildUrl } from '@/helpers/buildUrl'
-import { DisplayData } from '@/helpers/types'
+import type { DisplayData } from '@/helpers/types'
 
 export type SearchAyahProps = {
   data: DisplayData

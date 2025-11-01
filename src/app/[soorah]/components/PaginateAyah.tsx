@@ -2,11 +2,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
 import { soorahList } from '@/assets/soorah-list-object'
 import {
-  Pagination as PaginationShadcn,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
+  Pagination as PaginationShadcn,
 } from '@/components/ui/pagination'
 import { buildUrl } from '@/helpers/buildUrl'
 import { calculatePageBounds } from '@/utility/calculatePageBounds/calculatePageBounds'

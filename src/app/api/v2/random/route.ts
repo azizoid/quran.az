@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 
-import { DataPropsLatinized } from '@/helpers/types'
+import type { DataPropsLatinized } from '@/helpers/types'
 import { withMongo } from '@/utility/mongodb'
 
 // Cache duration in seconds
@@ -26,7 +26,7 @@ export const GET = async () => {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          }
+          },
         }
       )
     }
@@ -56,7 +56,7 @@ export const GET = async () => {
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET',
           'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        }
+        },
       }
     )
   }

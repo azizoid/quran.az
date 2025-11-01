@@ -1,6 +1,6 @@
 import type { LinkProps as NextLinkProps } from 'next/link'
 
-import { AnchorHTMLAttributes } from 'react'
+import type { AnchorHTMLAttributes } from 'react'
 
 import NextLink from 'next/link'
 

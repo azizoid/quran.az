@@ -1,8 +1,8 @@
 import { FaKaaba, FaMosque } from 'react-icons/fa'
 
-import { IconType } from 'react-icons'
+import type { IconType } from 'react-icons'
 
-import { TanzilCityType } from '@/helpers/types'
+import type { TanzilCityType } from '@/helpers/types'
 
 const iconSizes = {
   sm: 16,

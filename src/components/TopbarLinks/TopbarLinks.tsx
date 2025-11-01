@@ -2,7 +2,7 @@
 
 import useSWR from 'swr'
 
-import { SoorahListProps } from '@/assets/soorah-list-object'
+import type { SoorahListProps } from '@/assets/soorah-list-object'
 import { Link } from '@/components/Link'
 import { fetcher } from '@/utility/fetcher'
 

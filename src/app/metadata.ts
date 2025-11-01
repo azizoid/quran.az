@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 const metadataTitle = {
   template: '%s | Quran.az | Öz Kitabını oxu',

@@ -1,5 +1,5 @@
 import '@/styles/global.css'
-import { PropsWithChildren, Suspense } from 'react'
+import { type PropsWithChildren, Suspense } from 'react'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'

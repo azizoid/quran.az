@@ -1,7 +1,7 @@
-import { Db } from 'mongodb'
+import type { Db } from 'mongodb'
 
-import { DataPropsLatinized } from '@/helpers/types'
-import { GetSoorahServiceProps } from '@/services/getSoorahService'
+import type { DataPropsLatinized } from '@/helpers/types'
+import type { GetSoorahServiceProps } from '@/services/getSoorahService'
 import { withMongo } from '@/utility/mongodb'
 
 interface GetAyahServiceProps extends GetSoorahServiceProps {
@@ -52,7 +52,7 @@ export const getAyahService = async ({ soorah, ayah, translator }: GetAyahServic
           { soorah, ayah: { $in: [ayah - 1, ayah + 1] }, translator },
           { projection: { ayah: 1 } }
         )
-        .toArray()
+        .toArray(),
     ])
 
     if (!content) {
