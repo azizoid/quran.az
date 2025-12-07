@@ -10,7 +10,9 @@
     "lint-fix": "biome check --write .",
     "format": "biome format --write .",
     "preinstall": "npx only-allow pnpm",
-    "ci": "pnpm install --frozen-lockfile"
+    "ci": "pnpm install --frozen-lockfile",
+    "security:audit": "pnpm audit --audit-level=moderate",
+    "security:check": "pnpm audit"
   },
   "dependencies": {
     "@next/third-parties": "16.0.7",

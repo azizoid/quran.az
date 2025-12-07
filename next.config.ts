@@ -25,7 +25,10 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      allowedOrigins: ['quran.az', 'localhost:3000'],
+      // Only allow production domains - remove localhost in production
+      allowedOrigins: process.env.NODE_ENV === 'production' 
+        ? ['quran.az', 'www.quran.az']
+        : ['quran.az', 'www.quran.az', 'localhost:3000'],
     },
   },
   redirects: async () => [
