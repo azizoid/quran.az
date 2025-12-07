@@ -14,8 +14,8 @@ const RATE_LIMIT_WINDOW_MS = 60000 // 1 minute
 const MAX_REQUESTS_PER_WINDOW = 100
 
 function getRateLimitKey(request: NextRequest): string {
-  const ip = request.ip || 
-             request.headers.get('x-forwarded-for')?.split(',')[0] || 
+  // Get IP from headers (NextRequest doesn't have an 'ip' property)
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
              request.headers.get('x-real-ip') || 
              'unknown'
   return `rate_limit_${ip}`
@@ -52,8 +52,8 @@ function isRateLimited(key: string): boolean {
 }
 
 export function middleware(request: NextRequest) {
-  const ip = request.ip || 
-             request.headers.get('x-forwarded-for')?.split(',')[0] || 
+  // Get IP from headers (NextRequest doesn't have an 'ip' property)
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
              request.headers.get('x-real-ip') || 
              'unknown'
   
