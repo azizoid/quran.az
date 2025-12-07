@@ -11,7 +11,7 @@ export const Header = () => (
         href="/"
         className="flex content-start items-center gap-1 py-3 text-gray-500 hover:opacity-75"
       >
-        <Image src={LogoSvg} alt={'Quran.az Logo'} width={32} />
+        <Image src={LogoSvg} alt={'Quran.az Logo'} width={32} height={32} />
         Quran.az
       </Link>
 

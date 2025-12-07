@@ -22,6 +22,9 @@ const nextConfig: NextConfig = {
         port: '',
       },
     ],
+    // Disable image optimization in production to prevent transformAlgorithm errors
+    // This is a workaround for Next.js 16.0.7 + React 19 compatibility issues in standalone builds
+    unoptimized: process.env.NODE_ENV === 'production',
   },
   experimental: {
     serverActions: {
