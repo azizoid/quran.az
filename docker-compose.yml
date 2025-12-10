@@ -3,15 +3,22 @@ services:
     image: ghcr.io/azizoid/quran.az:latest
     container_name: quranaz-app
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_DB=${MONGODB_DB}
+      - NEXT_PUBLIC_DEFAULT_TRANSLATOR=${NEXT_PUBLIC_DEFAULT_TRANSLATOR}
+      - NEXT_PUBLIC_GA4_ID=${NEXT_PUBLIC_GA4_ID}
+      - PORT=${PORT:-4300}
     expose:
-      - "${PORT}"
+      - "${PORT:-4300}"
     networks:
       - main-network
+    deploy:
+      resources:
+        limits:
+          memory: 260M
+        reservations:
+          memory: 120M
 
 networks:
   main-network:
