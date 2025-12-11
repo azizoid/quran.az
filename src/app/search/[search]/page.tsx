@@ -1,6 +1,6 @@
 'use client'
 import { useParams, useSearchParams } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Highlighter from 'react-highlight-words'
 import useSWR from 'swr'
 
@@ -20,7 +20,25 @@ const SearchPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
 
-  // Memoize search body to prevent unnecessary re-renders
+  // Update search query from URL params and reset page when search changes
+  useEffect(() => {
+    if (typeof params?.search === 'string' && params.search.length > 2) {
+      const decodedSearch = decodeURIComponent(params.search.toString())
+      setSearchQuery(decodedSearch)
+      setCurrentPage(1)
+    }
+  }, [params?.search])
+
+  // Reset to page 1 when translator changes (new filter context)
+  useEffect(() => {
+    if (searchQuery.length > 2) {
+      // Reset page when translator changes - reference translator to satisfy exhaustive-deps
+      void translator
+      setCurrentPage(1)
+    }
+  }, [translator, searchQuery])
+
+  // Memoize search body - this is the key for SWR
   const searchBody = useMemo(
     () => ({
       search: searchQuery,
@@ -30,53 +48,18 @@ const SearchPage = () => {
     [searchQuery, currentPage, translator]
   )
 
-  // Memoize the fetcher function
-  const fetcherWithBody = useCallback(
-    (url: [string, string]) => fetcher(url, searchBody, 'POST'),
-    [searchBody]
-  )
-
-  const { data, error, isLoading, mutate } = useSWR<ResponseProps>(
-    searchQuery?.length > 2 ? ['/api/v2/search', searchBody] : null,
-    fetcherWithBody,
+  // SWR key includes searchBody - SWR automatically refetches when key changes
+  // No need for explicit mutate() calls - SWR handles this automatically
+  // When searchBody changes, SWR sees a new key and automatically refetches
+  const { data, error, isLoading } = useSWR<ResponseProps>(
+    searchQuery.length > 2 ? ['/api/v2/search', searchBody] : null,
+    ([url, body]) => fetcher([url, 'search'], body, 'POST'),
     {
       refreshInterval: 0,
       dedupingInterval: 60 * 60 * 1000, // TTL of 1 hour
-      keepPreviousData: false,
+      keepPreviousData: true, // Better UX - shows previous data while loading new page
     }
   )
-
-  // Update search query when URL params change and reset to page 1
-  useEffect(() => {
-    if (typeof params?.search === 'string' && params.search.length > 2) {
-      const decodedSearch = decodeURIComponent(params.search.toString())
-      setSearchQuery(decodedSearch)
-      setCurrentPage(1)
-    }
-  }, [params?.search])
-
-  // Reset to page 1 when translator changes (new search context)
-  // Only reset if we have a valid search query
-  const prevTranslatorRef = useRef(translator)
-  useEffect(() => {
-    if (searchQuery.length > 2 && prevTranslatorRef.current !== translator) {
-      setCurrentPage(1)
-      prevTranslatorRef.current = translator
-    }
-  }, [translator, searchQuery])
-
-  // Trigger mutate when search parameters change
-  // Explicitly include all values that should trigger a refetch
-  useEffect(() => {
-    // Reference currentPage and translator to ensure effect runs when they change
-    // translator can be null, so we only check searchQuery length
-    if (searchQuery.length > 2) {
-      // Reference currentPage and translator to satisfy exhaustive-deps
-      void currentPage
-      void translator
-      mutate()
-    }
-  }, [searchQuery, currentPage, translator, mutate])
 
   const paginateLinks = useMemo(() => {
     if (!data?.paginate?.total || data.paginate.total <= data?.paginate?.perPage) {
