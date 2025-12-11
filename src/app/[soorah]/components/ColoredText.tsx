@@ -20,7 +20,8 @@ export const ColoredText = ({ content }: ColoredTextProps) => {
     <div className="flex flex-wrap">
       {text.map((word, index) => (
         <span
-          key={index}
+          // biome-ignore lint/suspicious/noArrayIndexKey: Words can repeat, index is needed for unique keys
+          key={`${word}-${index}`}
           style={{ color: coloredTextColors[index % coloredTextColors.length] }}
           className="px-1 py-0.5 hover:cursor-pointer hover:bg-gray-100"
         >

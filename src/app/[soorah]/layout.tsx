@@ -17,7 +17,7 @@ const SoorahLayout = async ({ params, children }: SoorahLayoutProps) => {
   const soorah = Number.parseInt(soorahParam, 10)
 
   // Validate soorah number
-  if (isNaN(soorah) || soorah < 1 || soorah > 114) {
+  if (Number.isNaN(soorah) || soorah < 1 || soorah > 114) {
     notFound()
   }
 

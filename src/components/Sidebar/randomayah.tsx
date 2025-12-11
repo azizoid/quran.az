@@ -37,7 +37,11 @@ export const RandomAyah = () => {
       <Card title="Error">
         <div className="text-red-500">
           Failed to load random ayah.
-          <button onClick={() => mutate()} className="ml-2 text-blue-400 hover:underline">
+          <button
+            type="button"
+            onClick={() => mutate()}
+            className="ml-2 text-blue-400 hover:underline"
+          >
             Try again
           </button>
         </div>

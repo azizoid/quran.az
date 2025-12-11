@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/node_modules", "!**/.next", "!**/build", "!**/coverage", "!**/dist"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/build",
+      "!**/coverage",
+      "!**/dist"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -16,7 +23,13 @@
     "lineWidth": 100,
     "lineEnding": "lf"
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
@@ -30,9 +43,17 @@
       "semicolons": "asNeeded"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "overrides": [
     {
-      "includes": ["**/*.json", "**/*.jsonc"]
+      "includes": [
+        "**/*.json",
+        "**/*.jsonc"
+      ]
     }
   ]
 }

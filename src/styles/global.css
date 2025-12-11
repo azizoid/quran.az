@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-animate';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -89,6 +89,10 @@
 @utility soorah-list-item {
   @apply prose flex max-w-none! justify-between py-2 pr-2;
 
+  & .read-ayah {
+    @apply ml-2 text-gray-200;
+  }
+
   &:hover {
     .badge {
       @apply bg-blue-400 text-white;
@@ -97,10 +101,6 @@
     .read-ayah {
       @apply text-blue-500;
     }
-  }
-
-  & .read-ayah {
-    @apply ml-2 text-gray-200;
   }
 }
 

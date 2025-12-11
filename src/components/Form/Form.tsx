@@ -92,7 +92,6 @@ export const Form = () => {
         case ViewProps.AYAH:
           router.push(`/${submitValue.soorah}/${submitValue.ayah}?t=${submitValue.translator}`)
           break
-        case ViewProps.EMPTY:
         default:
           router.push('/')
       }
@@ -138,7 +137,7 @@ export const Form = () => {
           onChange={onHandleChange}
         >
           {translatorList.map((soorahTitle, index) => (
-            <option value={index + 1} key={index}>
+            <option value={index + 1} key={`translator-${index + 1}`}>
               {soorahTitle}
             </option>
           ))}

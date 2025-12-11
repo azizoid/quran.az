@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server'
-
 import type { Db } from 'mongodb'
+import { NextResponse } from 'next/server'
 
 import type { DataPropsLatinized, DisplayData, ResponseErrorType } from '@/helpers/types'
 import { getView } from '@/utility/getView/getView'
@@ -18,7 +17,7 @@ export type ResponseProps = {
   }
 }
 
-const REGEX_SANITIZE = /[-\/\\^$*+?.()|[\]{}]/g
+const REGEX_SANITIZE = /[-/\\^$*+?.()|[\]{}]/g
 const REGEX_DIACRITICS = /[\u0300-\u036f]/g
 
 export const POST = async (req: Request) => {

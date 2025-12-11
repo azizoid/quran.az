@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import { CardContent, CardDescription, CardHeader, Card as CardShadcn } from '@/components/ui/card'
 

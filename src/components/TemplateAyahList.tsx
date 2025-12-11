@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react'
-
 import { NotebookTextIcon } from 'lucide-react'
+import type { ReactNode } from 'react'
 
 import { Link } from '@/components/Link'
 import { Sajda } from '@/components/Sajda'

@@ -54,7 +54,7 @@ export const PrayerWidget = () => {
   const { cityName, hijri } = data
 
   return (
-    <div className="w-full text-sm" role="region" aria-label="Namaz vaxtları">
+    <section className="w-full text-sm" aria-label="Namaz vaxtları">
       <div className="flex w-full items-center justify-evenly bg-gray-700 px-4 py-2 text-white">
         <time dateTime={hijri} className="text-center">{`${hijri}, ${cityName}`}</time>
         <a
@@ -67,18 +67,14 @@ export const PrayerWidget = () => {
         </a>
       </div>
 
-      <div className="grid grid-cols-2 divide-y lg:grid-cols-3">
+      <ul className="grid grid-cols-2 divide-y lg:grid-cols-3">
         {prayerTimes.map(({ name, time }) => (
-          <div
-            key={name}
-            className="flex place-content-center gap-2 p-2 hover:bg-gray-100 border-b"
-            role="listitem"
-          >
+          <li key={name} className="flex place-content-center gap-2 p-2 hover:bg-gray-100 border-b">
             <span className="text-right font-medium">{name}</span>
             <time className="tabular-nums">{time}</time>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   )
 }

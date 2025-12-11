@@ -1,8 +1,6 @@
-import * as React from 'react'
-
 import { Slot } from '@radix-ui/react-slot'
-
 import { ChevronRight, MoreHorizontal } from 'lucide-react'
+import * as React from 'react'
 
 import { cn } from '@/utility/utils'
 
@@ -57,8 +55,6 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWit
   ({ className, ...props }, ref) => (
     <span
       ref={ref}
-      role="link"
-      aria-disabled="true"
       aria-current="page"
       className={cn('font-normal text-foreground', className)}
       {...props}

@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server'
-
 import type { Db } from 'mongodb'
+import { NextResponse } from 'next/server'
 
 import type { DataPropsLatinized } from '@/helpers/types'
 import { withMongo } from '@/utility/mongodb'

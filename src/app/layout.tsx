@@ -1,8 +1,8 @@
 import '@/styles/global.css'
-import { type PropsWithChildren, Suspense } from 'react'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'
+import { type PropsWithChildren, Suspense } from 'react'
 
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form/Form'

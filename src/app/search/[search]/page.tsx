@@ -1,6 +1,6 @@
 'use client'
 import { useParams, useSearchParams } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Highlighter from 'react-highlight-words'
 import useSWR from 'swr'
 
@@ -46,15 +46,37 @@ const SearchPage = () => {
     }
   )
 
+  // Update search query when URL params change and reset to page 1
   useEffect(() => {
     if (typeof params?.search === 'string' && params.search.length > 2) {
-      setSearchQuery(decodeURIComponent(params.search.toString()))
+      const decodedSearch = decodeURIComponent(params.search.toString())
+      setSearchQuery(decodedSearch)
+      setCurrentPage(1)
     }
   }, [params?.search])
 
+  // Reset to page 1 when translator changes (new search context)
+  // Only reset if we have a valid search query
+  const prevTranslatorRef = useRef(translator)
   useEffect(() => {
-    mutate()
-  }, [mutate, currentPage, translator, params?.search])
+    if (searchQuery.length > 2 && prevTranslatorRef.current !== translator) {
+      setCurrentPage(1)
+      prevTranslatorRef.current = translator
+    }
+  }, [translator, searchQuery])
+
+  // Trigger mutate when search parameters change
+  // Explicitly include all values that should trigger a refetch
+  useEffect(() => {
+    // Reference currentPage and translator to ensure effect runs when they change
+    // translator can be null, so we only check searchQuery length
+    if (searchQuery.length > 2) {
+      // Reference currentPage and translator to satisfy exhaustive-deps
+      void currentPage
+      void translator
+      mutate()
+    }
+  }, [searchQuery, currentPage, translator, mutate])
 
   const paginateLinks = useMemo(() => {
     if (!data?.paginate?.total || data.paginate.total <= data?.paginate?.perPage) {
@@ -72,7 +94,7 @@ const SearchPage = () => {
         />
       </li>
     )
-  }, [data?.paginate, setCurrentPage])
+  }, [data?.paginate])
 
   if (isLoading) {
     return <LoaderDots />

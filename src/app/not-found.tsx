@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import { ShieldAlertIcon } from 'lucide-react'
+import Link from 'next/link'
 
 const AppNotFound = () => (
   <div className="flex flex-col items-center justify-center bg-red-100 py-10">
